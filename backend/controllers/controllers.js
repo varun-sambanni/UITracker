@@ -15,3 +15,15 @@ exports.postData = (req, res, next) => {
       return res.json({ success: false, msg: "Error uploading event log" });
     });
 };
+
+exports.getClear = (req, res, next) => {
+  eventLogModel
+    .deleteMany({})
+    .then((result) => {
+      return res.json({ success: true, msg: "DB Cleared" });
+    })
+    .catch((err) => {
+      console.log("Error clearing DB ", err);
+      return res.json({ success: true, msg: "Error clearing DB" });
+    });
+};

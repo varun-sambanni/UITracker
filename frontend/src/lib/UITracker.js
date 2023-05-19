@@ -35,7 +35,7 @@ class UITracker {
    */
   start() {
     UITracker.getLocation(); // Starts obtaining user location and eventually stores in this.location var
-    this.startDataTransmission();
+    //this.startDataTransmission();
     this.startSession();
     this.recordPageEvents();
     this.recordErrors();
@@ -45,6 +45,32 @@ class UITracker {
     this.recordHTTPRequests();
     this.recordConsoleErrors();
     this.endSession();
+
+    const ws = new WebSocket("ws://localhost:8082");
+
+    ws.addEventListener("open", () => {
+      console.log("Server Connected");
+      setInterval(() => {
+        console.log("Attempting to send data");
+        ws.send(
+          JSON.stringify(
+            {
+              URL: self.URL,
+              location: self.location,
+              sessionId: self.sessionId,
+              events: self.eventsList,
+              timeStamp: UITracker.getTimeStamp(),
+            },
+            this.replacerFunc()
+          )
+        );
+      }, this.dataTransmissionInterval);
+    });
+
+    ws.addEventListener("message", (e) => {
+      const data = JSON.parse(e.data);
+      console.log("Message From Server -> ", data);
+    });
   }
 
   /**
@@ -221,7 +247,10 @@ class UITracker {
         data: {
           X: this.oldX,
           Y: this.oldY,
-          HTMLElement: document.elementFromPoint(this.oldX, this.oldY),
+          HTMLElement:
+            document.elementFromPoint(this.oldX, this.oldY) !== null
+              ? document.elementFromPoint(this.oldX, this.oldY).outerHTML
+              : null,
         },
         timeStamp: UITracker.getTimeStamp(),
       };
@@ -450,7 +479,10 @@ class UITracker {
         data: {
           X: this.oldX,
           Y: this.oldY,
-          HTMLElement: document.elementFromPoint(this.oldX, this.oldY),
+          HTMLElement:
+            document.elementFromPoint(this.oldX, this.oldY) !== null
+              ? document.elementFromPoint(this.oldX, this.oldY).outerHTML
+              : null,
         },
         timeStamp: UITracker.getTimeStamp(),
       };
@@ -494,7 +526,10 @@ class UITracker {
         X: this.oldX,
         Y: this.oldY,
         key: event.key,
-        HTMLElement: document.elementFromPoint(this.oldX, this.oldY),
+        HTMLElement:
+          document.elementFromPoint(this.oldX, this.oldY) !== null
+            ? document.elementFromPoint(this.oldX, this.oldY).outerHTML
+            : null,
       },
       timeStamp: UITracker.getTimeStamp(),
     };
@@ -578,6 +613,7 @@ class UITracker {
     var clientX = x - document.documentElement.scrollLeft;
     var clientY = y - document.documentElement.scrollTop;
     const element = document.elementFromPoint(clientX, clientY);
+
     const currEventType =
       element &&
       element.tagName === "A" &&
@@ -596,7 +632,7 @@ class UITracker {
       data: {
         X: x,
         Y: y,
-        HTMLElement: element,
+        HTMLElement: element !== null ? element.outerHTML : null,
       },
       timeStamp: UITracker.getTimeStamp(),
     };
