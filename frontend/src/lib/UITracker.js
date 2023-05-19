@@ -21,16 +21,21 @@ class UITracker {
     this.tabHiddenStart = 0; // Stores the timeStamp of when the most recent 'TAB_HIDDEN' event is recorded
     sessionStorage.setItem("session-id", UITracker.getUID());
     this.sessionId = sessionStorage.getItem("session-id");
+    this.dataTransmissionInterval = 15000;
+    this.reportOnError = false;
   }
 
-  config() {}
+  config(dataTransmissionInterval, reportOnError) {
+    this.dataTransmissionInterval = dataTransmissionInterval;
+    this.reportOnError = reportOnError;
+  }
 
   /**
    *  Called from App.js
    */
   start() {
     UITracker.getLocation(); // Starts obtaining user location and eventually stores in this.location var
-    this.sendData();
+    this.startDataTransmission();
     this.startSession();
     this.recordPageEvents();
     this.recordErrors();
@@ -42,7 +47,39 @@ class UITracker {
     this.endSession();
   }
 
-  sendData() {}
+  /**
+   *  Setting up regular data transmision at every dataTransmissionInterval
+   */
+
+  startDataTransmission() {
+    setInterval(() => {
+      console.log("Sending data length -> ", self.eventsList.length);
+      fetch("http://localhost:5000/postData", {
+        method: "POST",
+        headers: {
+          Accept: "application/json",
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(
+          {
+            URL: self.URL,
+            location: self.location,
+            sessionId: self.sessionId,
+            events: self.eventsList,
+            timeStamp: UITracker.getTimeStamp(),
+          },
+          this.replacerFunc()
+        ),
+      })
+        .then((res) => res.json())
+        .then((data) => {
+          console.log("Response ->", data);
+        })
+        .catch((err) => {
+          console.log("Error sending data to server ", err);
+        });
+    }, this.dataTransmissionInterval);
+  }
 
   /**
    *  Util function to obtain location
@@ -585,6 +622,7 @@ class UITracker {
    */
   recordHTTPRequests() {
     // Monkey patching Fetch and XMLHttpRequest APIs
+
     const origFetch = window.fetch;
     window.fetch = async (...args) => {
       let resource = args[0],
@@ -690,7 +728,6 @@ class UITracker {
       };
 
       console.log(eventLogReq);
-
       originalOpen.apply(this, arguments);
 
       // Responses Interception
