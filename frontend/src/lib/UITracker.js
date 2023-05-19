@@ -30,7 +30,7 @@ class UITracker {
    */
   start() {
     UITracker.getLocation(); // Starts obtaining user location and eventually stores in this.location var
-
+    this.sendData();
     this.startSession();
     this.recordPageEvents();
     this.recordErrors();
@@ -41,6 +41,8 @@ class UITracker {
     this.recordConsoleErrors();
     this.endSession();
   }
+
+  sendData() {}
 
   /**
    *  Util function to obtain location
