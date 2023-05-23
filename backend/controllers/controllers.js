@@ -3,7 +3,7 @@ const eventLogModel = require("../models/EventLog");
 exports.postData = (req, res, next) => {
   console.log("Received ", req.body);
   const eventLog = new eventLogModel(req.body);
-
+  eventLog.ipAddress = ipAddress;
   eventLog
     .save()
     .then((result) => {
@@ -17,6 +17,8 @@ exports.postData = (req, res, next) => {
 };
 
 exports.getClear = (req, res, next) => {
+  const ipAddress = req.ip;
+  console.log("Ip address => ", ipAddress);
   eventLogModel
     .deleteMany({})
     .then((result) => {

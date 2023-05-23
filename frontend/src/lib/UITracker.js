@@ -35,7 +35,8 @@ class UITracker {
    */
   start() {
     UITracker.getLocation(); // Starts obtaining user location and eventually stores in this.location var
-    //this.startDataTransmission();
+    //this.startDataTransmissionHTTP();
+    this.startDataTransmissionSockets();
     this.startSession();
     this.recordPageEvents();
     this.recordErrors();
@@ -45,39 +46,13 @@ class UITracker {
     this.recordHTTPRequests();
     this.recordConsoleErrors();
     this.endSession();
-
-    const ws = new WebSocket("ws://localhost:8082");
-
-    ws.addEventListener("open", () => {
-      console.log("Server Connected");
-      setInterval(() => {
-        console.log("Attempting to send data");
-        ws.send(
-          JSON.stringify(
-            {
-              URL: self.URL,
-              location: self.location,
-              sessionId: self.sessionId,
-              events: self.eventsList,
-              timeStamp: UITracker.getTimeStamp(),
-            },
-            this.replacerFunc()
-          )
-        );
-      }, this.dataTransmissionInterval);
-    });
-
-    ws.addEventListener("message", (e) => {
-      const data = JSON.parse(e.data);
-      console.log("Message From Server -> ", data);
-    });
   }
 
   /**
-   *  Setting up regular data transmision at every dataTransmissionInterval
+   *  Setting up regular data transmision at every dataTransmissionInterval, using HTTP requests
    */
 
-  startDataTransmission() {
+  startDataTransmissionHTTP() {
     setInterval(() => {
       console.log("Sending data length -> ", self.eventsList.length);
       fetch("http://localhost:5000/postData", {
@@ -105,6 +80,51 @@ class UITracker {
           console.log("Error sending data to server ", err);
         });
     }, this.dataTransmissionInterval);
+  }
+
+  /**
+   *  Setting up regular data transmision at every dataTransmissionInterval, using web sockets
+   */
+
+  startDataTransmissionSockets() {
+    const ws = new WebSocket("ws://localhost:8082");
+
+    ws.addEventListener("open", () => {
+      console.log("Server Connected");
+      setInterval(() => {
+        console.log("Attempting to send data");
+        ws.send(
+          JSON.stringify(
+            {
+              URL: self.URL,
+              location: self.location,
+              sessionId: self.sessionId,
+              events: self.eventsList,
+              timeStamp: UITracker.getTimeStamp(),
+            },
+            this.replacerFunc()
+          )
+        );
+      }, this.dataTransmissionInterval);
+    });
+
+    ws.addEventListener("message", (e) => {
+      const data = JSON.parse(e.data);
+      console.log("Message From Server -> ", data);
+    });
+
+    ws.onclose = function (e) {
+      console.log("Socket connection closed, trying again to connect...");
+      setTimeout(function () {
+        // TimeOut to try connecting to server again
+        self.startDataTransmissionSockets();
+      }, 1000);
+    };
+
+    ws.onerror = function (e) {
+      console.log("Error encountered with socket");
+      ws.close();
+    };
   }
 
   /**

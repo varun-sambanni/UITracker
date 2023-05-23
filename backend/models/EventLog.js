@@ -37,6 +37,9 @@ const eventLogSchema = new Schema({
   timeStamp: {
     type: String,
   },
+  ipAddress: {
+    type: String,
+  },
   events: [eventSchema],
 });
 

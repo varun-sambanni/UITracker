@@ -11,6 +11,7 @@ const wss = new WebSocket.Server({ port: 8082 });
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 app.use(cors());
+app.set("trust proxy", true);
 app.use(routes);
 
 wss.on("connection", (ws) => {
@@ -19,8 +20,9 @@ wss.on("connection", (ws) => {
   ws.on("message", (data, isBinary) => {
     const message = isBinary ? data : data.toString();
     console.log("Client sent : ", JSON.parse(message));
-
+    const ipAddress = ws._socket.remoteAddress;
     const eventLog = new eventLogModel(JSON.parse(message));
+    eventLog.ipAddress = ipAddress;
     eventLog
       .save()
       .then((result) => {
