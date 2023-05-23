@@ -8,6 +8,7 @@ class UITracker {
     self = this;
     this.idleFlag = false;
     this.idleTimer = null;
+    this.isSocketConnected = false;
     this.oldX = -1;
     this.oldY = -1;
     this.mouseCoordRecorder = 100000; // The interval at which cursor coordinates are recorded
@@ -23,7 +24,8 @@ class UITracker {
     this.sessionId = sessionStorage.getItem("session-id");
     this.dataTransmissionInterval = 15000;
     this.reportOnError = false;
-    this.ws = new WebSocket("ws://localhost:8082");
+    this.ws = null;
+    this.socketInterval = null;
   }
 
   config(dataTransmissionInterval, reportOnError) {
@@ -88,10 +90,16 @@ class UITracker {
    */
 
   startDataTransmissionSockets() {
+    self.ws = new WebSocket("ws://localhost:8082");
     self.ws.addEventListener("open", () => {
       console.log("Server Connected");
-      setInterval(() => {
+      self.isSocketConnected = true;
+
+      self.socketInterval = setInterval(() => {
         console.log("Attempting to send data");
+        if (self.isSocketConnected === false) {
+          return;
+        }
         self.ws.send(
           JSON.stringify(
             {
@@ -113,15 +121,15 @@ class UITracker {
     });
 
     self.ws.onclose = function (e) {
-      console.log("Socket connection closed, trying again to connect...");
-      setTimeout(function () {
-        // TimeOut to try connecting to server again
-        self.startDataTransmissionSockets();
-      }, 1000);
+      console.log("Socket connection closed, Reconnecting...");
+      self.isSocketConnected = false;
+      clearInterval(self.socketInterval);
+      self.startDataTransmissionSockets();
     };
 
     self.ws.onerror = function (e) {
       console.log("Error encountered with socket");
+      self.isSocketConnected = false;
       self.ws.close();
     };
   }
@@ -433,7 +441,6 @@ class UITracker {
 
     // Unhandled promises
     window.onunhandledrejection = (event) => {
-      console.log(event);
       const currEventObj = {
         name: "ERROR",
         type: "UNHANDLED_PROMISE_REJECTION",
