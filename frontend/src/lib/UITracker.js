@@ -23,6 +23,7 @@ class UITracker {
     this.sessionId = sessionStorage.getItem("session-id");
     this.dataTransmissionInterval = 15000;
     this.reportOnError = false;
+    this.ws = new WebSocket("ws://localhost:8082");
   }
 
   config(dataTransmissionInterval, reportOnError) {
@@ -87,13 +88,11 @@ class UITracker {
    */
 
   startDataTransmissionSockets() {
-    const ws = new WebSocket("ws://localhost:8082");
-
-    ws.addEventListener("open", () => {
+    self.ws.addEventListener("open", () => {
       console.log("Server Connected");
       setInterval(() => {
         console.log("Attempting to send data");
-        ws.send(
+        self.ws.send(
           JSON.stringify(
             {
               URL: self.URL,
@@ -108,12 +107,12 @@ class UITracker {
       }, this.dataTransmissionInterval);
     });
 
-    ws.addEventListener("message", (e) => {
+    self.ws.addEventListener("message", (e) => {
       const data = JSON.parse(e.data);
       console.log("Message From Server -> ", data);
     });
 
-    ws.onclose = function (e) {
+    self.ws.onclose = function (e) {
       console.log("Socket connection closed, trying again to connect...");
       setTimeout(function () {
         // TimeOut to try connecting to server again
@@ -121,9 +120,9 @@ class UITracker {
       }, 1000);
     };
 
-    ws.onerror = function (e) {
+    self.ws.onerror = function (e) {
       console.log("Error encountered with socket");
-      ws.close();
+      self.ws.close();
     };
   }
 
@@ -414,16 +413,31 @@ class UITracker {
         events: self.eventsList,
         timeStamp: UITracker.getTimeStamp(),
       };
-
+      console.log("Attempting to send data");
+      if (self.reportOnError === true) {
+        self.ws.send(
+          JSON.stringify(
+            {
+              URL: self.URL,
+              location: self.location,
+              sessionId: self.sessionId,
+              events: self.eventsList,
+              timeStamp: UITracker.getTimeStamp(),
+            },
+            this.replacerFunc()
+          )
+        );
+      }
       console.log(eventLog);
     };
 
     // Unhandled promises
     window.onunhandledrejection = (event) => {
+      console.log(event);
       const currEventObj = {
         name: "ERROR",
         type: "UNHANDLED_PROMISE_REJECTION",
-        data: { errorMessage: event.reason },
+        data: { errorMessage: event.reason.message, stack: event.reason.stack },
         timeStamp: UITracker.getTimeStamp(),
       };
 
@@ -437,6 +451,20 @@ class UITracker {
         timeStamp: UITracker.getTimeStamp(),
       };
 
+      if (self.reportOnError === true) {
+        self.ws.send(
+          JSON.stringify(
+            {
+              URL: self.URL,
+              location: self.location,
+              sessionId: self.sessionId,
+              events: self.eventsList,
+              timeStamp: UITracker.getTimeStamp(),
+            },
+            this.replacerFunc()
+          )
+        );
+      }
       console.log(eventLog);
     };
   }

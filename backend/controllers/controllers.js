@@ -17,8 +17,6 @@ exports.postData = (req, res, next) => {
 };
 
 exports.getClear = (req, res, next) => {
-  const ipAddress = req.ip;
-  console.log("Ip address => ", ipAddress);
   eventLogModel
     .deleteMany({})
     .then((result) => {
