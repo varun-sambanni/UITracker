@@ -39,15 +39,13 @@ function App() {
   }, []);
 
   useEffect(() => {
-    console.log("here ", sessionId, URL, ipAddress);
-    console.log(URL.length);
     if (sessionId === "" && URL === "" && ipAddress === "") {
       // No filters applied, load back orignal data
       setEventLogs(currEventLogsLoaded);
       return;
     }
     let tempEventLogs = [];
-    for (let eventLog of eventLogs) {
+    for (let eventLog of currEventLogsLoaded) {
       if (
         (sessionId !== "" && eventLog.sessionId.includes(sessionId) === true) ||
         (URL !== "" && eventLog.URL.includes(URL) === true) ||
