@@ -1,0 +1,58 @@
+body {
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+}
+
+.header {
+  border: 1px solid black;
+  height: 4em;
+}
+
+.tableContainer {
+  margin: 2em;
+  border: 1px solid black;
+  max-height: 90vh;
+  overflow: auto;
+}
+
+.TableCell.MuiTableCell-head {
+  border: 2px solid black;
+}
+
+.TableCell.MuiTableCell-body {
+  border: 1px solid black;
+  padding: 0.4em;
+  font-size: 0.8rem;
+}
+
+.modalHeader {
+  display: flex;
+  justify-content: space-between;
+  flex-direction: row;
+}
+
+button {
+  height: 2em;
+}
+
+.eventLogModalDetails {
+  width: fit-content;
+  padding: 0.2em;
+}
+
+.modalDataContainer {
+  padding: 0.2em;
+}
+
+.eventLogDataField {
+  border-bottom: 1px solid black;
+}
+
+.filtersContainer {
+  padding: 1em;
+}
+
+.filterBar {
+  display: flex;
+  justify-content: space-between;
+  border: 1px solid black;
+}

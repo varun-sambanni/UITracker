@@ -43,8 +43,8 @@ class UITracker {
    */
   start() {
     UITracker.getLocation(); // Starts obtaining user location and eventually stores in this.location var
-    //this.startDataTransmissionHTTP();
-    this.startDataTransmissionSockets();
+    this.startDataTransmissionHTTP();
+    //this.startDataTransmissionSockets();
     this.startSession();
     this.recordPageEvents();
     this.recordErrors();

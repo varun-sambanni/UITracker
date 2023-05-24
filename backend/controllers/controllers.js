@@ -3,6 +3,7 @@ const eventLogModel = require("../models/EventLog");
 exports.postData = (req, res, next) => {
   console.log("Received ", req.body);
   const eventLog = new eventLogModel(req.body);
+  const ipAddress = req.socket.remoteAddress;
   eventLog.ipAddress = ipAddress;
   eventLog
     .save()
@@ -25,5 +26,16 @@ exports.getClear = (req, res, next) => {
     .catch((err) => {
       console.log("Error clearing DB ", err);
       return res.json({ success: true, msg: "Error clearing DB" });
+    });
+};
+
+exports.getEventLogs = (req, res, next) => {
+  eventLogModel
+    .find({})
+    .then((data) => {
+      return res.json({ success: true, data: data });
+    })
+    .catch((err) => {
+      return res.json({ success: false, msg: "Error fetching data" });
     });
 };
