@@ -28,6 +28,11 @@ class UITracker {
     this.socketInterval = null;
   }
 
+  /**
+   *  Function called to add the required configurations
+   *  @param {*} dataTransmissionInterval The interval at which the data is to be transmitted
+   *  @param {*} reportOnError Boolean value, whether to send data immediately on error or not
+   */
   config(dataTransmissionInterval, reportOnError) {
     this.dataTransmissionInterval = dataTransmissionInterval;
     this.reportOnError = reportOnError;
@@ -54,7 +59,6 @@ class UITracker {
   /**
    *  Setting up regular data transmision at every dataTransmissionInterval, using HTTP requests
    */
-
   startDataTransmissionHTTP() {
     setInterval(() => {
       console.log("Sending data length -> ", self.eventsList.length);
@@ -88,7 +92,6 @@ class UITracker {
   /**
    *  Setting up regular data transmision at every dataTransmissionInterval, using web sockets
    */
-
   startDataTransmissionSockets() {
     self.ws = new WebSocket("ws://localhost:8082");
     self.ws.addEventListener("open", () => {
@@ -229,7 +232,6 @@ class UITracker {
    *  Util function to deal with circular objects
    */
   replacerFunc = () => {
-    // Remove ?
     const visited = new WeakSet();
     return (key, value) => {
       if (typeof value === "object" && value !== null) {
@@ -260,7 +262,7 @@ class UITracker {
   }
 
   /**
-   *  Resets the idle timer
+   *  Resets the idle timer, and start a new one
    */
   resetTimer() {
     this.idleFlag = false;
