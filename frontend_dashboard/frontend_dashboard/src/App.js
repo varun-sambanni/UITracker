@@ -8,16 +8,12 @@ import {
   TextField,
   Autocomplete,
   Paper,
-  Select,
-  OutlinedInput,
-  MenuItem,
-  InputLabel,
-  FormControl,
 } from "@mui/material";
 import "./App.css";
 import React, { useEffect, useState } from "react";
 import EventLogModal from "./components/EventLogModal";
 import EventLog from "./components/EventLog";
+import AutoSearch from "./components/AutoSearch";
 
 let currEventLogsLoaded = [],
   currURLsLoaded = [], // No duplicates
@@ -38,14 +34,17 @@ function App() {
         if (data.success === false) {
           console.log("Error fetching event logs ", data.msg);
         } else {
+          console.log("Data fetched");
           console.log(data);
           data.data.reverse();
-          currEventLogsLoaded = data.data;
-          for (let eventLog of currEventLogsLoaded) {
+
+          for (let eventLog of data.data) {
+            eventLog.events.reverse();
             if (currURLsLoaded.includes(eventLog.URL) === false) {
               currURLsLoaded.push(eventLog.URL);
             }
           }
+          currEventLogsLoaded = data.data;
           setEventLogs(data.data);
         }
       })
@@ -80,8 +79,8 @@ function App() {
     setIsEventLogModalOpen(true);
   };
 
-  const urlSelectChangeHandler = (value) => {
-    console.log(value);
+  const urlChangeHandler = (value) => {
+    console.log("url changed ");
     setURL(value);
     setShowSessionIDs(true);
     sessionIDsUnderURL = [];
@@ -107,65 +106,27 @@ function App() {
       <div>Number of Logs : {eventLogs.length}</div>
       <div className="filterBar">
         <div className="filtersContainer">
-          <TextField
-            sx={{ marginRight: "0.2em" }}
-            size="small"
-            label="URL"
+          <AutoSearch
             value={URL}
-            onChange={(e) => setURL(e.target.value)}
+            setValue={setURL}
+            onChangeHandler={urlChangeHandler}
+            label={"URL"}
+            options={currURLsLoaded}
           />
-          <TextField
-            sx={{ marginRight: "0.2em" }}
-            size="small"
-            label="Session ID"
+          <AutoSearch
             value={sessionId}
-            onChange={(e) => setSessionId(e.target.value)}
+            setValue={setSessionId}
+            onChangeHandler={setSessionId}
+            label={"Session ID"}
+            options={sessionIDsUnderURL}
           />
         </div>
-        <div className="filtersContainer">
-          <FormControl variant="outlined" style={{ width: "100%" }}>
-            <InputLabel id="test-select-label">Choose from URLs</InputLabel>
-            <Select
-              size="small"
-              sx={{ width: 400 }}
-              onChange={(e) => urlSelectChangeHandler(e.target.value)}
-              label="Choose from URLs"
-            >
-              {currURLsLoaded.map((url, index) => (
-                <MenuItem key={index} value={url}>
-                  {url}
-                </MenuItem>
-              ))}
-            </Select>
-          </FormControl>
-          {showSessionID && (
-            <FormControl
-              variant="outlined"
-              style={{ width: "100%", margin: "2em 0em" }}
-            >
-              <InputLabel id="test-select-label">
-                Choose from SessionIDs
-              </InputLabel>
-              <Select
-                size="small"
-                onChange={(e) => setSessionId(e.target.value)}
-                sx={{ width: 400 }}
-                label="Choose from SessionIDs"
-              >
-                {sessionIDsUnderURL.map((sessionId, index) => (
-                  <MenuItem key={index} value={sessionId}>
-                    {sessionId}
-                  </MenuItem>
-                ))}
-              </Select>
-            </FormControl>
-          )}
-        </div>
-        {/* <button>Search</button> */}
       </div>
       {URL && sessionId && (
         <div>
-          <EventLog eventLog={eventLogs[0]} isFromAModal={false} />
+          {eventLogs && eventLogs.length > 0 && (
+            <EventLog eventLog={eventLogs[0]} isFromAModal={false} />
+          )}
           <div className="tableContainer">
             <TableContainer
               sx={{
@@ -185,38 +146,41 @@ function App() {
                   <TableCell className="TableCell">IP Address</TableCell>
                 </TableHead>
                 <TableBody>
-                  {eventLogs.map((eventLog, index) => {
-                    return (
-                      <TableRow
-                        hover={true}
-                        key={index}
-                        onClick={() => TableRowEventHandler(index)}
-                      >
-                        <TableCell className="TableCell">{index + 1}</TableCell>
-                        <TableCell className="TableCell">
-                          {eventLog.URL}
-                        </TableCell>
-                        <TableCell className="TableCell">
-                          <TableRow>
-                            Latitude :{" "}
-                            {eventLog.location.latitude.$numberDecimal}
-                            <br />
-                            Longitude :{" "}
-                            {eventLog.location.longitude.$numberDecimal}
-                          </TableRow>
-                        </TableCell>
-                        <TableCell className="TableCell">
-                          {eventLog.sessionId}
-                        </TableCell>
-                        <TableCell className="TableCell">
-                          {eventLog.timeStamp}
-                        </TableCell>
-                        <TableCell className="TableCell">
-                          {eventLog.ipAddress}
-                        </TableCell>
-                      </TableRow>
-                    );
-                  })}
+                  {eventLogs.length &&
+                    eventLogs.map((eventLog, index) => {
+                      return (
+                        <TableRow
+                          hover={true}
+                          key={index}
+                          onClick={() => TableRowEventHandler(index)}
+                        >
+                          <TableCell className="TableCell">
+                            {index + 1}
+                          </TableCell>
+                          <TableCell className="TableCell">
+                            {eventLog.URL}
+                          </TableCell>
+                          <TableCell className="TableCell">
+                            <TableRow>
+                              Latitude :{" "}
+                              {eventLog.location.latitude.$numberDecimal}
+                              <br />
+                              Longitude :{" "}
+                              {eventLog.location.longitude.$numberDecimal}
+                            </TableRow>
+                          </TableCell>
+                          <TableCell className="TableCell">
+                            {eventLog.sessionId}
+                          </TableCell>
+                          <TableCell className="TableCell">
+                            {eventLog.timeStamp}
+                          </TableCell>
+                          <TableCell className="TableCell">
+                            {eventLog.ipAddress}
+                          </TableCell>
+                        </TableRow>
+                      );
+                    })}
                 </TableBody>
               </Table>
             </TableContainer>

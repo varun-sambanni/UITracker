@@ -1,5 +1,5 @@
 import "../App.css";
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, createElement } from "react";
 import {
   TableContainer,
   TableHead,
@@ -10,22 +10,14 @@ import {
   Autocomplete,
   TextField,
   Paper,
+  Select,
+  MenuItem,
+  InputLabel,
+  FormControl,
 } from "@mui/material";
 
-const style = {
-  position: "fixed",
-  top: "50%",
-  left: "50%",
-  transform: "translate(-50%, -50%)",
-  width: "90vw",
-  height: "90vh",
-  bgcolor: "white",
-  border: "2px solid black",
-  padding: "0.4em",
-  boxShadow: 24,
-  margin: "0 auto",
-  overflow: "auto",
-};
+import { DataGrid } from "@mui/x-data-grid";
+import AutoSearch from "./AutoSearch";
 
 const EVENT_NAMES = [
   "PAGE_EVENT",
@@ -63,156 +55,188 @@ const EVENTS = {
   ERROR: ["RUNTIME_CRASH", "UNHANDLED_PROMISE_REJECTION", "CONSOLE_ERROR"],
 };
 
-let loadedEvents = [];
+const TEMP = [
+  {
+    field: "eventNo",
+    width: 80,
+    headerClassName: "dataGridHeader",
+  },
+  {
+    field: "name",
+    width: 120,
+    headerClassName: "dataGridHeader",
+  },
+  {
+    field: "type",
+    width: 140,
+    headerClassName: "dataGridHeader",
+  },
+  {
+    field: "timeStamp",
+    width: 160,
+    headerClassName: "dataGridHeader",
+  },
+  {
+    field: "data",
+    width: 760,
+    headerClassName: "dataGridHeader",
+    renderCell: (params) => (
+      <div>{params.value && createElement("div", {}, params.value)}</div>
+    ),
+  },
+];
+
+let loadedEvents = [],
+  loadedRows = [];
 
 const EventLog = ({ eventLog, setIsModalOpen, isFromAModal }) => {
   const [name, setName] = useState("");
-  const [type, setType] = useState("USER_EVENT");
   const [events, setEvents] = useState(eventLog.events);
+  const [type, setType] = useState("");
+  const [rows, setRows] = useState(loadedRows);
+
   loadedEvents = eventLog.events;
 
+  useEffect(() => {
+    loadedRows = [];
+    for (let i = 0; i < loadedEvents.length; i++) {
+      loadedRows.push({
+        id: i + 1,
+        eventNo: i + 1,
+        name: loadedEvents[i].name,
+        type: loadedEvents[i].type,
+        timeStamp: loadedEvents[i].timeStamp,
+        data:
+          loadedEvents[i].data &&
+          Object.keys(loadedEvents[i].data).map((key) => (
+            <div key={key} className="eventLogDataField">
+              <p className="dataKeyField">{key}:</p> {loadedEvents[i].data[key]}
+            </div>
+          )),
+      });
+    }
+  });
+
   const nameChangeHandler = (value) => {
-    let tempEvents = [];
+    let tempEvents = [],
+      tempRows = [];
+    if (EVENT_NAMES.includes(name) === false) {
+      setType("");
+    }
     if (value === null || value === "") {
       setEvents(loadedEvents);
+      setRows(loadedRows);
+      return;
     }
-    for (let event of loadedEvents) {
-      if (event.name.includes(value) === true) {
-        tempEvents.push(event);
+    for (let i = 0; i < loadedEvents.length; i++) {
+      if (loadedEvents[i].name.includes(value) === true) {
+        tempEvents.push(loadedEvents[i]);
+        tempRows.push(loadedRows[i]);
       }
     }
+
     setName(value);
     setEvents(tempEvents);
+    setRows(tempRows);
   };
 
   const typeChangeHandler = (value) => {
-    let tempEvents = [];
+    let tempEvents = [],
+      tempRows = [];
     if (value === null || value === "") {
-      setEvents(loadedEvents);
+      for (let i = 0; i < loadedEvents.length; i++) {
+        if (loadedEvents[i].name.includes(name) === true || name === "") {
+          tempEvents.push(loadedEvents[i]);
+          tempRows.push(loadedRows[i]);
+        }
+      }
+      return;
     }
-    for (let event of loadedEvents) {
-      if (event.type.includes(value) === true) {
-        tempEvents.push(event);
+    for (let i = 0; i < loadedEvents.length; i++) {
+      if (
+        loadedEvents[i].name.includes(name) === true &&
+        loadedEvents[i].type.includes(value) === true
+      ) {
+        tempEvents.push(loadedEvents[i]);
+        tempRows.push(loadedRows[i]);
       }
     }
     setType(value);
     setEvents(tempEvents);
+    setRows(tempRows);
   };
 
   return (
     <>
+      <div className="modalHeader">
+        <div className="eventLogModalDetails">
+          <div>URL : {eventLog.URL}</div>
+          <div>
+            Latitude : {eventLog.location.latitude.$numberDecimal}
+            <br />
+            Longitude : {eventLog.location.longitude.$numberDecimal}
+          </div>
+          <div>Session ID : {eventLog.sessionId}</div>
+          <div>Time stamp : {eventLog.timeStamp}</div>
+          <div>IP Address : {eventLog.ipAddress}</div>
+          <div>Number of Events : {events.length}</div>
+        </div>
+        {isFromAModal && (
+          <button onClick={() => setIsModalOpen(false)}>Close</button>
+        )}
+      </div>
       {eventLog !== undefined && (
         <div className="modalDataContainer">
-          <Autocomplete
-            disablePortal
-            disableClearable
-            id="combo-box-demo"
-            size="small"
+          <AutoSearch
             value={name}
+            setValue={setName}
+            onChangeHandler={nameChangeHandler}
+            label={"URL"}
             options={EVENT_NAMES}
-            onChange={(event, values) => {
-              nameChangeHandler(values);
-            }}
-            sx={{ width: 300 }}
-            renderInput={(params) => (
-              <TextField
-                value={name}
-                onChange={(event) => {
-                  nameChangeHandler(event.target.value);
-                }}
-                sx={{ margin: "1em 0em" }}
-                {...params}
-                label="EVENT"
-              />
-            )}
-          />
-          <Autocomplete
-            disablePortal
-            disableClearable
-            id="combo-box-demo"
-            size="small"
-            value={type}
-            options={EVENTS[type]}
-            onChange={(event, values) => {
-              typeChangeHandler(values);
-            }}
-            sx={{ width: 300, margin: "1em 0em" }}
-            renderInput={(params) => (
-              <TextField
-                sx={{ textTransform: "uppercase" }}
-                {...params}
-                label="TYPE"
-              />
-            )}
           />
 
-          <div className="modalHeader">
-            <div className="eventLogModalDetails">
-              <div>URL : {eventLog.URL}</div>
-              <div>
-                Latitude : {eventLog.location.latitude.$numberDecimal}
-                <br />
-                Longitude : {eventLog.location.longitude.$numberDecimal}
-              </div>
-              <div>Session ID : {eventLog.sessionId}</div>
-              <div>Time stamp : {eventLog.timeStamp}</div>
-              <div>IP Address : {eventLog.ipAddress}</div>
-              <div>Number of Events : {events.length}</div>
-            </div>
-            {isFromAModal && (
-              <button onClick={() => setIsModalOpen(false)}>Close</button>
-            )}
-          </div>
-          <div>
-            <TableContainer
-              component={Paper}
-              sx={{
-                overflow: "auto",
-                maxHeight: "80vh",
-                border: "1px solid black",
-              }}
+          {EVENT_NAMES.includes(name) && (
+            <FormControl
+              variant="outlined"
+              size="small"
+              style={{ width: "100%", margin: "2em 0em" }}
             >
-              <Table>
-                <TableHead className="tableHead" aria-label="sticky table">
-                  <TableCell className="TableCell">Event No.</TableCell>
-                  <TableCell className="TableCell">Name</TableCell>
-                  <TableCell className="TableCell">Type</TableCell>
-                  <TableCell className="TableCell">Time Stamp</TableCell>
-                  <TableCell className="TableCell">Data</TableCell>
-                </TableHead>
-                <TableBody>
-                  {events !== undefined &&
-                    events.map((event, index) => {
-                      return (
-                        <TableRow hover={true} key={index}>
-                          <TableCell className="TableCell">
-                            {index + 1}
-                          </TableCell>
-                          <TableCell className="TableCell">
-                            {event.name}
-                          </TableCell>
-                          <TableCell className="TableCell">
-                            {event.type}
-                          </TableCell>
-                          <TableCell className="TableCell">
-                            {event.timeStamp}
-                          </TableCell>
-                          <TableCell className="TableCell">
-                            {event &&
-                              event.data &&
-                              Object.keys(event.data).map((key) => (
-                                <div key={key} className="eventLogDataField">
-                                  <p className="dataKeyField">{key}:</p>{" "}
-                                  {event.data[key]}
-                                </div>
-                              ))}
-                          </TableCell>
-                        </TableRow>
-                      );
-                    })}
-                </TableBody>
-              </Table>
-            </TableContainer>
+              <InputLabel id="test-select-label">TYPE</InputLabel>
+              <Select
+                size="small"
+                onChange={(e) => typeChangeHandler(e.target.value)}
+                sx={{ width: 300 }}
+                label="TYPE"
+                value={type}
+              >
+                {EVENTS[name].map((type, index) => (
+                  <MenuItem key={index} value={type}>
+                    {type}
+                  </MenuItem>
+                ))}
+              </Select>
+            </FormControl>
+          )}
+
+          <div>
+            <DataGrid
+              sx={{
+                minHeight: "45em",
+                border: 2,
+                margin: "1em 0em",
+                maxHeight: "45em",
+              }}
+              getCellClassName={() => "dataGridCell"}
+              getRowHeight={() => "auto"}
+              columns={TEMP}
+              rows={rows.length ? rows : name !== "" ? [] : loadedRows}
+              initialState={{
+                pagination: {
+                  paginationModel: { page: 0, pageSize: 10 },
+                },
+              }}
+              pageSizeOptions={[10, 20]}
+            ></DataGrid>
           </div>
         </div>
       )}
