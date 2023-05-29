@@ -86,28 +86,22 @@ const COLUMNS = [
   },
 ];
 
-let ROWS = [];
-
 let loadedEvents = [],
   loadedRows = [];
 
-const EventLog = ({
-  eventLog,
-  setIsModalOpen,
-  isFromAModal,
-  sessionId,
-  currEventLogViewIndex,
-  eventLogs,
-}) => {
-  loadedEvents = eventLog.events;
+let refreshTimeOut = null;
+
+const EventLog = ({ eventLog, setIsModalOpen, isFromAModal, sessionId }) => {
   const [name, setName] = useState("");
   const [events, setEvents] = useState(eventLog.events);
-
+  const [refreshDataGrid, setRefreshDataGrid] = useState(false);
   const [type, setType] = useState("");
   const [rows, setRows] = useState([]);
 
   useEffect(() => {
     loadedRows = [];
+    loadedEvents = eventLog.events;
+
     for (let i = 0; i < loadedEvents.length; i++) {
       loadedRows.push({
         id: i + 1,
@@ -124,8 +118,14 @@ const EventLog = ({
           )),
       });
     }
-    console.log("loadedRows len ", loadedRows.length);
-  }, []);
+    setName("");
+    setType("");
+    setRows(loadedRows);
+  }, [refreshDataGrid]);
+
+  useEffect(() => {
+    setRefreshDataGrid(!refreshDataGrid);
+  }, [sessionId]);
 
   const nameChangeHandler = (value) => {
     let tempEvents = [],
@@ -134,6 +134,7 @@ const EventLog = ({
       setType("");
     }
     if (value === null || value === "") {
+      setName("");
       setEvents(loadedEvents);
       setRows(loadedRows);
       return;
@@ -158,6 +159,9 @@ const EventLog = ({
         if (loadedEvents[i].name.includes(name) === true || name === "") {
           tempEvents.push(loadedEvents[i]);
           tempRows.push(loadedRows[i]);
+          setType(value);
+          setEvents(tempEvents);
+          setRows(tempRows);
         }
       }
       return;
@@ -189,7 +193,7 @@ const EventLog = ({
           <div>Session ID : {eventLog.sessionId}</div>
           <div>Time stamp : {eventLog.timeStamp}</div>
           <div>IP Address : {eventLog.ipAddress}</div>
-          <div>Number of Events : {events.length}</div>
+          <div>Number of Events : {rows.length}</div>
         </div>
         {isFromAModal && (
           <button onClick={() => setIsModalOpen(false)}>Close</button>
