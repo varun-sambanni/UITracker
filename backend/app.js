@@ -9,7 +9,7 @@ const app = express();
 const wss = new WebSocket.Server({ port: 8082 });
 
 app.use(express.urlencoded({ extended: true }));
-app.use(express.json());
+app.use(express.json({ limit: "10mb" })); // Modifed limit
 app.use(cors());
 app.set("trust proxy", true);
 app.use(routes);

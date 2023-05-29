@@ -68,10 +68,15 @@ function App() {
             eventLog.sessionId.includes(sessionId) === true)) &&
         (URL === "" || (URL !== "" && eventLog.URL.includes(URL) === true))
       ) {
+        console.log("Pushing ", eventLog.sessionId);
         tempEventLogs.push(eventLog);
       }
     }
+    console.log("session id ", sessionId);
+
     setEventLogs(tempEventLogs);
+    console.log(tempEventLogs[currEventLogViewIndex]);
+    console.log(eventLogs[currEventLogViewIndex]);
   }, [sessionId, URL]); // Filtering whenever filter values change
 
   const TableRowEventHandler = (index) => {
@@ -125,7 +130,13 @@ function App() {
       {URL && sessionId && (
         <div>
           {eventLogs && eventLogs.length > 0 && (
-            <EventLog eventLog={eventLogs[0]} isFromAModal={false} />
+            <EventLog
+              eventLog={eventLogs[0]}
+              isFromAModal={false}
+              sessionId={sessionId}
+              eventLogs={eventLogs}
+              currEventLogViewIndex={currEventLogViewIndex}
+            />
           )}
           <div className="tableContainer">
             <TableContainer

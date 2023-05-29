@@ -1,5 +1,5 @@
 import "../App.css";
-import React, { useEffect, useState, createElement } from "react";
+import React, { useEffect, useState, createElement, useCallback } from "react";
 import {
   TableContainer,
   TableHead,
@@ -55,7 +55,7 @@ const EVENTS = {
   ERROR: ["RUNTIME_CRASH", "UNHANDLED_PROMISE_REJECTION", "CONSOLE_ERROR"],
 };
 
-const TEMP = [
+const COLUMNS = [
   {
     field: "eventNo",
     width: 80,
@@ -86,16 +86,25 @@ const TEMP = [
   },
 ];
 
+let ROWS = [];
+
 let loadedEvents = [],
   loadedRows = [];
 
-const EventLog = ({ eventLog, setIsModalOpen, isFromAModal }) => {
+const EventLog = ({
+  eventLog,
+  setIsModalOpen,
+  isFromAModal,
+  sessionId,
+  currEventLogViewIndex,
+  eventLogs,
+}) => {
+  loadedEvents = eventLog.events;
   const [name, setName] = useState("");
   const [events, setEvents] = useState(eventLog.events);
-  const [type, setType] = useState("");
-  const [rows, setRows] = useState(loadedRows);
 
-  loadedEvents = eventLog.events;
+  const [type, setType] = useState("");
+  const [rows, setRows] = useState([]);
 
   useEffect(() => {
     loadedRows = [];
@@ -115,7 +124,8 @@ const EventLog = ({ eventLog, setIsModalOpen, isFromAModal }) => {
           )),
       });
     }
-  });
+    console.log("loadedRows len ", loadedRows.length);
+  }, []);
 
   const nameChangeHandler = (value) => {
     let tempEvents = [],
@@ -191,7 +201,7 @@ const EventLog = ({ eventLog, setIsModalOpen, isFromAModal }) => {
             value={name}
             setValue={setName}
             onChangeHandler={nameChangeHandler}
-            label={"URL"}
+            label={"EVENT"}
             options={EVENT_NAMES}
           />
 
@@ -228,7 +238,7 @@ const EventLog = ({ eventLog, setIsModalOpen, isFromAModal }) => {
               }}
               getCellClassName={() => "dataGridCell"}
               getRowHeight={() => "auto"}
-              columns={TEMP}
+              columns={COLUMNS}
               rows={rows.length ? rows : name !== "" ? [] : loadedRows}
               initialState={{
                 pagination: {
