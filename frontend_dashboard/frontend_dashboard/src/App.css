@@ -1,10 +1,30 @@
 body {
-  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+  font-family: Roboto;
+  margin: 0em;
+}
+* {
+  font-weight: 300;
 }
 
-.header {
-  border: 1px solid black;
-  height: 4em;
+.App {
+  background: #edecec;
+}
+
+.mainContainer {
+  margin: 0em 1em;
+  min-height: 100vh;
+  padding-bottom: 2em;
+}
+
+.containerCard {
+  background: #ffffff;
+
+  padding: 0.5em;
+  margin: 1em;
+}
+
+.dashboardDetailsContainer {
+  width: 100%;
 }
 
 .tableContainer {
@@ -21,7 +41,7 @@ body {
 }
 
 .TableCell.MuiTableCell-head {
-  font-weight: 600;
+  font-weight: 400;
   border: 1px solid black;
   text-align: center;
 }
@@ -29,6 +49,7 @@ body {
 .TableCell.MuiTableCell-body {
   border: 1px solid black;
   padding: 0.4em;
+  font-weight: 300;
   font-size: 0.8rem;
 }
 
@@ -42,9 +63,20 @@ button {
   height: 2em;
 }
 
+.eventLogModalDetailsContainer {
+  display: flex;
+  margin: 0 auto;
+}
+
 .eventLogModalDetails {
   width: fit-content;
   padding: 0.2em;
+  margin-right: 4em;
+}
+
+.eventLogModalDetailsTitle {
+  font-weight: 400;
+  text-align: left;
 }
 
 .modalDataContainer {
@@ -64,14 +96,14 @@ button {
   display: flex;
   justify-content: space-between;
   flex-direction: column;
-  padding: 1em;
-  border: 1px solid black;
-  margin: 2em 0em;
+
+  background: #ffffff;
+  box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.05);
 }
 
 .dataKeyField {
   display: inline;
-  font-weight: 600;
+  font-weight: 400;
 }
 
 .dataGridCell {
@@ -81,8 +113,50 @@ button {
 
 .dataGridHeader {
   box-shadow: inset 1px 2px 0 #000000, inset 0 -2px 0 #000000;
-  font-weight: 600;
-
+  font-weight: 400;
   text-transform: capitalize;
   background-color: rgb(242, 242, 244);
+}
+
+.tableName {
+  text-align: center;
+  font-size: 1.2rem;
+  text-decoration: underline;
+}
+
+.header {
+  height: 4em;
+  margin-bottom: 2em;
+  background: #ffffff;
+
+  box-shadow: 0px 2px 4px rgba(208, 208, 208, 0.5);
+}
+
+.headerCiscoDNASpacesContainer {
+  font-family: Roboto;
+  width: fit-content;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.headerCisco {
+  color: #00bceb;
+  vertical-align: middle;
+  font-size: 1.5rem;
+  font-weight: 1000;
+}
+
+.headerDNASpaces {
+  color: #005073;
+  font-size: 1.5rem;
+  vertical-align: middle;
+}
+
+.headerDivider {
+  opacity: 0.2;
+  border: 1px solid #000000;
+  height: 50%;
+  margin: 0em 1em;
 }

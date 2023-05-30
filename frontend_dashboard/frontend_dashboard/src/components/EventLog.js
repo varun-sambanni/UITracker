@@ -1,20 +1,6 @@
 import "../App.css";
 import React, { useEffect, useState, createElement, useCallback } from "react";
-import {
-  TableContainer,
-  TableHead,
-  TableCell,
-  Table,
-  TableBody,
-  TableRow,
-  Autocomplete,
-  TextField,
-  Paper,
-  Select,
-  MenuItem,
-  InputLabel,
-  FormControl,
-} from "@mui/material";
+import { Select, MenuItem, InputLabel, FormControl } from "@mui/material";
 
 import { DataGrid } from "@mui/x-data-grid";
 import AutoSearch from "./AutoSearch";
@@ -88,8 +74,6 @@ const COLUMNS = [
 
 let loadedEvents = [],
   loadedRows = [];
-
-let refreshTimeOut = null;
 
 const EventLog = ({ eventLog, setIsModalOpen, isFromAModal, sessionId }) => {
   const [name, setName] = useState("");
@@ -182,25 +166,55 @@ const EventLog = ({ eventLog, setIsModalOpen, isFromAModal, sessionId }) => {
 
   return (
     <>
-      <div className="modalHeader">
-        <div className="eventLogModalDetails">
-          <div>URL : {eventLog.URL}</div>
-          <div>
-            Latitude : {eventLog.location.latitude.$numberDecimal}
-            <br />
-            Longitude : {eventLog.location.longitude.$numberDecimal}
+      <div className="modalHeader ">
+        <div className="eventLogModalDetailsContainer containerCard">
+          <div className="eventLogModalDetails">
+            <div>
+              <span className="eventLogModalDetailsTitle">URL</span> :{" "}
+            </div>
+            <div>
+              <span className="eventLogModalDetailsTitle">Latitude</span> :{" "}
+              <br />
+              <span className="eventLogModalDetailsTitle">
+                Longitude
+              </span> :{" "}
+            </div>
+            <div>
+              <span className="eventLogModalDetailsTitle">Session ID</span>:{" "}
+            </div>
+            <div>
+              <span className="eventLogModalDetailsTitle">Time Stamp</span> :{" "}
+            </div>
+            <div>
+              <span className="eventLogModalDetailsTitle">IP Address</span> :{" "}
+            </div>
+            <div>
+              <span className="eventLogModalDetailsTitle">
+                Number of Events
+              </span>
+              :{" "}
+            </div>
           </div>
-          <div>Session ID : {eventLog.sessionId}</div>
-          <div>Time stamp : {eventLog.timeStamp}</div>
-          <div>IP Address : {eventLog.ipAddress}</div>
-          <div>Number of Events : {rows.length}</div>
+          <div className="eventLogModalDetails">
+            <div>{eventLog.URL}</div>
+            <div>
+              {eventLog.location.latitude.$numberDecimal}
+              <br />
+              {eventLog.location.longitude.$numberDecimal}
+            </div>
+            <div>{eventLog.sessionId}</div>
+            <div>{eventLog.timeStamp}</div>
+            <div>{eventLog.ipAddress}</div>
+            <div>{rows.length}</div>
+          </div>
         </div>
         {isFromAModal && (
           <button onClick={() => setIsModalOpen(false)}>Close</button>
         )}
       </div>
       {eventLog !== undefined && (
-        <div className="modalDataContainer">
+        <div className="modalDataContainer containerCard">
+          <div className="tableName">EVENTS</div>
           <AutoSearch
             value={name}
             setValue={setName}
@@ -219,7 +233,7 @@ const EventLog = ({ eventLog, setIsModalOpen, isFromAModal, sessionId }) => {
               <Select
                 size="small"
                 onChange={(e) => typeChangeHandler(e.target.value)}
-                sx={{ width: 300 }}
+                sx={{ width: 400 }}
                 label="TYPE"
                 value={type}
               >

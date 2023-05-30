@@ -54,7 +54,6 @@ function App() {
   }, []);
 
   useEffect(() => {
-    console.log("filter useEffect");
     if (sessionId === "" && URL === "") {
       // No filters applied, load back orignal data
       setEventLogs(currEventLogsLoaded);
@@ -72,7 +71,6 @@ function App() {
         tempEventLogs.push(eventLog);
       }
     }
-    console.log("session id ", sessionId);
 
     setEventLogs(tempEventLogs);
     console.log(tempEventLogs[currEventLogViewIndex]);
@@ -102,102 +100,114 @@ function App() {
 
   return (
     <div className="App">
-      <div className="header"></div>
-      <EventLogModal
-        isModalOpen={isEventLogModalOpen}
-        setIsModalOpen={setIsEventLogModalOpen}
-        eventLog={eventLogs[currEventLogViewIndex]}
-      />
-      <div>Number of Logs : {eventLogs.length}</div>
-      <div className="filterBar">
-        <div className="filtersContainer">
-          <AutoSearch
-            value={URL}
-            setValue={setURL}
-            onChangeHandler={urlChangeHandler}
-            label={"URL"}
-            options={currURLsLoaded}
-          />
-          <AutoSearch
-            value={sessionId}
-            setValue={setSessionId}
-            onChangeHandler={setSessionId}
-            label={"Session ID"}
-            options={sessionIDsUnderURL}
-          />
+      <div className="header">
+        <div className="headerCiscoDNASpacesContainer">
+          <span className="headerCisco">Cisco</span>
+          <span className="headerDNASpaces">&nbsp;DNA Spaces&nbsp;</span>
+          <span className="headerDivider"></span>
+          <span className="headerAppName">Events Dashboard</span>
         </div>
       </div>
-      {URL && sessionId && (
-        <div>
-          {eventLogs && eventLogs.length > 0 && (
-            <EventLog
-              eventLog={eventLogs[0]}
-              isFromAModal={false}
-              sessionId={sessionId}
-              eventLogs={eventLogs}
-              currEventLogViewIndex={currEventLogViewIndex}
+      <div className="mainContainer">
+        <EventLogModal
+          isModalOpen={isEventLogModalOpen}
+          setIsModalOpen={setIsEventLogModalOpen}
+          eventLog={eventLogs[currEventLogViewIndex]}
+        />
+        <div className="filterBar containerCard">
+          <div>Number of Logs : {eventLogs.length}</div>
+          <div className="filtersContainer ">
+            <AutoSearch
+              value={URL}
+              setValue={setURL}
+              onChangeHandler={urlChangeHandler}
+              label={"URL"}
+              options={currURLsLoaded}
             />
-          )}
-          <div className="tableContainer">
-            <TableContainer
-              sx={{
-                overflow: "auto",
-                maxHeight: "90vh",
-                border: "1px solid black",
-              }}
-              component={Paper}
-            >
-              <Table>
-                <TableHead className="tableHead" aria-label="sticky table">
-                  <TableCell className="TableCell">Log No.</TableCell>
-                  <TableCell className="TableCell">URL</TableCell>
-                  <TableCell className="TableCell">Location</TableCell>
-                  <TableCell className="TableCell">Session ID</TableCell>
-                  <TableCell className="TableCell">Time Stamp</TableCell>
-                  <TableCell className="TableCell">IP Address</TableCell>
-                </TableHead>
-                <TableBody>
-                  {eventLogs.length &&
-                    eventLogs.map((eventLog, index) => {
-                      return (
-                        <TableRow
-                          hover={true}
-                          key={index}
-                          onClick={() => TableRowEventHandler(index)}
-                        >
-                          <TableCell className="TableCell">
-                            {index + 1}
-                          </TableCell>
-                          <TableCell className="TableCell">
-                            {eventLog.URL}
-                          </TableCell>
-                          <TableCell className="TableCell">
-                            <TableRow>
-                              Latitude :{" "}
-                              {eventLog.location.latitude.$numberDecimal}
-                              <br />
-                              Longitude :{" "}
-                              {eventLog.location.longitude.$numberDecimal}
-                            </TableRow>
-                          </TableCell>
-                          <TableCell className="TableCell">
-                            {eventLog.sessionId}
-                          </TableCell>
-                          <TableCell className="TableCell">
-                            {eventLog.timeStamp}
-                          </TableCell>
-                          <TableCell className="TableCell">
-                            {eventLog.ipAddress}
-                          </TableCell>
-                        </TableRow>
-                      );
-                    })}
-                </TableBody>
-              </Table>
-            </TableContainer>
+            <AutoSearch
+              value={sessionId}
+              setValue={setSessionId}
+              onChangeHandler={setSessionId}
+              label={"Session ID"}
+              options={sessionIDsUnderURL}
+            />
           </div>
         </div>
-      )}
+        {URL && sessionId && (
+          <div>
+            {eventLogs && eventLogs.length > 0 && (
+              <EventLog
+                eventLog={eventLogs[0]}
+                isFromAModal={false}
+                sessionId={sessionId}
+                eventLogs={eventLogs}
+                currEventLogViewIndex={currEventLogViewIndex}
+              />
+            )}
+            <div className="containerCard">
+              <div className="tableName">EVENT LOGS</div>
+              <div className="tableContainer">
+                <TableContainer
+                  sx={{
+                    overflow: "auto",
+                    maxHeight: "90vh",
+                    border: "1px solid black",
+                  }}
+                  component={Paper}
+                >
+                  <Table>
+                    <TableHead className="tableHead" aria-label="sticky table">
+                      <TableCell className="TableCell">Log No.</TableCell>
+                      <TableCell className="TableCell">URL</TableCell>
+                      <TableCell className="TableCell">Location</TableCell>
+                      <TableCell className="TableCell">Session ID</TableCell>
+                      <TableCell className="TableCell">Time Stamp</TableCell>
+                      <TableCell className="TableCell">IP Address</TableCell>
+                    </TableHead>
+                    <TableBody>
+                      {eventLogs.length &&
+                        eventLogs.map((eventLog, index) => {
+                          return (
+                            <TableRow
+                              hover={true}
+                              key={index}
+                              onClick={() => TableRowEventHandler(index)}
+                            >
+                              <TableCell className="TableCell">
+                                {index + 1}
+                              </TableCell>
+                              <TableCell className="TableCell">
+                                {eventLog.URL}
+                              </TableCell>
+                              <TableCell className="TableCell">
+                                <TableRow>
+                                  Latitude :{" "}
+                                  {eventLog.location.latitude.$numberDecimal}
+                                  <br />
+                                  Longitude :{" "}
+                                  {eventLog.location.longitude.$numberDecimal}
+                                </TableRow>
+                              </TableCell>
+                              <TableCell className="TableCell">
+                                {eventLog.sessionId}
+                              </TableCell>
+                              <TableCell className="TableCell">
+                                {eventLog.timeStamp}
+                              </TableCell>
+                              <TableCell className="TableCell">
+                                {eventLog.ipAddress}
+                              </TableCell>
+                            </TableRow>
+                          );
+                        })}
+                    </TableBody>
+                  </Table>
+                </TableContainer>
+              </div>
+            </div>
+          </div>
+        )}
+      </div>
     </div>
   );
 }

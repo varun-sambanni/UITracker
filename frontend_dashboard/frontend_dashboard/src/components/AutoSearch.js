@@ -28,7 +28,7 @@ const AutoSearch = ({ value, setValue, onChangeHandler, options, label }) => {
       onChange={(event, values) => {
         onChangeHandler(values);
       }}
-      sx={{ width: 400 }}
+      sx={{ width: 400, fontWeight: 100 }}
       renderInput={(params) => (
         <TextField
           value={value}
