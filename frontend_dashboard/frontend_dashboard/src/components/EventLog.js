@@ -92,7 +92,7 @@ const EventLog = ({ eventLog, setIsModalOpen, isFromAModal, sessionId }) => {
     },
     {
       field: "data",
-      width: 220,
+      width: 240,
       headerClassName: "dataGridHeader",
       renderCell: (params) => (
         <div>{params.value && createElement("div", {}, params.value)}</div>
