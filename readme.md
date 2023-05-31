@@ -7,7 +7,7 @@ The javascript file responsible for tracking the events is present in ./frontend
 1. Initialize the UITracker object
 2. Call config on the object to configure the options.
    ```js
-   //  @param {*} dataTransmissionInterval The interval at which the data is to be transmitted
+   //  @param {*} dataTransmissionInterval(ms) The interval at which the data is to be transmitted
    //  @param {*} reportOnError Boolean value, whether to send data immediately on error or not
    config(interval, reportOnError);
    ```
@@ -28,7 +28,7 @@ The UITracker.js file can be imported in the index.html file, within a script ta
     <script type="module">
       import UITracker from "./UITracker.js";
       const uiTracker = new UITracker();
-      uiTracker.config(10000, false);
+      uiTracker.config(10000, false); // Send data every 10s, do not report immediately on error
       uiTracker.start();
     </script>
   </head>
