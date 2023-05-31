@@ -216,7 +216,7 @@ const EventLog = ({ eventLog, setIsModalOpen, isFromAModal, sessionId }) => {
                     {Object.keys(loadedEvents[currDataIndex].data).map(
                       (key) => {
                         return (
-                          <div className="containerCard dataKey">
+                          <div className="containerCard ">
                             <span className="eventLogModalDetailsTitle">
                               {key}:
                             </span>

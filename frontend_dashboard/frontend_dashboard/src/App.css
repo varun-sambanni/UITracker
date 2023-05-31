@@ -61,6 +61,7 @@ body {
 
 button {
   height: 2em;
+  cursor: pointer;
 }
 
 .eventLogModalDetailsContainer {
