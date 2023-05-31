@@ -115,24 +115,72 @@ function App() {
           eventLog={eventLogs[currEventLogViewIndex]}
         />
         <div className="filterBar containerCard">
-          <div>Number of Logs : {eventLogs.length}</div>
-          <div className="filtersContainer ">
-            <AutoSearch
-              value={URL}
-              setValue={setURL}
-              onChangeHandler={urlChangeHandler}
-              label={"URL"}
-              options={currURLsLoaded}
-            />
-            <AutoSearch
-              value={sessionId}
-              setValue={setSessionId}
-              onChangeHandler={setSessionId}
-              label={"Session ID"}
-              options={sessionIDsUnderURL}
-            />
+          <div>
+            <div>Number of Logs : {eventLogs.length}</div>
+            <div className="filtersContainer ">
+              <AutoSearch
+                value={URL}
+                setValue={setURL}
+                onChangeHandler={urlChangeHandler}
+                label={"URL"}
+                options={currURLsLoaded}
+              />
+              <AutoSearch
+                value={sessionId}
+                setValue={setSessionId}
+                onChangeHandler={setSessionId}
+                label={"Session ID"}
+                options={sessionIDsUnderURL}
+              />
+            </div>
           </div>
+          {sessionIDsUnderURL.includes(sessionId) && (
+            <div className="eventLogModalDetailsContainer containerCard">
+              <div className="eventLogModalDetails">
+                <div>
+                  <span className="eventLogModalDetailsTitle">URL</span> :{" "}
+                </div>
+                <div>
+                  <span className="eventLogModalDetailsTitle">Latitude</span> :{" "}
+                  <br />
+                  <span className="eventLogModalDetailsTitle">
+                    Longitude
+                  </span> :{" "}
+                </div>
+                <div>
+                  <span className="eventLogModalDetailsTitle">Session ID</span>:{" "}
+                </div>
+                <div>
+                  <span className="eventLogModalDetailsTitle">Time Stamp</span>{" "}
+                  :{" "}
+                </div>
+                <div>
+                  <span className="eventLogModalDetailsTitle">IP Address</span>{" "}
+                  :{" "}
+                </div>
+                <div>
+                  <span className="eventLogModalDetailsTitle">
+                    Number of Events
+                  </span>
+                  :{" "}
+                </div>
+              </div>
+              <div className="eventLogModalDetails">
+                <div>{eventLogs[0].URL}</div>
+                <div>
+                  {eventLogs[0].location.latitude.$numberDecimal}
+                  <br />
+                  {eventLogs[0].location.longitude.$numberDecimal}
+                </div>
+                <div>{eventLogs[0].sessionId}</div>
+                <div>{eventLogs[0].timeStamp}</div>
+                <div>{eventLogs[0].ipAddress}</div>
+                <div>{eventLogs[0].events.length}</div>
+              </div>
+            </div>
+          )}
         </div>
+
         {URL && sessionId && (
           <div>
             {eventLogs && eventLogs.length > 0 && (
@@ -144,67 +192,72 @@ function App() {
                 currEventLogViewIndex={currEventLogViewIndex}
               />
             )}
-            <div className="containerCard">
-              <div className="tableName">EVENT LOGS</div>
-              <div className="tableContainer">
-                <TableContainer
-                  sx={{
-                    overflow: "auto",
-                    maxHeight: "90vh",
-                    border: "1px solid black",
-                  }}
-                  component={Paper}
-                >
-                  <Table>
-                    <TableHead className="tableHead" aria-label="sticky table">
-                      <TableCell className="TableCell">Log No.</TableCell>
-                      <TableCell className="TableCell">URL</TableCell>
-                      <TableCell className="TableCell">Location</TableCell>
-                      <TableCell className="TableCell">Session ID</TableCell>
-                      <TableCell className="TableCell">Time Stamp</TableCell>
-                      <TableCell className="TableCell">IP Address</TableCell>
-                    </TableHead>
-                    <TableBody>
-                      {eventLogs.length &&
-                        eventLogs.map((eventLog, index) => {
-                          return (
-                            <TableRow
-                              hover={true}
-                              key={index}
-                              onClick={() => TableRowEventHandler(index)}
-                            >
-                              <TableCell className="TableCell">
-                                {index + 1}
-                              </TableCell>
-                              <TableCell className="TableCell">
-                                {eventLog.URL}
-                              </TableCell>
-                              <TableCell className="TableCell">
-                                <TableRow>
-                                  Latitude :{" "}
-                                  {eventLog.location.latitude.$numberDecimal}
-                                  <br />
-                                  Longitude :{" "}
-                                  {eventLog.location.longitude.$numberDecimal}
-                                </TableRow>
-                              </TableCell>
-                              <TableCell className="TableCell">
-                                {eventLog.sessionId}
-                              </TableCell>
-                              <TableCell className="TableCell">
-                                {eventLog.timeStamp}
-                              </TableCell>
-                              <TableCell className="TableCell">
-                                {eventLog.ipAddress}
-                              </TableCell>
-                            </TableRow>
-                          );
-                        })}
-                    </TableBody>
-                  </Table>
-                </TableContainer>
+            {false && (
+              <div className="containerCard">
+                <div className="tableName">EVENT LOGS</div>
+                <div className="tableContainer">
+                  <TableContainer
+                    sx={{
+                      overflow: "auto",
+                      maxHeight: "90vh",
+                      border: "1px solid black",
+                    }}
+                    component={Paper}
+                  >
+                    <Table>
+                      <TableHead
+                        className="tableHead"
+                        aria-label="sticky table"
+                      >
+                        <TableCell className="TableCell">Log No.</TableCell>
+                        <TableCell className="TableCell">URL</TableCell>
+                        <TableCell className="TableCell">Location</TableCell>
+                        <TableCell className="TableCell">Session ID</TableCell>
+                        <TableCell className="TableCell">Time Stamp</TableCell>
+                        <TableCell className="TableCell">IP Address</TableCell>
+                      </TableHead>
+                      <TableBody>
+                        {eventLogs.length &&
+                          eventLogs.map((eventLog, index) => {
+                            return (
+                              <TableRow
+                                hover={true}
+                                key={index}
+                                onClick={() => TableRowEventHandler(index)}
+                              >
+                                <TableCell className="TableCell">
+                                  {index + 1}
+                                </TableCell>
+                                <TableCell className="TableCell">
+                                  {eventLog.URL}
+                                </TableCell>
+                                <TableCell className="TableCell">
+                                  <TableRow>
+                                    Latitude :{" "}
+                                    {eventLog.location.latitude.$numberDecimal}
+                                    <br />
+                                    Longitude :{" "}
+                                    {eventLog.location.longitude.$numberDecimal}
+                                  </TableRow>
+                                </TableCell>
+                                <TableCell className="TableCell">
+                                  {eventLog.sessionId}
+                                </TableCell>
+                                <TableCell className="TableCell">
+                                  {eventLog.timeStamp}
+                                </TableCell>
+                                <TableCell className="TableCell">
+                                  {eventLog.ipAddress}
+                                </TableCell>
+                              </TableRow>
+                            );
+                          })}
+                      </TableBody>
+                    </Table>
+                  </TableContainer>
+                </div>
               </div>
-            </div>
+            )}
           </div>
         )}
       </div>

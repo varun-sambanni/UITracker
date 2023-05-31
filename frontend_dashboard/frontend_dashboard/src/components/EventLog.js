@@ -1,9 +1,10 @@
 import "../App.css";
 import React, { useEffect, useState, createElement, useCallback } from "react";
 import { Select, MenuItem, InputLabel, FormControl } from "@mui/material";
-
+import Modal from "@mui/material/Modal";
 import { DataGrid } from "@mui/x-data-grid";
 import AutoSearch from "./AutoSearch";
+import DataModal from "./DataModal";
 
 const EVENT_NAMES = [
   "PAGE_EVENT",
@@ -41,36 +42,20 @@ const EVENTS = {
   ERROR: ["RUNTIME_CRASH", "UNHANDLED_PROMISE_REJECTION", "CONSOLE_ERROR"],
 };
 
-const COLUMNS = [
-  {
-    field: "eventNo",
-    width: 80,
-    headerClassName: "dataGridHeader",
-  },
-  {
-    field: "name",
-    width: 120,
-    headerClassName: "dataGridHeader",
-  },
-  {
-    field: "type",
-    width: 140,
-    headerClassName: "dataGridHeader",
-  },
-  {
-    field: "timeStamp",
-    width: 160,
-    headerClassName: "dataGridHeader",
-  },
-  {
-    field: "data",
-    width: 760,
-    headerClassName: "dataGridHeader",
-    renderCell: (params) => (
-      <div>{params.value && createElement("div", {}, params.value)}</div>
-    ),
-  },
-];
+const style = {
+  position: "fixed",
+  top: "50%",
+  left: "50%",
+  transform: "translate(-50%, -50%)",
+  width: "90vw",
+  height: "90vh",
+  bgcolor: "white",
+  border: "2px solid black",
+  padding: "0.4em",
+  boxShadow: 24,
+  margin: "0 auto",
+  overflow: "auto",
+};
 
 let loadedEvents = [],
   loadedRows = [];
@@ -81,6 +66,39 @@ const EventLog = ({ eventLog, setIsModalOpen, isFromAModal, sessionId }) => {
   const [refreshDataGrid, setRefreshDataGrid] = useState(false);
   const [type, setType] = useState("");
   const [rows, setRows] = useState([]);
+  const [isViewModalOpen, setIsViewModalOpen] = useState(false);
+  const [currDataIndex, setCurrDataIndex] = useState(0);
+
+  const COLUMNS = [
+    {
+      field: "eventNo",
+      width: 150,
+      headerClassName: "dataGridHeader",
+    },
+    {
+      field: "name",
+      width: 300,
+      headerClassName: "dataGridHeader",
+    },
+    {
+      field: "type",
+      width: 200,
+      headerClassName: "dataGridHeader",
+    },
+    {
+      field: "timeStamp",
+      width: 300,
+      headerClassName: "dataGridHeader",
+    },
+    {
+      field: "data",
+      width: 220,
+      headerClassName: "dataGridHeader",
+      renderCell: (params) => (
+        <div>{params.value && createElement("div", {}, params.value)}</div>
+      ),
+    },
+  ];
 
   useEffect(() => {
     loadedRows = [];
@@ -93,13 +111,20 @@ const EventLog = ({ eventLog, setIsModalOpen, isFromAModal, sessionId }) => {
         name: loadedEvents[i].name,
         type: loadedEvents[i].type,
         timeStamp: loadedEvents[i].timeStamp,
-        data:
-          loadedEvents[i].data &&
-          Object.keys(loadedEvents[i].data).map((key) => (
-            <div key={key} className="eventLogDataField">
-              <p className="dataKeyField">{key}:</p> {loadedEvents[i].data[key]}
-            </div>
-          )),
+        data: loadedEvents[i].data && (
+          <div>
+            <button
+              className="viewButton"
+              onClick={() => {
+                setIsViewModalOpen(true);
+                setCurrDataIndex(i);
+                console.log("Modal Open ", isViewModalOpen, i);
+              }}
+            >
+              View
+            </button>
+          </div>
+        ),
       });
     }
     setName("");
@@ -114,6 +139,7 @@ const EventLog = ({ eventLog, setIsModalOpen, isFromAModal, sessionId }) => {
   const nameChangeHandler = (value) => {
     let tempEvents = [],
       tempRows = [];
+    setType("");
     if (EVENT_NAMES.includes(name) === false) {
       setType("");
     }
@@ -166,48 +192,57 @@ const EventLog = ({ eventLog, setIsModalOpen, isFromAModal, sessionId }) => {
 
   return (
     <>
-      <div className="modalHeader ">
-        <div className="eventLogModalDetailsContainer containerCard">
-          <div className="eventLogModalDetails">
-            <div>
-              <span className="eventLogModalDetailsTitle">URL</span> :{" "}
-            </div>
-            <div>
-              <span className="eventLogModalDetailsTitle">Latitude</span> :{" "}
-              <br />
-              <span className="eventLogModalDetailsTitle">
-                Longitude
-              </span> :{" "}
-            </div>
-            <div>
-              <span className="eventLogModalDetailsTitle">Session ID</span>:{" "}
-            </div>
-            <div>
-              <span className="eventLogModalDetailsTitle">Time Stamp</span> :{" "}
-            </div>
-            <div>
-              <span className="eventLogModalDetailsTitle">IP Address</span> :{" "}
-            </div>
-            <div>
-              <span className="eventLogModalDetailsTitle">
-                Number of Events
-              </span>
-              :{" "}
-            </div>
+      {/* <DataModal
+        isModalOpen={isViewModalOpen}
+        setIsModalOpen={setIsViewModalOpen}
+        data={
+          loadedEvents && loadedEvents.length
+            ? loadedEvents[currDataIndex].data
+            : undefined
+        }
+      ></DataModal>  */}
+
+      <Modal hideBackdrop={true} open={isViewModalOpen} sx={style}>
+        <div>
+          <div className="closeButtonContainer">
+            <button onClick={() => setIsViewModalOpen(false)}>Close</button>
           </div>
-          <div className="eventLogModalDetails">
-            <div>{eventLog.URL}</div>
-            <div>
-              {eventLog.location.latitude.$numberDecimal}
-              <br />
-              {eventLog.location.longitude.$numberDecimal}
-            </div>
-            <div>{eventLog.sessionId}</div>
-            <div>{eventLog.timeStamp}</div>
-            <div>{eventLog.ipAddress}</div>
-            <div>{rows.length}</div>
+          <div className="dataContainer">
+            {loadedEvents &&
+              loadedEvents.length &&
+              loadedEvents[currDataIndex].data && (
+                <div className="eventLogModalDetailsContainer ">
+                  <div className="eventLogModalDetails">
+                    {Object.keys(loadedEvents[currDataIndex].data).map(
+                      (key) => {
+                        return (
+                          <div className="containerCard dataKey">
+                            <span className="eventLogModalDetailsTitle">
+                              {key}:
+                            </span>
+                          </div>
+                        );
+                      }
+                    )}
+                  </div>
+                  <div className="eventLogModalDetails ">
+                    {Object.keys(loadedEvents[currDataIndex].data).map(
+                      (key) => {
+                        return (
+                          <div className="containerCard dataDetails">
+                            {loadedEvents[currDataIndex].data[key]}
+                          </div>
+                        );
+                      }
+                    )}
+                  </div>
+                </div>
+              )}
           </div>
         </div>
+      </Modal>
+
+      <div className="modalHeader ">
         {isFromAModal && (
           <button onClick={() => setIsModalOpen(false)}>Close</button>
         )}
