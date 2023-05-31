@@ -30,19 +30,41 @@ const style = {
 // isFromAModal -> Is it for a modal or not ?
 
 const DataModal = ({ isModalOpen, setIsModalOpen, data }) => {
-  const [refresh, setRefresh] = useState(false);
-
   return (
     <>
-      {data !== undefined && (
-        <Modal hideBackdrop={true} open={isModalOpen} sx={style}>
-          <div>
-            {data !== undefined && data.length} length
+      <Modal hideBackdrop={true} open={isModalOpen} sx={style}>
+        <div>
+          <div className="closeButtonContainer">
             <button onClick={() => setIsModalOpen(false)}>Close</button>
-            <button onClick={() => setRefresh(!refresh)}>Refresh</button>
           </div>
-        </Modal>
-      )}
+          <div className="dataContainer">
+            {data && (
+              <div className="eventLogModalDetailsContainer ">
+                <div className="eventLogModalDetails">
+                  {Object.keys(data).map((key) => {
+                    return (
+                      <div className="containerCard ">
+                        <span className="eventLogModalDetailsTitle">
+                          {key}:
+                        </span>
+                      </div>
+                    );
+                  })}
+                </div>
+                <div className="eventLogModalDetails ">
+                  {Object.keys(data).map((key) => {
+                    return (
+                      <div className="containerCard dataDetails">
+                        {data[key]}
+                      </div>
+                    );
+                  })}
+                </div>
+              </div>
+            )}
+          </div>
+        </div>
+      </Modal>
     </>
   );
 };

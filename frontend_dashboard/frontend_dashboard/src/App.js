@@ -34,7 +34,6 @@ function App() {
         if (data.success === false) {
           console.log("Error fetching event logs ", data.msg);
         } else {
-          console.log("Data fetched");
           console.log(data);
           data.data.reverse();
 

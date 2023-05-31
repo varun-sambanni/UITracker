@@ -192,17 +192,17 @@ const EventLog = ({ eventLog, setIsModalOpen, isFromAModal, sessionId }) => {
 
   return (
     <>
-      {/* <DataModal
-        isModalOpen={isViewModalOpen}
-        setIsModalOpen={setIsViewModalOpen}
-        data={
-          loadedEvents && loadedEvents.length
-            ? loadedEvents[currDataIndex].data
-            : undefined
-        }
-      ></DataModal>  */}
+      {loadedEvents &&
+        loadedEvents.length &&
+        loadedEvents[currDataIndex].data && (
+          <DataModal
+            isModalOpen={isViewModalOpen}
+            setIsModalOpen={setIsViewModalOpen}
+            data={loadedEvents[currDataIndex].data}
+          />
+        )}
 
-      <Modal hideBackdrop={true} open={isViewModalOpen} sx={style}>
+      {/* <Modal hideBackdrop={true} open={isViewModalOpen} sx={style}>
         <div>
           <div className="closeButtonContainer">
             <button onClick={() => setIsViewModalOpen(false)}>Close</button>
@@ -240,7 +240,7 @@ const EventLog = ({ eventLog, setIsModalOpen, isFromAModal, sessionId }) => {
               )}
           </div>
         </div>
-      </Modal>
+      </Modal> */}
 
       <div className="modalHeader ">
         {isFromAModal && (
