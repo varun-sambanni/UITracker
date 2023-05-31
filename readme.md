@@ -50,7 +50,7 @@ import UITracker from "./lib/UITracker";
 function App() {
   useEffect(() => {
     const uiTracker = new UITracker();
-    uiTracker.config(10000, false);
+    uiTracker.config(10000, false); // // Send data every 10s, do not report immediately on error
     uiTracker.start();
   }, []);
 
