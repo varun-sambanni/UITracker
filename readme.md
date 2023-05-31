@@ -2,7 +2,7 @@
 
 ## Usage
 
-The javascript file responsible for tracking the events is present in ./frontend/src/lib folder. After the UITracker class is imported, follow these steps to start the tracking.
+The javascript file responsible for tracking the events is present in ./lib folder. After the UITracker class is imported, follow these steps to start the tracking.
 
 1. Initialize the UITracker object
 2. Call config on the object to configure the options
