@@ -22,24 +22,40 @@ The UITracker.js file can be imported in the index.html file, within a script ta
 #### EXAMPLE
 
 ```html
-<script type="module">
-  import UITracker from "./UITracker.js";
-  const uiTracker = new UITracker();
-  uiTracker.config(10000, false);
-  uiTracker.start();
-</script>
+<!DOCTYPE html>
+<html>
+  <head>
+    <script type="module">
+      import UITracker from "./UITracker.js";
+      const uiTracker = new UITracker();
+      uiTracker.config(10000, false);
+      uiTracker.start();
+    </script>
+  </head>
+  <body>
+    <!-- Body Content -->
+  </body>
+</html>
 ```
 
 ### 2. React
 
-Instead of importing the file in the index.html in the public folder. It can direcly be imported in App.js of the react app. The UseEffect will make sure the start function is called after DOM has been rendered.
+Instead of importing the file in the index.html in the public folder. It can direcly be imported in App.js of the react app. The UseEffect will make sure the start function is called after the DOM has been rendered.
 
 #### EXAMPLE
 
 ```jsx
-useEffect(() => {
-  const uiTracker = new UITracker();
-  uiTracker.config(10000, false);
-  uiTracker.start();
-}, []);
+import UITracker from "./lib/UITracker";
+
+function App() {
+  useEffect(() => {
+    const uiTracker = new UITracker();
+    uiTracker.config(10000, false);
+    uiTracker.start();
+  }, []);
+
+  return <div className="App"></div>;
+}
+
+export default App;
 ```
