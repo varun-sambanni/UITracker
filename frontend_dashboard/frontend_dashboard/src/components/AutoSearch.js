@@ -1,18 +1,6 @@
 import "../App.css";
-import React, { useEffect, useState } from "react";
-import {
-  TableContainer,
-  TableHead,
-  TableCell,
-  Table,
-  TableBody,
-  TableRow,
-  Paper,
-  TextField,
-  Autocomplete,
-} from "@mui/material";
-import Modal from "@mui/material/Modal";
-import EventLog from "./EventLog";
+import React from "react";
+import { TextField, Autocomplete } from "@mui/material";
 
 // isFromAModal -> Is it for a modal or not ?
 

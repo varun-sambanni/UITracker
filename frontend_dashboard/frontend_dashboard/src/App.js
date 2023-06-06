@@ -5,8 +5,6 @@ import {
   Table,
   TableBody,
   TableRow,
-  TextField,
-  Autocomplete,
   Paper,
 } from "@mui/material";
 import "./App.css";

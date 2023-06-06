@@ -1,14 +1,5 @@
 import "../App.css";
-import React, { useEffect, useState } from "react";
-import {
-  TableContainer,
-  TableHead,
-  TableCell,
-  Table,
-  TableBody,
-  TableRow,
-  Paper,
-} from "@mui/material";
+import React from "react";
 import Modal from "@mui/material/Modal";
 import EventLog from "./EventLog";
 

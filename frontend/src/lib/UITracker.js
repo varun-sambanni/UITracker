@@ -3,6 +3,27 @@ const keyEvents = ["keyup", "keydown"];
 
 let self;
 
+function getScrollbarWidth() {
+  // Creating invisible container
+  const outer = document.createElement("div");
+  outer.style.visibility = "hidden";
+  outer.style.overflow = "scroll"; // forcing scrollbar to appear
+  outer.style.msOverflowStyle = "scrollbar"; // needed for WinJS apps
+  document.body.appendChild(outer);
+
+  // Creating inner element and placing it in the container
+  const inner = document.createElement("div");
+  outer.appendChild(inner);
+
+  // Calculating difference between container's full width and the child width
+  const scrollbarWidth = outer.offsetWidth - inner.offsetWidth;
+
+  // Removing temporary elements from the DOM
+  outer.parentNode.removeChild(outer);
+
+  return scrollbarWidth;
+}
+
 class UITracker {
   constructor() {
     self = this;
@@ -24,8 +45,14 @@ class UITracker {
     this.sessionId = sessionStorage.getItem("session-id");
     this.dataTransmissionInterval = 15000;
     this.reportOnError = false;
-    this.ws = null;
     this.socketInterval = null;
+    console.log("h ", window.innerHeight);
+    console.log("w ", window.innerWidth);
+    console.log("screen height ", window.screen.height);
+    console.log("screen width ", window.screen.width);
+    console.log("screen avail height ", window.screen.availHeight);
+    console.log("screen avail width ", window.screen.availWidth);
+    console.log("scroll bar width ", getScrollbarWidth());
   }
 
   /**
@@ -667,6 +694,7 @@ class UITracker {
   mouseEventHandler(event) {
     const x = event.pageX;
     const y = event.pageY;
+
     var clientX = x - document.documentElement.scrollLeft;
     var clientY = y - document.documentElement.scrollTop;
     const element = document.elementFromPoint(clientX, clientY);

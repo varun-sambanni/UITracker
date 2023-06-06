@@ -1,7 +1,6 @@
 import "../App.css";
 import React, { useEffect, useState, createElement, useCallback } from "react";
 import { Select, MenuItem, InputLabel, FormControl } from "@mui/material";
-import Modal from "@mui/material/Modal";
 import { DataGrid } from "@mui/x-data-grid";
 import AutoSearch from "./AutoSearch";
 import DataModal from "./DataModal";
@@ -118,7 +117,6 @@ const EventLog = ({ eventLog, setIsModalOpen, isFromAModal, sessionId }) => {
               onClick={() => {
                 setIsViewModalOpen(true);
                 setCurrDataIndex(i);
-                console.log("Modal Open ", isViewModalOpen, i);
               }}
             >
               View

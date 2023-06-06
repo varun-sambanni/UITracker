@@ -1,6 +1,7 @@
 # dependencies
 frontend/node_modules
 backend/node_modules
+puppeteer_automation/node_modules
 
 #env
 backend/.env

@@ -65,9 +65,9 @@ function App() {
 
   useEffect(() => {
     // Call these functions only when the page DOM has loaded
-    //const uiTracker = new UITracker();
-    //uiTracker.config(10000, false);
-    //uiTracker.start();
+    const uiTracker = new UITracker();
+    uiTracker.config(200000, false);
+    uiTracker.start();
   }, []);
 
   return (
@@ -92,6 +92,15 @@ function App() {
 
         <div className="field" id="testElement">
           <p>Field 2 : </p>
+          <textarea></textarea>
+        </div>
+        <div className="field">
+          <p>Field 3 : </p>
+          <input></input>
+        </div>
+
+        <div className="field" id="testElement">
+          <p>Field 4 : </p>
           <textarea></textarea>
         </div>
         <div className="buttonsContainer">
