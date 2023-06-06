@@ -285,6 +285,7 @@ class UITracker {
     var time =
       today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds();
     var dateTime = date + " " + time;
+
     return dateTime;
   }
 
@@ -694,7 +695,8 @@ class UITracker {
   mouseEventHandler(event) {
     const x = event.pageX;
     const y = event.pageY;
-
+    var scrollX = document.documentElement.scrollLeft;
+    var scrollY = document.documentElement.scrollTop;
     var clientX = x - document.documentElement.scrollLeft;
     var clientY = y - document.documentElement.scrollTop;
     const element = document.elementFromPoint(clientX, clientY);
@@ -717,10 +719,17 @@ class UITracker {
       data: {
         X: x,
         Y: y,
+        scrollX: scrollX,
+        scrollY: scrollY, // Imp everywhere where (x, y) is being recorded
         HTMLElement: element !== null ? element.outerHTML : null,
       },
       timeStamp: UITracker.getTimeStamp(),
     };
+
+    if (event.type === "click") {
+      // 0 -> LMB, 1 -> Middle Button, 2 -> RMB
+      currEventObj.data.button = event.button;
+    }
 
     self.eventsList.push(currEventObj);
 
