@@ -15,6 +15,7 @@
     "firefox": "^0.0.1",
     "node-fetch": "^3.3.1",
     "puppeteer": "^20.5.0",
-    "puppeteer-core": "^20.5.0"
+    "puppeteer-core": "^20.5.0",
+    "puppeteer-screen-recorder": "^2.1.2"
   }
 }
