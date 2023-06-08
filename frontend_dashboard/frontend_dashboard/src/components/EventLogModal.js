@@ -20,7 +20,14 @@ const style = {
 
 // isFromAModal -> Is it for a modal or not ?
 
-const EventLogModal = ({ isModalOpen, setIsModalOpen, eventLog }) => {
+const EventLogModal = ({
+  isModalOpen,
+  setIsModalOpen,
+  eventLog,
+  URL,
+  height,
+  width,
+}) => {
   return (
     <>
       {eventLog !== undefined && (
@@ -29,6 +36,9 @@ const EventLogModal = ({ isModalOpen, setIsModalOpen, eventLog }) => {
             isFromAModal={true}
             setIsModalOpen={setIsModalOpen}
             eventLog={eventLog}
+            URL={URL}
+            height={height}
+            width={width}
           />
         </Modal>
       )}

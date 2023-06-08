@@ -1,6 +1,7 @@
 body {
   font-family: Roboto;
   margin: 0em;
+  overflow: auto;
 }
 * {
   font-weight: 300;
@@ -189,4 +190,9 @@ button {
 
 .dataDetails {
   border: 1px solid black;
+}
+
+iframe {
+  height: 100vh;
+  width: 100%;
 }

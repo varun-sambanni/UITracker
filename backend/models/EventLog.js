@@ -40,6 +40,12 @@ const eventLogSchema = new Schema({
   ipAddress: {
     type: String,
   },
+  width: {
+    type: Number,
+  },
+  height: {
+    type: Number,
+  },
   events: [eventSchema],
 });
 

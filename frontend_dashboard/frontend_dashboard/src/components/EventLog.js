@@ -1,9 +1,16 @@
 import "../App.css";
 import React, { useEffect, useState, createElement, useCallback } from "react";
-import { Select, MenuItem, InputLabel, FormControl } from "@mui/material";
+import {
+  Select,
+  MenuItem,
+  InputLabel,
+  FormControl,
+  Modal,
+} from "@mui/material";
 import { DataGrid } from "@mui/x-data-grid";
 import AutoSearch from "./AutoSearch";
 import DataModal from "./DataModal";
+import Puppeteer_Template from "../utils/Puppeteer_Template";
 
 const EVENT_NAMES = [
   "PAGE_EVENT",
@@ -67,6 +74,7 @@ const EventLog = ({ eventLog, setIsModalOpen, isFromAModal, sessionId }) => {
   const [rows, setRows] = useState([]);
   const [isViewModalOpen, setIsViewModalOpen] = useState(false);
   const [currDataIndex, setCurrDataIndex] = useState(0);
+  const [scriptModalOpen, setScriptModalOpen] = useState(false);
 
   const COLUMNS = [
     {
@@ -190,6 +198,38 @@ const EventLog = ({ eventLog, setIsModalOpen, isFromAModal, sessionId }) => {
 
   return (
     <>
+      <Modal hideBackdrop={true} open={scriptModalOpen} sx={style}>
+        <div>
+          <div className="closeButtonContainer">
+            <button
+              className="Copy"
+              onClick={() =>
+                navigator.clipboard.writeText(
+                  Puppeteer_Template(
+                    eventLog.URL,
+                    eventLog.height,
+                    eventLog.width,
+                    eventLog.events
+                  )
+                )
+              }
+            >
+              Copy
+            </button>{" "}
+            &nbsp;
+            <button onClick={() => setScriptModalOpen(false)}>Close</button>
+          </div>
+          <pre>
+            {Puppeteer_Template(
+              eventLog.URL,
+              eventLog.height,
+              eventLog.width,
+              eventLog.events
+            )}
+          </pre>
+        </div>
+      </Modal>
+
       {loadedEvents &&
         loadedEvents.length &&
         loadedEvents[currDataIndex].data && (
@@ -248,6 +288,12 @@ const EventLog = ({ eventLog, setIsModalOpen, isFromAModal, sessionId }) => {
       {eventLog !== undefined && (
         <div className="modalDataContainer containerCard">
           <div className="tableName">EVENTS</div>
+          <button
+            className="generateTest"
+            onClick={() => setScriptModalOpen(true)}
+          >
+            Generate Test
+          </button>
           <AutoSearch
             value={name}
             setValue={setName}
