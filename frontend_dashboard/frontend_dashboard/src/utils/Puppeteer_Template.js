@@ -105,7 +105,35 @@ const Puppeteer_Template = (URL, height, width, events) => {
             case "KEYUP":
             await page.keyboard.up(event.data.key);
             break;
-            case "MOUSE_DRAG":
+            case "MOUSEDOWN":
+            await page.evaluate(
+            async (scrollX, scrollY) => {
+                await new Promise((resolve) => {
+                window.scrollTo(scrollX, scrollY);
+                resolve();
+                });
+            },
+            scrollX,
+            scrollY
+            );
+
+            await page.mouse.move(X - scrollX, Y - scrollY);
+            await page.mouse.down();
+            break;
+            case "MOUSEUP":
+                await page.evaluate(
+                async (scrollX, scrollY) => {
+                    await new Promise((resolve) => {
+                    window.scrollTo(scrollX, scrollY);
+                    resolve();
+                    });
+                },
+                scrollX,
+                scrollY
+                );
+
+            await page.mouse.move(X - scrollX, Y - scrollY);
+            await page.mouse.up();
             break;
             case "CONTEXTMENU":
             await page.evaluate(
@@ -121,7 +149,7 @@ const Puppeteer_Template = (URL, height, width, events) => {
 
             await page.mouse.click(X - scrollX, Y - scrollY, { button: "right" });
             break;
-        }
+            }
         }
         prevTimeStamp = event.timeStamp;
     }

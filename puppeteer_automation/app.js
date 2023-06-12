@@ -635,7 +635,33 @@ async function start() {
         case "KEYUP":
           await page.keyboard.up(event.data.key);
           break;
-        case "MOUSE_DRAG":
+        case "MOUSEDOWN":
+          await page.evaluate(
+            async (scrollX, scrollY) => {
+              await new Promise((resolve) => {
+                window.scrollTo(scrollX, scrollY);
+                resolve();
+              });
+            },
+            scrollX,
+            scrollY
+          );
+
+          await page.mouse.down(X - scrollX, Y - scrollY);
+          break;
+        case "MOUSEUP":
+          await page.evaluate(
+            async (scrollX, scrollY) => {
+              await new Promise((resolve) => {
+                window.scrollTo(scrollX, scrollY);
+                resolve();
+              });
+            },
+            scrollX,
+            scrollY
+          );
+
+          await page.mouse.up(X - scrollX, Y - scrollY);
           break;
         case "CONTEXTMENU":
           await page.evaluate(

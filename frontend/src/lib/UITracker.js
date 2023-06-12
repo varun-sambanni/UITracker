@@ -8,7 +8,7 @@ function getScrollbarWidth() {
   const outer = document.createElement("div");
   outer.style.visibility = "hidden";
   outer.style.overflow = "scroll"; // forcing scrollbar to appear
-  outer.style.msOverflowStyle = "scrollbar"; // needed for WinJS apps
+  outer.style.msOverflowStyle = "scrollbar";
   document.body.appendChild(outer);
 
   // Creating inner element and placing it in the container
@@ -46,6 +46,9 @@ class UITracker {
     this.dataTransmissionInterval = 15000;
     this.reportOnError = false;
     this.socketInterval = null;
+
+    this.ignoreNextClick = false;
+
     console.log("h ", window.innerHeight);
     console.log("w ", window.innerWidth);
     console.log("screen height ", window.screen.height);
@@ -720,27 +723,22 @@ class UITracker {
    */
   mouseDownEventHandler(event) {
     // Could be any mouse button
+    this.resetTimer();
     this.dragStartX = event.pageX;
     this.dragStartY = event.pageY;
-  }
-
-  /**
-   *  The end of a potential mouse drag event
-   *  @param {Object} event The event object
-   */
-  mouseUpEventHandler(event) {
-    // Check for double click
-    if (event.pageX === this.dragStartX && event.pageY === this.dragStartY)
-      return;
-
+    this.ignoreNextClick = true;
     const currEventObj = {
       name: "USER_EVENT",
-      type: "MOUSE_DRAG",
+      type: event.type.toUpperCase(),
       data: {
-        startX: this.dragStartX,
-        startY: this.dragStartY,
-        endX: event.pageX,
-        endY: event.pageY,
+        X: event.pageX,
+        Y: event.pageY,
+        scrollX: document.documentElement.scrollLeft,
+        scrollY: document.documentElement.scrollTop,
+        HTMLElement:
+          document.elementFromPoint(event.clientX, event.clientY) !== null
+            ? document.elementFromPoint(event.clientX, event.clientY).outerHTML
+            : null,
       },
       timeStamp: UITracker.getTimeStamp(),
     };
@@ -757,6 +755,45 @@ class UITracker {
       width: window.innerWidth,
     };
 
+    console.log(eventLog);
+  }
+
+  /**
+   *  The end of a potential mouse drag event
+   *  @param {Object} event The event object
+   */
+  mouseUpEventHandler(event) {
+    this.resetTimer();
+    this.dragStartX = event.pageX;
+    this.dragStartY = event.pageY;
+    this.ignoreNextClick = true;
+    const currEventObj = {
+      name: "USER_EVENT",
+      type: event.type.toUpperCase(),
+      data: {
+        X: event.pageX,
+        Y: event.pageY,
+        scrollX: document.documentElement.scrollLeft,
+        scrollY: document.documentElement.scrollTop,
+        HTMLElement:
+          document.elementFromPoint(event.clientX, event.clientY) !== null
+            ? document.elementFromPoint(event.clientX, event.clientY).outerHTML
+            : null,
+      },
+      timeStamp: UITracker.getTimeStamp(),
+    };
+
+    self.eventsList.push(currEventObj);
+
+    const eventLog = {
+      URL: self.URL,
+      location: self.location,
+      sessionId: self.sessionId,
+      events: self.eventsList,
+      timeStamp: UITracker.getTimeStamp(),
+      height: window.innerHeight,
+      width: window.innerWidth,
+    };
     console.log(eventLog);
   }
 
@@ -799,6 +836,10 @@ class UITracker {
     };
 
     if (event.type === "click") {
+      if (this.ignoreNextClick) {
+        this.ignoreNextClick = false;
+        return;
+      }
       // 0 -> LMB, 1 -> Middle Button, 2 -> RMB
       currEventObj.data.button = event.button;
     }
