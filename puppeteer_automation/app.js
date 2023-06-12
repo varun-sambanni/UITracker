@@ -1,8 +1,6 @@
 const puppeteer = require("puppeteer");
 const { PuppeteerScreenRecorder } = require("puppeteer-screen-recorder");
 
-const { installMouseHelper } = require("./mouse-helper"); // mouse helper function to display the cursor with puppeteer's mouse movements
-
 const events = [
   {
     timeStamp: "2023-6-8 13:50:47",

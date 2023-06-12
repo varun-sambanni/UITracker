@@ -75,9 +75,15 @@ class UITracker {
    *  Called from App.js
    */
   start() {
+    const url = new URL(this.URL);
+    const isSessionReplay = url.searchParams.get("session-replay");
+    console.log("isSessionReplay ", isSessionReplay);
+    if (isSessionReplay === "true") return; // No recording of events is this is currently a session replay
+
     UITracker.getLocation(); // Starts obtaining user location and eventually stores in this.location var
     this.startDataTransmissionHTTP();
     //this.startDataTransmissionSockets();
+    this.sendLastLog();
     this.startSession();
     this.recordPageEvents();
     this.recordErrors();
@@ -87,7 +93,6 @@ class UITracker {
     this.recordHTTPRequests();
     this.recordConsoleErrors();
     this.endSession();
-    this.sendLastLog();
   }
 
   /**
@@ -726,7 +731,7 @@ class UITracker {
     this.resetTimer();
     this.dragStartX = event.pageX;
     this.dragStartY = event.pageY;
-    this.ignoreNextClick = true;
+
     const currEventObj = {
       name: "USER_EVENT",
       type: event.type.toUpperCase(),
@@ -763,6 +768,8 @@ class UITracker {
    *  @param {Object} event The event object
    */
   mouseUpEventHandler(event) {
+    if (event.pageX === this.dragStartX && event.pageY === this.dragStartY)
+      return;
     this.resetTimer();
     this.dragStartX = event.pageX;
     this.dragStartY = event.pageY;

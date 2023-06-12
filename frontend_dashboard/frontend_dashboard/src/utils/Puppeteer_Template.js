@@ -5,6 +5,7 @@ const Puppeteer_Template = (URL, height, width, events) => {
     reversedEvents.push(events[i]);
   }
   let script = ` const puppeteer = require("puppeteer");
+  
     const events = ${JSON.stringify(reversedEvents)}
     function delay(ms) {
     return new Promise((resolve) => setTimeout(resolve, ms));
@@ -31,7 +32,7 @@ const Puppeteer_Template = (URL, height, width, events) => {
 
     const page = await browser.newPage();
     const context = browser.defaultBrowserContext();
-    await context.overridePermissions("${URL}", ["geolocation"]);
+    await context.overridePermissions("${URL}?session-replay=true", ["geolocation"]);
 
     await page.setViewport({
         width: ${width},
@@ -39,7 +40,7 @@ const Puppeteer_Template = (URL, height, width, events) => {
         hasTouch: true, // Enable touch events if needed
     });
 
-    await page.goto("${URL}", { waitUntil: "networkidle0" });
+    await page.goto("${URL}?session-replay=true", { waitUntil: "networkidle0" });
 
     let prevTimeStamp = events[0].timeStamp;
 
@@ -83,6 +84,7 @@ const Puppeteer_Template = (URL, height, width, events) => {
             } else {
                 options.button = "middle";
             }
+            await page.mouse.up();
             await page.mouse.click(X - scrollX, Y - scrollY);
             break;
             case "IDLE":
@@ -146,7 +148,7 @@ const Puppeteer_Template = (URL, height, width, events) => {
                 scrollX,
                 scrollY
             );
-
+            await page.mouse.up();
             await page.mouse.click(X - scrollX, Y - scrollY, { button: "right" });
             break;
             }
