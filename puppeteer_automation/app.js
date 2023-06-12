@@ -559,7 +559,7 @@ async function start() {
   // await recorder.start("./report/video/simple.mp4");
 
   const context = browser.defaultBrowserContext();
-  await context.overridePermissions("http://localhost:3000/", ["geolocation"]);
+  await context.overridePermissions("http://localhost:3001/", ["geolocation"]);
 
   await installMouseHelper(page);
 
@@ -569,7 +569,7 @@ async function start() {
     hasTouch: true, // Enable touch events if needed
   });
 
-  await page.goto("http://localhost:3000/", { waitUntil: "networkidle0" });
+  await page.goto("http://localhost:3001/", { waitUntil: "networkidle0" });
 
   let prevTimeStamp = events[0].timeStamp;
 
@@ -613,7 +613,7 @@ async function start() {
           } else {
             options.button = "middle";
           }
-          await page.mouse.click(X - scrollX, Y - scrollY);
+          await page.mouse.click(X - scrollX, Y - scrollY, options);
           break;
         case "IDLE":
           await page.evaluate(
@@ -636,6 +636,20 @@ async function start() {
           await page.keyboard.up(event.data.key);
           break;
         case "MOUSE_DRAG":
+          break;
+        case "CONTEXTMENU":
+          await page.evaluate(
+            async (scrollX, scrollY) => {
+              await new Promise((resolve) => {
+                window.scrollTo(scrollX, scrollY);
+                resolve();
+              });
+            },
+            scrollX,
+            scrollY
+          );
+
+          await page.mouse.click(X - scrollX, Y - scrollY, { button: "right" });
           break;
       }
     }

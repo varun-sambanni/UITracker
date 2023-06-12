@@ -13,7 +13,7 @@ const locationSchema = new Schema({
 
 const eventSchema = new Schema({
   timeStamp: {
-    type: String,
+    type: Number,
   },
   name: {
     type: String,

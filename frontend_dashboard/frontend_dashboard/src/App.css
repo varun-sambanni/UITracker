@@ -175,13 +175,20 @@ button {
 }
 
 .closeButtonContainer {
+  position: -webkit-sticky; /* Safari & IE */
+  position: sticky;
+  top: 0;
+  background-color: white;
   text-align: right;
   margin-bottom: 2em;
+  padding: 0.4em 0.2em;
+
+  box-shadow: grey 0.1em 0em 0.1em;
 }
 
 .dataContainer {
   display: flex;
-  justify-content: center;
+  justify-content: left;
 }
 
 .dataKey {
@@ -195,4 +202,20 @@ button {
 iframe {
   height: 100vh;
   width: 100%;
+}
+
+.fileName {
+  float: left;
+  font-weight: 600;
+  text-decoration: underline;
+}
+
+.eventsFilterContainer {
+  display: flex;
+
+  justify-content: space-between;
+}
+
+.generateTestButton {
+  margin: 2em 0em;
 }

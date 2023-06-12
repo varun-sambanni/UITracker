@@ -66,7 +66,7 @@ function App() {
   useEffect(() => {
     // Call these functions only when the page DOM has loaded
     const uiTracker = new UITracker();
-    uiTracker.config(10000, false);
+    uiTracker.config(2000000, false);
     uiTracker.start();
   }, []);
 

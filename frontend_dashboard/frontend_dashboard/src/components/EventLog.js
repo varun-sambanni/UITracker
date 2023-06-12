@@ -57,7 +57,6 @@ const style = {
   height: "90vh",
   bgcolor: "white",
   border: "2px solid black",
-  padding: "0.4em",
   boxShadow: 24,
   margin: "0 auto",
   overflow: "auto",
@@ -201,6 +200,7 @@ const EventLog = ({ eventLog, setIsModalOpen, isFromAModal, sessionId }) => {
       <Modal hideBackdrop={true} open={scriptModalOpen} sx={style}>
         <div>
           <div className="closeButtonContainer">
+            <span className="fileName">test.js</span>
             <button
               className="Copy"
               onClick={() =>
@@ -288,43 +288,46 @@ const EventLog = ({ eventLog, setIsModalOpen, isFromAModal, sessionId }) => {
       {eventLog !== undefined && (
         <div className="modalDataContainer containerCard">
           <div className="tableName">EVENTS</div>
-          <button
-            className="generateTest"
-            onClick={() => setScriptModalOpen(true)}
-          >
-            Generate Test
-          </button>
-          <AutoSearch
-            value={name}
-            setValue={setName}
-            onChangeHandler={nameChangeHandler}
-            label={"EVENT"}
-            options={EVENT_NAMES}
-          />
-
-          {EVENT_NAMES.includes(name) && (
-            <FormControl
-              variant="outlined"
-              size="small"
-              style={{ width: "100%", margin: "2em 0em" }}
+          <div className="eventsFilterContainer">
+            <button
+              className="generateTestButton"
+              onClick={() => setScriptModalOpen(true)}
             >
-              <InputLabel id="test-select-label">TYPE</InputLabel>
-              <Select
-                size="small"
-                onChange={(e) => typeChangeHandler(e.target.value)}
-                sx={{ width: 400 }}
-                label="TYPE"
-                value={type}
-              >
-                {EVENTS[name].map((type, index) => (
-                  <MenuItem key={index} value={type}>
-                    {type}
-                  </MenuItem>
-                ))}
-              </Select>
-            </FormControl>
-          )}
+              Generate Test
+            </button>
+            <div>
+              <AutoSearch
+                value={name}
+                setValue={setName}
+                onChangeHandler={nameChangeHandler}
+                label={"EVENT"}
+                options={EVENT_NAMES}
+              />
 
+              {EVENT_NAMES.includes(name) && (
+                <FormControl
+                  variant="outlined"
+                  size="small"
+                  style={{ width: "100%", margin: "2em 0em" }}
+                >
+                  <InputLabel id="test-select-label">TYPE</InputLabel>
+                  <Select
+                    size="small"
+                    onChange={(e) => typeChangeHandler(e.target.value)}
+                    sx={{ width: 400 }}
+                    label="TYPE"
+                    value={type}
+                  >
+                    {EVENTS[name].map((type, index) => (
+                      <MenuItem key={index} value={type}>
+                        {type}
+                      </MenuItem>
+                    ))}
+                  </Select>
+                </FormControl>
+              )}
+            </div>
+          </div>
           <div>
             <DataGrid
               sx={{

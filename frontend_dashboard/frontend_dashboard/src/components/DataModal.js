@@ -11,7 +11,6 @@ const style = {
   height: "90vh",
   bgcolor: "white",
   border: "2px solid black",
-  padding: "0.4em",
   boxShadow: 24,
   margin: "0 auto",
   overflow: "auto",

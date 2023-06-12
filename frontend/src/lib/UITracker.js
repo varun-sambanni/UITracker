@@ -84,6 +84,41 @@ class UITracker {
     this.recordHTTPRequests();
     this.recordConsoleErrors();
     this.endSession();
+    this.sendLastLog();
+  }
+
+  /**
+   *  Sends that last log, that have accumalted after latest dataTransmissionInterval
+   */
+  sendLastLog() {
+    window.addEventListener("beforeunload", () => {
+      fetch("http://localhost:5000/postData", {
+        method: "POST",
+        headers: {
+          Accept: "application/json",
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(
+          {
+            height: window.innerHeight,
+            width: window.innerWidth,
+            URL: self.URL,
+            location: self.location,
+            sessionId: self.sessionId,
+            events: self.eventsList,
+            timeStamp: UITracker.getTimeStamp(),
+          },
+          this.replacerFunc()
+        ),
+      })
+        .then((res) => res.json())
+        .then((data) => {
+          console.log("Response ->", data);
+        })
+        .catch((err) => {
+          console.log("Error sending data to server ", err);
+        });
+    });
   }
 
   /**
@@ -283,6 +318,8 @@ class UITracker {
    *  Util function to get time stamp
    */
   static getTimeStamp() {
+    return Date.now() / 1000;
+
     var today = new Date();
     var date =
       today.getFullYear() +
