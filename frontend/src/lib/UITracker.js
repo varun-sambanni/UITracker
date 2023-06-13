@@ -46,6 +46,7 @@ class UITracker {
     this.dataTransmissionInterval = 15000;
     this.reportOnError = false;
     this.socketInterval = null;
+    this.scrollBarWidth = getScrollbarWidth();
 
     this.ignoreNextClick = false;
 
@@ -55,10 +56,12 @@ class UITracker {
     console.log("screen width ", window.screen.width);
     console.log("screen avail height ", window.screen.availHeight);
     console.log("screen avail width ", window.screen.availWidth);
-    console.log("scroll bar width ", getScrollbarWidth());
+    console.log("scroll bar width ", this.scrollBarWidth);
 
     const htmlElement = document.querySelector("html");
     console.log(htmlElement.offsetWidth, " ", htmlElement.offsetHeight);
+
+    console.log("browser ", navigator.userAgent);
   }
 
   /**
@@ -96,7 +99,7 @@ class UITracker {
   }
 
   /**
-   *  Sends that last log, that have accumalted after latest dataTransmissionInterval
+   *  Sends the last log, that has accumalted evens after the latest dataTransmissionInterval
    */
   sendLastLog() {
     window.addEventListener("beforeunload", () => {
@@ -110,11 +113,13 @@ class UITracker {
           {
             height: window.innerHeight,
             width: window.innerWidth,
+            scrollBarWidth: self.scrollBarWidth,
             URL: self.URL,
             location: self.location,
             sessionId: self.sessionId,
             events: self.eventsList,
             timeStamp: UITracker.getTimeStamp(),
+            userAgent: navigator.userAgent,
           },
           this.replacerFunc()
         ),
@@ -146,11 +151,13 @@ class UITracker {
           {
             height: window.innerHeight,
             width: window.innerWidth,
+            scrollBarWidth: self.scrollBarWidth,
             URL: self.URL,
             location: self.location,
             sessionId: self.sessionId,
             events: self.eventsList,
             timeStamp: UITracker.getTimeStamp(),
+            userAgent: navigator.userAgent,
           },
           this.replacerFunc()
         ),
@@ -182,6 +189,9 @@ class UITracker {
         self.ws.send(
           JSON.stringify(
             {
+              height: window.innerHeight,
+              width: window.innerWidth,
+              scrollBarWidth: self.scrollBarWidth,
               URL: self.URL,
               location: self.location,
               sessionId: self.sessionId,
@@ -274,6 +284,7 @@ class UITracker {
       timeStamp: UITracker.getTimeStamp(),
       height: window.innerHeight,
       width: window.innerWidth,
+      scrollBarWidth: getScrollbarWidth(),
     };
     console.log(eventLog);
   }
@@ -282,10 +293,10 @@ class UITracker {
    *  Event listener for session end
    */
   endSession() {
-    window.addEventListener("unload", () => {
+    window.addEventListener("beforeunload", () => {
       const sessionEndTime = new Date().getTime();
       const currEventObj = {
-        name: "USER_EVENT",
+        name: "PAGE_EVENT",
         type: "PAGE_CLOSE",
         data: {
           sessionTime: sessionEndTime - self.sessionStartTime,
@@ -301,6 +312,9 @@ class UITracker {
         sessionId: self.sessionId,
         events: self.eventsList,
         timeStamp: UITracker.getTimeStamp(),
+        height: window.innerHeight,
+        width: window.innerWidth,
+        scrollBarWidth: self.scrollBarWidth,
       };
       console.table(JSON.parse(JSON.stringify(eventLog, this.replacerFunc())));
     });
@@ -380,6 +394,7 @@ class UITracker {
         timeStamp: UITracker.getTimeStamp(),
         height: window.innerHeight,
         width: window.innerWidth,
+        scrollBarWidth: this.scrollBarWidth,
       };
 
       console.log(eventLog);
@@ -421,6 +436,7 @@ class UITracker {
         timeStamp: UITracker.getTimeStamp(),
         height: window.innerHeight,
         width: window.innerWidth,
+        scrollBarWidth: self.scrollBarWidth,
       };
 
       console.log(eventLog);
@@ -458,6 +474,7 @@ class UITracker {
           timeStamp: UITracker.getTimeStamp(),
           height: window.innerHeight,
           width: window.innerWidth,
+          scrollBarWidth: self.scrollBarWidth,
         };
 
         console.log(eventLog);
@@ -485,6 +502,7 @@ class UITracker {
       timeStamp: UITracker.getTimeStamp(),
       height: window.innerHeight,
       width: window.innerWidth,
+      scrollBarWidth: self.scrollBarWidth,
     };
 
     console.log(eventLog);
@@ -518,6 +536,7 @@ class UITracker {
         timeStamp: UITracker.getTimeStamp(),
         height: window.innerHeight,
         width: window.innerWidth,
+        scrollBarWidth: self.scrollBarWidth,
       };
       console.log("Attempting to send data");
       if (self.reportOnError === true) {
@@ -556,6 +575,9 @@ class UITracker {
         sessionId: self.sessionId,
         events: self.eventsList,
         timeStamp: UITracker.getTimeStamp(),
+        height: window.innerHeight,
+        width: window.innerWidth,
+        scrollBarWidth: self.scrollBarWidth,
       };
 
       if (self.reportOnError === true) {
@@ -604,6 +626,7 @@ class UITracker {
         timeStamp: UITracker.getTimeStamp(),
         height: window.innerHeight,
         width: window.innerWidth,
+        scrollBarWidth: self.scrollBarWidth,
       };
 
       console.log(eventLog);
@@ -656,6 +679,7 @@ class UITracker {
         timeStamp: UITracker.getTimeStamp(),
         height: window.innerHeight,
         width: window.innerWidth,
+        scrollBarWidth: self.scrollBarWidth,
       };
 
       console.log(eventLog);
@@ -758,6 +782,7 @@ class UITracker {
       timeStamp: UITracker.getTimeStamp(),
       height: window.innerHeight,
       width: window.innerWidth,
+      scrollBarWidth: self.scrollBarWidth,
     };
 
     console.log(eventLog);
@@ -800,6 +825,7 @@ class UITracker {
       timeStamp: UITracker.getTimeStamp(),
       height: window.innerHeight,
       width: window.innerWidth,
+      scrollBarWidth: self.scrollBarWidth,
     };
     console.log(eventLog);
   }
@@ -861,6 +887,7 @@ class UITracker {
       timeStamp: UITracker.getTimeStamp(),
       height: window.innerHeight,
       width: window.innerWidth,
+      scrollBarWidth: self.scrollBarWidth,
     };
 
     if (currEventType === "FORM SUBMISSION") {
@@ -903,6 +930,9 @@ class UITracker {
         sessionId: self.sessionId,
         events: self.eventsList,
         timeStamp: UITracker.getTimeStamp(),
+        width: window.innerWidth,
+        height: window.innerHeight,
+        scrollBarWidth: self.scrollBarWidth,
       };
 
       console.log(eventLogReq);
@@ -945,6 +975,9 @@ class UITracker {
         sessionId: self.sessionId,
         events: self.eventsList,
         timeStamp: UITracker.getTimeStamp(),
+        height: window.innerHeight,
+        width: window.innerWidth,
+        scrollBarWidth: self.scrollBarWidth,
       };
 
       console.log(eventLogRes);
@@ -977,6 +1010,9 @@ class UITracker {
         sessionId: self.sessionId,
         events: self.eventsList,
         timeStamp: UITracker.getTimeStamp(),
+        height: window.innerHeight,
+        width: window.innerWidth,
+        scrollBarWidth: self.scrollBarWidth,
       };
 
       console.log(eventLogReq);
@@ -1011,6 +1047,9 @@ class UITracker {
               sessionId: self.sessionId,
               events: self.eventsList,
               timeStamp: UITracker.getTimeStamp(),
+              height: window.innerHeight,
+              width: window.innerWidth,
+              scrollBarWidth: self.scrollBarWidth,
             };
 
             console.log(eventLogRes);

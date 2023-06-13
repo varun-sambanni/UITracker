@@ -29,6 +29,7 @@ const EVENTS = {
     "NAVIGATE",
     "BACK_FORWARD",
     "PRERENDER",
+    "PAGE_CLOSE",
   ],
   USER_EVENT: [
     "IDLE",
@@ -36,7 +37,8 @@ const EVENTS = {
     "KEYUP",
     "CLICK",
     "CONTEXTMENU",
-    "MOUSE_DRAG",
+    "MOUSEDOWN",
+    "MOUSEUP",
     "PAGE_CLOSE",
     "ALERT",
     "CURSOR_MOVE",
@@ -209,7 +211,8 @@ const EventLog = ({ eventLog, setIsModalOpen, isFromAModal, sessionId }) => {
                     eventLog.URL,
                     eventLog.height,
                     eventLog.width,
-                    eventLog.events
+                    eventLog.events,
+                    eventLog.scrollBarWidth
                   )
                 )
               }
@@ -224,7 +227,8 @@ const EventLog = ({ eventLog, setIsModalOpen, isFromAModal, sessionId }) => {
               eventLog.URL,
               eventLog.height,
               eventLog.width,
-              eventLog.events
+              eventLog.events,
+              eventLog.scrollBarWidth
             )}
           </pre>
         </div>

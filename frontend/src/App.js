@@ -9,6 +9,7 @@ import axios from "axios";
 
 function App() {
   const [fetchedData, setFetchedData] = useState("");
+  const [sessionId, setSessionId] = useState("");
 
   const submitHandler = (e) => {
     window.location.replace("/");
@@ -68,6 +69,8 @@ function App() {
     const uiTracker = new UITracker();
     uiTracker.config(2000000, false);
     uiTracker.start();
+
+    setSessionId(sessionStorage.getItem("session-id"));
   }, []);
 
   return (
@@ -75,6 +78,7 @@ function App() {
       <div className="header">
         <div>{fetchedData}</div>
       </div>
+      <div>Session ID : {sessionId}</div>
       <hr />
       <div className="inputContainer">
         <div className="field">

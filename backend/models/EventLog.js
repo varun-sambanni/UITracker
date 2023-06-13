@@ -46,6 +46,12 @@ const eventLogSchema = new Schema({
   height: {
     type: Number,
   },
+  scrollBarWidth: {
+    type: Number,
+  },
+  userAgent: {
+    type: String,
+  },
   events: [eventSchema],
 });
 

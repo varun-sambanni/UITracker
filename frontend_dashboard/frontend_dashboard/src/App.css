@@ -74,11 +74,16 @@ button {
   width: fit-content;
   padding: 0.2em;
   margin-right: 4em;
+  min-width: 10em;
 }
 
 .eventLogModalDetailsTitle {
   font-weight: 400;
   text-align: left;
+}
+
+.eventLogModalDetailsValue {
+  width: fit-content;
 }
 
 .modalDataContainer {

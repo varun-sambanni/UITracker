@@ -1,4 +1,4 @@
-const Puppeteer_Template = (URL, height, width, events) => {
+const Puppeteer_Template = (URL, height, width, events, scrollBarWidth) => {
   console.log(events);
   const reversedEvents = [];
   for (let i = events.length - 1; i >= 0; i--) {
@@ -41,6 +41,10 @@ const Puppeteer_Template = (URL, height, width, events) => {
     });
 
     await page.goto("${URL}?session-replay=true", { waitUntil: "networkidle0" });
+
+    await page.addStyleTag({
+    content: "/* WebKit-based browsers (Chrome, Safari) */body::-webkit-scrollbar { width: ${scrollBarWidth}px;}"
+    });
 
     let prevTimeStamp = events[0].timeStamp;
 

@@ -167,24 +167,56 @@ function Dashboard() {
                 <div>
                   <span className="eventLogModalDetailsTitle">Height</span>:{" "}
                 </div>
+                <div>
+                  <span className="eventLogModalDetailsTitle">
+                    Scroll Bar Width
+                  </span>
+                  :{" "}
+                </div>
+                <div>
+                  <span className="eventLogModalDetailsTitle">User Agent</span>:{" "}
+                </div>
               </div>
               <div className="eventLogModalDetails">
-                <div>{eventLogs[0].URL}</div>
-                <div>
-                  {eventLogs[0].location
-                    ? eventLogs[0].location.latitude.$numberDecimal
-                    : "Unavailable"}
-                  <br />
-                  {eventLogs[0].location
-                    ? eventLogs[0].location.longitude.$numberDecimal
-                    : "Unavailable"}
+                <div className="eventLogModalDetailsValue">
+                  {eventLogs[0].URL}
                 </div>
-                <div>{eventLogs[0].sessionId}</div>
-                <div>{eventLogs[0].timeStamp}</div>
-                <div>{eventLogs[0].ipAddress}</div>
-                <div>{eventLogs[0].events.length}</div>
-                <div>{eventLogs[0].width}</div>
-                <div>{eventLogs[0].height}</div>
+                <div>
+                  <div className="eventLogModalDetailsValue">
+                    {eventLogs[0].location
+                      ? eventLogs[0].location.latitude.$numberDecimal
+                      : "Unavailable"}
+                  </div>
+                  <div className="eventLogModalDetailsValue">
+                    {eventLogs[0].location
+                      ? eventLogs[0].location.longitude.$numberDecimal
+                      : "Unavailable"}
+                  </div>
+                </div>
+                <div className="eventLogModalDetailsValue">
+                  {eventLogs[0].sessionId}
+                </div>
+                <div className="eventLogModalDetailsValue">
+                  {eventLogs[0].timeStamp}
+                </div>
+                <div className="eventLogModalDetailsValue">
+                  {eventLogs[0].ipAddress}
+                </div>
+                <div className="eventLogModalDetailsValue">
+                  {eventLogs[0].events.length}
+                </div>
+                <div className="eventLogModalDetailsValue">
+                  {eventLogs[0].width}
+                </div>
+                <div className="eventLogModalDetailsValue">
+                  {eventLogs[0].height}
+                </div>
+                <div className="eventLogModalDetailsValue">
+                  {eventLogs[0].scrollBarWidth}
+                </div>
+                <div className="eventLogModalDetailsValue">
+                  {eventLogs[0].userAgent}
+                </div>
               </div>
             </div>
           )}
