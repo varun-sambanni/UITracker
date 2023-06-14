@@ -46,6 +46,7 @@ class UITracker {
     this.reportOnError = false;
     this.socketInterval = null;
     this.scrollBarWidth = getScrollbarWidth();
+    this.postDataEndPoint = "http://localhost:5000/postData";
 
     this.ignoreNextClick = false;
 
@@ -69,14 +70,28 @@ class UITracker {
    *  @param {*} reportOnError Boolean value, whether to send data immediately on error or not
    *  @param {*} sessionId Session Id of the current session set by the
    */
-  config(dataTransmissionInterval, reportOnError, sessionId) {
-    if (arguments.length !== 3) {
+  config(options) {
+    const {
+      dataTransmissionInterval = null,
+      reportOnError = false,
+      sessionId = null,
+    } = options;
+
+    if (arguments.length !== 1) {
       throw new Error("Enter the required number of arguments for config");
+    }
+
+    if (sessionId === null) {
+      throw new Error("Session ID must be provided");
     }
     this.dataTransmissionInterval = dataTransmissionInterval;
     this.reportOnError = reportOnError;
     sessionStorage.setItem("session-id", sessionId);
     this.sessionId = sessionId;
+    if (dataTransmissionInterval === null) {
+      // Sending event log on every event (ONLY ON USER_EVENTS AND ERRORS) that is recorded
+      this.dataTransmissionInterval = -1;
+    }
   }
 
   /**
@@ -89,8 +104,9 @@ class UITracker {
     if (isSessionReplay === "true") return; // No recording of events is this is currently a session replay
 
     UITracker.getLocation(); // Starts obtaining user location and eventually stores in this.location var
-    this.startDataTransmissionHTTP();
-    //this.startDataTransmissionSockets();
+    if (this.dataTransmissionInterval !== -1) {
+      this.startDataTransmissionHTTP();
+    }
     this.sendLastLog();
     this.startSession();
     this.recordPageEvents();
@@ -108,35 +124,42 @@ class UITracker {
    */
   sendLastLog() {
     window.addEventListener("beforeunload", () => {
-      fetch("http://localhost:5000/postData", {
-        method: "POST",
-        headers: {
-          Accept: "application/json",
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(
-          {
-            height: window.innerHeight,
-            width: window.innerWidth,
-            scrollBarWidth: self.scrollBarWidth,
-            URL: self.URL,
-            location: self.location,
-            sessionId: self.sessionId,
-            events: self.eventsList,
-            timeStamp: UITracker.getTimeStamp(),
-            userAgent: navigator.userAgent,
-          },
-          this.replacerFunc()
-        ),
-      })
-        .then((res) => res.json())
-        .then((data) => {
-          console.log("Response ->", data);
-        })
-        .catch((err) => {
-          console.log("Error sending data to server ", err);
-        });
+      UITracker.postData();
     });
+  }
+
+  /**
+   *  Util function to post data to backend API endpoint
+   */
+  static postData() {
+    fetch("http://localhost:5000/postData", {
+      method: "POST",
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(
+        {
+          height: window.innerHeight,
+          width: window.innerWidth,
+          scrollBarWidth: self.scrollBarWidth,
+          URL: self.URL,
+          location: self.location,
+          sessionId: self.sessionId,
+          events: self.eventsList,
+          timeStamp: UITracker.getTimeStamp(),
+          userAgent: navigator.userAgent,
+        },
+        self.replacerFunc()
+      ),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        console.log("Response ->", data);
+      })
+      .catch((err) => {
+        console.log("Error sending data to server ", err);
+      });
   }
 
   /**
@@ -144,36 +167,7 @@ class UITracker {
    */
   startDataTransmissionHTTP() {
     setInterval(() => {
-      console.log("Sending data length -> ", self.eventsList.length);
-      console.log("height ", window.innerHeight);
-      fetch("http://localhost:5000/postData", {
-        method: "POST",
-        headers: {
-          Accept: "application/json",
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(
-          {
-            height: window.innerHeight,
-            width: window.innerWidth,
-            scrollBarWidth: self.scrollBarWidth,
-            URL: self.URL,
-            location: self.location,
-            sessionId: self.sessionId,
-            events: self.eventsList,
-            timeStamp: UITracker.getTimeStamp(),
-            userAgent: navigator.userAgent,
-          },
-          this.replacerFunc()
-        ),
-      })
-        .then((res) => res.json())
-        .then((data) => {
-          console.log("Response ->", data);
-        })
-        .catch((err) => {
-          console.log("Error sending data to server ", err);
-        });
+      UITracker.postData();
     }, this.dataTransmissionInterval);
   }
 
@@ -291,6 +285,7 @@ class UITracker {
       width: window.innerWidth,
       scrollBarWidth: getScrollbarWidth(),
     };
+    UITracker.postData();
     console.log(eventLog);
   }
 
@@ -321,6 +316,7 @@ class UITracker {
         width: window.innerWidth,
         scrollBarWidth: self.scrollBarWidth,
       };
+      UITracker.postData();
       console.table(JSON.parse(JSON.stringify(eventLog, this.replacerFunc())));
     });
   }
@@ -401,7 +397,7 @@ class UITracker {
         width: window.innerWidth,
         scrollBarWidth: this.scrollBarWidth,
       };
-
+      self.dataTransmissionInterval === -1 && UITracker.postData();
       console.log(eventLog);
     }, self.idleTimeDectection);
   }
@@ -443,7 +439,7 @@ class UITracker {
         width: window.innerWidth,
         scrollBarWidth: self.scrollBarWidth,
       };
-
+      self.dataTransmissionInterval === -1 && UITracker.postData();
       console.log(eventLog);
     });
   }
@@ -481,7 +477,7 @@ class UITracker {
           width: window.innerWidth,
           scrollBarWidth: self.scrollBarWidth,
         };
-
+        self.dataTransmissionInterval === -1 && UITracker.postData();
         console.log(eventLog);
       });
     }
@@ -509,7 +505,7 @@ class UITracker {
       width: window.innerWidth,
       scrollBarWidth: self.scrollBarWidth,
     };
-
+    self.dataTransmissionInterval === -1 && UITracker.postData();
     console.log(eventLog);
   }
 
@@ -544,21 +540,9 @@ class UITracker {
         scrollBarWidth: self.scrollBarWidth,
       };
       console.log("Attempting to send data");
-      if (self.reportOnError === true) {
-        self.ws.send(
-          JSON.stringify(
-            {
-              URL: self.URL,
-              location: self.location,
-              sessionId: self.sessionId,
-              events: self.eventsList,
-              timeStamp: UITracker.getTimeStamp(),
-              height: window.innerHeight,
-              width: window.innerWidth,
-            },
-            this.replacerFunc()
-          )
-        );
+
+      if (self.reportOnError === true || self.dataTransmissionInterval === -1) {
+        UITracker.postData();
       }
       console.log(eventLog);
     };
@@ -585,21 +569,8 @@ class UITracker {
         scrollBarWidth: self.scrollBarWidth,
       };
 
-      if (self.reportOnError === true) {
-        self.ws.send(
-          JSON.stringify(
-            {
-              URL: self.URL,
-              location: self.location,
-              sessionId: self.sessionId,
-              events: self.eventsList,
-              timeStamp: UITracker.getTimeStamp(),
-              height: window.innerHeight,
-              width: window.innerWidth,
-            },
-            this.replacerFunc()
-          )
-        );
+      if (self.reportOnError === true || self.dataTransmissionInterval === -1) {
+        UITracker.postData();
       }
       console.log(eventLog);
     };
@@ -633,7 +604,7 @@ class UITracker {
         width: window.innerWidth,
         scrollBarWidth: self.scrollBarWidth,
       };
-
+      self.dataTransmissionInterval === -1 && UITracker.postData();
       console.log(eventLog);
     };
   }
@@ -686,7 +657,7 @@ class UITracker {
         width: window.innerWidth,
         scrollBarWidth: self.scrollBarWidth,
       };
-
+      self.dataTransmissionInterval === -1 && UITracker.postData();
       console.log(eventLog);
     }, this.mouseCoordRecorder);
   }
@@ -735,7 +706,7 @@ class UITracker {
       height: window.innerHeight,
       width: window.innerWidth,
     };
-
+    self.dataTransmissionInterval === -1 && UITracker.postData();
     console.log(eventLog);
   }
 
@@ -789,7 +760,7 @@ class UITracker {
       width: window.innerWidth,
       scrollBarWidth: self.scrollBarWidth,
     };
-
+    self.dataTransmissionInterval === -1 && UITracker.postData();
     console.log(eventLog);
   }
 
@@ -832,6 +803,7 @@ class UITracker {
       width: window.innerWidth,
       scrollBarWidth: self.scrollBarWidth,
     };
+    self.dataTransmissionInterval === -1 && UITracker.postData();
     console.log(eventLog);
   }
 
@@ -898,6 +870,7 @@ class UITracker {
     if (currEventType === "FORM SUBMISSION") {
       console.table(eventLog);
     }
+    self.dataTransmissionInterval === -1 && UITracker.postData();
     console.log(eventLog);
   }
 
@@ -912,6 +885,12 @@ class UITracker {
       let resource = args[0],
         config = args[1];
       const startTime = new Date().getTime();
+      if (self.postDataEndPoint === resource) {
+        // If it is from our own end point, ignore recording it
+        origFetch(resource, config);
+        return;
+      }
+
       const currentRequestId = UITracker.getUID();
 
       const requestObj = new Request(resource, config);
@@ -939,7 +918,7 @@ class UITracker {
         height: window.innerHeight,
         scrollBarWidth: self.scrollBarWidth,
       };
-
+      self.dataTransmissionInterval === -1 && UITracker.postData();
       console.log(eventLogReq);
 
       const response = await origFetch(resource, config);
@@ -984,7 +963,7 @@ class UITracker {
         width: window.innerWidth,
         scrollBarWidth: self.scrollBarWidth,
       };
-
+      self.dataTransmissionInterval === -1 && UITracker.postData();
       console.log(eventLogRes);
       return response;
     };
@@ -999,6 +978,13 @@ class UITracker {
     window.XMLHttpRequest.prototype.open = function (method, resource) {
       const currentRequestId = UITracker.getUID();
       const startTime = new Date().getTime();
+
+      if (self.postDataEndPoint === resource) {
+        // But needs to be checked with XML, we are sending using fetch
+        // If it is from our own end point, ignore recording it
+        originalOpen.apply(this, arguments);
+        return;
+      }
 
       const currEventObjReq = {
         name: "REQUEST",
@@ -1019,7 +1005,7 @@ class UITracker {
         width: window.innerWidth,
         scrollBarWidth: self.scrollBarWidth,
       };
-
+      self.dataTransmissionInterval === -1 && UITracker.postData();
       console.log(eventLogReq);
       originalOpen.apply(this, arguments);
 
@@ -1056,7 +1042,7 @@ class UITracker {
               width: window.innerWidth,
               scrollBarWidth: self.scrollBarWidth,
             };
-
+            self.dataTransmissionInterval === -1 && UITracker.postData();
             console.log(eventLogRes);
           }
 

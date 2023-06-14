@@ -88,7 +88,13 @@ function App() {
   useEffect(() => {
     // Call these functions only when the page DOM has loaded
     const uiTracker = new UITracker();
-    uiTracker.config(2000000, false, `abc_user/${getUID()}`);
+
+    uiTracker.config({
+      dataTransmissionInterval: 2000000,
+      reportOnError: false,
+      sessionId: `abc_user/${getUID()}`,
+    });
+
     uiTracker.start();
     setSessionId(sessionStorage.getItem("session-id"));
   }, []);
