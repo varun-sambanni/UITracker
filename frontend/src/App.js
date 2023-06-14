@@ -64,12 +64,32 @@ function App() {
     console.error("Console error message \n");
   };
 
+  const getUID = () => {
+    const alphaNum = Array.from(Array(26)).map((e, i) =>
+      String.fromCharCode(i + 97)
+    );
+    for (let i = 0; i < 10; i++) {
+      alphaNum.push(i.toString());
+    }
+    const format = "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx";
+    let uuid = "";
+    for (let i = 0; i < format.length; i++) {
+      if (format[i] === "-") {
+        uuid += "-";
+        continue;
+      }
+      let dt = new Date().getTime();
+      const num = Math.floor(Math.random() * 36);
+      uuid += alphaNum[(dt + num) % 36];
+    }
+    return uuid;
+  };
+
   useEffect(() => {
     // Call these functions only when the page DOM has loaded
     const uiTracker = new UITracker();
-    uiTracker.config(2000000, false);
+    uiTracker.config(2000000, false, `abc_user/${getUID()}`);
     uiTracker.start();
-
     setSessionId(sessionStorage.getItem("session-id"));
   }, []);
 

@@ -7,6 +7,7 @@ const Puppeteer_Template = (URL, height, width, events, scrollBarWidth) => {
   let script = ` const puppeteer = require("puppeteer");
   
     const events = ${JSON.stringify(reversedEvents)}
+    
     function delay(ms) {
     return new Promise((resolve) => setTimeout(resolve, ms));
     }

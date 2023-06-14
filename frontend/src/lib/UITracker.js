@@ -41,8 +41,7 @@ class UITracker {
     this.eventsList = [];
     this.sessionStartTime = 0;
     this.tabHiddenStart = 0; // Stores the timeStamp of when the most recent 'TAB_HIDDEN' event is recorded
-    sessionStorage.setItem("session-id", UITracker.getUID());
-    this.sessionId = sessionStorage.getItem("session-id");
+    this.sessionId = null;
     this.dataTransmissionInterval = 15000;
     this.reportOnError = false;
     this.socketInterval = null;
@@ -65,13 +64,19 @@ class UITracker {
   }
 
   /**
-   *  Function called to add the required configurations
+   *  Function called to add the required configurations, throws error if argument count is not 3
    *  @param {*} dataTransmissionInterval The interval at which the data is to be transmitted
    *  @param {*} reportOnError Boolean value, whether to send data immediately on error or not
+   *  @param {*} sessionId Session Id of the current session set by the
    */
-  config(dataTransmissionInterval, reportOnError) {
+  config(dataTransmissionInterval, reportOnError, sessionId) {
+    if (arguments.length !== 3) {
+      throw new Error("Enter the required number of arguments for config");
+    }
     this.dataTransmissionInterval = dataTransmissionInterval;
     this.reportOnError = reportOnError;
+    sessionStorage.setItem("session-id", sessionId);
+    this.sessionId = sessionId;
   }
 
   /**

@@ -2,7 +2,7 @@ import "../App.css";
 import React from "react";
 import { TextField, Autocomplete } from "@mui/material";
 
-// isFromAModal -> Is it for a modal or not ?
+// isFromAModal -> Coming from a modal or not ?
 
 const AutoSearch = ({ value, setValue, onChangeHandler, options, label }) => {
   return (
