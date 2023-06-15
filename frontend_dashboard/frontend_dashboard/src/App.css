@@ -70,6 +70,13 @@ button {
   margin: auto;
 }
 
+.eventLogDetailRow {
+  display: flex;
+  justify-content: space-between;
+  border-bottom: 0.1px solid black;
+  min-width: 30em;
+}
+
 .eventLogModalDetails {
   width: fit-content;
   padding: 0.2em;
@@ -104,6 +111,7 @@ button {
   justify-content: space-between;
   flex-direction: row;
   background: #ffffff;
+  overflow-x: auto;
   box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.05);
 }
 
@@ -212,13 +220,12 @@ iframe {
 .fileName {
   float: left;
   font-weight: 600;
-  text-decoration: underline;
 }
 
 .eventsFilterContainer {
   display: flex;
-
   justify-content: space-between;
+  overflow-x: auto;
 }
 
 .generateTestButton {

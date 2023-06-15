@@ -241,6 +241,8 @@ const EventLog = ({ eventLog, setIsModalOpen, isFromAModal, sessionId }) => {
             isModalOpen={isViewModalOpen}
             setIsModalOpen={setIsViewModalOpen}
             data={loadedEvents[currDataIndex].data}
+            name={loadedEvents[currDataIndex].name}
+            type={loadedEvents[currDataIndex].type}
           />
         )}
 

@@ -44,7 +44,7 @@ const Puppeteer_Template = (URL, height, width, events, scrollBarWidth) => {
     await page.goto("${URL}?session-replay=true", { waitUntil: "networkidle0" });
 
     await page.addStyleTag({
-    content: "/* WebKit-based browsers (Chrome, Safari) */body::-webkit-scrollbar { width: ${scrollBarWidth}px;}"
+    content: "/* WebKit-based browsers (Chrome, Safari) */body::-webkit-scrollbar { width: ${scrollBarWidth}px;}::-webkit-scrollbar-track {background-color: #f1f1f1;}::-webkit-scrollbar-thumb {background-color: #888;} ::-webkit-scrollbar-thumb:hover {background-color: #555;}"
     });
 
     let prevTimeStamp = events[0].timeStamp;

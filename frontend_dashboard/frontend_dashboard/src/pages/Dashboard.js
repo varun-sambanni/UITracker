@@ -134,88 +134,80 @@ function Dashboard() {
           {sessionIDsUnderURL.includes(sessionId) && (
             <div className="eventLogModalDetailsContainer containerCard">
               <div className="eventLogModalDetails">
-                <div>
-                  <span className="eventLogModalDetailsTitle">URL</span> :{" "}
+                <div className="eventLogDetailRow">
+                  <div className="eventLogModalDetailsTitle">URL: </div>
+                  <div className="eventLogModalDetailsValue">
+                    {eventLogs[0].URL}
+                  </div>
                 </div>
-                <div>
-                  <span className="eventLogModalDetailsTitle">Latitude</span> :{" "}
-                  <br />
-                  <span className="eventLogModalDetailsTitle">
-                    Longitude
-                  </span> :{" "}
-                </div>
-                <div>
-                  <span className="eventLogModalDetailsTitle">Session ID</span>:{" "}
-                </div>
-                <div>
-                  <span className="eventLogModalDetailsTitle">Time Stamp</span>{" "}
-                  :{" "}
-                </div>
-                <div>
-                  <span className="eventLogModalDetailsTitle">IP Address</span>{" "}
-                  :{" "}
-                </div>
-                <div>
-                  <span className="eventLogModalDetailsTitle">
-                    Number of Events
-                  </span>
-                  :{" "}
-                </div>
-                <div>
-                  <span className="eventLogModalDetailsTitle">Width</span>:{" "}
-                </div>
-                <div>
-                  <span className="eventLogModalDetailsTitle">Height</span>:{" "}
-                </div>
-                <div>
-                  <span className="eventLogModalDetailsTitle">
-                    Scroll Bar Width
-                  </span>
-                  :{" "}
-                </div>
-                <div>
-                  <span className="eventLogModalDetailsTitle">User Agent</span>:{" "}
-                </div>
-              </div>
-              <div className="eventLogModalDetails">
-                <div className="eventLogModalDetailsValue">
-                  {eventLogs[0].URL}
-                </div>
-                <div>
+                <div className="eventLogDetailRow">
+                  <div className="eventLogModalDetailsTitle">Latitude: </div>
                   <div className="eventLogModalDetailsValue">
                     {eventLogs[0].location
                       ? eventLogs[0].location.latitude.$numberDecimal
                       : "Unavailable"}
                   </div>
+                </div>
+                <div className="eventLogDetailRow">
+                  <div className="eventLogModalDetailsTitle">Longitude:</div>
                   <div className="eventLogModalDetailsValue">
                     {eventLogs[0].location
                       ? eventLogs[0].location.longitude.$numberDecimal
                       : "Unavailable"}
                   </div>
                 </div>
-                <div className="eventLogModalDetailsValue">
-                  {eventLogs[0].sessionId}
+                <div className="eventLogDetailRow">
+                  <div className="eventLogModalDetailsTitle">Session ID: </div>
+                  <div className="eventLogModalDetailsValue">
+                    {eventLogs[0].sessionId}
+                  </div>
                 </div>
-                <div className="eventLogModalDetailsValue">
-                  {eventLogs[0].timeStamp}
+                <div className="eventLogDetailRow">
+                  <div className="eventLogModalDetailsTitle">Time Stamp: </div>
+                  <div className="eventLogModalDetailsValue">
+                    {eventLogs[0].timeStamp}
+                  </div>
                 </div>
-                <div className="eventLogModalDetailsValue">
-                  {eventLogs[0].ipAddress}
+                <div className="eventLogDetailRow">
+                  <div className="eventLogModalDetailsTitle">IP Address: </div>
+                  <div className="eventLogModalDetailsValue">
+                    {eventLogs[0].ipAddress}
+                  </div>
                 </div>
-                <div className="eventLogModalDetailsValue">
-                  {eventLogs[0].events.length}
+                <div className="eventLogDetailRow">
+                  <div className="eventLogModalDetailsTitle">
+                    Number of Events:
+                  </div>
+                  <div className="eventLogModalDetailsValue">
+                    {eventLogs[0].events.length}
+                  </div>
                 </div>
-                <div className="eventLogModalDetailsValue">
-                  {eventLogs[0].width}
+                <div className="eventLogDetailRow">
+                  <div className="eventLogModalDetailsTitle">Width: </div>
+                  <div className="eventLogModalDetailsValue">
+                    {eventLogs[0].width}
+                  </div>
                 </div>
-                <div className="eventLogModalDetailsValue">
-                  {eventLogs[0].height}
+                <div className="eventLogDetailRow">
+                  <div className="eventLogModalDetailsTitle">Height: </div>
+                  <div className="eventLogModalDetailsValue">
+                    {eventLogs[0].height}
+                  </div>
                 </div>
-                <div className="eventLogModalDetailsValue">
-                  {eventLogs[0].scrollBarWidth}
+                <div className="eventLogDetailRow">
+                  <div className="eventLogModalDetailsTitle">
+                    Scroll Bar Width:
+                  </div>
+
+                  <div className="eventLogModalDetailsValue">
+                    {eventLogs[0].scrollBarWidth}
+                  </div>
                 </div>
-                <div className="eventLogModalDetailsValue">
-                  {eventLogs[0].userAgent}
+                <div className="eventLogDetailRow">
+                  <div className="eventLogModalDetailsTitle">User Agent: </div>
+                  <div className="eventLogModalDetailsValue">
+                    {eventLogs[0].userAgent}
+                  </div>
                 </div>
               </div>
             </div>

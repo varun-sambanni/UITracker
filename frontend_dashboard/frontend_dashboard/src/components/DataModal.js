@@ -18,12 +18,15 @@ const style = {
 
 // isFromAModal -> Is it for a modal or not ?
 
-const DataModal = ({ isModalOpen, setIsModalOpen, data }) => {
+const DataModal = ({ isModalOpen, setIsModalOpen, data, name, type }) => {
   return (
     <>
       <Modal hideBackdrop={true} open={isModalOpen} sx={style}>
         <div>
           <div className="closeButtonContainer">
+            <span className="fileName">
+              {name + " -->"} {type}
+            </span>
             <button onClick={() => setIsModalOpen(false)}>Close</button>
           </div>
           <div className="dataContainer">
