@@ -198,7 +198,6 @@ function Dashboard() {
                   <div className="eventLogModalDetailsTitle">
                     Scroll Bar Width:
                   </div>
-
                   <div className="eventLogModalDetailsValue">
                     {eventLogs[0].scrollBarWidth}
                   </div>
@@ -266,10 +265,10 @@ function Dashboard() {
                                 </TableCell>
                                 <TableCell className="TableCell">
                                   <TableRow>
-                                    Latitude :{" "}
+                                    Latitude:
                                     {eventLog.location.latitude.$numberDecimal}
                                     <br />
-                                    Longitude :{" "}
+                                    Longitude:
                                     {eventLog.location.longitude.$numberDecimal}
                                   </TableRow>
                                 </TableCell>

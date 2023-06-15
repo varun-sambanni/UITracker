@@ -299,7 +299,7 @@ class UITracker {
         name: "PAGE_EVENT",
         type: "PAGE_CLOSE",
         data: {
-          sessionTime: sessionEndTime - self.sessionStartTime,
+          sessionTime: (sessionEndTime - self.sessionStartTime) / 1000,
         },
         timeStamp: UITracker.getTimeStamp(),
       };

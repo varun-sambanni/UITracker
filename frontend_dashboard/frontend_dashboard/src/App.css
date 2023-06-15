@@ -73,8 +73,8 @@ button {
 .eventLogDetailRow {
   display: flex;
   justify-content: space-between;
-  border-bottom: 0.1px solid black;
   min-width: 30em;
+  margin-bottom: 0.2em;
 }
 
 .eventLogModalDetails {
