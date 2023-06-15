@@ -90,7 +90,7 @@ function App() {
     const uiTracker = new UITracker();
 
     uiTracker.config({
-      dataTransmissionInterval: 2000000,
+      dataTransmissionInterval: 10000,
       reportOnError: false,
       sessionId: `abc_user/${getUID()}`,
     });

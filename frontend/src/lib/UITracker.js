@@ -66,9 +66,7 @@ class UITracker {
 
   /**
    *  Function called to add the required configurations, throws error if argument count is not 3
-   *  @param {*} dataTransmissionInterval The interval at which the data is to be transmitted
-   *  @param {*} reportOnError Boolean value, whether to send data immediately on error or not
-   *  @param {*} sessionId Session Id of the current session set by the
+   *  @param {*} options Options : dataTransmissionInterval, reportOnError, and sessionId that need to be configured
    */
   config(options) {
     const {
@@ -84,12 +82,14 @@ class UITracker {
     if (sessionId === null) {
       throw new Error("Session ID must be provided");
     }
+
     this.dataTransmissionInterval = dataTransmissionInterval;
     this.reportOnError = reportOnError;
     sessionStorage.setItem("session-id", sessionId);
     this.sessionId = sessionId;
+
     if (dataTransmissionInterval === null) {
-      // Sending event log on every event (ONLY ON USER_EVENTS AND ERRORS) that is recorded
+      // Sending event log on every event that is recorded
       this.dataTransmissionInterval = -1;
     }
   }
@@ -539,7 +539,6 @@ class UITracker {
         width: window.innerWidth,
         scrollBarWidth: self.scrollBarWidth,
       };
-      console.log("Attempting to send data");
 
       if (self.reportOnError === true || self.dataTransmissionInterval === -1) {
         UITracker.postData();
@@ -885,41 +884,39 @@ class UITracker {
       let resource = args[0],
         config = args[1];
       const startTime = new Date().getTime();
-      if (self.postDataEndPoint === resource) {
-        // If it is from our own end point, ignore recording it
-        origFetch(resource, config);
-        return;
-      }
 
       const currentRequestId = UITracker.getUID();
 
       const requestObj = new Request(resource, config);
 
-      const currEventObjReq = {
-        name: "REQUEST",
-        type: "FETCH",
-        data: {
-          resource: resource,
-          method: requestObj.method,
-          id: currentRequestId,
-        },
-        timeStamp: UITracker.getTimeStamp(),
-      };
+      if (self.postDataEndPoint !== resource) {
+        // If not to our own API endpoint, record it else ignore recording it
+        const currEventObjReq = {
+          name: "REQUEST",
+          type: "FETCH",
+          data: {
+            resource: resource,
+            method: requestObj.method,
+            id: currentRequestId,
+          },
+          timeStamp: UITracker.getTimeStamp(),
+        };
 
-      self.eventsList.push(currEventObjReq);
+        self.eventsList.push(currEventObjReq);
 
-      const eventLogReq = {
-        URL: self.URL,
-        location: self.location,
-        sessionId: self.sessionId,
-        events: self.eventsList,
-        timeStamp: UITracker.getTimeStamp(),
-        width: window.innerWidth,
-        height: window.innerHeight,
-        scrollBarWidth: self.scrollBarWidth,
-      };
-      self.dataTransmissionInterval === -1 && UITracker.postData();
-      console.log(eventLogReq);
+        const eventLogReq = {
+          URL: self.URL,
+          location: self.location,
+          sessionId: self.sessionId,
+          events: self.eventsList,
+          timeStamp: UITracker.getTimeStamp(),
+          width: window.innerWidth,
+          height: window.innerHeight,
+          scrollBarWidth: self.scrollBarWidth,
+        };
+        self.dataTransmissionInterval === -1 && UITracker.postData();
+        console.log(eventLogReq);
+      }
 
       const response = await origFetch(resource, config);
       const endTime = new Date().getTime();
@@ -938,33 +935,36 @@ class UITracker {
         reader.readAsText(dataCloned);
       });
 
-      const currEventObjRes = {
-        name: "RESPONSE",
-        type: "FETCH",
-        data: {
-          resource: response.url,
-          status: response.status,
-          responseData: dataClonedReader,
-          id: currentRequestId,
-          duration: endTime - startTime,
-        },
-        timeStamp: UITracker.getTimeStamp(),
-      };
+      if (self.postDataEndPoint !== resource) {
+        // If not from our own API endpoint, record it else ignore recording it
+        const currEventObjRes = {
+          name: "RESPONSE",
+          type: "FETCH",
+          data: {
+            resource: response.url,
+            status: response.status,
+            responseData: dataClonedReader,
+            id: currentRequestId,
+            duration: endTime - startTime,
+          },
+          timeStamp: UITracker.getTimeStamp(),
+        };
 
-      self.eventsList.push(currEventObjRes);
+        self.eventsList.push(currEventObjRes);
 
-      const eventLogRes = {
-        URL: self.URL,
-        location: self.location,
-        sessionId: self.sessionId,
-        events: self.eventsList,
-        timeStamp: UITracker.getTimeStamp(),
-        height: window.innerHeight,
-        width: window.innerWidth,
-        scrollBarWidth: self.scrollBarWidth,
-      };
-      self.dataTransmissionInterval === -1 && UITracker.postData();
-      console.log(eventLogRes);
+        const eventLogRes = {
+          URL: self.URL,
+          location: self.location,
+          sessionId: self.sessionId,
+          events: self.eventsList,
+          timeStamp: UITracker.getTimeStamp(),
+          height: window.innerHeight,
+          width: window.innerWidth,
+          scrollBarWidth: self.scrollBarWidth,
+        };
+        self.dataTransmissionInterval === -1 && UITracker.postData();
+        console.log(eventLogRes);
+      }
       return response;
     };
 
@@ -979,34 +979,32 @@ class UITracker {
       const currentRequestId = UITracker.getUID();
       const startTime = new Date().getTime();
 
-      if (self.postDataEndPoint === resource) {
-        // But needs to be checked with XML, we are sending using fetch
-        // If it is from our own end point, ignore recording it
-        originalOpen.apply(this, arguments);
-        return;
+      if (self.postDataEndPoint !== resource) {
+        // If not to our own API endpoint, record it else ignore recording it
+        const currEventObjReq = {
+          name: "REQUEST",
+          type: "XMLHttpRequest",
+          data: { resource: resource, method: method, id: currentRequestId },
+          timeStamp: UITracker.getTimeStamp(),
+        };
+
+        self.eventsList.push(currEventObjReq);
+
+        const eventLogReq = {
+          URL: self.URL,
+          location: self.location,
+          sessionId: self.sessionId,
+          events: self.eventsList,
+          timeStamp: UITracker.getTimeStamp(),
+          height: window.innerHeight,
+          width: window.innerWidth,
+          scrollBarWidth: self.scrollBarWidth,
+        };
+
+        self.dataTransmissionInterval === -1 && UITracker.postData();
+        console.log(eventLogReq);
       }
 
-      const currEventObjReq = {
-        name: "REQUEST",
-        type: "XMLHttpRequest",
-        data: { resource: resource, method: method, id: currentRequestId },
-        timeStamp: UITracker.getTimeStamp(),
-      };
-
-      self.eventsList.push(currEventObjReq);
-
-      const eventLogReq = {
-        URL: self.URL,
-        location: self.location,
-        sessionId: self.sessionId,
-        events: self.eventsList,
-        timeStamp: UITracker.getTimeStamp(),
-        height: window.innerHeight,
-        width: window.innerWidth,
-        scrollBarWidth: self.scrollBarWidth,
-      };
-      self.dataTransmissionInterval === -1 && UITracker.postData();
-      console.log(eventLogReq);
       originalOpen.apply(this, arguments);
 
       // Responses Interception
@@ -1017,33 +1015,37 @@ class UITracker {
           if (xhr.readyState === 4) {
             const endTime = new Date().getTime();
             const duration = endTime - startTime;
-            const currEventObjRes = {
-              name: "RESPONSE",
-              type: "XMLHttpRequest",
-              data: {
-                resource: xhr.responseURL,
-                status: xhr.status,
-                responseData: xhr.response,
-                duration: duration,
-                id: currentRequestId,
-              },
-              timeStamp: UITracker.getTimeStamp(),
-            };
 
-            self.eventsList.push(currEventObjRes);
+            if (self.postDataEndPoint !== resource) {
+              // If not from our own API endpoint, record it else ignore recording it
+              const currEventObjRes = {
+                name: "RESPONSE",
+                type: "XMLHttpRequest",
+                data: {
+                  resource: xhr.responseURL,
+                  status: xhr.status,
+                  responseData: xhr.response,
+                  duration: duration,
+                  id: currentRequestId,
+                },
+                timeStamp: UITracker.getTimeStamp(),
+              };
 
-            const eventLogRes = {
-              URL: self.URL,
-              location: self.location,
-              sessionId: self.sessionId,
-              events: self.eventsList,
-              timeStamp: UITracker.getTimeStamp(),
-              height: window.innerHeight,
-              width: window.innerWidth,
-              scrollBarWidth: self.scrollBarWidth,
-            };
-            self.dataTransmissionInterval === -1 && UITracker.postData();
-            console.log(eventLogRes);
+              self.eventsList.push(currEventObjRes);
+
+              const eventLogRes = {
+                URL: self.URL,
+                location: self.location,
+                sessionId: self.sessionId,
+                events: self.eventsList,
+                timeStamp: UITracker.getTimeStamp(),
+                height: window.innerHeight,
+                width: window.innerWidth,
+                scrollBarWidth: self.scrollBarWidth,
+              };
+              self.dataTransmissionInterval === -1 && UITracker.postData();
+              console.log(eventLogRes);
+            }
           }
 
           if (originalOnReadyStateChange) {
