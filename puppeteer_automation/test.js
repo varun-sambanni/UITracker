@@ -87,7 +87,7 @@ const events = [
     timeStamp: 1686816242.25,
     name: "PAGE_EVENT",
     type: "NAVIGATE",
-    data: { URL: "http://localhost:3000/", DOMLoadTime: 0.42569999998807906 },
+    data: { URL: "http://localhost:3001/", DOMLoadTime: 0.42569999998807906 },
     _id: "648ac657a64c3744514e07f3",
   },
   {
@@ -6040,7 +6040,7 @@ async function start() {
   const page = await browser.newPage();
   const context = browser.defaultBrowserContext();
   await context.overridePermissions(
-    "http://localhost:3000/?session-replay=true",
+    "http://localhost:3001/?session-replay=true",
     ["geolocation"]
   );
 
@@ -6052,7 +6052,7 @@ async function start() {
     hasTouch: true, // Enable touch events if needed
   });
 
-  await page.goto("http://localhost:3000/?session-replay=true", {
+  await page.goto("http://localhost:3001/?session-replay=true", {
     waitUntil: "networkidle0",
   });
 

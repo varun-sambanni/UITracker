@@ -1,17 +1,29 @@
-# Event tracking library for UI
+# Event tracking library for websites
 
 ## Usage
 
 The javascript file responsible for tracking the events is present in ./lib folder. After the UITracker class is imported, follow these steps to start the tracking.
 
 1. Initialize the UITracker object
+   ```js
+   const uiTracker = new UITracker();
+   ```
 2. Call config on the object to configure the options
    ```js
-   //  @param {*} dataTransmissionInterval(ms) The interval at which the data is to be transmitted
-   //  @param {*} reportOnError Boolean value, whether to send data immediately on error or not
-   config(interval, reportOnError);
+   /**
+    *  Function called to add the required configurations, throws error if argument count is not 3
+    *  @param {*} options Options : dataTransmissionInterval, reportOnError, and sessionId that need to be configured
+    */
+   uiTracker.config({
+     dataTransmissionInterval: 10000,
+     reportOnError: false,
+     sessionId: `abc_user/${generated_id}`,
+   });
    ```
 3. Call the start function on the object
+   ```js
+   uiTracker.start();
+   ```
 
 ## Ways to import
 
@@ -28,7 +40,13 @@ The UITracker.js file can be imported in the index.html file, within a script ta
     <script type="module">
       import UITracker from "./UITracker.js";
       const uiTracker = new UITracker();
-      uiTracker.config(10000, false); // Send data every 10s, do not report immediately on error
+      uiTracker.config({
+        // Send data every 10s, do not report immediately on error
+        dataTransmissionInterval: 10000,
+        reportOnError: false,
+        sessionId: `abc_user/${1232141}`,
+      });
+
       uiTracker.start();
     </script>
   </head>
@@ -50,7 +68,14 @@ import UITracker from "./lib/UITracker";
 function App() {
   useEffect(() => {
     const uiTracker = new UITracker();
-    uiTracker.config(10000, false); // Send data every 10s, do not report immediately on error
+
+    uiTracker.config({
+      // Send data every 10s, do not report immediately on error
+      dataTransmissionInterval: 10000,
+      reportOnError: false,
+      sessionId: `abc_user/${1232141}`,
+    });
+
     uiTracker.start();
   }, []);
 
