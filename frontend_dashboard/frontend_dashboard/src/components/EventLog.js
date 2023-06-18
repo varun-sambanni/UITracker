@@ -41,7 +41,6 @@ const EVENTS = {
     "MOUSEUP",
     "PAGE_CLOSE",
     "ALERT",
-    "CURSOR_MOVE",
     "FORM_SUBMISSION",
     "DOWNLOAD",
   ],

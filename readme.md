@@ -2,13 +2,19 @@
 
 ## Usage
 
-The javascript file responsible for tracking the events is present in ./lib folder. After the UITracker class is imported, follow these steps to start the tracking.
+The javascript file responsible for tracking the events is present in ./lib folder. Follow these steps to start the tracking.
 
-1. Initialize the UITracker object
+1. Import the library into the required file
+
+   ```js
+   import UITracker from "./lib/UITracker";
+   ```
+
+2. Initialize the UITracker object
    ```js
    const uiTracker = new UITracker();
    ```
-2. Call config on the object to configure the options
+3. Call config on the object to configure the options
    ```js
    /**
     *  Function called to add the required configurations, throws error if argument count is not 3
@@ -20,7 +26,7 @@ The javascript file responsible for tracking the events is present in ./lib fold
      sessionId: `abc_user/${generated_id}`,
    });
    ```
-3. Call the start function on the object
+4. Call the start function on the object
    ```js
    uiTracker.start();
    ```
@@ -84,3 +90,47 @@ function App() {
 
 export default App;
 ```
+
+## Events Tracked
+
+Following are the list of events that are tracked by the library
+
+### PAGE_EVENT
+
+1. RELOAD
+2. TAB_ACTIVE
+3. TAB_HIDDEN
+4. NAVIGATE
+5. BACK_FORWARD
+6. PRERENDER
+7. PAGE_CLOSE
+
+### USER_EVENT
+
+1. IDLE
+2. KEYDOWN
+3. KEYUP
+4. CLICK
+5. CONTEXTMENU
+6. MOUSEDOWN
+7. MOUSEUP
+8. PAGE_CLOSE
+9. ALERT
+10. FORM_SUBMISSION
+11. DOWNLOAD
+
+### RESPONSE
+
+1. FETCH
+2. XMLHttpRequest
+
+### REQUEST
+
+1. FETCH
+2. XMLHttpRequest
+
+### ERROR
+
+1. RUNTIME_CRASH
+2. UNHANDLED_PROMISE_REJECTION
+3. CONSOLE_ERROR
