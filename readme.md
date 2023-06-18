@@ -95,7 +95,7 @@ export default App;
 
 Following are the list of events that are tracked by the library.
 
-### PAGE_EVENT
+### 1. PAGE_EVENT
 
 1. RELOAD
 2. TAB_ACTIVE
@@ -105,7 +105,7 @@ Following are the list of events that are tracked by the library.
 6. PRERENDER
 7. PAGE_CLOSE
 
-### USER_EVENT
+### 2. USER_EVENT
 
 1. IDLE
 2. KEYDOWN
@@ -119,17 +119,17 @@ Following are the list of events that are tracked by the library.
 10. FORM_SUBMISSION
 11. DOWNLOAD
 
-### RESPONSE
+### 3. RESPONSE
 
 1. FETCH
 2. XMLHttpRequest
 
-### REQUEST
+### 4. REQUEST
 
 1. FETCH
 2. XMLHttpRequest
 
-### ERROR
+### 5. ERROR
 
 1. RUNTIME_CRASH
 2. UNHANDLED_PROMISE_REJECTION
