@@ -93,7 +93,7 @@ export default App;
 
 ## Events Tracked
 
-Following are the list of events that are tracked by the library
+Following are the list of events that are tracked by the library.
 
 ### PAGE_EVENT
 

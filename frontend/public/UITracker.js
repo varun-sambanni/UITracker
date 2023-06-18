@@ -103,7 +103,7 @@ class UITracker {
     console.log("isSessionReplay ", isSessionReplay);
     if (isSessionReplay === "true") return; // No recording of events is this is currently a session replay
 
-    //UITracker.getLocation(); // Starts obtaining user location and eventually stores in this.location var
+    UITracker.getLocation(); // Starts obtaining user location and eventually stores in this.location var
     if (this.dataTransmissionInterval !== -1) {
       this.startDataTransmissionHTTP();
     }
