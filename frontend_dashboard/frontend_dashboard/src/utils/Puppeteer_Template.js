@@ -146,6 +146,8 @@ const Puppeteer_Template = (URL, height, width, events, scrollBarWidth) => {
     };
 
     async function start() {
+    events = filterEvents(events);
+    
     const browser = await puppeteer.launch({
         headless: false,
         args: ["--start-maximized"],

@@ -940,6 +940,7 @@ class UITracker {
     const element = document.elementFromPoint(clientX, clientY);
 
     const currEventType =
+      event.button === 0 &&
       element &&
       element.tagName === "A" &&
       element.href &&
@@ -974,6 +975,24 @@ class UITracker {
     }
 
     self.eventsList.push(currEventObj);
+
+    if (currEventType === "DOWNLOAD" || currEventType === "FORM_SUBMISSION") {
+      // If it's a DOWNLOAD, or a FORM SUBMISSION, a click/contextmenu is still needed to be recorded
+      const clickEventObj = {
+        name: "USER_EVENT",
+        type: event.type.toUpperCase(),
+        data: {
+          X: x,
+          Y: y,
+          scrollX: scrollX,
+          scrollY: scrollY, // Imp everywhere where (x, y) is being recorded
+          HTMLElement: element !== null ? element.outerHTML : null,
+        },
+        timeStamp: UITracker.getTimeStamp(),
+      };
+
+      self.eventsList.push(clickEventObj);
+    }
 
     const eventLog = {
       URL: self.URL,
