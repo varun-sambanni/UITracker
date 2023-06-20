@@ -974,8 +974,6 @@ class UITracker {
       currEventObj.data.button = event.button;
     }
 
-    self.eventsList.push(currEventObj);
-
     if (currEventType === "DOWNLOAD" || currEventType === "FORM_SUBMISSION") {
       // If it's a DOWNLOAD, or a FORM SUBMISSION, a click/contextmenu is still needed to be recorded
       const clickEventObj = {
@@ -993,6 +991,8 @@ class UITracker {
 
       self.eventsList.push(clickEventObj);
     }
+
+    self.eventsList.push(currEventObj);
 
     const eventLog = {
       URL: self.URL,
