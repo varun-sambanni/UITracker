@@ -118,6 +118,7 @@ Following are the list of events that are tracked by the library.
 9. ALERT
 10. FORM_SUBMISSION
 11. DOWNLOAD
+12. ON_CHANGE
 
 ### 3. RESPONSE
 
