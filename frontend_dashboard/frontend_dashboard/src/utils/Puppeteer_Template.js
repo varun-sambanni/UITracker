@@ -35,8 +35,15 @@ const mouseStyleTemplate = ` \`
             border-color: rgba(0,255,0,0.9);
             }\``;
 
-const Puppeteer_Template = (URL, height, width, events, scrollBarWidth) => {
-  console.log(events);
+const Puppeteer_Template = (
+  URL,
+  height,
+  width,
+  events,
+  scrollBarWidth,
+  sessionId
+) => {
+  console.log(" sessionId ", sessionId);
   const reversedEvents = [];
   for (let i = events.length - 1; i >= 0; i--) {
     reversedEvents.push(events[i]);
@@ -147,7 +154,7 @@ const Puppeteer_Template = (URL, height, width, events, scrollBarWidth) => {
 
     async function start() {
     events = filterEvents(events);
-    
+
     const browser = await puppeteer.launch({
         headless: false,
         args: ["--start-maximized"],
@@ -169,6 +176,39 @@ const Puppeteer_Template = (URL, height, width, events, scrollBarWidth) => {
     });
 
     await page.goto("${URL}?session-replay=true", { waitUntil: "networkidle0" });
+
+    await page.evaluate(() => {
+    const pre = document.createElement("pre");
+    pre.id = "id-${sessionId}";
+    pre.style.position = "fixed";
+    pre.style.backgroundColor = "black";
+    pre.style.borderRadius = "0.4em";
+    pre.style.padding = "0.2em";
+    pre.style.color = "white";
+    pre.style.zIndex = "999";
+    pre.style.top = "0em";
+    pre.style.right = "0em";
+    pre.style.opacity = "0.5";
+    document.body.appendChild(pre);
+  });
+
+    const updateTimer = () => {
+        let seconds = 0;
+
+        setInterval(() => {
+        seconds++;
+        page.evaluate((time) => {
+            const pre = document.getElementById("id-${sessionId}");
+            pre.textContent =
+            "Playing Session : ${sessionId} \\n"  + 
+            "Elapsed : " +
+            time;
+        }, seconds);
+        }, 1000);
+    };
+
+    // Start the timer
+    updateTimer();
 
     await page.addStyleTag({
     content: "/* WebKit-based browsers (Chrome, Safari) */body::-webkit-scrollbar { width: ${scrollBarWidth}px;}::-webkit-scrollbar-track {background-color: #f1f1f1;}::-webkit-scrollbar-thumb {background-color: #888;} ::-webkit-scrollbar-thumb:hover {background-color: #555;}"

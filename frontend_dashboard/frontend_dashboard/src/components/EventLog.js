@@ -80,6 +80,7 @@ let loadedEvents = [],
   loadedRows = [];
 
 const EventLog = ({ eventLog, setIsModalOpen, isFromAModal, sessionId }) => {
+  console.log("here >", eventLog.sessionId);
   const [name, setName] = useState("");
   const [events, setEvents] = useState(eventLog.events);
   const [refreshDataGrid, setRefreshDataGrid] = useState(false);
@@ -232,7 +233,8 @@ const EventLog = ({ eventLog, setIsModalOpen, isFromAModal, sessionId }) => {
                     eventLog.height,
                     eventLog.width,
                     eventLog.events,
-                    eventLog.scrollBarWidth
+                    eventLog.scrollBarWidth,
+                    eventLog.sessionId
                   )
                 )
               }
@@ -248,7 +250,8 @@ const EventLog = ({ eventLog, setIsModalOpen, isFromAModal, sessionId }) => {
               eventLog.height,
               eventLog.width,
               eventLog.events,
-              eventLog.scrollBarWidth
+              eventLog.scrollBarWidth,
+              eventLog.sessionId
             )}
           </pre>
         </div>
