@@ -13,11 +13,29 @@ body {
   padding: 0.4em;
 }
 
+p {
+  margin: 0.6em;
+}
+
 .field {
   margin: 0 auto;
   border: 1px solid black;
   padding: 0.4em;
   min-width: 10em;
+  position: relative;
+  top: -6em;
+}
+
+.checkboxContainer {
+  border: 1px solid black;
+  margin: 0.2em;
+  width: 12em;
+  padding: 0.2em;
+}
+
+select,
+.datalist {
+  margin: 0.75em;
 }
 
 .buttonsContainer {
@@ -26,6 +44,8 @@ body {
   width: 10em;
   margin: 0.6em auto;
   border: 1px solid black;
+  position: relative;
+  top: -6em;
 }
 
 button {

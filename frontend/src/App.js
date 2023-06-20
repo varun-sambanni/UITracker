@@ -106,7 +106,27 @@ function App() {
       </div>
       <div>Session ID : {sessionId}</div>
       <hr />
+      <select>
+        <option>Option 1</option>
+        <option>Option 2</option>
+        <option>Option 3</option>
+      </select>
+      <input type="range"></input>
+      <br />
       <div className="inputContainer">
+        <div className="checkboxContainer">
+          <label for="checkbox1">Option 1</label>
+          <input type="checkbox" id="checkbox1"></input>
+          <label for="checkbox2">Option 2</label>
+          <input type="checkbox" id="checkbox2"></input>
+        </div>
+        <div className="checkboxContainer">
+          <label for="radio1">Option 1</label>
+          <input id="radio1" type="radio"></input>
+          <label for="radio2">Option 2</label>
+          <input id="radio2" type="radio"></input>
+        </div>
+
         <div className="field">
           <p>Name : </p>
           <input></input>
@@ -124,14 +144,12 @@ function App() {
           <p>Field 2 : </p>
           <textarea></textarea>
         </div>
-        <div className="field">
-          <p>Field 3 : </p>
-          <input></input>
-        </div>
-
         <div className="field" id="testElement">
-          <p>Field 4 : </p>
-          <textarea></textarea>
+          <p>Search : </p>
+          <input type="search"></input>
+        </div>
+        <div className="field">
+          <input type="number"></input>
         </div>
         <div className="buttonsContainer">
           <button type="submit" onClick={submitHandler}>

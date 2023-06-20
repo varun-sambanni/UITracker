@@ -17,6 +17,17 @@ let currEventLogsLoaded = [],
   currURLsLoaded = [], // No duplicates
   sessionIDsUnderURL = []; // No duplicates
 
+const diffFormatTimeStamp = (seconds) => {
+  var today = new Date(seconds * 1000);
+  var date =
+    today.getFullYear() + "-" + (today.getMonth() + 1) + "-" + today.getDate();
+  var time =
+    today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds();
+  var dateTime = date + " " + time;
+
+  return dateTime;
+};
+
 function Dashboard() {
   const [eventLogs, setEventLogs] = useState([]);
   const [currEventLogViewIndex, setCurrEventLogViewIndex] = useState(0);
@@ -165,7 +176,7 @@ function Dashboard() {
                 <div className="eventLogDetailRow">
                   <div className="eventLogModalDetailsTitle">Time Stamp: </div>
                   <div className="eventLogModalDetailsValue">
-                    {eventLogs[0].timeStamp}
+                    {diffFormatTimeStamp(eventLogs[0].timeStamp)}
                   </div>
                 </div>
                 <div className="eventLogDetailRow">

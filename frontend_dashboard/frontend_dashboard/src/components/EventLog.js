@@ -6,6 +6,7 @@ import {
   InputLabel,
   FormControl,
   Modal,
+  Checkbox,
 } from "@mui/material";
 import { DataGrid } from "@mui/x-data-grid";
 import AutoSearch from "./AutoSearch";
@@ -43,6 +44,7 @@ const EVENTS = {
     "ALERT",
     "FORM_SUBMISSION",
     "DOWNLOAD",
+    "ON_CHANGE",
   ],
   RESPONSE: ["FETCH", "XMLHttpRequest"],
   REQUEST: ["FETCH", "XMLHttpRequest"],
@@ -63,6 +65,17 @@ const style = {
   overflow: "auto",
 };
 
+const diffFormatTimeStamp = (seconds) => {
+  var today = new Date(seconds * 1000);
+  var date =
+    today.getFullYear() + "-" + (today.getMonth() + 1) + "-" + today.getDate();
+  var time =
+    today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds();
+  var dateTime = date + " " + time;
+
+  return dateTime;
+};
+
 let loadedEvents = [],
   loadedRows = [];
 
@@ -75,6 +88,7 @@ const EventLog = ({ eventLog, setIsModalOpen, isFromAModal, sessionId }) => {
   const [isViewModalOpen, setIsViewModalOpen] = useState(false);
   const [currDataIndex, setCurrDataIndex] = useState(0);
   const [scriptModalOpen, setScriptModalOpen] = useState(false);
+  const [timeInSeconds, setTimeInSeconds] = useState(true);
 
   const COLUMNS = [
     {
@@ -117,7 +131,9 @@ const EventLog = ({ eventLog, setIsModalOpen, isFromAModal, sessionId }) => {
         eventNo: i + 1,
         name: loadedEvents[i].name,
         type: loadedEvents[i].type,
-        timeStamp: loadedEvents[i].timeStamp,
+        timeStamp: timeInSeconds
+          ? loadedEvents[i].timeStamp
+          : diffFormatTimeStamp(loadedEvents[i].timeStamp),
         data: loadedEvents[i].data && (
           <div>
             <button
@@ -141,6 +157,11 @@ const EventLog = ({ eventLog, setIsModalOpen, isFromAModal, sessionId }) => {
   useEffect(() => {
     setRefreshDataGrid(!refreshDataGrid);
   }, [sessionId]);
+
+  const timeStampFormatChangeHandler = () => {
+    setRefreshDataGrid(!refreshDataGrid);
+    setTimeInSeconds(!timeInSeconds);
+  };
 
   const nameChangeHandler = (value) => {
     let tempEvents = [],
@@ -293,6 +314,11 @@ const EventLog = ({ eventLog, setIsModalOpen, isFromAModal, sessionId }) => {
       {eventLog !== undefined && (
         <div className="modalDataContainer containerCard">
           <div className="tableName">EVENTS</div>
+          Time (HH:MM:SS)
+          <Checkbox
+            value={timeInSeconds}
+            onChange={timeStampFormatChangeHandler}
+          ></Checkbox>
           <div className="eventsFilterContainer">
             <button
               className="generateTestButton"

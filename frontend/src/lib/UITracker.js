@@ -32,6 +32,8 @@ class UITracker {
     this.isSocketConnected = false;
     this.oldX = -1;
     this.oldY = -1;
+    this.oldScrollX = -1;
+    this.oldScrollY = -1;
     this.mouseCoordRecorder = 100000; // The interval at which cursor coordinates are recorded
     this.idleTimeDectection = 1000; // The interval at which idle event is recorded
     this.dragStartX = -1;
@@ -62,6 +64,24 @@ class UITracker {
     console.log(htmlElement.offsetWidth, " ", htmlElement.offsetHeight);
 
     console.log("browser ", navigator.userAgent);
+
+    window.onmousemove = () => {
+      // console.log(this.oldX, " ", this.oldY);
+      // console.log(this.oldScrollX, " ", this.oldScrollY);
+      // console.log(
+      //   document.elementFromPoint(
+      //     this.oldX - this.oldScrollX,
+      //     this.oldY - this.oldScrollY
+      //   )
+      // );
+    };
+
+    // console.log("here -> ", document.elementFromPoint(195, 681 - 296));
+    // document.elementFromPoint(195, 681 - 296).value = "Option 2";
+    // document
+    //   .elementFromPoint(195, 681 - 296)
+    //   .dispatchEvent(new Event("change"));
+    //document.elementFromPoint(202, 608 - 296).onchange();
   }
 
   /**
@@ -116,6 +136,7 @@ class UITracker {
     this.addKeyEventListeners();
     this.recordHTTPRequests();
     this.recordConsoleErrors();
+    this.recordOnChangeEvents();
     this.endSession();
   }
 
@@ -322,6 +343,63 @@ class UITracker {
   }
 
   /**
+   *  Records onchange events for select fields
+   */
+  recordOnChangeEvents = () => {
+    window.onchange = (e) => {
+      const currEventObj = {
+        name: "USER_EVENT",
+        type: "ON_CHANGE",
+        data: {
+          X: this.oldX,
+          Y: this.oldY,
+          scrollX: this.oldScrollX,
+          scrollY: this.oldScrollY,
+          HTMLElement:
+            document.elementFromPoint(
+              this.oldX - this.oldScrollX,
+              this.oldY - this.oldScrollY
+            ) !== null
+              ? document.elementFromPoint(
+                  this.oldX - this.oldScrollX,
+                  this.oldY - this.oldScrollY
+                ).outerHTML
+              : null,
+        },
+        timeStamp: UITracker.getTimeStamp(),
+      };
+
+      if (e.target.nodeName === "SELECT") {
+        console.log(e.target.value);
+        currEventObj.data.value = e.target.value;
+      } else if (
+        e.target.nodeName === "INPUT" &&
+        (e.target.type === "checkbox" || e.target.type === "radio")
+      ) {
+        console.log(e.target.checked);
+        currEventObj.data.checked = e.target.checked;
+      } else {
+        return;
+      }
+
+      self.eventsList.push(currEventObj);
+
+      const eventLog = {
+        URL: self.URL,
+        location: self.location,
+        sessionId: self.sessionId,
+        events: self.eventsList,
+        timeStamp: UITracker.getTimeStamp(),
+        height: window.innerHeight,
+        width: window.innerWidth,
+        scrollBarWidth: this.scrollBarWidth,
+      };
+      self.dataTransmissionInterval === -1 && UITracker.postData();
+      console.log(eventLog);
+    };
+  };
+
+  /**
    *  Util function to deal with circular objects
    */
   replacerFunc = () => {
@@ -378,8 +456,14 @@ class UITracker {
           scrollX: scrollX,
           scrollY: scrollY,
           HTMLElement:
-            document.elementFromPoint(this.oldX, this.oldY) !== null
-              ? document.elementFromPoint(this.oldX, this.oldY).outerHTML
+            document.elementFromPoint(
+              this.oldX - this.oldScrollX,
+              this.oldY - this.oldScrollY
+            ) !== null
+              ? document.elementFromPoint(
+                  this.oldX - this.oldScrollX,
+                  this.oldY - this.oldScrollY
+                ).outerHTML
               : null,
         },
         timeStamp: UITracker.getTimeStamp(),
@@ -637,8 +721,14 @@ class UITracker {
           X: this.oldX,
           Y: this.oldY,
           HTMLElement:
-            document.elementFromPoint(this.oldX, this.oldY) !== null
-              ? document.elementFromPoint(this.oldX, this.oldY).outerHTML
+            document.elementFromPoint(
+              this.oldX - this.oldScrollX,
+              this.oldY - this.oldScrollY
+            ) !== null
+              ? document.elementFromPoint(
+                  this.oldX - this.oldScrollX,
+                  this.oldY - this.oldScrollY
+                ).outerHTML
               : null,
         },
         timeStamp: UITracker.getTimeStamp(),
@@ -687,8 +777,14 @@ class UITracker {
         Y: this.oldY,
         key: event.key,
         HTMLElement:
-          document.elementFromPoint(this.oldX, this.oldY) !== null
-            ? document.elementFromPoint(this.oldX, this.oldY).outerHTML
+          document.elementFromPoint(
+            this.oldX - this.oldScrollX,
+            this.oldY - this.oldScrollY
+          ) !== null
+            ? document.elementFromPoint(
+                this.oldX - this.oldScrollX,
+                this.oldY - this.oldScrollY
+              ).outerHTML
             : null,
       },
       timeStamp: UITracker.getTimeStamp(),
@@ -719,6 +815,8 @@ class UITracker {
     const y = event.pageY;
     this.oldX = x;
     this.oldY = y;
+    this.oldScrollX = document.documentElement.scrollLeft;
+    this.oldScrollY = document.documentElement.scrollTop;
   }
 
   /**
@@ -740,8 +838,14 @@ class UITracker {
         scrollX: document.documentElement.scrollLeft,
         scrollY: document.documentElement.scrollTop,
         HTMLElement:
-          document.elementFromPoint(event.clientX, event.clientY) !== null
-            ? document.elementFromPoint(event.clientX, event.clientY).outerHTML
+          document.elementFromPoint(
+            this.oldX - this.oldScrollX,
+            this.oldY - this.oldScrollY
+          ) !== null
+            ? document.elementFromPoint(
+                this.oldX - this.oldScrollX,
+                this.oldY - this.oldScrollY
+              ).outerHTML
             : null,
       },
       timeStamp: UITracker.getTimeStamp(),
@@ -783,8 +887,24 @@ class UITracker {
         scrollX: document.documentElement.scrollLeft,
         scrollY: document.documentElement.scrollTop,
         HTMLElement:
-          document.elementFromPoint(event.clientX, event.clientY) !== null
-            ? document.elementFromPoint(event.clientX, event.clientY).outerHTML
+          document.elementFromPoint(
+            this.oldX - this.oldScrollX,
+            this.oldY - this.oldScrollY
+          ) !== null
+            ? document.elementFromPoint(
+                this.oldX - this.oldScrollX,
+                this.oldY - this.oldScrollY
+              ).outerHTML
+            : null,
+        HTMLElement:
+          document.elementFromPoint(
+            this.oldX - this.oldScrollX,
+            this.oldY - this.oldScrollY
+          ) !== null
+            ? document.elementFromPoint(
+                this.oldX - this.oldScrollX,
+                this.oldY - this.oldScrollY
+              ).outerHTML
             : null,
       },
       timeStamp: UITracker.getTimeStamp(),
