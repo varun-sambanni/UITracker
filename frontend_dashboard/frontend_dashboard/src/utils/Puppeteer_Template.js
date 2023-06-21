@@ -181,6 +181,7 @@ const Puppeteer_Template = (
     const pre = document.createElement("pre");
     pre.id = "id-${sessionId}";
     pre.style.fontSize = "0.75rem";
+    pre.style.pointerEvents = "none";
     pre.style.position = "fixed";
     pre.style.backgroundColor = "black";
     pre.style.borderRadius = "0.2em";

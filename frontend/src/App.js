@@ -107,6 +107,13 @@ function App() {
 
     uiTracker.start();
     setSessionId(sessionStorage.getItem("session-id"));
+
+    /* fetch("http://localhost:5000/")
+      .then((res) => res.json())
+      .then((data) => {
+        console.log("GET REQ ", data);
+      });
+      */
   }, []);
 
   return (
