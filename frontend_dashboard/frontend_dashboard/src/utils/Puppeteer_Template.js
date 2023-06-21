@@ -109,7 +109,7 @@ const Puppeteer_Template = (
         if (events[j].name === "USER_EVENT") {
         if (events[j].type === "CLICK") {
             return true;
-        } else if (events[j].type === "MOUSEUP") {
+        } else if (events[j].type === "MOUSEUP" || events[j].type === "KEYDOWN") {
             return false;
         }
         }
@@ -200,7 +200,7 @@ const Puppeteer_Template = (
         page.evaluate((time) => {
             const pre = document.getElementById("id-${sessionId}");
             pre.textContent =
-            "Playing Session : ${sessionId} \\n"  + 
+            "Session : ${sessionId} \\n"  + 
             "Elapsed : " +
             time;
         }, seconds);
@@ -215,7 +215,7 @@ const Puppeteer_Template = (
     });
 
     let prevTimeStamp = events[0].timeStamp;
-
+    let lastClickX, lastClickY, lastClickScrollX, lastClickScrollY;
     for (let event of events) {
         try {
             if (event.name === "USER_EVENT") {
@@ -265,7 +265,10 @@ const Puppeteer_Template = (
                     options.button = "middle";
                     }
                     //await page.mouse.up();
-
+                    lastClickX = X;
+                    lastClickY = Y;
+                    lastClickScrollX = scrollX;
+                    lastClickScrollY = scrollY;
                     await page.mouse.click(X - scrollX, Y - scrollY);
                     break;
                 case "IDLE":
@@ -338,29 +341,35 @@ const Puppeteer_Template = (
                     break;
                 case "ON_CHANGE":
                     await page.evaluate(
-                    async (scrollX, scrollY, X, Y, value, checked, htmlElement) => {
+                    async (
+                        lastClickScrollX,
+                        lastClickScrollY,
+                        lastClickX,
+                        lastClickY,
+                        value,
+                        checked,
+                        htmlElement
+                    ) => {
                         await new Promise((resolve) => {
-                        window.scrollTo(scrollX, scrollY);
+                        window.scrollTo(lastClickScrollX, lastClickScrollY);
+                        document.elementFromPoint(
+                            lastClickX - lastClickScrollX,
+                            lastClickY - lastClickScrollY
+                        ).value = value;
 
-                        if (htmlElement.includes("<select")) {
-                            document.elementFromPoint(X - scrollX, Y - scrollY).value =
-                            value;
-                        } else {
-                            document.elementFromPoint(
-                            X - scrollX,
-                            Y - scrollY
-                            ).checked = checked;
-                        }
+                         document.elementFromPoint(X - scrollX, Y - scrollY).checked =
+                           checked;
+
                         document.document
                             .elementFromPoint(X - scrollX, Y - scrollY)
                             .dispatchEvent(new Event("change"));
                         resolve();
                         });
                     },
-                    scrollX,
-                    scrollY,
-                    X,
-                    Y,
+                    lastClickScrollX,
+                    lastClickScrollY,
+                    lastClickX,
+                    lastClickY,
                     value,
                     checked,
                     htmlElement

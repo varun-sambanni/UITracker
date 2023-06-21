@@ -113,18 +113,22 @@ function App() {
       </select>
       <input type="range"></input>
       <br />
+      <div className="dateTimeContainer">
+        <input type="date"></input>
+        <input type="time"></input>
+      </div>
       <div className="inputContainer">
         <div className="checkboxContainer">
-          <label for="checkbox1">Option 1</label>
+          <label htmlFor="checkbox1">Option 1</label>
           <input type="checkbox" id="checkbox1"></input>
-          <label for="checkbox2">Option 2</label>
+          <label htmlFor="checkbox2">Option 2</label>
           <input type="checkbox" id="checkbox2"></input>
         </div>
         <div className="checkboxContainer">
-          <label for="radio1">Option 1</label>
-          <input id="radio1" type="radio"></input>
-          <label for="radio2">Option 2</label>
-          <input id="radio2" type="radio"></input>
+          <label htmlFor="radio1">Option 1</label>
+          <input id="radio1" type="radio" name="radio"></input>
+          <label htmlFor="radio2">Option 2</label>
+          <input id="radio2" type="radio" name="radio"></input>
         </div>
 
         <div className="field">

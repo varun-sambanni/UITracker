@@ -48,6 +48,16 @@ select,
   top: -6em;
 }
 
+.scrollXContainer {
+  display: flex;
+  overflow-x: auto;
+  border: 1px solid black;
+}
+
+.dateTimeContainer {
+  margin: 0.75em;
+}
+
 button {
   margin: 0.2em;
   cursor: pointer;

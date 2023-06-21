@@ -343,7 +343,7 @@ class UITracker {
   }
 
   /**
-   *  Records onchange events for select fields
+   *  Records onchange events for select, and input(types = radio, checkboxes, date, and time)
    */
   recordOnChangeEvents = () => {
     window.onchange = (e) => {
@@ -369,33 +369,48 @@ class UITracker {
         timeStamp: UITracker.getTimeStamp(),
       };
 
-      if (e.target.nodeName === "SELECT") {
-        console.log(e.target.value);
+      if (
+        e.target.nodeName === "SELECT" ||
+        (e.target.nodeName === "INPUT" &&
+          (e.target.type === "date" || e.target.type === "time"))
+      ) {
+        console.log(currEventObj.data.value);
+        self.eventsList.push(currEventObj);
+
+        const eventLog = {
+          URL: self.URL,
+          location: self.location,
+          sessionId: self.sessionId,
+          events: self.eventsList,
+          timeStamp: UITracker.getTimeStamp(),
+          height: window.innerHeight,
+          width: window.innerWidth,
+          scrollBarWidth: this.scrollBarWidth,
+        };
+        self.dataTransmissionInterval === -1 && UITracker.postData();
+        console.log(eventLog);
         currEventObj.data.value = e.target.value;
       } else if (
         e.target.nodeName === "INPUT" &&
         (e.target.type === "checkbox" || e.target.type === "radio")
       ) {
-        console.log(e.target.checked);
+        console.log(currEventObj.data.value);
+        self.eventsList.push(currEventObj);
+
+        const eventLog = {
+          URL: self.URL,
+          location: self.location,
+          sessionId: self.sessionId,
+          events: self.eventsList,
+          timeStamp: UITracker.getTimeStamp(),
+          height: window.innerHeight,
+          width: window.innerWidth,
+          scrollBarWidth: this.scrollBarWidth,
+        };
+        self.dataTransmissionInterval === -1 && UITracker.postData();
+        console.log(eventLog);
         currEventObj.data.checked = e.target.checked;
-      } else {
-        return;
       }
-
-      self.eventsList.push(currEventObj);
-
-      const eventLog = {
-        URL: self.URL,
-        location: self.location,
-        sessionId: self.sessionId,
-        events: self.eventsList,
-        timeStamp: UITracker.getTimeStamp(),
-        height: window.innerHeight,
-        width: window.innerWidth,
-        scrollBarWidth: this.scrollBarWidth,
-      };
-      self.dataTransmissionInterval === -1 && UITracker.postData();
-      console.log(eventLog);
     };
   };
 
