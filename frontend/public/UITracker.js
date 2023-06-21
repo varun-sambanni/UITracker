@@ -48,10 +48,21 @@ class UITracker {
     this.reportOnError = false;
     this.socketInterval = null;
     this.scrollBarWidth = getScrollbarWidth();
-    this.postDataEndPoint = "http://localhost:5000/postData";
-
+    this.postDataEndPoint = "https://trax.dev-dnaspaces.io/postData";
     this.ignoreNextClick = false;
-
+    // setInterval(() => {
+    // const prevSessionTimeStamp = localStorage.setItem(
+    //   "prev-session",
+    //   Date.now() / 1000
+    // ); // If this value is older than say 5s, then the current session is a new session
+    // if (
+    //   localStorage.getItem("session-id") === null ||
+    //   prevSessionTimeStamp === null ||
+    //   Number(prevSessionTimeStamp) - Date.now() / 1000 >= 5
+    // ) {
+    //   localStorage.setItem("session-id", UITracker.getUID());
+    //   }
+    // }, 5000);
     console.log("h ", window.innerHeight);
     console.log("w ", window.innerWidth);
     console.log("screen height ", window.screen.height);
@@ -59,10 +70,8 @@ class UITracker {
     console.log("screen avail height ", window.screen.availHeight);
     console.log("screen avail width ", window.screen.availWidth);
     console.log("scroll bar width ", this.scrollBarWidth);
-
     const htmlElement = document.querySelector("html");
     console.log(htmlElement.offsetWidth, " ", htmlElement.offsetHeight);
-
     console.log("browser ", navigator.userAgent);
 
     window.onmousemove = () => {
@@ -84,6 +93,12 @@ class UITracker {
     //document.elementFromPoint(202, 608 - 296).onchange();
   }
 
+  static updateSessionTimeStampInLocalStorage() {
+    setInterval(() => {
+      localStorage.setItem("prev-session", Date.now() / 1000);
+    }, 5000);
+  }
+
   /**
    *  Function called to add the required configurations, throws error if argument count is not 3
    *  @param {*} options Options : dataTransmissionInterval, reportOnError, and sessionId that need to be configured
@@ -103,9 +118,30 @@ class UITracker {
       throw new Error("Session ID must be provided");
     }
 
+    const prevSessionTimeStamp = localStorage.getItem("prev-session"); // If this value is older than say 5s, then the current session is a new session
+
+    if (
+      localStorage.getItem("session-id") === null ||
+      prevSessionTimeStamp === null ||
+      Date.now() / 1000 - Number(prevSessionTimeStamp) >= 5
+    ) {
+      if (
+        localStorage.getItem("eventLog") ||
+        localStorage.getItem("eventLog") === null
+      ) {
+        localStorage.removeItem("eventLogOld");
+      }
+
+      localStorage.setItem("session-id", sessionId); // Accept this session id
+    }
+
+    localStorage.setItem("prev-session", Date.now() / 1000);
+
+    UITracker.updateSessionTimeStampInLocalStorage(); // But update session time stamp regularly (every 5s)
+
     this.dataTransmissionInterval = dataTransmissionInterval;
     this.reportOnError = reportOnError;
-    sessionStorage.setItem("session-id", sessionId);
+    sessionStorage.setItem("session-id", localStorage.getItem("session-id"));
     this.sessionId = sessionId;
 
     if (dataTransmissionInterval === null) {
@@ -118,6 +154,30 @@ class UITracker {
    *  Called from App.js
    */
   start() {
+    // Restore old eventLog's variables
+    try {
+      if (
+        localStorage.getItem("eventLogOld") &&
+        Object.keys(JSON.parse(localStorage.getItem("eventLogOld"))).length >
+          0 &&
+        localStorage.getItem("prev-session") !== null &&
+        localStorage.getItem("eventLogOld") !== null &&
+        Date.now() / 1000 - Number(localStorage.getItem("prev-session")) <= 5
+      ) {
+        console.log("Restoring ");
+        const oldEventLog = JSON.parse(localStorage.getItem("eventLogOld"));
+        self.height = oldEventLog.height;
+        self.width = oldEventLog.width;
+        self.scrollBarWidth = oldEventLog.scrollBarWidth;
+        self.URL = oldEventLog.URL;
+        self.location = oldEventLog.location;
+        self.sessionId = oldEventLog.sessionId;
+        self.eventsList = oldEventLog.events;
+        self.userAgent = oldEventLog.userAgent;
+      }
+    } catch (e) {
+      console.log("Exception restoring oldEventLog ", e);
+    }
     const url = new URL(this.URL);
     const isSessionReplay = url.searchParams.get("session-replay");
     console.log("isSessionReplay ", isSessionReplay);
@@ -137,7 +197,7 @@ class UITracker {
     this.recordHTTPRequests();
     this.recordConsoleErrors();
     this.recordOnChangeEvents();
-    this.endSession();
+    //this.endSession();
   }
 
   /**
@@ -145,6 +205,7 @@ class UITracker {
    */
   sendLastLog() {
     window.addEventListener("beforeunload", () => {
+      console.log("ok !!!");
       UITracker.postData();
     });
   }
@@ -153,7 +214,27 @@ class UITracker {
    *  Util function to post data to backend API endpoint
    */
   static postData() {
-    fetch("http://localhost:5000/postData", {
+    localStorage.setItem(
+      "eventLogOld",
+      JSON.stringify(
+        {
+          height: window.innerHeight,
+          width: window.innerWidth,
+          scrollBarWidth: self.scrollBarWidth,
+          URL: self.URL,
+          location: self.location,
+          sessionId: self.sessionId,
+          events: self.eventsList,
+          timeStamp: UITracker.getTimeStamp(),
+          userAgent: navigator.userAgent,
+        },
+        self.replacerFunc()
+      )
+    );
+
+    // console.log("Setting ", localStorage.getItem("eventLogOld"));
+
+    fetch("https://trax.dev-dnaspaces.io/postData", {
       method: "POST",
       headers: {
         Accept: "application/json",

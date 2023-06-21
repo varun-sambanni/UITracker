@@ -228,6 +228,12 @@ iframe {
   overflow-x: auto;
 }
 
+.loadingContainer {
+  font-style: italic;
+  min-height: 1.5em;
+  font-size: 0.8rem;
+}
+
 .generateTestButton {
   margin: 2em 0em;
 }

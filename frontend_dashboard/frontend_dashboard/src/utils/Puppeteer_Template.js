@@ -177,40 +177,40 @@ const Puppeteer_Template = (
 
     await page.goto("${URL}?session-replay=true", { waitUntil: "networkidle0" });
 
-    await page.evaluate(() => {
-    const pre = document.createElement("pre");
-    pre.id = "id-${sessionId}";
-    pre.style.fontSize = "0.75rem";
-    pre.style.pointerEvents = "none";
-    pre.style.position = "fixed";
-    pre.style.backgroundColor = "black";
-    pre.style.borderRadius = "0.2em";
-    pre.style.padding = "0.2em";
-    pre.style.color = "white";
-    pre.style.zIndex = "999";
-    pre.style.top = "0em";
-    pre.style.right = "0em";
-    pre.style.opacity = "0.5";
-    document.body.appendChild(pre);
-  });
+//     await page.evaluate(() => {
+//     const pre = document.createElement("pre");
+//     pre.id = "id-${sessionId}";
+//     pre.style.fontSize = "0.75rem";
+//     pre.style.pointerEvents = "none";
+//     pre.style.position = "fixed";
+//     pre.style.backgroundColor = "black";
+//     pre.style.borderRadius = "0.2em";
+//     pre.style.padding = "0.2em";
+//     pre.style.color = "white";
+//     pre.style.zIndex = "999";
+//     pre.style.top = "0em";
+//     pre.style.right = "0em";
+//     pre.style.opacity = "0.5";
+//     document.body.appendChild(pre);
+//   });
 
-    const updateTimer = () => {
-        let seconds = 0;
+//     const updateTimer = () => {
+//         let seconds = 0;
 
-        setInterval(() => {
-        seconds++;
-        page.evaluate((time) => {
-            const pre = document.getElementById("id-${sessionId}");
-            pre.textContent =
-            "Session : ${sessionId} \\n"  + 
-            "Elapsed : " +
-            time;
-        }, seconds);
-        }, 1000);
-    };
+//         setInterval(() => {
+//         seconds++;
+//         page.evaluate((time) => {
+//             const pre = document.getElementById("id-${sessionId}");
+//             pre.textContent =
+//             "Session : ${sessionId} \\n"  + 
+//             "Elapsed : " +
+//             time;
+//         }, seconds);
+//         }, 1000);
+//     };
 
-    // Start the timer
-    updateTimer();
+//     // Start the timer
+//     updateTimer();
 
     await page.addStyleTag({
     content: "/* WebKit-based browsers (Chrome, Safari) */body::-webkit-scrollbar { width: ${scrollBarWidth}px;}::-webkit-scrollbar-track {background-color: #f1f1f1;}::-webkit-scrollbar-thumb {background-color: #888;} ::-webkit-scrollbar-thumb:hover {background-color: #555;}"
@@ -384,6 +384,16 @@ const Puppeteer_Template = (
 
                     break;
                 }
+            }
+            else if (event.name === "PAGE_EVENT") {
+                if (prevTimeStamp === event.timeStamp) continue;
+                const delay = event.timeStamp - prevTimeStamp;
+                console.log("delay ", delay);
+                await wait(delay);
+                const newURL = event.data.URL;
+                await page.goto(newURL + "?session-replay=true", {
+                waitUntil: "networkidle0",
+                });
             }
             prevTimeStamp = event.timeStamp;
             } catch (e) {
