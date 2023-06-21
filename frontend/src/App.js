@@ -10,6 +10,7 @@ import axios from "axios";
 function App() {
   const [fetchedData, setFetchedData] = useState("");
   const [sessionId, setSessionId] = useState("");
+  const [selectValue, setSelectValue] = useState("1");
 
   const submitHandler = (e) => {
     window.location.replace("/");
@@ -30,6 +31,11 @@ function App() {
   };
 
   const httpRequestHandlerFetch = () => {
+    const selectInput = document.getElementById("select-id");
+    selectInput.value = "2";
+    const event = new Event("change", { bubbles: true });
+    selectInput.dispatchEvent(event);
+
     fetch("https://jsonplaceholder.typicode.com/todos/1")
       .then((response) => response.json())
       .then((json) => setFetchedData(JSON.stringify(json)))
@@ -85,6 +91,10 @@ function App() {
     return uuid;
   };
 
+  const handleChange = (e) => {
+    setSelectValue(e.target.value);
+  };
+
   useEffect(() => {
     // Call these functions only when the page DOM has loaded
     const uiTracker = new UITracker();
@@ -102,14 +112,15 @@ function App() {
   return (
     <div className="App">
       <div className="header">
+        Value : {selectValue}
         <div>{fetchedData}</div>
       </div>
       <div>Session ID : {sessionId}</div>
       <hr />
-      <select>
-        <option>Option 1</option>
-        <option>Option 2</option>
-        <option>Option 3</option>
+      <select id="select-id" onChange={handleChange}>
+        <option value={"1"}>Option 1</option>
+        <option value={"2"}>Option 2</option>
+        <option value={"3"}>Option 3</option>
       </select>
       <input type="range"></input>
       <br />

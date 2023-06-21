@@ -319,6 +319,7 @@ const EventLog = ({ eventLog, setIsModalOpen, isFromAModal, sessionId }) => {
           <div className="tableName">EVENTS</div>
           Time (HH:MM:SS)
           <Checkbox
+            size="small"
             value={timeInSeconds}
             onChange={timeStampFormatChangeHandler}
           ></Checkbox>

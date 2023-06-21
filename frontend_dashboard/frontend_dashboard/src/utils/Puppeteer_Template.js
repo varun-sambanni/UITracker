@@ -180,9 +180,10 @@ const Puppeteer_Template = (
     await page.evaluate(() => {
     const pre = document.createElement("pre");
     pre.id = "id-${sessionId}";
+    pre.style.fontSize = "0.75rem";
     pre.style.position = "fixed";
     pre.style.backgroundColor = "black";
-    pre.style.borderRadius = "0.4em";
+    pre.style.borderRadius = "0.2em";
     pre.style.padding = "0.2em";
     pre.style.color = "white";
     pre.style.zIndex = "999";
@@ -357,14 +358,19 @@ const Puppeteer_Template = (
                             lastClickY - lastClickScrollY
                         ).value = value;
 
-                         document.elementFromPoint(X - scrollX, Y - scrollY).checked =
-                           checked;
+                        document.elementFromPoint(
+                            lastClickX - lastClickScrollX,
+                            lastClickY - lastClickScrollY
+                        ).checked = checked;
 
-                        document.document
-                            .elementFromPoint(X - scrollX, Y - scrollY)
-                            .dispatchEvent(new Event("change"));
+                        document
+                            .elementFromPoint(
+                            lastClickX - lastClickScrollX,
+                            lastClickY - lastClickScrollY
+                            )
+                            .dispatchEvent(new Event("change", { bubbles: true }));
                         resolve();
-                        });
+                });
                     },
                     lastClickScrollX,
                     lastClickScrollY,
