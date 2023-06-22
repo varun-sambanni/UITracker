@@ -1,771 +1,393 @@
-const puppeteer = require("puppeteer");
-const { PuppeteerScreenRecorder } = require("puppeteer-screen-recorder");
+ 
+    const puppeteer = require("puppeteer");
+  
+    async function installMouseHelper(page) {
 
-async function installMouseHelper(page) {
-  await page.evaluateOnNewDocument(() => {
-    // Install mouse helper only for top-level frame.
-    if (window !== window.parent) return;
-    window.addEventListener(
-      "DOMContentLoaded",
-      () => {
-        const box = document.createElement("puppeteer-mouse-pointer");
-        const styleElement = document.createElement("style");
-        styleElement.innerHTML = `
-        puppeteer-mouse-pointer {
-          pointer-events: none;
-          position: absolute;
-          top: 0;
-          z-index: 10000;
-          left: 0;
-          width: 20px;
-          height: 20px;
-          background: rgba(0,0,0,.4);
-          border: 1px solid white;
-          border-radius: 10px;
-          margin: -10px 0 0 -10px;
-          padding: 0;
-          transition: background .2s, border-radius .2s, border-color .2s;
-        }
-        puppeteer-mouse-pointer.button-1 {
-          transition: none;
-          background: rgba(0,0,0,0.9);
-        }
-        puppeteer-mouse-pointer.button-2 {
-          transition: none;
-          border-color: rgba(0,0,255,0.9);
-        }
-        puppeteer-mouse-pointer.button-3 {
-          transition: none;
-          border-radius: 4px;
-        }
-        puppeteer-mouse-pointer.button-4 {
-          transition: none;
-          border-color: rgba(255,0,0,0.9);
-        }
-        puppeteer-mouse-pointer.button-5 {
-          transition: none;
-          border-color: rgba(0,255,0,0.9);
-        }
-      `;
-        document.head.appendChild(styleElement);
-        document.body.appendChild(box);
-        document.addEventListener(
-          "mousemove",
-          (event) => {
-            box.style.left = event.pageX + "px";
-            box.style.top = event.pageY + "px";
-            updateButtons(event.buttons);
-          },
-          true
+    await page.evaluateOnNewDocument(() => {
+        // Install mouse helper only for top-level frame.
+        if (window !== window.parent) return;
+        window.addEventListener(
+        "DOMContentLoaded",
+        () => {
+            const box = document.createElement("puppeteer-mouse-pointer");
+            const styleElement = document.createElement("style");
+            styleElement.innerHTML =  `
+            puppeteer-mouse-pointer {
+            pointer-events: none;
+            position: absolute;
+            top: 0;
+            z-index: 10000;
+            left: 0;
+            width: 20px;
+            height: 20px;
+            background: rgba(0,0,0,.4);
+            border: 1px solid white;
+            border-radius: 10px;
+            margin: -10px 0 0 -10px;
+            padding: 0;
+            transition: background .2s, border-radius .2s, border-color .2s;
+            }
+            puppeteer-mouse-pointer.button-1 {
+            transition: none;
+            background: rgba(0,0,0,0.9);
+            }
+            puppeteer-mouse-pointer.button-2 {
+            transition: none;
+            border-color: rgba(0,0,255,0.9);
+            }
+            puppeteer-mouse-pointer.button-3 {
+            transition: none;
+            border-radius: 4px;
+            }
+            puppeteer-mouse-pointer.button-4 {
+            transition: none;
+            border-color: rgba(255,0,0,0.9);
+            }
+            puppeteer-mouse-pointer.button-5 {
+            transition: none;
+            border-color: rgba(0,255,0,0.9);
+            }`
+        ;
+            document.head.appendChild(styleElement);
+            document.body.appendChild(box);
+            document.addEventListener(
+            "mousemove",
+            (event) => {
+                box.style.left = event.pageX + "px";
+                box.style.top = event.pageY + "px";
+                updateButtons(event.buttons);
+            },
+            true
+            );
+            document.addEventListener(
+            "mousedown",
+            (event) => {
+                updateButtons(event.buttons);
+                box.classList.add("button-" + event.which);
+            },
+            true
+            );
+            document.addEventListener(
+            "mouseup",
+            (event) => {
+                updateButtons(event.buttons);
+                box.classList.remove("button-" + event.which);
+            },
+            true
+            );
+            function updateButtons(buttons) {
+            for (let i = 0; i < 5; i++)
+                box.classList.toggle("button-" + i, buttons & (1 << i));
+            }
+        },
+        false
         );
-        document.addEventListener(
-          "mousedown",
-          (event) => {
-            updateButtons(event.buttons);
-            box.classList.add("button-" + event.which);
-          },
-          true
-        );
-        document.addEventListener(
-          "mouseup",
-          (event) => {
-            updateButtons(event.buttons);
-            box.classList.remove("button-" + event.which);
-          },
-          true
-        );
-        function updateButtons(buttons) {
-          for (let i = 0; i < 5; i++)
-            box.classList.toggle("button-" + i, buttons & (1 << i));
-        }
-      },
-      false
-    );
-  });
-}
-
-const events = [
-  {
-    timeStamp: "2023-6-8 13:50:47",
-    name: "PAGE_EVENT",
-    type: "RELOAD",
-    data: { URL: "http://localhost:3000/", DOMLoadTime: 0.0945 },
-    _id: "64818f734188c262924008c4",
-  },
-  {
-    timeStamp: "2023-6-8 13:50:49",
-    name: "USER_EVENT",
-    type: "CLICK",
-    data: {
-      X: 287,
-      Y: 165,
-      scrollX: 0,
-      scrollY: 0,
-      HTMLElement: "<input>",
-      button: 0,
-    },
-    _id: "64818f734188c262924008c5",
-  },
-  {
-    timeStamp: "2023-6-8 13:50:49",
-    name: "USER_EVENT",
-    type: "KEYDOWN",
-    data: { X: 287, Y: 165, key: "k", HTMLElement: "<input>" },
-    _id: "64818f734188c262924008c6",
-  },
-  {
-    timeStamp: "2023-6-8 13:50:49",
-    name: "USER_EVENT",
-    type: "KEYDOWN",
-    data: { X: 287, Y: 165, key: "a", HTMLElement: "<input>" },
-    _id: "64818f734188c262924008c7",
-  },
-  {
-    timeStamp: "2023-6-8 13:50:49",
-    name: "USER_EVENT",
-    type: "KEYDOWN",
-    data: { X: 287, Y: 165, key: "s", HTMLElement: "<input>" },
-    _id: "64818f734188c262924008c8",
-  },
-  {
-    timeStamp: "2023-6-8 13:50:49",
-    name: "USER_EVENT",
-    type: "KEYDOWN",
-    data: { X: 287, Y: 165, key: "j", HTMLElement: "<input>" },
-    _id: "64818f734188c262924008c9",
-  },
-  {
-    timeStamp: "2023-6-8 13:50:49",
-    name: "USER_EVENT",
-    type: "KEYUP",
-    data: { X: 287, Y: 165, key: "k", HTMLElement: "<input>" },
-    _id: "64818f734188c262924008ca",
-  },
-  {
-    timeStamp: "2023-6-8 13:50:49",
-    name: "USER_EVENT",
-    type: "KEYDOWN",
-    data: { X: 287, Y: 165, key: "d", HTMLElement: "<input>" },
-    _id: "64818f734188c262924008cb",
-  },
-  {
-    timeStamp: "2023-6-8 13:50:49",
-    name: "USER_EVENT",
-    type: "KEYUP",
-    data: { X: 287, Y: 165, key: "a", HTMLElement: "<input>" },
-    _id: "64818f734188c262924008cc",
-  },
-  {
-    timeStamp: "2023-6-8 13:50:49",
-    name: "USER_EVENT",
-    type: "KEYUP",
-    data: { X: 287, Y: 165, key: "j", HTMLElement: "<input>" },
-    _id: "64818f734188c262924008cd",
-  },
-  {
-    timeStamp: "2023-6-8 13:50:49",
-    name: "USER_EVENT",
-    type: "KEYDOWN",
-    data: { X: 287, Y: 165, key: "k", HTMLElement: "<input>" },
-    _id: "64818f734188c262924008ce",
-  },
-  {
-    timeStamp: "2023-6-8 13:50:49",
-    name: "USER_EVENT",
-    type: "KEYUP",
-    data: { X: 287, Y: 165, key: "s", HTMLElement: "<input>" },
-    _id: "64818f734188c262924008cf",
-  },
-  {
-    timeStamp: "2023-6-8 13:50:49",
-    name: "USER_EVENT",
-    type: "KEYDOWN",
-    data: { X: 287, Y: 165, key: "j", HTMLElement: "<input>" },
-    _id: "64818f734188c262924008d0",
-  },
-  {
-    timeStamp: "2023-6-8 13:50:49",
-    name: "USER_EVENT",
-    type: "KEYUP",
-    data: { X: 287, Y: 165, key: "d", HTMLElement: "<input>" },
-    _id: "64818f734188c262924008d1",
-  },
-  {
-    timeStamp: "2023-6-8 13:50:49",
-    name: "USER_EVENT",
-    type: "KEYDOWN",
-    data: { X: 287, Y: 165, key: "s", HTMLElement: "<input>" },
-    _id: "64818f734188c262924008d2",
-  },
-  {
-    timeStamp: "2023-6-8 13:50:49",
-    name: "USER_EVENT",
-    type: "KEYDOWN",
-    data: { X: 287, Y: 165, key: "a", HTMLElement: "<input>" },
-    _id: "64818f734188c262924008d3",
-  },
-  {
-    timeStamp: "2023-6-8 13:50:49",
-    name: "USER_EVENT",
-    type: "KEYUP",
-    data: { X: 287, Y: 165, key: "k", HTMLElement: "<input>" },
-    _id: "64818f734188c262924008d4",
-  },
-  {
-    timeStamp: "2023-6-8 13:50:49",
-    name: "USER_EVENT",
-    type: "KEYUP",
-    data: { X: 287, Y: 165, key: "j", HTMLElement: "<input>" },
-    _id: "64818f734188c262924008d5",
-  },
-  {
-    timeStamp: "2023-6-8 13:50:49",
-    name: "USER_EVENT",
-    type: "KEYDOWN",
-    data: { X: 287, Y: 165, key: "d", HTMLElement: "<input>" },
-    _id: "64818f734188c262924008d6",
-  },
-  {
-    timeStamp: "2023-6-8 13:50:49",
-    name: "USER_EVENT",
-    type: "KEYUP",
-    data: { X: 287, Y: 165, key: "s", HTMLElement: "<input>" },
-    _id: "64818f734188c262924008d7",
-  },
-  {
-    timeStamp: "2023-6-8 13:50:49",
-    name: "USER_EVENT",
-    type: "KEYUP",
-    data: { X: 287, Y: 165, key: "a", HTMLElement: "<input>" },
-    _id: "64818f734188c262924008d8",
-  },
-  {
-    timeStamp: "2023-6-8 13:50:49",
-    name: "USER_EVENT",
-    type: "KEYUP",
-    data: { X: 287, Y: 165, key: "d", HTMLElement: "<input>" },
-    _id: "64818f734188c262924008d9",
-  },
-  {
-    timeStamp: "2023-6-8 13:50:50",
-    name: "USER_EVENT",
-    type: "CLICK",
-    data: {
-      X: 468,
-      Y: 341,
-      scrollX: 0,
-      scrollY: 0,
-      HTMLElement:
-        '<div class="inputContainer"><div class="field"><p>Name : </p><input></div><div class="field"><p>Password : </p><input type="password"></div><div class="field"><p>Field 1 : </p><input></div><div class="field" id="testElement"><p>Field 2 : </p><textarea></textarea></div><div class="field"><p>Field 3 : </p><input></div><div class="field" id="testElement"><p>Field 4 : </p><textarea></textarea></div><div class="buttonsContainer"><button type="submit">Submit Form</button><button>Alert </button><button>Crash</button><button>Unsuccessful Fetch</button><button>Fetch</button><button>XMLHttpRequest</button><button>Axios</button><button>console.error</button><button><a href="https://www.rapidtables.com/web/html/link/test_file.zip" download="">Download</a></button></div></div>',
-      button: 0,
-    },
-    _id: "64818f734188c262924008da",
-  },
-  {
-    timeStamp: "2023-6-8 13:50:51",
-    name: "USER_EVENT",
-    type: "IDLE",
-    data: {
-      X: 468,
-      Y: 341,
-      scrollX: 0,
-      scrollY: 0,
-      HTMLElement:
-        '<div class="inputContainer"><div class="field"><p>Name : </p><input></div><div class="field"><p>Password : </p><input type="password"></div><div class="field"><p>Field 1 : </p><input></div><div class="field" id="testElement"><p>Field 2 : </p><textarea></textarea></div><div class="field"><p>Field 3 : </p><input></div><div class="field" id="testElement"><p>Field 4 : </p><textarea></textarea></div><div class="buttonsContainer"><button type="submit">Submit Form</button><button>Alert </button><button>Crash</button><button>Unsuccessful Fetch</button><button>Fetch</button><button>XMLHttpRequest</button><button>Axios</button><button>console.error</button><button><a href="https://www.rapidtables.com/web/html/link/test_file.zip" download="">Download</a></button></div></div>',
-    },
-    _id: "64818f734188c262924008db",
-  },
-  {
-    timeStamp: "2023-6-8 13:50:53",
-    name: "REQUEST",
-    type: "XMLHttpRequest",
-    data: {
-      resource: "https://jsonplaceholder.typicode.com/todos/1",
-      method: "GET",
-      id: "ibn0qikk-pxxk-1y2j-jtm0-1evj0m63kc89",
-    },
-    _id: "64818f734188c262924008dc",
-  },
-  {
-    timeStamp: "2023-6-8 13:50:53",
-    name: "USER_EVENT",
-    type: "CLICK",
-    data: {
-      X: 222,
-      Y: 843,
-      scrollX: 0,
-      scrollY: 244.6666717529297,
-      HTMLElement: "<button>Axios</button>",
-      button: 0,
-    },
-    _id: "64818f734188c262924008dd",
-  },
-  {
-    timeStamp: "2023-6-8 13:50:53",
-    name: "RESPONSE",
-    type: "XMLHttpRequest",
-    data: {
-      resource: "https://jsonplaceholder.typicode.com/todos/1",
-      status: 200,
-      responseData:
-        '{\n  "userId": 1,\n  "id": 1,\n  "title": "delectus aut autem",\n  "completed": false\n}',
-      duration: 46,
-      id: "ibn0qikk-pxxk-1y2j-jtm0-1evj0m63kc89",
-    },
-    _id: "64818f734188c262924008de",
-  },
-  {
-    timeStamp: "2023-6-8 13:50:53",
-    name: "USER_EVENT",
-    type: "IDLE",
-    data: {
-      X: 222,
-      Y: 843,
-      scrollX: 0,
-      scrollY: 244.6666717529297,
-      HTMLElement: null,
-    },
-    _id: "64818f734188c262924008df",
-  },
-  {
-    timeStamp: "2023-6-8 13:50:57",
-    name: "USER_EVENT",
-    type: "KEYDOWN",
-    data: { X: 326, Y: 258, key: "a", HTMLElement: '<input type="password">' },
-    _id: "64818f734188c262924008e0",
-  },
-  {
-    timeStamp: "2023-6-8 13:50:57",
-    name: "USER_EVENT",
-    type: "CLICK",
-    data: {
-      X: 326,
-      Y: 258,
-      scrollX: 0,
-      scrollY: 0,
-      HTMLElement: '<input type="password">',
-      button: 0,
-    },
-    _id: "64818f734188c262924008e1",
-  },
-  {
-    timeStamp: "2023-6-8 13:50:57",
-    name: "USER_EVENT",
-    type: "KEYDOWN",
-    data: { X: 326, Y: 258, key: "s", HTMLElement: '<input type="password">' },
-    _id: "64818f734188c262924008e2",
-  },
-  {
-    timeStamp: "2023-6-8 13:50:57",
-    name: "USER_EVENT",
-    type: "KEYDOWN",
-    data: { X: 326, Y: 258, key: "d", HTMLElement: '<input type="password">' },
-    _id: "64818f734188c262924008e3",
-  },
-  {
-    timeStamp: "2023-6-8 13:50:57",
-    name: "REQUEST",
-    type: "FETCH",
-    data: {
-      resource: "http://localhost:5000/postData",
-      method: "POST",
-      id: "nu3neauh-p845-gmlc-i5bk-beemdkuuc5qq",
-    },
-    _id: "64818f734188c262924008e4",
-  },
-  {
-    timeStamp: "2023-6-8 13:50:57",
-    name: "USER_EVENT",
-    type: "KEYUP",
-    data: { X: 326, Y: 258, key: "a", HTMLElement: '<input type="password">' },
-    _id: "64818f734188c262924008e5",
-  },
-  {
-    timeStamp: "2023-6-8 13:50:57",
-    name: "RESPONSE",
-    type: "FETCH",
-    data: {
-      resource: "http://localhost:5000/postData",
-      status: 200,
-      responseData: '{"success":true}',
-      id: "nu3neauh-p845-gmlc-i5bk-beemdkuuc5qq",
-      duration: 68,
-    },
-    _id: "64818f734188c262924008e6",
-  },
-  {
-    timeStamp: "2023-6-8 13:50:57",
-    name: "USER_EVENT",
-    type: "KEYUP",
-    data: { X: 326, Y: 258, key: "d", HTMLElement: '<input type="password">' },
-    _id: "64818f734188c262924008e7",
-  },
-  {
-    timeStamp: "2023-6-8 13:50:57",
-    name: "USER_EVENT",
-    type: "KEYDOWN",
-    data: { X: 326, Y: 258, key: "a", HTMLElement: '<input type="password">' },
-    _id: "64818f734188c262924008e8",
-  },
-  {
-    timeStamp: "2023-6-8 13:50:57",
-    name: "USER_EVENT",
-    type: "KEYDOWN",
-    data: { X: 326, Y: 258, key: "d", HTMLElement: '<input type="password">' },
-    _id: "64818f734188c262924008e9",
-  },
-  {
-    timeStamp: "2023-6-8 13:50:57",
-    name: "USER_EVENT",
-    type: "KEYUP",
-    data: { X: 326, Y: 258, key: "a", HTMLElement: '<input type="password">' },
-    _id: "64818f734188c262924008ea",
-  },
-  {
-    timeStamp: "2023-6-8 13:50:57",
-    name: "USER_EVENT",
-    type: "KEYUP",
-    data: { X: 326, Y: 258, key: "s", HTMLElement: '<input type="password">' },
-    _id: "64818f734188c262924008eb",
-  },
-  {
-    timeStamp: "2023-6-8 13:50:57",
-    name: "USER_EVENT",
-    type: "KEYUP",
-    data: { X: 326, Y: 258, key: "d", HTMLElement: '<input type="password">' },
-    _id: "64818f734188c262924008ec",
-  },
-  {
-    timeStamp: "2023-6-8 13:50:59",
-    name: "USER_EVENT",
-    type: "IDLE",
-    data: {
-      X: 469,
-      Y: 291,
-      scrollX: 0,
-      scrollY: 0,
-      HTMLElement:
-        '<div class="inputContainer"><div class="field"><p>Name : </p><input></div><div class="field"><p>Password : </p><input type="password"></div><div class="field"><p>Field 1 : </p><input></div><div class="field" id="testElement"><p>Field 2 : </p><textarea></textarea></div><div class="field"><p>Field 3 : </p><input></div><div class="field" id="testElement"><p>Field 4 : </p><textarea></textarea></div><div class="buttonsContainer"><button type="submit">Submit Form</button><button>Alert </button><button>Crash</button><button>Unsuccessful Fetch</button><button>Fetch</button><button>XMLHttpRequest</button><button>Axios</button><button>console.error</button><button><a href="https://www.rapidtables.com/web/html/link/test_file.zip" download="">Download</a></button></div></div>',
-    },
-    _id: "64818f734188c262924008ed",
-  },
-  {
-    timeStamp: "2023-6-8 13:50:59",
-    name: "USER_EVENT",
-    type: "KEYDOWN",
-    data: {
-      X: 469,
-      Y: 291,
-      key: "o",
-      HTMLElement:
-        '<div class="inputContainer"><div class="field"><p>Name : </p><input></div><div class="field"><p>Password : </p><input type="password"></div><div class="field"><p>Field 1 : </p><input></div><div class="field" id="testElement"><p>Field 2 : </p><textarea></textarea></div><div class="field"><p>Field 3 : </p><input></div><div class="field" id="testElement"><p>Field 4 : </p><textarea></textarea></div><div class="buttonsContainer"><button type="submit">Submit Form</button><button>Alert </button><button>Crash</button><button>Unsuccessful Fetch</button><button>Fetch</button><button>XMLHttpRequest</button><button>Axios</button><button>console.error</button><button><a href="https://www.rapidtables.com/web/html/link/test_file.zip" download="">Download</a></button></div></div>',
-    },
-    _id: "64818f734188c262924008ee",
-  },
-  {
-    timeStamp: "2023-6-8 13:50:59",
-    name: "USER_EVENT",
-    type: "KEYDOWN",
-    data: {
-      X: 469,
-      Y: 291,
-      key: "p",
-      HTMLElement:
-        '<div class="inputContainer"><div class="field"><p>Name : </p><input></div><div class="field"><p>Password : </p><input type="password"></div><div class="field"><p>Field 1 : </p><input></div><div class="field" id="testElement"><p>Field 2 : </p><textarea></textarea></div><div class="field"><p>Field 3 : </p><input></div><div class="field" id="testElement"><p>Field 4 : </p><textarea></textarea></div><div class="buttonsContainer"><button type="submit">Submit Form</button><button>Alert </button><button>Crash</button><button>Unsuccessful Fetch</button><button>Fetch</button><button>XMLHttpRequest</button><button>Axios</button><button>console.error</button><button><a href="https://www.rapidtables.com/web/html/link/test_file.zip" download="">Download</a></button></div></div>',
-    },
-    _id: "64818f734188c262924008ef",
-  },
-  {
-    timeStamp: "2023-6-8 13:50:59",
-    name: "USER_EVENT",
-    type: "KEYUP",
-    data: {
-      X: 469,
-      Y: 291,
-      key: "p",
-      HTMLElement:
-        '<div class="inputContainer"><div class="field"><p>Name : </p><input></div><div class="field"><p>Password : </p><input type="password"></div><div class="field"><p>Field 1 : </p><input></div><div class="field" id="testElement"><p>Field 2 : </p><textarea></textarea></div><div class="field"><p>Field 3 : </p><input></div><div class="field" id="testElement"><p>Field 4 : </p><textarea></textarea></div><div class="buttonsContainer"><button type="submit">Submit Form</button><button>Alert </button><button>Crash</button><button>Unsuccessful Fetch</button><button>Fetch</button><button>XMLHttpRequest</button><button>Axios</button><button>console.error</button><button><a href="https://www.rapidtables.com/web/html/link/test_file.zip" download="">Download</a></button></div></div>',
-    },
-    _id: "64818f734188c262924008f0",
-  },
-  {
-    timeStamp: "2023-6-8 13:50:59",
-    name: "USER_EVENT",
-    type: "KEYUP",
-    data: {
-      X: 469,
-      Y: 291,
-      key: "o",
-      HTMLElement:
-        '<div class="inputContainer"><div class="field"><p>Name : </p><input></div><div class="field"><p>Password : </p><input type="password"></div><div class="field"><p>Field 1 : </p><input></div><div class="field" id="testElement"><p>Field 2 : </p><textarea></textarea></div><div class="field"><p>Field 3 : </p><input></div><div class="field" id="testElement"><p>Field 4 : </p><textarea></textarea></div><div class="buttonsContainer"><button type="submit">Submit Form</button><button>Alert </button><button>Crash</button><button>Unsuccessful Fetch</button><button>Fetch</button><button>XMLHttpRequest</button><button>Axios</button><button>console.error</button><button><a href="https://www.rapidtables.com/web/html/link/test_file.zip" download="">Download</a></button></div></div>',
-    },
-    _id: "64818f734188c262924008f1",
-  },
-  {
-    timeStamp: "2023-6-8 13:51:0",
-    name: "USER_EVENT",
-    type: "CLICK",
-    data: {
-      X: 550,
-      Y: 282,
-      scrollX: 0,
-      scrollY: 0,
-      HTMLElement:
-        '<div class="inputContainer"><div class="field"><p>Name : </p><input></div><div class="field"><p>Password : </p><input type="password"></div><div class="field"><p>Field 1 : </p><input></div><div class="field" id="testElement"><p>Field 2 : </p><textarea></textarea></div><div class="field"><p>Field 3 : </p><input></div><div class="field" id="testElement"><p>Field 4 : </p><textarea></textarea></div><div class="buttonsContainer"><button type="submit">Submit Form</button><button>Alert </button><button>Crash</button><button>Unsuccessful Fetch</button><button>Fetch</button><button>XMLHttpRequest</button><button>Axios</button><button>console.error</button><button><a href="https://www.rapidtables.com/web/html/link/test_file.zip" download="">Download</a></button></div></div>',
-      button: 0,
-    },
-    _id: "64818f734188c262924008f2",
-  },
-  {
-    timeStamp: "2023-6-8 13:51:1",
-    name: "USER_EVENT",
-    type: "IDLE",
-    data: {
-      X: 550,
-      Y: 282,
-      scrollX: 0,
-      scrollY: 0,
-      HTMLElement:
-        '<div class="inputContainer"><div class="field"><p>Name : </p><input></div><div class="field"><p>Password : </p><input type="password"></div><div class="field"><p>Field 1 : </p><input></div><div class="field" id="testElement"><p>Field 2 : </p><textarea></textarea></div><div class="field"><p>Field 3 : </p><input></div><div class="field" id="testElement"><p>Field 4 : </p><textarea></textarea></div><div class="buttonsContainer"><button type="submit">Submit Form</button><button>Alert </button><button>Crash</button><button>Unsuccessful Fetch</button><button>Fetch</button><button>XMLHttpRequest</button><button>Axios</button><button>console.error</button><button><a href="https://www.rapidtables.com/web/html/link/test_file.zip" download="">Download</a></button></div></div>',
-    },
-    _id: "64818f734188c262924008f3",
-  },
-  {
-    timeStamp: "2023-6-8 13:51:1",
-    name: "USER_EVENT",
-    type: "KEYDOWN",
-    data: {
-      X: 550,
-      Y: 282,
-      key: "Tab",
-      HTMLElement:
-        '<div class="inputContainer"><div class="field"><p>Name : </p><input></div><div class="field"><p>Password : </p><input type="password"></div><div class="field"><p>Field 1 : </p><input></div><div class="field" id="testElement"><p>Field 2 : </p><textarea></textarea></div><div class="field"><p>Field 3 : </p><input></div><div class="field" id="testElement"><p>Field 4 : </p><textarea></textarea></div><div class="buttonsContainer"><button type="submit">Submit Form</button><button>Alert </button><button>Crash</button><button>Unsuccessful Fetch</button><button>Fetch</button><button>XMLHttpRequest</button><button>Axios</button><button>console.error</button><button><a href="https://www.rapidtables.com/web/html/link/test_file.zip" download="">Download</a></button></div></div>',
-    },
-    _id: "64818f734188c262924008f4",
-  },
-  {
-    timeStamp: "2023-6-8 13:51:1",
-    name: "USER_EVENT",
-    type: "KEYUP",
-    data: {
-      X: 550,
-      Y: 282,
-      key: "Tab",
-      HTMLElement:
-        '<div class="inputContainer"><div class="field"><p>Name : </p><input></div><div class="field"><p>Password : </p><input type="password"></div><div class="field"><p>Field 1 : </p><input></div><div class="field" id="testElement"><p>Field 2 : </p><textarea></textarea></div><div class="field"><p>Field 3 : </p><input></div><div class="field" id="testElement"><p>Field 4 : </p><textarea></textarea></div><div class="buttonsContainer"><button type="submit">Submit Form</button><button>Alert </button><button>Crash</button><button>Unsuccessful Fetch</button><button>Fetch</button><button>XMLHttpRequest</button><button>Axios</button><button>console.error</button><button><a href="https://www.rapidtables.com/web/html/link/test_file.zip" download="">Download</a></button></div></div>',
-    },
-    _id: "64818f734188c262924008f5",
-  },
-  {
-    timeStamp: "2023-6-8 13:51:2",
-    name: "USER_EVENT",
-    type: "IDLE",
-    data: {
-      X: 550,
-      Y: 282,
-      scrollX: 0,
-      scrollY: 0,
-      HTMLElement:
-        '<div class="inputContainer"><div class="field"><p>Name : </p><input></div><div class="field"><p>Password : </p><input type="password"></div><div class="field"><p>Field 1 : </p><input></div><div class="field" id="testElement"><p>Field 2 : </p><textarea></textarea></div><div class="field"><p>Field 3 : </p><input></div><div class="field" id="testElement"><p>Field 4 : </p><textarea></textarea></div><div class="buttonsContainer"><button type="submit">Submit Form</button><button>Alert </button><button>Crash</button><button>Unsuccessful Fetch</button><button>Fetch</button><button>XMLHttpRequest</button><button>Axios</button><button>console.error</button><button><a href="https://www.rapidtables.com/web/html/link/test_file.zip" download="">Download</a></button></div></div>',
-    },
-    _id: "64818f734188c262924008f6",
-  },
-  {
-    timeStamp: "2023-6-8 13:51:2",
-    name: "USER_EVENT",
-    type: "KEYDOWN",
-    data: {
-      X: 550,
-      Y: 282,
-      key: "Backspace",
-      HTMLElement:
-        '<div class="inputContainer"><div class="field"><p>Name : </p><input></div><div class="field"><p>Password : </p><input type="password"></div><div class="field"><p>Field 1 : </p><input></div><div class="field" id="testElement"><p>Field 2 : </p><textarea></textarea></div><div class="field"><p>Field 3 : </p><input></div><div class="field" id="testElement"><p>Field 4 : </p><textarea></textarea></div><div class="buttonsContainer"><button type="submit">Submit Form</button><button>Alert </button><button>Crash</button><button>Unsuccessful Fetch</button><button>Fetch</button><button>XMLHttpRequest</button><button>Axios</button><button>console.error</button><button><a href="https://www.rapidtables.com/web/html/link/test_file.zip" download="">Download</a></button></div></div>',
-    },
-    _id: "64818f734188c262924008f7",
-  },
-  {
-    timeStamp: "2023-6-8 13:51:2",
-    name: "USER_EVENT",
-    type: "KEYUP",
-    data: {
-      X: 550,
-      Y: 282,
-      key: "Backspace",
-      HTMLElement:
-        '<div class="inputContainer"><div class="field"><p>Name : </p><input></div><div class="field"><p>Password : </p><input type="password"></div><div class="field"><p>Field 1 : </p><input></div><div class="field" id="testElement"><p>Field 2 : </p><textarea></textarea></div><div class="field"><p>Field 3 : </p><input></div><div class="field" id="testElement"><p>Field 4 : </p><textarea></textarea></div><div class="buttonsContainer"><button type="submit">Submit Form</button><button>Alert </button><button>Crash</button><button>Unsuccessful Fetch</button><button>Fetch</button><button>XMLHttpRequest</button><button>Axios</button><button>console.error</button><button><a href="https://www.rapidtables.com/web/html/link/test_file.zip" download="">Download</a></button></div></div>',
-    },
-    _id: "64818f734188c262924008f8",
-  },
-  {
-    timeStamp: "2023-6-8 13:51:4",
-    name: "USER_EVENT",
-    type: "IDLE",
-    data: {
-      X: 550,
-      Y: 282,
-      scrollX: 0,
-      scrollY: 0,
-      HTMLElement:
-        '<div class="inputContainer"><div class="field"><p>Name : </p><input></div><div class="field"><p>Password : </p><input type="password"></div><div class="field"><p>Field 1 : </p><input></div><div class="field" id="testElement"><p>Field 2 : </p><textarea></textarea></div><div class="field"><p>Field 3 : </p><input></div><div class="field" id="testElement"><p>Field 4 : </p><textarea></textarea></div><div class="buttonsContainer"><button type="submit">Submit Form</button><button>Alert </button><button>Crash</button><button>Unsuccessful Fetch</button><button>Fetch</button><button>XMLHttpRequest</button><button>Axios</button><button>console.error</button><button><a href="https://www.rapidtables.com/web/html/link/test_file.zip" download="">Download</a></button></div></div>',
-    },
-    _id: "64818f734188c262924008f9",
-  },
-];
-function delay(ms) {
-  return new Promise((resolve) => setTimeout(resolve, ms));
-}
-
-async function wait(seconds) {
-  const milliseconds = seconds * 1000;
-  await delay(milliseconds);
-}
-
-const timeStampToSeconds = (timeStamp) => {
-  const date = new Date(timeStamp);
-  return date.getTime() / 1000;
-};
-
-async function start() {
-  const browser = await puppeteer.launch({
-    headless: false,
-    args: ["--start-maximized"],
-    ignoreDefaultArgs: ["--enable-automation"],
-    defaultViewport: null,
-    ignoreHTTPSErrors: true,
-  });
-
-  const page = await browser.newPage();
-
-  // const recorder = new PuppeteerScreenRecorder(page);
-  // await recorder.start("./report/video/simple.mp4");
-
-  const context = browser.defaultBrowserContext();
-  await context.overridePermissions("http://localhost:3001/", ["geolocation"]);
-
-  await installMouseHelper(page);
-
-  await page.setViewport({
-    width: 616,
-    height: 681,
-    hasTouch: true, // Enable touch events if needed
-  });
-
-  await page.goto("http://localhost:3001/", { waitUntil: "networkidle0" });
-
-  let prevTimeStamp = events[0].timeStamp;
-
-  for (let event of events) {
-    if (event.name === "USER_EVENT") {
-      let scrollX = event.data.scrollX,
-        scrollY = event.data.scrollY;
-      let X = event.data.X,
-        Y = event.data.Y;
-      const delay =
-        timeStampToSeconds(event.timeStamp) - timeStampToSeconds(prevTimeStamp);
-
-      let key = "",
-        button;
-      if (event.type.includes("KEY")) {
-        key = event.data.key;
-      }
-      if (event.type.includes("CLICK")) {
-        button = event.data.button;
-      }
-
-      await wait(delay);
-
-      switch (event.type) {
-        case "CLICK":
-          await page.evaluate(
-            async (scrollX, scrollY) => {
-              await new Promise((resolve) => {
-                window.scrollTo(scrollX, scrollY);
-                resolve();
-              });
-            },
-            scrollX,
-            scrollY
-          );
-          let options = {};
-          if (button === 0) {
-            options.button = "left";
-          } else if (button === 2) {
-            options.button = "right";
-          } else {
-            options.button = "middle";
-          }
-          await page.mouse.click(X - scrollX, Y - scrollY, options);
-          break;
-        case "IDLE":
-          await page.evaluate(
-            async (scrollX, scrollY) => {
-              await new Promise((resolve) => {
-                window.scrollTo(scrollX, scrollY);
-                resolve();
-              });
-            },
-            scrollX,
-            scrollY
-          );
-
-          await page.mouse.move(X - scrollX, Y - scrollY);
-          break;
-        case "KEYDOWN":
-          await page.keyboard.down(event.data.key);
-          break;
-        case "KEYUP":
-          await page.keyboard.up(event.data.key);
-          break;
-        case "MOUSEDOWN":
-          await page.evaluate(
-            async (scrollX, scrollY) => {
-              await new Promise((resolve) => {
-                window.scrollTo(scrollX, scrollY);
-                resolve();
-              });
-            },
-            scrollX,
-            scrollY
-          );
-
-          await page.mouse.down(X - scrollX, Y - scrollY);
-          break;
-        case "MOUSEUP":
-          await page.evaluate(
-            async (scrollX, scrollY) => {
-              await new Promise((resolve) => {
-                window.scrollTo(scrollX, scrollY);
-                resolve();
-              });
-            },
-            scrollX,
-            scrollY
-          );
-
-          await page.mouse.up(X - scrollX, Y - scrollY);
-          break;
-        case "CONTEXTMENU":
-          await page.evaluate(
-            async (scrollX, scrollY) => {
-              await new Promise((resolve) => {
-                window.scrollTo(scrollX, scrollY);
-                resolve();
-              });
-            },
-            scrollX,
-            scrollY
-          );
-
-          await page.mouse.click(X - scrollX, Y - scrollY, { button: "right" });
-          break;
-      }
+    });
     }
-    prevTimeStamp = event.timeStamp;
-  }
 
-  await new Promise((resolve) => setTimeout(resolve, 200000));
-  // await recorder.stop();
-  await browser.close();
-}
+    let events = [{"timeStamp":1687419747.991,"name":"PAGE_EVENT","type":"NAVIGATE","data":{"URL":"http://localhost:3001/","DOMLoadTime":0.4807999999970198},"_id":"6493fb7052172c7c1bbac8b4"},{"timeStamp":1687419748.717,"name":"USER_EVENT","type":"MOUSEDOWN","data":{"X":619,"Y":213,"scrollX":0,"scrollY":0,"HTMLElement":"<div class=\"field\"><p>Name : </p><input></div>"},"_id":"6493fb7052172c7c1bbac8b5"},{"timeStamp":1687419748.938,"name":"USER_EVENT","type":"CLICK","data":{"X":619,"Y":213,"scrollX":0,"scrollY":0,"HTMLElement":"<div class=\"field\"><p>Name : </p><input></div>","button":0},"_id":"6493fb7052172c7c1bbac8b6"},{"timeStamp":1687419749.285,"name":"USER_EVENT","type":"MOUSEDOWN","data":{"X":624,"Y":225,"scrollX":0,"scrollY":0,"HTMLElement":"<input>"},"_id":"6493fb7052172c7c1bbac8b7"},{"timeStamp":1687419749.516,"name":"USER_EVENT","type":"CLICK","data":{"X":624,"Y":225,"scrollX":0,"scrollY":0,"HTMLElement":"<input>","button":0},"_id":"6493fb7052172c7c1bbac8b8"},{"timeStamp":1687419749.649,"name":"USER_EVENT","type":"KEYDOWN","data":{"X":624,"Y":225,"key":"1","HTMLElement":"<input>"},"_id":"6493fb7052172c7c1bbac8b9"},{"timeStamp":1687419749.758,"name":"USER_EVENT","type":"KEYUP","data":{"X":624,"Y":225,"key":"1","HTMLElement":"<input>"},"_id":"6493fb7052172c7c1bbac8ba"},{"timeStamp":1687419749.938,"name":"USER_EVENT","type":"KEYDOWN","data":{"X":624,"Y":225,"key":"Backspace","HTMLElement":"<input>"},"_id":"6493fb7052172c7c1bbac8bb"},{"timeStamp":1687419750.008,"name":"USER_EVENT","type":"KEYUP","data":{"X":624,"Y":225,"key":"Backspace","HTMLElement":"<input>"},"_id":"6493fb7052172c7c1bbac8bc"},{"timeStamp":1687419750.048,"name":"USER_EVENT","type":"KEYDOWN","data":{"X":624,"Y":225,"key":"2","HTMLElement":"<input>"},"_id":"6493fb7052172c7c1bbac8bd"},{"timeStamp":1687419750.177,"name":"USER_EVENT","type":"KEYDOWN","data":{"X":624,"Y":225,"key":"Backspace","HTMLElement":"<input>"},"_id":"6493fb7052172c7c1bbac8be"},{"timeStamp":1687419750.199,"name":"USER_EVENT","type":"KEYUP","data":{"X":624,"Y":225,"key":"2","HTMLElement":"<input>"},"_id":"6493fb7052172c7c1bbac8bf"},{"timeStamp":1687419750.253,"name":"USER_EVENT","type":"KEYUP","data":{"X":624,"Y":225,"key":"Backspace","HTMLElement":"<input>"},"_id":"6493fb7052172c7c1bbac8c0"},{"timeStamp":1687419750.308,"name":"USER_EVENT","type":"KEYDOWN","data":{"X":624,"Y":225,"key":"3","HTMLElement":"<input>"},"_id":"6493fb7052172c7c1bbac8c1"},{"timeStamp":1687419750.426,"name":"USER_EVENT","type":"KEYUP","data":{"X":624,"Y":225,"key":"3","HTMLElement":"<input>"},"_id":"6493fb7052172c7c1bbac8c2"},{"timeStamp":1687419750.443,"name":"USER_EVENT","type":"KEYDOWN","data":{"X":624,"Y":225,"key":"Backspace","HTMLElement":"<input>"},"_id":"6493fb7052172c7c1bbac8c3"},{"timeStamp":1687419750.536,"name":"USER_EVENT","type":"KEYUP","data":{"X":624,"Y":225,"key":"Backspace","HTMLElement":"<input>"},"_id":"6493fb7052172c7c1bbac8c4"},{"timeStamp":1687419750.581,"name":"USER_EVENT","type":"KEYDOWN","data":{"X":624,"Y":225,"key":"4","HTMLElement":"<input>"},"_id":"6493fb7052172c7c1bbac8c5"},{"timeStamp":1687419750.713,"name":"USER_EVENT","type":"KEYDOWN","data":{"X":624,"Y":225,"key":"Backspace","HTMLElement":"<input>"},"_id":"6493fb7052172c7c1bbac8c6"},{"timeStamp":1687419750.715,"name":"USER_EVENT","type":"KEYUP","data":{"X":624,"Y":225,"key":"4","HTMLElement":"<input>"},"_id":"6493fb7052172c7c1bbac8c7"},{"timeStamp":1687419750.794,"name":"USER_EVENT","type":"KEYUP","data":{"X":624,"Y":225,"key":"Backspace","HTMLElement":"<input>"},"_id":"6493fb7052172c7c1bbac8c8"},{"timeStamp":1687419751.03,"name":"USER_EVENT","type":"KEYDOWN","data":{"X":624,"Y":225,"key":"5","HTMLElement":"<input>"},"_id":"6493fb7052172c7c1bbac8c9"},{"timeStamp":1687419751.047,"name":"USER_EVENT","type":"KEYDOWN","data":{"X":624,"Y":225,"key":"Backspace","HTMLElement":"<input>"},"_id":"6493fb7052172c7c1bbac8ca"},{"timeStamp":1687419751.132,"name":"USER_EVENT","type":"KEYUP","data":{"X":624,"Y":225,"key":"Backspace","HTMLElement":"<input>"},"_id":"6493fb7052172c7c1bbac8cb"},{"timeStamp":1687419751.168,"name":"USER_EVENT","type":"KEYUP","data":{"X":624,"Y":225,"key":"5","HTMLElement":"<input>"},"_id":"6493fb7052172c7c1bbac8cc"},{"timeStamp":1687419751.677,"name":"USER_EVENT","type":"KEYDOWN","data":{"X":624,"Y":225,"key":"6","HTMLElement":"<input>"},"_id":"6493fb7052172c7c1bbac8cd"},{"timeStamp":1687419751.763,"name":"USER_EVENT","type":"KEYUP","data":{"X":624,"Y":225,"key":"6","HTMLElement":"<input>"},"_id":"6493fb7052172c7c1bbac8ce"},{"timeStamp":1687419751.986,"name":"USER_EVENT","type":"KEYDOWN","data":{"X":624,"Y":225,"key":"Backspace","HTMLElement":"<input>"},"_id":"6493fb7052172c7c1bbac8cf"},{"timeStamp":1687419752.076,"name":"USER_EVENT","type":"KEYUP","data":{"X":624,"Y":225,"key":"Backspace","HTMLElement":"<input>"},"_id":"6493fb7052172c7c1bbac8d0"},{"timeStamp":1687419752.216,"name":"USER_EVENT","type":"KEYDOWN","data":{"X":624,"Y":225,"key":"7","HTMLElement":"<input>"},"_id":"6493fb7052172c7c1bbac8d1"},{"timeStamp":1687419752.309,"name":"USER_EVENT","type":"KEYUP","data":{"X":624,"Y":225,"key":"7","HTMLElement":"<input>"},"_id":"6493fb7052172c7c1bbac8d2"},{"timeStamp":1687419752.456,"name":"USER_EVENT","type":"KEYDOWN","data":{"X":624,"Y":225,"key":"Backspace","HTMLElement":"<input>"},"_id":"6493fb7052172c7c1bbac8d3"},{"timeStamp":1687419752.542,"name":"USER_EVENT","type":"KEYUP","data":{"X":624,"Y":225,"key":"Backspace","HTMLElement":"<input>"},"_id":"6493fb7052172c7c1bbac8d4"},{"timeStamp":1687419752.601,"name":"USER_EVENT","type":"KEYDOWN","data":{"X":624,"Y":225,"key":"8","HTMLElement":"<input>"},"_id":"6493fb7052172c7c1bbac8d5"},{"timeStamp":1687419752.718,"name":"USER_EVENT","type":"KEYUP","data":{"X":624,"Y":225,"key":"8","HTMLElement":"<input>"},"_id":"6493fb7052172c7c1bbac8d6"},{"timeStamp":1687419752.844,"name":"USER_EVENT","type":"KEYDOWN","data":{"X":624,"Y":225,"key":"Backspace","HTMLElement":"<input>"},"_id":"6493fb7052172c7c1bbac8d7"},{"timeStamp":1687419752.961,"name":"USER_EVENT","type":"KEYUP","data":{"X":624,"Y":225,"key":"Backspace","HTMLElement":"<input>"},"_id":"6493fb7052172c7c1bbac8d8"},{"timeStamp":1687419753.242,"name":"USER_EVENT","type":"KEYDOWN","data":{"X":624,"Y":225,"key":"9","HTMLElement":"<input>"},"_id":"6493fb7052172c7c1bbac8d9"},{"timeStamp":1687419753.288,"name":"USER_EVENT","type":"KEYUP","data":{"X":624,"Y":225,"key":"9","HTMLElement":"<input>"},"_id":"6493fb7052172c7c1bbac8da"},{"timeStamp":1687419753.684,"name":"USER_EVENT","type":"KEYDOWN","data":{"X":624,"Y":225,"key":"Backspace","HTMLElement":"<input>"},"_id":"6493fb7052172c7c1bbac8db"},{"timeStamp":1687419753.762,"name":"USER_EVENT","type":"KEYUP","data":{"X":624,"Y":225,"key":"Backspace","HTMLElement":"<input>"},"_id":"6493fb7052172c7c1bbac8dc"},{"timeStamp":1687419753.902,"name":"USER_EVENT","type":"KEYDOWN","data":{"X":624,"Y":225,"key":"1","HTMLElement":"<input>"},"_id":"6493fb7052172c7c1bbac8dd"},{"timeStamp":1687419753.956,"name":"USER_EVENT","type":"KEYUP","data":{"X":624,"Y":225,"key":"1","HTMLElement":"<input>"},"_id":"6493fb7052172c7c1bbac8de"},{"timeStamp":1687419754.573,"name":"USER_EVENT","type":"KEYDOWN","data":{"X":624,"Y":225,"key":"0","HTMLElement":"<input>"},"_id":"6493fb7052172c7c1bbac8df"},{"timeStamp":1687419754.643,"name":"USER_EVENT","type":"KEYUP","data":{"X":624,"Y":225,"key":"0","HTMLElement":"<input>"},"_id":"6493fb7052172c7c1bbac8e0"},{"timeStamp":1687419754.812,"name":"USER_EVENT","type":"KEYDOWN","data":{"X":624,"Y":225,"key":"Backspace","HTMLElement":"<input>"},"_id":"6493fb7052172c7c1bbac8e1"},{"timeStamp":1687419754.904,"name":"USER_EVENT","type":"KEYUP","data":{"X":624,"Y":225,"key":"Backspace","HTMLElement":"<input>"},"_id":"6493fb7052172c7c1bbac8e2"},{"timeStamp":1687419755.018,"name":"USER_EVENT","type":"KEYDOWN","data":{"X":624,"Y":225,"key":"Backspace","HTMLElement":"<input>"},"_id":"6493fb7052172c7c1bbac8e3"},{"timeStamp":1687419755.088,"name":"USER_EVENT","type":"KEYUP","data":{"X":624,"Y":225,"key":"Backspace","HTMLElement":"<input>"},"_id":"6493fb7052172c7c1bbac8e4"},{"timeStamp":1687419755.107,"name":"USER_EVENT","type":"KEYDOWN","data":{"X":624,"Y":225,"key":"1","HTMLElement":"<input>"},"_id":"6493fb7052172c7c1bbac8e5"},{"timeStamp":1687419755.177,"name":"USER_EVENT","type":"KEYUP","data":{"X":624,"Y":225,"key":"1","HTMLElement":"<input>"},"_id":"6493fb7052172c7c1bbac8e6"},{"timeStamp":1687419755.279,"name":"USER_EVENT","type":"KEYDOWN","data":{"X":624,"Y":225,"key":"1","HTMLElement":"<input>"},"_id":"6493fb7052172c7c1bbac8e7"},{"timeStamp":1687419755.365,"name":"USER_EVENT","type":"KEYUP","data":{"X":624,"Y":225,"key":"1","HTMLElement":"<input>"},"_id":"6493fb7052172c7c1bbac8e8"},{"timeStamp":1687419755.431,"name":"USER_EVENT","type":"KEYDOWN","data":{"X":624,"Y":225,"key":"Backspace","HTMLElement":"<input>"},"_id":"6493fb7052172c7c1bbac8e9"},{"timeStamp":1687419755.501,"name":"USER_EVENT","type":"KEYUP","data":{"X":624,"Y":225,"key":"Backspace","HTMLElement":"<input>"},"_id":"6493fb7052172c7c1bbac8ea"},{"timeStamp":1687419755.684,"name":"USER_EVENT","type":"KEYDOWN","data":{"X":624,"Y":225,"key":"Backspace","HTMLElement":"<input>"},"_id":"6493fb7052172c7c1bbac8eb"},{"timeStamp":1687419755.748,"name":"USER_EVENT","type":"KEYUP","data":{"X":624,"Y":225,"key":"Backspace","HTMLElement":"<input>"},"_id":"6493fb7052172c7c1bbac8ec"},{"timeStamp":1687419755.848,"name":"USER_EVENT","type":"KEYDOWN","data":{"X":624,"Y":225,"key":"1","HTMLElement":"<input>"},"_id":"6493fb7052172c7c1bbac8ed"},{"timeStamp":1687419755.973,"name":"USER_EVENT","type":"KEYDOWN","data":{"X":624,"Y":225,"key":"2","HTMLElement":"<input>"},"_id":"6493fb7052172c7c1bbac8ee"},{"timeStamp":1687419756.01,"name":"USER_EVENT","type":"KEYUP","data":{"X":624,"Y":225,"key":"1","HTMLElement":"<input>"},"_id":"6493fb7052172c7c1bbac8ef"},{"timeStamp":1687419756.073,"name":"USER_EVENT","type":"KEYUP","data":{"X":624,"Y":225,"key":"2","HTMLElement":"<input>"},"_id":"6493fb7052172c7c1bbac8f0"},{"timeStamp":1687419756.155,"name":"USER_EVENT","type":"KEYDOWN","data":{"X":624,"Y":225,"key":"Backspace","HTMLElement":"<input>"},"_id":"6493fb7052172c7c1bbac8f1"},{"timeStamp":1687419756.233,"name":"USER_EVENT","type":"KEYUP","data":{"X":624,"Y":225,"key":"Backspace","HTMLElement":"<input>"},"_id":"6493fb7052172c7c1bbac8f2"},{"timeStamp":1687419756.339,"name":"USER_EVENT","type":"KEYDOWN","data":{"X":624,"Y":225,"key":"Backspace","HTMLElement":"<input>"},"_id":"6493fb7052172c7c1bbac8f3"},{"timeStamp":1687419756.424,"name":"USER_EVENT","type":"KEYUP","data":{"X":624,"Y":225,"key":"Backspace","HTMLElement":"<input>"},"_id":"6493fb7052172c7c1bbac8f4"},{"timeStamp":1687419756.448,"name":"USER_EVENT","type":"KEYDOWN","data":{"X":624,"Y":225,"key":"1","HTMLElement":"<input>"},"_id":"6493fb7052172c7c1bbac8f5"},{"timeStamp":1687419756.642,"name":"USER_EVENT","type":"KEYDOWN","data":{"X":624,"Y":225,"key":"3","HTMLElement":"<input>"},"_id":"6493fb7052172c7c1bbac8f6"},{"timeStamp":1687419756.643,"name":"USER_EVENT","type":"KEYUP","data":{"X":624,"Y":225,"key":"1","HTMLElement":"<input>"},"_id":"6493fb7052172c7c1bbac8f7"},{"timeStamp":1687419756.765,"name":"USER_EVENT","type":"KEYUP","data":{"X":624,"Y":225,"key":"3","HTMLElement":"<input>"},"_id":"6493fb7052172c7c1bbac8f8"},{"timeStamp":1687419756.857,"name":"USER_EVENT","type":"KEYDOWN","data":{"X":624,"Y":225,"key":"Backspace","HTMLElement":"<input>"},"_id":"6493fb7052172c7c1bbac8f9"},{"timeStamp":1687419756.938,"name":"USER_EVENT","type":"KEYUP","data":{"X":624,"Y":225,"key":"Backspace","HTMLElement":"<input>"},"_id":"6493fb7052172c7c1bbac8fa"},{"timeStamp":1687419757.214,"name":"USER_EVENT","type":"KEYDOWN","data":{"X":624,"Y":225,"key":"Backspace","HTMLElement":"<input>"},"_id":"6493fb7052172c7c1bbac8fb"},{"timeStamp":1687419757.317,"name":"USER_EVENT","type":"KEYUP","data":{"X":624,"Y":225,"key":"Backspace","HTMLElement":"<input>"},"_id":"6493fb7052172c7c1bbac8fc"},{"timeStamp":1687419757.378,"name":"USER_EVENT","type":"KEYDOWN","data":{"X":624,"Y":225,"key":"1","HTMLElement":"<input>"},"_id":"6493fb7052172c7c1bbac8fd"},{"timeStamp":1687419757.457,"name":"USER_EVENT","type":"KEYDOWN","data":{"X":624,"Y":225,"key":"4","HTMLElement":"<input>"},"_id":"6493fb7052172c7c1bbac8fe"},{"timeStamp":1687419757.493,"name":"USER_EVENT","type":"KEYUP","data":{"X":624,"Y":225,"key":"1","HTMLElement":"<input>"},"_id":"6493fb7052172c7c1bbac8ff"},{"timeStamp":1687419757.558,"name":"USER_EVENT","type":"KEYUP","data":{"X":624,"Y":225,"key":"4","HTMLElement":"<input>"},"_id":"6493fb7052172c7c1bbac900"},{"timeStamp":1687419757.633,"name":"USER_EVENT","type":"KEYDOWN","data":{"X":624,"Y":225,"key":"Backspace","HTMLElement":"<input>"},"_id":"6493fb7052172c7c1bbac901"},{"timeStamp":1687419757.728,"name":"USER_EVENT","type":"KEYUP","data":{"X":624,"Y":225,"key":"Backspace","HTMLElement":"<input>"},"_id":"6493fb7052172c7c1bbac902"},{"timeStamp":1687419757.826,"name":"USER_EVENT","type":"KEYDOWN","data":{"X":624,"Y":225,"key":"Backspace","HTMLElement":"<input>"},"_id":"6493fb7052172c7c1bbac903"},{"timeStamp":1687419757.92,"name":"USER_EVENT","type":"KEYUP","data":{"X":624,"Y":225,"key":"Backspace","HTMLElement":"<input>"},"_id":"6493fb7052172c7c1bbac904"},{"timeStamp":1687419757.98,"name":"USER_EVENT","type":"KEYDOWN","data":{"X":624,"Y":225,"key":"1","HTMLElement":"<input>"},"_id":"6493fb7052172c7c1bbac905"},{"timeStamp":1687419758.121,"name":"USER_EVENT","type":"KEYUP","data":{"X":624,"Y":225,"key":"1","HTMLElement":"<input>"},"_id":"6493fb7052172c7c1bbac906"},{"timeStamp":1687419758.195,"name":"USER_EVENT","type":"KEYDOWN","data":{"X":624,"Y":225,"key":"5","HTMLElement":"<input>"},"_id":"6493fb7052172c7c1bbac907"},{"timeStamp":1687419758.282,"name":"USER_EVENT","type":"KEYUP","data":{"X":624,"Y":225,"key":"5","HTMLElement":"<input>"},"_id":"6493fb7052172c7c1bbac908"},{"timeStamp":1687419758.372,"name":"USER_EVENT","type":"KEYDOWN","data":{"X":624,"Y":225,"key":"Backspace","HTMLElement":"<input>"},"_id":"6493fb7052172c7c1bbac909"},{"timeStamp":1687419758.474,"name":"USER_EVENT","type":"KEYUP","data":{"X":624,"Y":225,"key":"Backspace","HTMLElement":"<input>"},"_id":"6493fb7052172c7c1bbac90a"},{"timeStamp":1687419758.577,"name":"USER_EVENT","type":"KEYDOWN","data":{"X":624,"Y":225,"key":"Backspace","HTMLElement":"<input>"},"_id":"6493fb7052172c7c1bbac90b"},{"timeStamp":1687419758.69,"name":"USER_EVENT","type":"KEYUP","data":{"X":624,"Y":225,"key":"Backspace","HTMLElement":"<input>"},"_id":"6493fb7052172c7c1bbac90c"},{"timeStamp":1687419758.727,"name":"USER_EVENT","type":"KEYDOWN","data":{"X":624,"Y":225,"key":"1","HTMLElement":"<input>"},"_id":"6493fb7052172c7c1bbac90d"},{"timeStamp":1687419758.881,"name":"USER_EVENT","type":"KEYUP","data":{"X":624,"Y":225,"key":"1","HTMLElement":"<input>"},"_id":"6493fb7052172c7c1bbac90e"},{"timeStamp":1687419758.953,"name":"USER_EVENT","type":"KEYDOWN","data":{"X":624,"Y":225,"key":"6","HTMLElement":"<input>"},"_id":"6493fb7052172c7c1bbac90f"},{"timeStamp":1687419759.031,"name":"USER_EVENT","type":"KEYUP","data":{"X":624,"Y":225,"key":"6","HTMLElement":"<input>"},"_id":"6493fb7052172c7c1bbac910"}]    
 
-start();
+    
+    function isClickPresentAhead(events, i) {
+    for (let j = i; j < events.length; j++) {
+        if (events[j].name === "USER_EVENT") {
+        if (events[j].type === "CLICK") {
+            return true;
+        } else if (events[j].type === "MOUSEUP" || events[j].type === "KEYDOWN") {
+            return false;
+        }
+        }
+    }
+    return false;
+    }
+
+    function filterEvents(events) {
+    // Make this more efficient
+    let i = 0,
+        filteredEvents = [];
+    while (i < events.length) {
+        if (
+        events[i].name === "USER_EVENT" &&
+        events[i].type === "MOUSEDOWN" &&
+        isClickPresentAhead(events, i + 1)
+        ) {
+        // Ignore this mousedown event
+        i++;
+        continue;
+        }
+        filteredEvents.push(events[i]);
+        i++;
+    }
+
+    return filteredEvents;
+    }
+    
+    function delay(ms) {
+    return new Promise((resolve) => setTimeout(resolve, ms));
+    }
+
+    async function wait(seconds) {
+    const milliseconds = seconds * 1000;
+    await delay(milliseconds);
+    }
+
+    const timeStampToSeconds = (timeStamp) => {
+    const date = new Date(timeStamp);
+    return date.getTime() / 1000;
+    };
+
+    async function start() {
+    events = filterEvents(events);
+
+    const browser = await puppeteer.launch({
+        headless: false,
+        args: ["--start-maximized"],
+        ignoreDefaultArgs: ["--enable-automation"],
+        defaultViewport: null,
+        ignoreHTTPSErrors: true,
+    });
+
+    const page = await browser.newPage();
+    const context = browser.defaultBrowserContext();
+    await context.overridePermissions("http://localhost:3001/?session-replay=true", ["geolocation"]);
+
+    await installMouseHelper(page);
+
+    await page.setViewport({
+        width: 1280,
+        height: 681,
+        hasTouch: true, // Enable touch events if needed
+    });
+
+    await page.goto("http://localhost:3001/?session-replay=true", { waitUntil: "networkidle0" });
+
+//     await page.evaluate(() => {
+//     const pre = document.createElement("pre");
+//     pre.id = "id-abc_user/p79dsy19-5jxb-5mpb-odm3-uk22cq5dtmx3";
+//     pre.style.fontSize = "0.75rem";
+//     pre.style.pointerEvents = "none";
+//     pre.style.position = "fixed";
+//     pre.style.backgroundColor = "black";
+//     pre.style.borderRadius = "0.2em";
+//     pre.style.padding = "0.2em";
+//     pre.style.color = "white";
+//     pre.style.zIndex = "999";
+//     pre.style.top = "0em";
+//     pre.style.right = "0em";
+//     pre.style.opacity = "0.5";
+//     document.body.appendChild(pre);
+//   });
+
+//     const updateTimer = () => {
+//         let seconds = 0;
+
+//         setInterval(() => {
+//         seconds++;
+//         page.evaluate((time) => {
+//             const pre = document.getElementById("id-abc_user/p79dsy19-5jxb-5mpb-odm3-uk22cq5dtmx3");
+//             pre.textContent =
+//             "Session : abc_user/p79dsy19-5jxb-5mpb-odm3-uk22cq5dtmx3 \n"  + 
+//             "Elapsed : " +
+//             time;
+//         }, seconds);
+//         }, 1000);
+//     };
+
+//     // Start the timer
+//     updateTimer();
+
+    await page.addStyleTag({
+    content: "/* WebKit-based browsers (Chrome, Safari) */body::-webkit-scrollbar { width: 16px;}::-webkit-scrollbar-track {background-color: #f1f1f1;}::-webkit-scrollbar-thumb {background-color: #888;} ::-webkit-scrollbar-thumb:hover {background-color: #555;}"
+    });
+
+    let prevTimeStamp = events[0].timeStamp;
+    let lastClickX, lastClickY, lastClickScrollX, lastClickScrollY;
+    for (let event of events) {
+        try {
+            if (event.name === "USER_EVENT") {
+                let scrollX = event.data.scrollX,
+                scrollY = event.data.scrollY;
+                let X = event.data.X,
+                Y = event.data.Y;
+                const delay = event.timeStamp - prevTimeStamp;
+
+                let key = "",
+                value,
+                htmlElement,
+                checked,
+                button;
+                if (event.type.includes("KEY")) {
+                key = event.data.key;
+                }
+                if (event.type.includes("CLICK")) {
+                button = event.data.button;
+                }
+                if (event.type.includes("ON_CHANGE")) {
+                value = event.data.value;
+                htmlElement = event.data.HTMLElement;
+                checked = event.data.checked;
+                }
+
+                await wait(delay);
+
+                switch (event.type) {
+                case "CLICK":
+                    await page.evaluate(
+                    async (scrollX, scrollY) => {
+                        await new Promise((resolve) => {
+                        window.scrollTo(scrollX, scrollY);
+                        resolve();
+                        });
+                    },
+                    scrollX,
+                    scrollY
+                    );
+                    let options = {};
+                    if (button === 0) {
+                    options.button = "left";
+                    } else if (button === 2) {
+                    options.button = "right";
+                    } else {
+                    options.button = "middle";
+                    }
+                    //await page.mouse.up();
+                    lastClickX = X;
+                    lastClickY = Y;
+                    lastClickScrollX = scrollX;
+                    lastClickScrollY = scrollY;
+                    await page.mouse.click(X - scrollX, Y - scrollY);
+                    break;
+                case "IDLE":
+                    await page.evaluate(
+                    async (scrollX, scrollY) => {
+                        await new Promise((resolve) => {
+                        window.scrollTo(scrollX, scrollY);
+                        resolve();
+                        });
+                    },
+                    scrollX,
+                    scrollY
+                    );
+
+                    await page.mouse.move(X - scrollX, Y - scrollY);
+                    break;
+                case "KEYDOWN":
+                    await page.keyboard.down(event.data.key);
+                    break;
+                case "KEYUP":
+                    await page.keyboard.up(event.data.key);
+                    break;
+                case "MOUSEDOWN":
+                    await page.evaluate(
+                    async (scrollX, scrollY) => {
+                        await new Promise((resolve) => {
+                        window.scrollTo(scrollX, scrollY);
+                        resolve();
+                        });
+                    },
+                    scrollX,
+                    scrollY
+                    );
+
+                    await page.mouse.move(X - scrollX, Y - scrollY);
+                    await page.mouse.down();
+                    break;
+                case "MOUSEUP":
+                    await page.evaluate(
+                    async (scrollX, scrollY) => {
+                        await new Promise((resolve) => {
+                        window.scrollTo(scrollX, scrollY);
+                        resolve();
+                        });
+                    },
+                    scrollX,
+                    scrollY
+                    );
+
+                    await page.mouse.move(X - scrollX, Y - scrollY);
+                    await page.mouse.up();
+
+                    break;
+                case "CONTEXTMENU":
+                    await page.evaluate(
+                    async (scrollX, scrollY) => {
+                        await new Promise((resolve) => {
+                        window.scrollTo(scrollX, scrollY);
+                        resolve();
+                        });
+                    },
+                    scrollX,
+                    scrollY
+                    );
+
+                    //await page.mouse.up();
+                    await page.mouse.click(X - scrollX, Y - scrollY, {
+                    button: "right",
+                    });
+                    break;
+                case "ON_CHANGE":
+                    await page.evaluate(
+                    async (
+                        lastClickScrollX,
+                        lastClickScrollY,
+                        lastClickX,
+                        lastClickY,
+                        value,
+                        checked,
+                        htmlElement
+                    ) => {
+                        await new Promise((resolve) => {
+                        window.scrollTo(lastClickScrollX, lastClickScrollY);
+                        document.elementFromPoint(
+                            lastClickX - lastClickScrollX,
+                            lastClickY - lastClickScrollY
+                        ).value = value;
+
+                        document.elementFromPoint(
+                            lastClickX - lastClickScrollX,
+                            lastClickY - lastClickScrollY
+                        ).checked = checked;
+
+                        document
+                            .elementFromPoint(
+                            lastClickX - lastClickScrollX,
+                            lastClickY - lastClickScrollY
+                            )
+                            .dispatchEvent(new Event("change", { bubbles: true }));
+                        resolve();
+                });
+                    },
+                    lastClickScrollX,
+                    lastClickScrollY,
+                    lastClickX,
+                    lastClickY,
+                    value,
+                    checked,
+                    htmlElement
+                    );
+
+                    break;
+                }
+            }
+            else if (event.name === "PAGE_EVENT") {
+                if (prevTimeStamp === event.timeStamp) continue;
+                const delay = event.timeStamp - prevTimeStamp;
+                console.log("delay ", delay);
+                await wait(delay);
+                const newURL = event.data.URL;
+                await page.goto(newURL + "?session-replay=true", {
+                waitUntil: "networkidle0",
+                });
+            }
+            prevTimeStamp = event.timeStamp;
+            } catch (e) {
+            console.log("Exception executing event ", event);
+            console.log("Exception : ", e);
+            }
+    }
+
+    await browser.close();
+    }
+
+    start();
+    
