@@ -104,6 +104,8 @@ function App() {
       sessionId: `abc_user/${getUID()}`,
     });
     uiTracker.start();
+
+    setSessionId(localStorage.getItem("session-id"));
   }, []);
 
   return (
