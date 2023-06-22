@@ -10,17 +10,13 @@ function getScrollbarWidth() {
   outer.style.overflow = "scroll"; // forcing scrollbar to appear
   outer.style.msOverflowStyle = "scrollbar";
   document.body.appendChild(outer);
-
   // Creating inner element and placing it in the container
   const inner = document.createElement("div");
   outer.appendChild(inner);
-
   // Calculating difference between container's full width and the child width
   const scrollbarWidth = outer.offsetWidth - inner.offsetWidth;
-
   // Removing temporary elements from the DOM
   outer.parentNode.removeChild(outer);
-
   return scrollbarWidth;
 }
 
@@ -93,6 +89,9 @@ class UITracker {
     //document.elementFromPoint(202, 608 - 296).onchange();
   }
 
+  /**
+   *  Util function to update session time stamp in local storage
+   */
   static updateSessionTimeStampInLocalStorage() {
     setInterval(() => {
       localStorage.setItem("prev-session", Date.now() / 1000);

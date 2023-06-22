@@ -97,23 +97,13 @@ function App() {
 
   useEffect(() => {
     // Call these functions only when the page DOM has loaded
-    const uiTracker = new UITracker();
-
-    uiTracker.config({
-      dataTransmissionInterval: 10000,
-      reportOnError: false,
-      sessionId: `abc_user/${getUID()}`,
-    });
-
-    uiTracker.start();
-    setSessionId(sessionStorage.getItem("session-id"));
-
-    /* fetch("http://localhost:5000/")
-      .then((res) => res.json())
-      .then((data) => {
-        console.log("GET REQ ", data);
-      });
-      */
+    // const uiTracker = new UITracker();
+    // uiTracker.config({
+    //   dataTransmissionInterval: 10000,
+    //   reportOnError: false,
+    //   sessionId: `abc_user/${getUID()}`,
+    // });
+    // uiTracker.start();
   }, []);
 
   return (
