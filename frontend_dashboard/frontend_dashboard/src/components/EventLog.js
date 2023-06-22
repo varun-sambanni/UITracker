@@ -94,27 +94,27 @@ const EventLog = ({ eventLog, setIsModalOpen, isFromAModal, sessionId }) => {
   const COLUMNS = [
     {
       field: "eventNo",
-      width: 150,
+      width: (150 / 1190) * window.innerWidth,
       headerClassName: "dataGridHeader",
     },
     {
       field: "name",
-      width: 300,
+      width: (300 / 1190) * window.innerWidth,
       headerClassName: "dataGridHeader",
     },
     {
       field: "type",
-      width: 200,
+      width: (200 / 1190) * window.innerWidth,
       headerClassName: "dataGridHeader",
     },
     {
       field: "timeStamp",
-      width: 300,
+      width: (300 / 1190) * window.innerWidth,
       headerClassName: "dataGridHeader",
     },
     {
       field: "data",
-      width: 240,
+      width: (200 / 1190) * window.innerWidth,
       headerClassName: "dataGridHeader",
       renderCell: (params) => (
         <div>{params.value && createElement("div", {}, params.value)}</div>

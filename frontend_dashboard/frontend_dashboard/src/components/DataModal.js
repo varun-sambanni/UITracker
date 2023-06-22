@@ -31,7 +31,10 @@ const DataModal = ({ isModalOpen, setIsModalOpen, data, name, type }) => {
           </div>
           <div className="dataContainer">
             {data && (
-              <div className="eventLogModalDetailsContainer ">
+              <div
+                className="eventLogModalDetailsContainer "
+                style={{ margin: "auto" }}
+              >
                 <div className="eventLogModalDetails">
                   {Object.keys(data).map((key) => {
                     return (

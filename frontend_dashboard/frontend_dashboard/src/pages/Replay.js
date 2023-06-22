@@ -50,46 +50,65 @@ const events = [
 ];
 
 function Replay() {
-  const url = "http://localhost:3000/";
+  const url = "http://localhost:3000/Test/?session-replay=true";
 
   const iframeRef = useRef(null);
 
   useEffect(() => {
     const iframe = iframeRef.current;
-    window.addEventListener("message", (event) => {
-      console.log("message ", event);
-    });
-    async function start() {
-      function delay(ms) {
-        return new Promise((resolve) => setTimeout(resolve, ms));
-      }
-
-      async function wait(seconds) {
-        const milliseconds = seconds * 1000;
-        await delay(milliseconds);
-      }
-
-      const timeStampToSeconds = (timeStamp) => {
-        const date = new Date(timeStamp);
-        return date.getTime() / 1000;
-      };
-      //window.scrollTo(0, 244);
-
-      await delay(2000);
-      console.log("ok 1");
-      await delay(2000);
-      console.log("ok 2");
-    }
-    start();
   }, []);
 
   const handleLoad = () => {
     setTimeout(() => {
-      const iframe = iframeRef.current.contentWindow;
-      const element = iframe.elementFromPoint(598, 158);
-      console.log("element", element);
-      iframe.parent.postMessage("iframe postmessage", "*");
-    }, 100);
+      console.log("Replaying ...");
+      const iframe = document.getElementById("iframe-id");
+      var iframeWindow = iframe.contentWindow;
+      iframeWindow.addEventListener("click", (e) => {
+        var x = e.clientX;
+        var y = e.clientY;
+        console.log("Click at ", e.clientX, e.clientY);
+        var element = iframeWindow.document.elementFromPoint(x, y);
+        console.log("element ", element);
+      });
+
+      iframeWindow.document.elementFromPoint(314, 246).focus();
+      iframeWindow.document.elementFromPoint(314, 246).select();
+      var event = new KeyboardEvent("keypress", {
+        key: "A", // Specify the key you want to trigger (e.g., 'Enter', 'A', '1', etc.)
+        keyCode: 13, // The key code for the specified key (13 is the key code for Enter)
+        which: 13, // The 'which' property represents the key code for older browsers
+      });
+
+      // Dispatch the event on the input element
+      iframeWindow.document.elementFromPoint(314, 246).dispatchEvent(event);
+      // Dispatch the click event on the input element
+
+      // var keyPressEvent = new KeyboardEvent("keypress", {
+      //   key: "A", // Specify the key you want to simulate
+      //   bubbles: true,
+      //   cancelable: true,
+      // });
+
+      // iframeWindow.document
+      //   .elementFromPoint(314, 246)
+      //   .dispatchEvent(keyPressEvent);
+
+      // iframeWindow.document.elementFromPoint(362, 670).dispatchEvent(
+      //   new MouseEvent("click", {
+      //     bubbles: true,
+      //     cancelable: true,
+      //     view: iframeWindow,
+      //   })
+      // );
+      var clickEvent = new MouseEvent("click", {
+        bubbles: true, // Set this to true to enable event bubbling
+        cancelable: true,
+        view: iframeWindow,
+        clientX: 335, // Replace x and y with your desired coordinates
+        clientY: 670,
+      });
+      iframeWindow.dispatchEvent(clickEvent);
+    }, 2000);
   };
 
   return (
@@ -97,8 +116,8 @@ function Replay() {
       <iframe
         id="iframe-id"
         ref={iframeRef}
-        src={url}
         onLoad={handleLoad}
+        src={url}
         title="embedded page"
         scrolling="no"
         style={{

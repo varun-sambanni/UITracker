@@ -67,7 +67,6 @@ button {
 
 .eventLogModalDetailsContainer {
   display: flex;
-  margin: auto;
 }
 
 .eventLogDetailRow {
@@ -94,7 +93,7 @@ button {
 }
 
 .modalDataContainer {
-  padding: 0.2em;
+  padding: 1.2em;
 }
 
 .eventLogDataField {
