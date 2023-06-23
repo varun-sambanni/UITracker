@@ -44,7 +44,7 @@ class UITracker {
     this.reportOnError = false;
     this.socketInterval = null;
     this.scrollBarWidth = getScrollbarWidth();
-    this.postDataEndPoint = "https://trax.dev-dnaspaces.io/postData";
+    this.postDataEndPoint = "https://trax-server.dev-dnaspaces.io/postData";
     this.ignoreNextClick = false;
     // setInterval(() => {
     // const prevSessionTimeStamp = localStorage.setItem(
@@ -233,7 +233,7 @@ class UITracker {
 
     // console.log("Setting ", localStorage.getItem("eventLogOld"));
 
-    fetch("https://trax.dev-dnaspaces.io/postData", {
+    fetch("https://trax-server.dev-dnaspaces.io/postData", {
       method: "POST",
       headers: {
         Accept: "application/json",

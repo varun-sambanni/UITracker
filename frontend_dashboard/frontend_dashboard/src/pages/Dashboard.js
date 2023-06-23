@@ -36,10 +36,11 @@ function Dashboard() {
   const [sessionId, setSessionId] = useState("");
   const [showSessionID, setShowSessionIDs] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
+  const [errMsg, setErrMsg] = useState("");
 
   useEffect(() => {
     setIsLoading(true);
-    fetch("https://trax.dev-dnaspaces.io/getEventLogs")
+    fetch("https://trax-server.dev-dnaspaces.io/getEventLogs")
       .then((res) => res.json())
       .then((data) => {
         setIsLoading(false);
@@ -61,6 +62,7 @@ function Dashboard() {
       })
       .catch((err) => {
         setIsLoading(false);
+        setErrMsg("Error fetching logs");
         console.log("Error fetching event logs ", err);
       });
   }, []);
@@ -130,6 +132,7 @@ function Dashboard() {
           <div>
             <div className="loadingContainer">
               {isLoading && "Fetching Logs..."}
+              {errMsg}
             </div>
             <div>Number of Logs : {eventLogs.length}</div>
             <div className="filtersContainer ">
