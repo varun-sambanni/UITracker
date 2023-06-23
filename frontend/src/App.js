@@ -101,7 +101,7 @@ function App() {
     uiTracker.config({
       dataTransmissionInterval: 10000,
       reportOnError: false,
-      sessionId: `abc_user/${getUID()}`,
+      sessionId: `abc_user/12345`,
     });
     uiTracker.start();
 

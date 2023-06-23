@@ -2,11 +2,20 @@ const eventLogModel = require("../models/EventLog");
 
 exports.postData = (req, res, next) => {
   console.log("Received ", req.body);
-  const eventLog = new eventLogModel(req.body);
-  const ipAddress = req.socket.remoteAddress;
-  eventLog.ipAddress = ipAddress;
-  eventLog
-    .save()
+
+  eventLogModel
+    .findOne({ sessionId: req.body.sessionId })
+    .then((eventLogData) => {
+      if (!eventLogData) {
+        const eventLog = new eventLogModel(req.body);
+        const ipAddress = req.socket.remoteAddress;
+        eventLog.ipAddress = ipAddress;
+        return eventLog.save();
+      } else {
+        eventLogData.events = req.body.events;
+        return eventLogData.save();
+      }
+    })
     .then((result) => {
       console.log("Event Log uploaded");
       return res.json({ success: true });

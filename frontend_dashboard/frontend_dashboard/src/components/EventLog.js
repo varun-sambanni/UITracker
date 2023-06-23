@@ -65,22 +65,20 @@ const style = {
   overflow: "auto",
 };
 
-const diffFormatTimeStamp = (seconds) => {
-  var today = new Date(seconds * 1000);
-  var date =
-    today.getFullYear() + "-" + (today.getMonth() + 1) + "-" + today.getDate();
-  var time =
-    today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds();
-  var dateTime = date + " " + time;
+function diffFormatTimeStamp(offset, time) {
+  console.log("time ", time);
+  console.log("offset ", offset);
+  var d = new Date(time * 1000);
+  var utc = d.getTime() + d.getTimezoneOffset() * 60000;
+  var nd = new Date(utc + 3600000 * offset);
 
-  return dateTime;
-};
+  return nd.toLocaleString();
+}
 
 let loadedEvents = [],
   loadedRows = [];
 
 const EventLog = ({ eventLog, setIsModalOpen, isFromAModal, sessionId }) => {
-  console.log("here >", eventLog.sessionId);
   const [name, setName] = useState("");
   const [events, setEvents] = useState(eventLog.events);
   const [refreshDataGrid, setRefreshDataGrid] = useState(false);
@@ -134,7 +132,7 @@ const EventLog = ({ eventLog, setIsModalOpen, isFromAModal, sessionId }) => {
         type: loadedEvents[i].type,
         timeStamp: timeInSeconds
           ? loadedEvents[i].timeStamp
-          : diffFormatTimeStamp(loadedEvents[i].timeStamp),
+          : diffFormatTimeStamp(eventLog["offSet"], loadedEvents[i].timeStamp),
         data: loadedEvents[i].data && (
           <div>
             <button

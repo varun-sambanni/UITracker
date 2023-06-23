@@ -52,6 +52,9 @@ const eventLogSchema = new Schema({
   userAgent: {
     type: String,
   },
+  offSet: {
+    type: String,
+  },
   events: [eventSchema],
 });
 

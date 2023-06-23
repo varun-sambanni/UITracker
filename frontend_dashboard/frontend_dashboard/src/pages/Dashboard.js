@@ -28,7 +28,18 @@ const diffFormatTimeStamp = (seconds) => {
   return dateTime;
 };
 
+function calcTime(offset, time) {
+  console.log("time ", time);
+  console.log("offset ", offset);
+  var d = new Date(time * 1000);
+  var utc = d.getTime() + d.getTimezoneOffset() * 60000;
+  var nd = new Date(utc + 3600000 * offset);
+
+  return nd.toLocaleString();
+}
+
 function Dashboard() {
+  console.log(new Date().getTimezoneOffset());
   const [eventLogs, setEventLogs] = useState([]);
   const [currEventLogViewIndex, setCurrEventLogViewIndex] = useState(0);
   const [isEventLogModalOpen, setIsEventLogModalOpen] = useState(false);
@@ -37,7 +48,7 @@ function Dashboard() {
   const [showSessionID, setShowSessionIDs] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
   const [errMsg, setErrMsg] = useState("");
-
+  console.log("eventLogs ", eventLogs);
   useEffect(() => {
     setIsLoading(true);
     fetch("https://trax-server.dev-dnaspaces.io/getEventLogs")
@@ -184,9 +195,11 @@ function Dashboard() {
                   </div>
                 </div>
                 <div className="eventLogDetailRow">
-                  <div className="eventLogModalDetailsTitle">Time Stamp: </div>
+                  <div className="eventLogModalDetailsTitle">
+                    TimeStamp(User's LT):{" "}
+                  </div>
                   <div className="eventLogModalDetailsValue">
-                    {diffFormatTimeStamp(eventLogs[0].timeStamp)}
+                    {calcTime(eventLogs[0].offSet, eventLogs[0].timeStamp)}
                   </div>
                 </div>
                 <div className="eventLogDetailRow">
