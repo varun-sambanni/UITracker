@@ -164,6 +164,7 @@ const Puppeteer_Template = (
     });
 
     const page = await browser.newPage();
+    await page.setDefaultNavigationTimeout(0);
     const context = browser.defaultBrowserContext();
     await context.overridePermissions("${URL}?session-replay=true", ["geolocation"]);
 
@@ -177,63 +178,63 @@ const Puppeteer_Template = (
 
     await page.goto("${URL}?session-replay=true", { waitUntil: "networkidle0" });
 
-    await page.evaluate(() => {
-        const pre = document.createElement("pre");
-        pre.id = "id-abc_user/ygp6sb8o-lh3o-l4l3-1upg-e5vwxx4ca4eo";
-        pre.style.fontSize = "0.75rem";
-        pre.style.pointerEvents = "none";
-        pre.style.position = "fixed";
-        pre.style.backgroundColor = "black";
-        pre.style.borderRadius = "0.2em";
-        pre.style.padding = "0.2em";
-        pre.style.color = "white";
-        pre.style.zIndex = "999";
-        pre.style.top = "0em";
-        pre.style.right = "0em";
-        pre.style.opacity = "0.5";
-        document.body.appendChild(pre);
-    });
+    // await page.evaluate(() => {
+    //     const pre = document.createElement("pre");
+    //     pre.id = "id-abc_user/ygp6sb8o-lh3o-l4l3-1upg-e5vwxx4ca4eo";
+    //     pre.style.fontSize = "0.75rem";
+    //     pre.style.pointerEvents = "none";
+    //     pre.style.position = "fixed";
+    //     pre.style.backgroundColor = "black";
+    //     pre.style.borderRadius = "0.2em";
+    //     pre.style.padding = "0.2em";
+    //     pre.style.color = "white";
+    //     pre.style.zIndex = "999";
+    //     pre.style.top = "0em";
+    //     pre.style.right = "0em";
+    //     pre.style.opacity = "0.5";
+    //     document.body.appendChild(pre);
+    // });
 
-    const updateTimer = () => {
-        let seconds = 0;
+    // const updateTimer = () => {
+    //     let seconds = 0;
 
-        setInterval(() => {
-        seconds++;
-        page.evaluate((time) => {
-            const pre = document.getElementById(
-            "id-abc_user/ygp6sb8o-lh3o-l4l3-1upg-e5vwxx4ca4eo"
-            );
-            if (pre === null || pre === undefined) {
-            const pre = document.createElement("pre");
-            pre.id = "id-abc_user/ygp6sb8o-lh3o-l4l3-1upg-e5vwxx4ca4eo";
-            pre.style.fontSize = "0.75rem";
-            pre.style.pointerEvents = "none";
-            pre.style.position = "fixed";
-            pre.style.backgroundColor = "black";
-            pre.style.borderRadius = "0.2em";
-            pre.style.padding = "0.2em";
-            pre.style.color = "white";
-            pre.style.zIndex = "999";
-            pre.style.top = "0em";
-            pre.style.right = "0em";
-            pre.style.opacity = "0.5";
-            document.body.appendChild(pre);
-            pre.textContent =
-                "Session : ${sessionId} \\n"  + 
-                "Elapsed : " +
-                time;
-            } else {
-            pre.textContent =
-                "Session : ${sessionId} \\n"  + 
-                "Elapsed : " +
-                time;
-            }
-        }, seconds);
-        }, 1000);
-    };
+    //     setInterval(() => {
+    //     seconds++;
+    //     page.evaluate((time) => {
+    //         const pre = document.getElementById(
+    //         "id-abc_user/ygp6sb8o-lh3o-l4l3-1upg-e5vwxx4ca4eo"
+    //         );
+    //         if (pre === null || pre === undefined) {
+    //         const pre = document.createElement("pre");
+    //         pre.id = "id-abc_user/ygp6sb8o-lh3o-l4l3-1upg-e5vwxx4ca4eo";
+    //         pre.style.fontSize = "0.75rem";
+    //         pre.style.pointerEvents = "none";
+    //         pre.style.position = "fixed";
+    //         pre.style.backgroundColor = "black";
+    //         pre.style.borderRadius = "0.2em";
+    //         pre.style.padding = "0.2em";
+    //         pre.style.color = "white";
+    //         pre.style.zIndex = "999";
+    //         pre.style.top = "0em";
+    //         pre.style.right = "0em";
+    //         pre.style.opacity = "0.5";
+    //         document.body.appendChild(pre);
+    //         pre.textContent =
+    //             "Session : ${sessionId} \\n"  + 
+    //             "Elapsed : " +
+    //             time;
+    //         } else {
+    //         pre.textContent =
+    //             "Session : ${sessionId} \\n"  + 
+    //             "Elapsed : " +
+    //             time;
+    //         }
+    //     }, seconds);
+    //     }, 1000);
+    // };
 
-    // Start the timer
-    updateTimer();
+    // // Start the timer
+    // updateTimer();
 
 
     await page.addStyleTag({
