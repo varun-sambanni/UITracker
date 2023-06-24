@@ -21,6 +21,9 @@ const eventSchema = new Schema({
   type: {
     type: String,
   },
+  localTime: {
+    type: String,
+  },
   data: {},
 });
 
@@ -52,7 +55,7 @@ const eventLogSchema = new Schema({
   userAgent: {
     type: String,
   },
-  offSet: {
+  localTime: {
     type: String,
   },
   events: [eventSchema],

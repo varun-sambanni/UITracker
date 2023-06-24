@@ -8,7 +8,7 @@ const AutoSearch = ({ value, setValue, onChangeHandler, options, label }) => {
   return (
     <div>
       <Autocomplete
-        disablePortal
+        disablePortal={true}
         disableClearable
         id="combo-box-demo"
         size="small"

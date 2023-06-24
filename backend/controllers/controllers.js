@@ -12,6 +12,7 @@ exports.postData = (req, res, next) => {
         eventLog.ipAddress = ipAddress;
         return eventLog.save();
       } else {
+        eventLogData.localTime = req.body.localTime;
         eventLogData.events = req.body.events;
         return eventLogData.save();
       }

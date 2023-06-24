@@ -65,16 +65,6 @@ const style = {
   overflow: "auto",
 };
 
-function diffFormatTimeStamp(offset, time) {
-  console.log("time ", time);
-  console.log("offset ", offset);
-  var d = new Date(time * 1000);
-  var utc = d.getTime() + d.getTimezoneOffset() * 60000;
-  var nd = new Date(utc + 3600000 * offset);
-
-  return nd.toLocaleString();
-}
-
 let loadedEvents = [],
   loadedRows = [];
 
@@ -132,8 +122,8 @@ const EventLog = ({ eventLog, setIsModalOpen, isFromAModal, sessionId }) => {
         type: loadedEvents[i].type,
         timeStamp: timeInSeconds
           ? loadedEvents[i].timeStamp
-          : diffFormatTimeStamp(eventLog["offSet"], loadedEvents[i].timeStamp),
-        data: loadedEvents[i].data && (
+          : loadedEvents[i].localTime,
+        data: loadedEvents[i].data ? (
           <div>
             <button
               className="viewButton"
@@ -144,6 +134,10 @@ const EventLog = ({ eventLog, setIsModalOpen, isFromAModal, sessionId }) => {
             >
               View
             </button>
+          </div>
+        ) : (
+          <div>
+            <button className="viewButton noDataButton">View</button>
           </div>
         ),
       });
@@ -315,12 +309,12 @@ const EventLog = ({ eventLog, setIsModalOpen, isFromAModal, sessionId }) => {
       {eventLog !== undefined && (
         <div className="modalDataContainer containerCard">
           <div className="tableName">EVENTS</div>
-          Time (HH:MM:SS)
+          {/* Time (HH:MM:SS)
           <Checkbox
             size="small"
             value={timeInSeconds}
             onChange={timeStampFormatChangeHandler}
-          ></Checkbox>
+          ></Checkbox> */}
           <div className="eventsFilterContainer">
             <button
               className="generateTestButton"

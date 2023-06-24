@@ -186,6 +186,10 @@ button {
   margin: 1em;
 }
 
+.noDataButton {
+  opacity: 0.6;
+}
+
 .closeButtonContainer {
   position: -webkit-sticky; /* Safari & IE */
   position: sticky;

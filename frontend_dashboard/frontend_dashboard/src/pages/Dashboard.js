@@ -17,27 +17,6 @@ let currEventLogsLoaded = [],
   currURLsLoaded = [], // No duplicates
   sessionIDsUnderURL = []; // No duplicates
 
-const diffFormatTimeStamp = (seconds) => {
-  var today = new Date(seconds * 1000);
-  var date =
-    today.getFullYear() + "-" + (today.getMonth() + 1) + "-" + today.getDate();
-  var time =
-    today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds();
-  var dateTime = date + " " + time;
-
-  return dateTime;
-};
-
-function calcTime(offset, time) {
-  console.log("time ", time);
-  console.log("offset ", offset);
-  var d = new Date(time * 1000);
-  var utc = d.getTime() + d.getTimezoneOffset() * 60000;
-  var nd = new Date(utc + 3600000 * offset);
-
-  return nd.toLocaleString();
-}
-
 function Dashboard() {
   console.log(new Date().getTimezoneOffset());
   const [eventLogs, setEventLogs] = useState([]);
@@ -48,7 +27,7 @@ function Dashboard() {
   const [showSessionID, setShowSessionIDs] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
   const [errMsg, setErrMsg] = useState("");
-  console.log("eventLogs ", eventLogs);
+
   useEffect(() => {
     setIsLoading(true);
     fetch("https://trax-server.dev-dnaspaces.io/getEventLogs")
@@ -73,7 +52,7 @@ function Dashboard() {
       })
       .catch((err) => {
         setIsLoading(false);
-        setErrMsg("Error fetching logs");
+        //setErrMsg("Error fetching logs");
         console.log("Error fetching event logs ", err);
       });
   }, []);
@@ -199,7 +178,7 @@ function Dashboard() {
                     TimeStamp(User's LT):{" "}
                   </div>
                   <div className="eventLogModalDetailsValue">
-                    {calcTime(eventLogs[0].offSet, eventLogs[0].timeStamp)}
+                    {eventLogs[0].localTime}
                   </div>
                 </div>
                 <div className="eventLogDetailRow">

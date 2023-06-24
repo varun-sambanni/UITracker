@@ -41,11 +41,6 @@ class UITracker {
     this.scrollBarWidth = getScrollbarWidth();
     this.postDataEndPoint = "https://trax-server.dev-dnaspaces.io/postData";
     this.ignoreNextClick = false;
-    var timezoneOffset = new Date().getTimezoneOffset();
-    var hours = Math.floor(Math.abs(timezoneOffset) / 60);
-    var minutes = (Math.abs(timezoneOffset) % 60) / 6;
-    var sign = timezoneOffset > 0 ? "-" : "+";
-    this.offSet = "+0.0";
   }
 
   /**
@@ -154,7 +149,7 @@ class UITracker {
           events: JSON.parse(localStorage.getItem("events")),
           timeStamp: UITracker.getTimeStamp(),
           userAgent: navigator.userAgent,
-          offSet: self.offSet,
+          localTime: new Date().toLocaleString(),
         },
         self.replacerFunc()
       ),
@@ -240,7 +235,7 @@ class UITracker {
       width: window.innerWidth,
       scrollBarWidth: getScrollbarWidth(),
       userAgent: navigator.userAgent,
-      offSet: self.offSet,
+      localTime: new Date().toLocaleString(),
     };
     UITracker.postData();
     console.log(eventLog);
@@ -274,7 +269,7 @@ class UITracker {
         width: window.innerWidth,
         scrollBarWidth: self.scrollBarWidth,
         userAgent: navigator.userAgent,
-        offSet: self.offSet,
+        localTime: new Date().toLocaleString(),
       };
       UITracker.postData();
       console.table(JSON.parse(JSON.stringify(eventLog, this.replacerFunc())));
@@ -327,7 +322,7 @@ class UITracker {
           width: window.innerWidth,
           scrollBarWidth: this.scrollBarWidth,
           userAgent: navigator.userAgent,
-          offSet: self.offSet,
+          localTime: new Date().toLocaleString(),
         };
         self.dataTransmissionInterval === -1 && UITracker.postData();
         console.log(eventLog);
@@ -350,7 +345,7 @@ class UITracker {
           width: window.innerWidth,
           scrollBarWidth: this.scrollBarWidth,
           userAgent: navigator.userAgent,
-          offSet: self.offSet,
+          localTime: new Date().toLocaleString(),
         };
         self.dataTransmissionInterval === -1 && UITracker.postData();
         console.log(eventLog);
@@ -429,7 +424,7 @@ class UITracker {
         width: window.innerWidth,
         scrollBarWidth: this.scrollBarWidth,
         userAgent: navigator.userAgent,
-        offSet: self.offSet,
+        localTime: new Date().toLocaleString(),
       };
       self.dataTransmissionInterval === -1 && UITracker.postData();
       console.log(eventLog);
@@ -474,7 +469,7 @@ class UITracker {
         width: window.innerWidth,
         scrollBarWidth: self.scrollBarWidth,
         userAgent: navigator.userAgent,
-        offSet: self.offSet,
+        localTime: new Date().toLocaleString(),
       };
       self.dataTransmissionInterval === -1 && UITracker.postData();
       console.log(eventLog);
@@ -515,7 +510,7 @@ class UITracker {
           width: window.innerWidth,
           scrollBarWidth: self.scrollBarWidth,
           userAgent: navigator.userAgent,
-          offSet: self.offSet,
+          localTime: new Date().toLocaleString(),
         };
         self.dataTransmissionInterval === -1 && UITracker.postData();
         console.log(eventLog);
@@ -546,7 +541,7 @@ class UITracker {
       width: window.innerWidth,
       scrollBarWidth: self.scrollBarWidth,
       userAgent: navigator.userAgent,
-      offSet: self.offSet,
+      localTime: new Date().toLocaleString(),
     };
     self.dataTransmissionInterval === -1 && UITracker.postData();
     console.log(eventLog);
@@ -583,7 +578,7 @@ class UITracker {
         width: window.innerWidth,
         scrollBarWidth: self.scrollBarWidth,
         userAgent: navigator.userAgent,
-        offSet: self.offSet,
+        localTime: new Date().toLocaleString(),
       };
 
       if (self.reportOnError === true || self.dataTransmissionInterval === -1) {
@@ -614,7 +609,7 @@ class UITracker {
         width: window.innerWidth,
         scrollBarWidth: self.scrollBarWidth,
         userAgent: navigator.userAgent,
-        offSet: self.offSet,
+        localTime: new Date().toLocaleString(),
       };
 
       if (self.reportOnError === true || self.dataTransmissionInterval === -1) {
@@ -653,7 +648,7 @@ class UITracker {
         width: window.innerWidth,
         scrollBarWidth: self.scrollBarWidth,
         userAgent: navigator.userAgent,
-        offSet: self.offSet,
+        localTime: new Date().toLocaleString(),
       };
       self.dataTransmissionInterval === -1 && UITracker.postData();
       console.log(eventLog);
@@ -715,7 +710,7 @@ class UITracker {
         width: window.innerWidth,
         scrollBarWidth: self.scrollBarWidth,
         userAgent: navigator.userAgent,
-        offSet: self.offSet,
+        localTime: new Date().toLocaleString(),
       };
       self.dataTransmissionInterval === -1 && UITracker.postData();
       console.log(eventLog);
@@ -774,7 +769,7 @@ class UITracker {
       width: window.innerWidth,
       scrollBarWidth: self.scrollBarWidth,
       userAgent: navigator.userAgent,
-      offSet: self.offSet,
+      localTime: new Date().toLocaleString(),
     };
     self.dataTransmissionInterval === -1 && UITracker.postData();
     console.log(eventLog);
@@ -839,7 +834,7 @@ class UITracker {
       width: window.innerWidth,
       scrollBarWidth: self.scrollBarWidth,
       userAgent: navigator.userAgent,
-      offSet: self.offSet,
+      localTime: new Date().toLocaleString(),
     };
     self.dataTransmissionInterval === -1 && UITracker.postData();
     console.log(eventLog);
@@ -901,7 +896,7 @@ class UITracker {
       width: window.innerWidth,
       scrollBarWidth: self.scrollBarWidth,
       userAgent: navigator.userAgent,
-      offSet: self.offSet,
+      localTime: new Date().toLocaleString(),
     };
     self.dataTransmissionInterval === -1 && UITracker.postData();
     console.log(eventLog);
@@ -987,7 +982,7 @@ class UITracker {
       width: window.innerWidth,
       scrollBarWidth: self.scrollBarWidth,
       userAgent: navigator.userAgent,
-      offSet: self.offSet,
+      localTime: new Date().toLocaleString(),
     };
 
     if (currEventType === "FORM SUBMISSION") {
@@ -1039,7 +1034,7 @@ class UITracker {
           height: window.innerHeight,
           scrollBarWidth: self.scrollBarWidth,
           userAgent: navigator.userAgent,
-          offSet: self.offSet,
+          localTime: new Date().toLocaleString(),
         };
         self.dataTransmissionInterval === -1 && UITracker.postData();
         console.log(eventLogReq);
@@ -1090,7 +1085,7 @@ class UITracker {
           width: window.innerWidth,
           scrollBarWidth: self.scrollBarWidth,
           userAgent: navigator.userAgent,
-          offSet: self.offSet,
+          localTime: new Date().toLocaleString(),
         };
         self.dataTransmissionInterval === -1 && UITracker.postData();
         console.log(eventLogRes);
@@ -1131,7 +1126,7 @@ class UITracker {
           width: window.innerWidth,
           scrollBarWidth: self.scrollBarWidth,
           userAgent: navigator.userAgent,
-          offSet: self.offSet,
+          localTime: new Date().toLocaleString(),
         };
 
         self.dataTransmissionInterval === -1 && UITracker.postData();
@@ -1177,7 +1172,7 @@ class UITracker {
                 width: window.innerWidth,
                 scrollBarWidth: self.scrollBarWidth,
                 userAgent: navigator.userAgent,
-                offSet: self.offSet,
+                localTime: new Date().toLocaleString(),
               };
               self.dataTransmissionInterval === -1 && UITracker.postData();
               console.log(eventLogRes);

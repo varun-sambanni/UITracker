@@ -9,7 +9,7 @@ router.get("/clear", controllers.getClear);
 router.post("/postData", controllers.postData);
 
 router.get("/", (req, res, next) => {
-  return res.json({ success: true, msg: "Hello" });
+  return res.json({ success: true, msg: "Hello..." });
 });
 
 module.exports = router;

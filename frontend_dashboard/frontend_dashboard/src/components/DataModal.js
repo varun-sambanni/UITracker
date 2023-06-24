@@ -30,6 +30,7 @@ const DataModal = ({ isModalOpen, setIsModalOpen, data, name, type }) => {
             <button onClick={() => setIsModalOpen(false)}>Close</button>
           </div>
           <div className="dataContainer">
+            {!data && "No data to display..."}
             {data && (
               <div
                 className="eventLogModalDetailsContainer "
