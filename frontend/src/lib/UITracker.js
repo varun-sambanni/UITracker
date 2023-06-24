@@ -47,6 +47,9 @@ class UITracker {
    *  Util function to update local storage, whenever new event occurs
    */
   static updateEventsLocalStorage(currEventObj) {
+    if (localStorage.getItem("events") === null) {
+      localStorage.setItem("events", "[]");
+    }
     const oldEvents = JSON.parse(localStorage.getItem("events"));
     oldEvents.push(currEventObj);
     localStorage.setItem("events", JSON.stringify(oldEvents));
