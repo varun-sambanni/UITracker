@@ -84,2050 +84,2866 @@ async function installMouseHelper(page) {
 
 let events = [
   {
-    timeStamp: 1687610727.049,
+    timeStamp: 1687703948.389,
     name: "PAGE_EVENT",
-    type: "NAVIGATE",
-    data: { URL: "https://spaces.cisco.com/", DOMLoadTime: 1.233699999988079 },
-    _id: "6496ebbda9da3f3a624200b6",
+    type: "RELOAD",
+    data: { URL: "https://spaces.cisco.com/", DOMLoadTime: 0 },
+    _id: "649851e1a9da3f3a62432ab7",
   },
   {
-    timeStamp: 1687610730.256,
-    name: "USER_EVENT",
-    type: "MOUSEDOWN",
-    data: { X: 1279, Y: 40, scrollX: 0, scrollY: 0, HTMLElement: null },
-    _id: "6496ebbda9da3f3a624200b7",
-  },
-  {
-    timeStamp: 1687610731.257,
+    timeStamp: 1687703950.765,
     name: "USER_EVENT",
     type: "IDLE",
-    data: { X: 1279, Y: 40, scrollX: 0, scrollY: 0, HTMLElement: null },
-    _id: "6496ebbda9da3f3a624200b8",
+    data: { X: 732, Y: 57, scrollX: 0, scrollY: 0, HTMLElement: null },
+    _id: "649851e1a9da3f3a62432ab8",
   },
   {
-    timeStamp: 1687610731.88,
-    name: "USER_EVENT",
-    type: "MOUSEUP",
-    data: {
-      X: 1279,
-      Y: 6786,
-      scrollX: 0,
-      scrollY: 6190.66650390625,
-      HTMLElement: null,
-    },
-    _id: "6496ebbda9da3f3a624200b9",
-  },
-  {
-    timeStamp: 1687610735.152,
+    timeStamp: 1687703955.725,
     name: "USER_EVENT",
     type: "IDLE",
     data: {
-      X: 735,
-      Y: 6488,
-      scrollX: 0,
-      scrollY: 6190.66650390625,
-      HTMLElement: "<p>no credit card required</p>",
-    },
-    _id: "6496ebbda9da3f3a624200ba",
-  },
-  {
-    timeStamp: 1687610736.494,
-    name: "USER_EVENT",
-    type: "MOUSEDOWN",
-    data: {
-      X: 1279,
-      Y: 6793,
-      scrollX: 0,
-      scrollY: 6190.66650390625,
-      HTMLElement: null,
-    },
-    _id: "6496ebbda9da3f3a624200bb",
-  },
-  {
-    timeStamp: 1687610737.408,
-    name: "USER_EVENT",
-    type: "MOUSEUP",
-    data: { X: 1276, Y: 35, scrollX: 0, scrollY: 0, HTMLElement: null },
-    _id: "6496ebbda9da3f3a624200bc",
-  },
-  {
-    timeStamp: 1687610738.205,
-    name: "USER_EVENT",
-    type: "MOUSEDOWN",
-    data: {
-      X: 941,
-      Y: 58,
+      X: 638,
+      Y: 28,
       scrollX: 0,
       scrollY: 0,
       HTMLElement:
-        '<a href="/setupguide/" class="elementor-item">Setup Guide</a>',
+        '<div class="elementor-menu-toggle" role="button" tabindex="0" aria-label="Menu Toggle" aria-expanded="false">\n\t\t\t<i class="eicon-menu-bar" aria-hidden="true" role="presentation"></i>\n\t\t\t<span class="elementor-screen-only">Menu</span>\n\t\t</div>',
     },
-    _id: "6496ebbda9da3f3a624200bd",
+    _id: "649851e1a9da3f3a62432ab9",
   },
   {
-    timeStamp: 1687610738.289,
+    timeStamp: 1687703957.273,
+    name: "USER_EVENT",
+    type: "IDLE",
+    data: {
+      X: 652,
+      Y: 31,
+      scrollX: 0,
+      scrollY: 0,
+      HTMLElement:
+        '<i class="eicon-menu-bar" aria-hidden="true" role="presentation"></i>',
+    },
+    _id: "649851e1a9da3f3a62432aba",
+  },
+  {
+    timeStamp: 1687703958.715,
+    name: "USER_EVENT",
+    type: "MOUSEDOWN",
+    data: {
+      X: 652,
+      Y: 31,
+      scrollX: 0,
+      scrollY: 0,
+      HTMLElement:
+        '<i class="eicon-menu-bar" aria-hidden="true" role="presentation"></i>',
+    },
+    _id: "649851e1a9da3f3a62432abb",
+  },
+  {
+    timeStamp: 1687703958.842,
+    name: "USER_EVENT",
+    type: "CLICK",
+    data: {
+      X: 652,
+      Y: 31,
+      scrollX: 0,
+      scrollY: 0,
+      HTMLElement:
+        '<i class="eicon-menu-bar" aria-hidden="true" role="presentation"></i>',
+      button: 0,
+    },
+    _id: "649851e1a9da3f3a62432abc",
+  },
+  {
+    timeStamp: 1687703960.055,
+    name: "USER_EVENT",
+    type: "MOUSEDOWN",
+    data: {
+      X: 358,
+      Y: 187,
+      scrollX: 0,
+      scrollY: 0,
+      HTMLElement:
+        '<a href="/store/" class="elementor-item" tabindex="0">Outcome Store</a>',
+    },
+    _id: "649851e1a9da3f3a62432abd",
+  },
+  {
+    timeStamp: 1687703960.162,
+    name: "USER_EVENT",
+    type: "CLICK",
+    data: {
+      X: 358,
+      Y: 187,
+      scrollX: 0,
+      scrollY: 0,
+      HTMLElement:
+        '<a href="/store/" class="elementor-item" tabindex="-1">Outcome Store</a>',
+      button: 0,
+    },
+    _id: "649851e1a9da3f3a62432abe",
+  },
+  {
+    timeStamp: 1687703960.163,
     name: "PAGE_EVENT",
     type: "PAGE_CLOSE",
-    data: { sessionTime: 11.252 },
-    _id: "6496ebbda9da3f3a624200be",
+    data: { sessionTime: 11.786 },
+    _id: "649851e1a9da3f3a62432abf",
   },
   {
-    timeStamp: 1687610738.758,
+    timeStamp: 1687703961.063,
+    name: "USER_EVENT",
+    type: "IDLE",
+    data: {
+      X: 358,
+      Y: 187,
+      scrollX: 0,
+      scrollY: 0,
+      HTMLElement:
+        '<h2 class="elementor-heading-title elementor-size-default">Turn Your Buildings into Smart Spaces</h2>',
+    },
+    _id: "649851e1a9da3f3a62432ac0",
+  },
+  {
+    timeStamp: 1687703962.161,
     name: "PAGE_EVENT",
     type: "TAB_HIDDEN",
-    _id: "6496ebbda9da3f3a624200bf",
+    _id: "649851e1a9da3f3a62432ac1",
   },
   {
-    timeStamp: 1687610740.78,
+    timeStamp: 1687703962.668,
+    name: "PAGE_EVENT",
+    type: "NAVIGATE",
+    data: { URL: "https://spaces.cisco.com/store/", DOMLoadTime: 0 },
+    _id: "649851e1a9da3f3a62432ac2",
+  },
+  {
+    timeStamp: 1687703964.282,
+    name: "USER_EVENT",
+    type: "MOUSEDOWN",
+    data: { X: 732, Y: 39, scrollX: 0, scrollY: 0, HTMLElement: null },
+    _id: "649851e1a9da3f3a62432ac3",
+  },
+  {
+    timeStamp: 1687703965.29,
+    name: "USER_EVENT",
+    type: "IDLE",
+    data: { X: 732, Y: 39, scrollX: 0, scrollY: 0, HTMLElement: null },
+    _id: "649851e1a9da3f3a62432ac4",
+  },
+  {
+    timeStamp: 1687703969.186,
+    name: "USER_EVENT",
+    type: "MOUSEUP",
+    data: {
+      X: 749,
+      Y: 5048,
+      scrollX: 0,
+      scrollY: 4696.66650390625,
+      HTMLElement: null,
+    },
+    _id: "649851e1a9da3f3a62432ac5",
+  },
+  {
+    timeStamp: 1687703969.833,
+    name: "USER_EVENT",
+    type: "MOUSEDOWN",
+    data: {
+      X: 361,
+      Y: 4962,
+      scrollX: 0,
+      scrollY: 4696.66650390625,
+      HTMLElement: '<span class="elementor-button-text">Browse Devices</span>',
+    },
+    _id: "649851e1a9da3f3a62432ac6",
+  },
+  {
+    timeStamp: 1687703969.981,
+    name: "PAGE_EVENT",
+    type: "PAGE_CLOSE",
+    data: { sessionTime: 7.315 },
+    _id: "649851e1a9da3f3a62432ac7",
+  },
+  {
+    timeStamp: 1687703970.834,
+    name: "USER_EVENT",
+    type: "IDLE",
+    data: {
+      X: 361,
+      Y: 4962,
+      scrollX: 0,
+      scrollY: 4696.66650390625,
+      HTMLElement: '<span class="elementor-button-text">Browse Devices</span>',
+    },
+    _id: "649851e1a9da3f3a62432ac8",
+  },
+  {
+    timeStamp: 1687703972.122,
+    name: "PAGE_EVENT",
+    type: "TAB_HIDDEN",
+    _id: "649851e1a9da3f3a62432ac9",
+  },
+  {
+    timeStamp: 1687703972.569,
+    name: "PAGE_EVENT",
+    type: "NAVIGATE",
+    data: { URL: "https://spaces.cisco.com/store/device/", DOMLoadTime: 0 },
+    _id: "649851e1a9da3f3a62432aca",
+  },
+  {
+    timeStamp: 1687703975.668,
+    name: "USER_EVENT",
+    type: "MOUSEDOWN",
+    data: { X: 728, Y: 41, scrollX: 0, scrollY: 0, HTMLElement: null },
+    _id: "649851e1a9da3f3a62432acb",
+  },
+  {
+    timeStamp: 1687703976.672,
+    name: "USER_EVENT",
+    type: "IDLE",
+    data: { X: 728, Y: 41, scrollX: 0, scrollY: 0, HTMLElement: null },
+    _id: "649851e1a9da3f3a62432acc",
+  },
+  {
+    timeStamp: 1687703980.622,
+    name: "USER_EVENT",
+    type: "MOUSEUP",
+    data: {
+      X: 745,
+      Y: 5903,
+      scrollX: 0,
+      scrollY: 5392.66650390625,
+      HTMLElement: null,
+    },
+    _id: "649851e1a9da3f3a62432acd",
+  },
+  {
+    timeStamp: 1687703981.876,
+    name: "USER_EVENT",
+    type: "MOUSEDOWN",
+    data: {
+      X: 212,
+      Y: 5583,
+      scrollX: 0,
+      scrollY: 5392.66650390625,
+      HTMLElement:
+        '<img width="300" height="300" src="https://spaces.cisco.com/store/wp-content/uploads/2021/09/hibou-300x300.png" class="attachment-woocommerce_thumbnail size-woocommerce_thumbnail" alt="" decoding="async" loading="lazy" srcset="https://spaces.cisco.com/store/wp-content/uploads/2021/09/hibou-300x300.png 300w, https://spaces.cisco.com/store/wp-content/uploads/2021/09/hibou-100x100.png 100w, https://spaces.cisco.com/store/wp-content/uploads/2021/09/hibou-150x150.png 150w" sizes="(max-width: 300px) 100vw, 300px">',
+    },
+    _id: "649851e1a9da3f3a62432ace",
+  },
+  {
+    timeStamp: 1687703982.013,
+    name: "PAGE_EVENT",
+    type: "PAGE_CLOSE",
+    data: { sessionTime: 9.445 },
+    _id: "649851e1a9da3f3a62432acf",
+  },
+  {
+    timeStamp: 1687703982.89,
+    name: "USER_EVENT",
+    type: "IDLE",
+    data: {
+      X: 212,
+      Y: 5583,
+      scrollX: 0,
+      scrollY: 5392.66650390625,
+      HTMLElement:
+        '<img width="300" height="300" src="https://spaces.cisco.com/store/wp-content/uploads/2021/09/hibou-300x300.png" class="attachment-woocommerce_thumbnail size-woocommerce_thumbnail" alt="" decoding="async" loading="lazy" srcset="https://spaces.cisco.com/store/wp-content/uploads/2021/09/hibou-300x300.png 300w, https://spaces.cisco.com/store/wp-content/uploads/2021/09/hibou-100x100.png 100w, https://spaces.cisco.com/store/wp-content/uploads/2021/09/hibou-150x150.png 150w" sizes="(max-width: 300px) 100vw, 300px">',
+    },
+    _id: "649851e1a9da3f3a62432ad0",
+  },
+  {
+    timeStamp: 1687703984.042,
+    name: "PAGE_EVENT",
+    type: "TAB_HIDDEN",
+    _id: "649851e1a9da3f3a62432ad1",
+  },
+  {
+    timeStamp: 1687703984.433,
     name: "PAGE_EVENT",
     type: "NAVIGATE",
     data: {
-      URL: "https://spaces.cisco.com/setupguide/",
-      DOMLoadTime: 2.4581000000238418,
+      URL: "https://spaces.cisco.com/store/product/hibou-air-quality-pm/",
+      DOMLoadTime: 0,
     },
-    _id: "6496ebbda9da3f3a624200c0",
+    _id: "649851e1a9da3f3a62432ad2",
   },
   {
-    timeStamp: 1687610742.405,
+    timeStamp: 1687703985.758,
     name: "USER_EVENT",
     type: "IDLE",
     data: {
-      X: 1186,
+      X: 720,
       Y: 321,
       scrollX: 0,
       scrollY: 0,
       HTMLElement:
-        '<span class="display-5 text-light cisco-extralight d-block mt-5 text-center no-gutter"> <i class="home_right_arrow"><img decoding="async" src="/utilities/setupguide/images/signin_arrow_white.png"></i></span>',
+        '<div class="elementor-widget-wrap elementor-element-populated">\n\t\t\t\t\t\t\t\t<div class="elementor-element elementor-element-1752410a elementor-widget elementor-widget-woocommerce-product-title elementor-page-title elementor-widget-heading animated fadeInUp" data-id="1752410a" data-element_type="widget" data-settings="{&quot;_animation&quot;:&quot;fadeInUp&quot;,&quot;_animation_delay&quot;:&quot;100&quot;}" data-widget_type="woocommerce-product-title.default">\n\t\t\t\t<div class="elementor-widget-container">\n\t\t\t<style>/*! elementor - v3.14.0 - 18-06-2023 */\n.elementor-heading-title{padding:0;margin:0;line-height:1}.elementor-widget-heading .elementor-heading-title[class*=elementor-size-]>a{color:inherit;font-size:inherit;line-height:inherit}.elementor-widget-heading .elementor-heading-title.elementor-size-small{font-size:15px}.elementor-widget-heading .elementor-heading-title.elementor-size-medium{font-size:19px}.elementor-widget-heading .elementor-heading-title.elementor-size-large{font-size:29px}.elementor-widget-heading .elementor-heading-title.elementor-size-xl{font-size:39px}.elementor-widget-heading .elementor-heading-title.elementor-size-xxl{font-size:59px}</style><link rel="stylesheet" href="https://spaces.cisco.com/store/wp-content/plugins/elementor-pro/assets/css/widget-woocommerce.min.css"><h1 class="product_title entry-title elementor-heading-title elementor-size-default">Hibou Air Quality PM</h1>\t\t</div>\n\t\t\t\t</div>\n\t\t\t\t<div class="elementor-element elementor-element-106065db elementor-widget-divider--view-line elementor-widget elementor-widget-divider animated fadeIn" data-id="106065db" data-element_type="widget" data-settings="{&quot;_animation&quot;:&quot;fadeIn&quot;,&quot;_animation_delay&quot;:&quot;175&quot;}" data-widget_type="divider.default">\n\t\t\t\t<div class="elementor-widget-container">\n\t\t\t<style>/*! elementor - v3.14.0 - 18-06-2023 */\n.elementor-widget-divider{--divider-border-style:none;--divider-border-width:1px;--divider-color:#0c0d0e;--divider-icon-size:20px;--divider-element-spacing:10px;--divider-pattern-height:24px;--divider-pattern-size:20px;--divider-pattern-url:none;--divider-pattern-repeat:repeat-x}.elementor-widget-divider .elementor-divider{display:flex}.elementor-widget-divider .elementor-divider__text{font-size:15px;line-height:1;max-width:95%}.elementor-widget-divider .elementor-divider__element{margin:0 var(--divider-element-spacing);flex-shrink:0}.elementor-widget-divider .elementor-icon{font-size:var(--divider-icon-size)}.elementor-widget-divider .elementor-divider-separator{display:flex;margin:0;direction:ltr}.elementor-widget-divider--view-line_icon .elementor-divider-separator,.elementor-widget-divider--view-line_text .elementor-divider-separator{align-items:center}.elementor-widget-divider--view-line_icon .elementor-divider-separator:after,.elementor-widget-divider--view-line_icon .elementor-divider-separator:before,.elementor-widget-divider--view-line_text .elementor-divider-separator:after,.elementor-widget-divider--view-line_text .elementor-divider-separator:before{display:block;content:"";border-bottom:0;flex-grow:1;border-top:var(--divider-border-width) var(--divider-border-style) var(--divider-color)}.elementor-widget-divider--element-align-left .elementor-divider .elementor-divider-separator>.elementor-divider__svg:first-of-type{flex-grow:0;flex-shrink:100}.elementor-widget-divider--element-align-left .elementor-divider-separator:before{content:none}.elementor-widget-divider--element-align-left .elementor-divider__element{margin-left:0}.elementor-widget-divider--element-align-right .elementor-divider .elementor-divider-separator>.elementor-divider__svg:last-of-type{flex-grow:0;flex-shrink:100}.elementor-widget-divider--element-align-right .elementor-divider-separator:after{content:none}.elementor-widget-divider--element-align-right .elementor-divider__element{margin-right:0}.elementor-widget-divider:not(.elementor-widget-divider--view-line_text):not(.elementor-widget-divider--view-line_icon) .elementor-divider-separator{border-top:var(--divider-border-width) var(--divider-border-style) var(--divider-color)}.elementor-widget-divider--separator-type-pattern{--divider-border-style:none}.elementor-widget-divider--separator-type-pattern.elementor-widget-divider--view-line .elementor-divider-separator,.elementor-widget-divider--separator-type-pattern:not(.elementor-widget-divider--view-line) .elementor-divider-separator:after,.elementor-widget-divider--separator-type-pattern:not(.elementor-widget-divider--view-line) .elementor-divider-separator:before,.elementor-widget-divider--separator-type-pattern:not([class*=elementor-widget-divider--view]) .elementor-divider-separator{width:100%;min-height:var(--divider-pattern-height);-webkit-mask-size:var(--divider-pattern-size) 100%;mask-size:var(--divider-pattern-size) 100%;-webkit-mask-repeat:var(--divider-pattern-repeat);mask-repeat:var(--divider-pattern-repeat);background-color:var(--divider-color);-webkit-mask-image:var(--divider-pattern-url);mask-image:var(--divider-pattern-url)}.elementor-widget-divider--no-spacing{--divider-pattern-size:auto}.elementor-widget-divider--bg-round{--divider-pattern-repeat:round}.rtl .elementor-widget-divider .elementor-divider__text{direction:rtl}.e-con-inner>.elementor-widget-divider,.e-con>.elementor-widget-divider{width:var(--container-widget-width,100%);--flex-grow:var(--container-widget-flex-grow)}</style>\t\t<div class="elementor-divider">\n\t\t\t<span class="elementor-divider-separator">\n\t\t\t\t\t\t</span>\n\t\t</div>\n\t\t\t\t</div>\n\t\t\t\t</div>\n\t\t\t\t<div class="elementor-element elementor-element-1f15f4e elementor-widget elementor-widget-woocommerce-product-price animated fadeInUp" data-id="1f15f4e" data-element_type="widget" data-settings="{&quot;_animation&quot;:&quot;fadeInUp&quot;,&quot;_animation_delay&quot;:&quot;200&quot;}" data-widget_type="woocommerce-product-price.default">\n\t\t\t\t<div class="elementor-widget-container">\n\t\t\t<p class="price"><span class="woocommerce-Price-amount amount"><bdi><span class="woocommerce-Price-currencySymbol">$</span>139.00</bdi></span></p>\n\t\t</div>\n\t\t\t\t</div>\n\t\t\t\t<div class="elementor-element elementor-element-6143a5ad elementor-align-justify elementor-widget elementor-widget-button" data-id="6143a5ad" data-element_type="widget" data-widget_type="button.default">\n\t\t\t\t<div class="elementor-widget-container">\n\t\t\t\t\t<div class="elementor-button-wrapper">\n\t\t\t<a class="elementor-button elementor-button-link elementor-size-lg" href="/store/free-trial">\n\t\t\t\t\t\t<span class="elementor-button-content-wrapper">\n\t\t\t\t\t\t<span class="elementor-button-text">Get a Free Trial</span>\n\t\t</span>\n\t\t\t\t\t</a>\n\t\t</div>\n\t\t\t\t</div>\n\t\t\t\t</div>\n\t\t\t\t<div class="elementor-element elementor-element-93075f7 elementor-align-justify elementor-widget elementor-widget-button" data-id="93075f7" data-element_type="widget" data-widget_type="button.default">\n\t\t\t\t<div class="elementor-widget-container">\n\t\t\t\t\t<div class="elementor-button-wrapper">\n\t\t\t<a class="elementor-button elementor-button-link elementor-size-lg" href="/store/free-demo">\n\t\t\t\t\t\t<span class="elementor-button-content-wrapper">\n\t\t\t\t\t\t<span class="elementor-button-text">Book a demo</span>\n\t\t</span>\n\t\t\t\t\t</a>\n\t\t</div>\n\t\t\t\t</div>\n\t\t\t\t</div>\n\t\t\t\t<div class="elementor-element elementor-element-6778664 elementor-widget elementor-widget-html" data-id="6778664" data-element_type="widget" data-widget_type="html.default">\n\t\t\t\t<div class="elementor-widget-container">\n\t\t\t\n\nAlready have DNA Spaces? <div class="login"><span style="text-decoration:underline">Login here</span><ul class="login_list"> <li><a href="https://dnaspaces.io/login?utm_campaign=FY22AdoptionRightNow&amp;utm_source=email&amp;utm_medium=Email&amp;utm_content=FY22-B2B-Adoption-RN-1" target="_blank">Global</a></li>\n \t<li><a href="https://dnaspaces.eu/login?utm_campaign=FY22AdoptionRightNow&amp;utm_source=email&amp;utm_medium=Email&amp;utm_content=FY22-B2B-Adoption-RN-1" target="_blank">Europe</a></li></ul></div> \n<p></p>\n\t\t</div>\n\t\t\t\t</div>\n\t\t\t\t<div class="elementor-element elementor-element-6d2f58a2 elementor-widget elementor-widget-text-editor" data-id="6d2f58a2" data-element_type="widget" data-widget_type="text-editor.default">\n\t\t\t\t<div class="elementor-widget-container">\n\t\t\t<style>/*! elementor - v3.14.0 - 18-06-2023 */\n.elementor-widget-text-editor.elementor-drop-cap-view-stacked .elementor-drop-cap{background-color:#69727d;color:#fff}.elementor-widget-text-editor.elementor-drop-cap-view-framed .elementor-drop-cap{color:#69727d;border:3px solid;background-color:transparent}.elementor-widget-text-editor:not(.elementor-drop-cap-view-default) .elementor-drop-cap{margin-top:8px}.elementor-widget-text-editor:not(.elementor-drop-cap-view-default) .elementor-drop-cap-letter{width:1em;height:1em}.elementor-widget-text-editor .elementor-drop-cap{float:left;text-align:center;line-height:1;font-size:50px}.elementor-widget-text-editor .elementor-drop-cap-letter{display:inline-block}</style>\t\t\t\t\t\t\t\t\t\t</div>\n\t\t\t\t</div>\n\t\t\t\t\t</div>',
     },
-    _id: "6496ebbda9da3f3a624200c1",
+    _id: "649851e1a9da3f3a62432ad3",
   },
   {
-    timeStamp: 1687610744.187,
+    timeStamp: 1687703990.429,
     name: "USER_EVENT",
     type: "MOUSEDOWN",
     data: {
-      X: 1186,
-      Y: 321,
+      X: 321,
+      Y: 410,
       scrollX: 0,
       scrollY: 0,
       HTMLElement:
-        '<span class="display-5 text-light cisco-extralight d-block mt-5 text-center no-gutter"> <i class="home_right_arrow"><img decoding="async" src="/utilities/setupguide/images/signin_arrow_white.png"></i></span>',
+        '<a class="elementor-button elementor-button-link elementor-size-lg" href="/store/free-trial">\n\t\t\t\t\t\t<span class="elementor-button-content-wrapper">\n\t\t\t\t\t\t<span class="elementor-button-text">Get a Free Trial</span>\n\t\t</span>\n\t\t\t\t\t</a>',
     },
-    _id: "6496ebbda9da3f3a624200c2",
+    _id: "649851e1a9da3f3a62432ad4",
   },
   {
-    timeStamp: 1687610744.29,
+    timeStamp: 1687703990.562,
     name: "USER_EVENT",
     type: "CLICK",
     data: {
-      X: 1186,
-      Y: 321,
+      X: 321,
+      Y: 410,
       scrollX: 0,
       scrollY: 0,
       HTMLElement:
-        '<div class="col-lg-1 h-100 blue_bg pt-50 index_linkdiv welcometext cursor_pointer signinform_hide"><a href="#" class="d-block text-light hv_zindex"><span class="display-5 text-light cisco-extralight d-block mt-5 text-center no-gutter"> <i class="home_right_arrow" style="display: none;"><img decoding="async" src="/utilities/setupguide/images/signin_arrow_white.png"></i></span> </a><a href="#" class="welcome d-block blue_bg" id="guide_link_arrow"></a></div>',
+        '<a class="elementor-button elementor-button-link elementor-size-lg" href="/store/free-trial">\n\t\t\t\t\t\t<span class="elementor-button-content-wrapper">\n\t\t\t\t\t\t<span class="elementor-button-text">Get a Free Trial</span>\n\t\t</span>\n\t\t\t\t\t</a>',
       button: 0,
     },
-    _id: "6496ebbda9da3f3a624200c3",
+    _id: "649851e1a9da3f3a62432ad5",
   },
   {
-    timeStamp: 1687610745.513,
-    name: "USER_EVENT",
-    type: "MOUSEDOWN",
-    data: {
-      X: 727,
-      Y: 397,
-      scrollX: 0,
-      scrollY: 0,
-      HTMLElement:
-        '<div class="row h-100">\n<div class="col-lg-8 black_bg opacity-7 h-100 pt-50 slide_width">\n<div class="container" style="display: none;">\n<div class="row">\n<div class="col-lg-10 pt-4 text-center index_ciscologo"><img decoding="async" src="https://ddm2gd3hh6a8o.cloudfront.net/wp-content/uploads/2022/09/cisco-spaces-whte.svg" style="width:47%" class="mt-2 mr-4"></div>\n</div>\n</div>\n</div>\n<div class="col-lg-3 h-100 black_bg2 opacity-7 pt-50 index_linkdiv welcometext cursor_pointer display-5 text-white cisco-extralight text-center signinform_hide"><span class="pt-14 d-block">Setup Guide</span></div>\n<div class="col-lg-1 h-100 blue_bg pt-50 index_linkdiv welcometext cursor_pointer signinform_hide"><a href="#" class="d-block text-light hv_zindex"><span class="display-5 text-light cisco-extralight d-block mt-5 text-center no-gutter"> <i class="home_right_arrow" style="display: none;"><img decoding="async" src="/utilities/setupguide/images/signin_arrow_white.png"></i></span> </a><a href="#" class="welcome d-block blue_bg" id="guide_link_arrow"></a></div>\n<p><!--\n\n\n<div class="col-lg-1 h-10 green_bg pt-50 text-center"><a href="#" class="welcome d-block mt-5 pt-2"><img decoding="async" src="utilities/images/right_arrow.png"></a></div>\n\n\n--></p>\n</div>',
-    },
-    _id: "6496ebbda9da3f3a624200c4",
+    timeStamp: 1687703990.564,
+    name: "PAGE_EVENT",
+    type: "PAGE_CLOSE",
+    data: { sessionTime: 6.132 },
+    _id: "649851e1a9da3f3a62432ad6",
   },
   {
-    timeStamp: 1687610745.611,
-    name: "USER_EVENT",
-    type: "CLICK",
-    data: {
-      X: 727,
-      Y: 397,
-      scrollX: 0,
-      scrollY: 0,
-      HTMLElement:
-        '<div class="row h-100">\n<div class="col-lg-8 black_bg opacity-7 h-100 pt-50 slide_width">\n<div class="container" style="display: none;">\n<div class="row">\n<div class="col-lg-10 pt-4 text-center index_ciscologo"><img decoding="async" src="https://ddm2gd3hh6a8o.cloudfront.net/wp-content/uploads/2022/09/cisco-spaces-whte.svg" style="width:47%" class="mt-2 mr-4"></div>\n</div>\n</div>\n</div>\n<div class="col-lg-3 h-100 black_bg2 opacity-7 pt-50 index_linkdiv welcometext cursor_pointer display-5 text-white cisco-extralight text-center signinform_hide"><span class="pt-14 d-block">Setup Guide</span></div>\n<div class="col-lg-1 h-100 blue_bg pt-50 index_linkdiv welcometext cursor_pointer signinform_hide"><a href="#" class="d-block text-light hv_zindex"><span class="display-5 text-light cisco-extralight d-block mt-5 text-center no-gutter"> <i class="home_right_arrow" style="display: none;"><img decoding="async" src="/utilities/setupguide/images/signin_arrow_white.png"></i></span> </a><a href="#" class="welcome d-block blue_bg" id="guide_link_arrow"></a></div>\n<p><!--\n\n\n<div class="col-lg-1 h-10 green_bg pt-50 text-center"><a href="#" class="welcome d-block mt-5 pt-2"><img decoding="async" src="utilities/images/right_arrow.png"></a></div>\n\n\n--></p>\n</div>',
-      button: 0,
-    },
-    _id: "6496ebbda9da3f3a624200c5",
-  },
-  {
-    timeStamp: 1687610746.835,
-    name: "USER_EVENT",
-    type: "MOUSEDOWN",
-    data: {
-      X: 710,
-      Y: 396,
-      scrollX: 0,
-      scrollY: 0,
-      HTMLElement:
-        '<input id="firstname-dbe69d22-e575-4548-a360-0bd07b9d9fa9" name="firstname" placeholder="First name" type="text" class="hs-input" inputmode="text" autocomplete="given-name" value="">',
-    },
-    _id: "6496ebbda9da3f3a624200c6",
-  },
-  {
-    timeStamp: 1687610746.917,
-    name: "USER_EVENT",
-    type: "CLICK",
-    data: {
-      X: 710,
-      Y: 396,
-      scrollX: 0,
-      scrollY: 0,
-      HTMLElement:
-        '<input id="firstname-dbe69d22-e575-4548-a360-0bd07b9d9fa9" name="firstname" placeholder="First name" type="text" class="hs-input" inputmode="text" autocomplete="given-name" value="">',
-      button: 0,
-    },
-    _id: "6496ebbda9da3f3a624200c7",
-  },
-  {
-    timeStamp: 1687610747.578,
-    name: "USER_EVENT",
-    type: "MOUSEDOWN",
-    data: {
-      X: 710,
-      Y: 396,
-      scrollX: 0,
-      scrollY: 0,
-      HTMLElement:
-        '<input id="firstname-dbe69d22-e575-4548-a360-0bd07b9d9fa9" name="firstname" placeholder="First name" type="text" class="hs-input" inputmode="text" autocomplete="given-name" value="">',
-    },
-    _id: "6496ebbda9da3f3a624200c8",
-  },
-  {
-    timeStamp: 1687610747.679,
-    name: "USER_EVENT",
-    type: "CLICK",
-    data: {
-      X: 710,
-      Y: 396,
-      scrollX: 0,
-      scrollY: 0,
-      HTMLElement:
-        '<input id="firstname-dbe69d22-e575-4548-a360-0bd07b9d9fa9" name="firstname" placeholder="First name" type="text" class="hs-input" inputmode="text" autocomplete="given-name" value="">',
-      button: 0,
-    },
-    _id: "6496ebbda9da3f3a624200c9",
-  },
-  {
-    timeStamp: 1687610747.778,
-    name: "USER_EVENT",
-    type: "MOUSEDOWN",
-    data: {
-      X: 710,
-      Y: 396,
-      scrollX: 0,
-      scrollY: 0,
-      HTMLElement:
-        '<input id="firstname-dbe69d22-e575-4548-a360-0bd07b9d9fa9" name="firstname" placeholder="First name" type="text" class="hs-input" inputmode="text" autocomplete="given-name" value="">',
-    },
-    _id: "6496ebbda9da3f3a624200ca",
-  },
-  {
-    timeStamp: 1687610747.86,
-    name: "USER_EVENT",
-    type: "CLICK",
-    data: {
-      X: 710,
-      Y: 396,
-      scrollX: 0,
-      scrollY: 0,
-      HTMLElement:
-        '<input id="firstname-dbe69d22-e575-4548-a360-0bd07b9d9fa9" name="firstname" placeholder="First name" type="text" class="hs-input" inputmode="text" autocomplete="given-name" value="">',
-      button: 0,
-    },
-    _id: "6496ebbda9da3f3a624200cb",
-  },
-  {
-    timeStamp: 1687610748.255,
-    name: "USER_EVENT",
-    type: "KEYDOWN",
-    data: {
-      X: 710,
-      Y: 396,
-      key: "Shift",
-      HTMLElement:
-        '<input id="firstname-dbe69d22-e575-4548-a360-0bd07b9d9fa9" name="firstname" placeholder="First name" type="text" class="hs-input" inputmode="text" autocomplete="given-name" value="">',
-    },
-    _id: "6496ebbda9da3f3a624200cc",
-  },
-  {
-    timeStamp: 1687610748.454,
-    name: "USER_EVENT",
-    type: "KEYDOWN",
-    data: {
-      X: 710,
-      Y: 396,
-      key: "V",
-      HTMLElement:
-        '<input id="firstname-dbe69d22-e575-4548-a360-0bd07b9d9fa9" name="firstname" placeholder="First name" type="text" class="hs-input" inputmode="text" autocomplete="given-name" value="">',
-    },
-    _id: "6496ebbda9da3f3a624200cd",
-  },
-  {
-    timeStamp: 1687610748.61,
-    name: "USER_EVENT",
-    type: "KEYUP",
-    data: {
-      X: 710,
-      Y: 396,
-      key: "V",
-      HTMLElement:
-        '<input id="firstname-dbe69d22-e575-4548-a360-0bd07b9d9fa9" name="firstname" placeholder="First name" type="text" class="hs-input" inputmode="text" autocomplete="given-name" value="V">',
-    },
-    _id: "6496ebbda9da3f3a624200ce",
-  },
-  {
-    timeStamp: 1687610748.631,
-    name: "USER_EVENT",
-    type: "KEYUP",
-    data: {
-      X: 710,
-      Y: 396,
-      key: "Shift",
-      HTMLElement:
-        '<input id="firstname-dbe69d22-e575-4548-a360-0bd07b9d9fa9" name="firstname" placeholder="First name" type="text" class="hs-input" inputmode="text" autocomplete="given-name" value="V">',
-    },
-    _id: "6496ebbda9da3f3a624200cf",
-  },
-  {
-    timeStamp: 1687610749.398,
-    name: "USER_EVENT",
-    type: "KEYDOWN",
-    data: {
-      X: 710,
-      Y: 396,
-      key: "a",
-      HTMLElement:
-        '<input id="firstname-dbe69d22-e575-4548-a360-0bd07b9d9fa9" name="firstname" placeholder="First name" type="text" class="hs-input" inputmode="text" autocomplete="given-name" value="V">',
-    },
-    _id: "6496ebbda9da3f3a624200d0",
-  },
-  {
-    timeStamp: 1687610749.554,
-    name: "USER_EVENT",
-    type: "KEYUP",
-    data: {
-      X: 710,
-      Y: 396,
-      key: "a",
-      HTMLElement:
-        '<input id="firstname-dbe69d22-e575-4548-a360-0bd07b9d9fa9" name="firstname" placeholder="First name" type="text" class="hs-input" inputmode="text" autocomplete="given-name" value="Va">',
-    },
-    _id: "6496ebbda9da3f3a624200d1",
-  },
-  {
-    timeStamp: 1687610750.067,
-    name: "USER_EVENT",
-    type: "KEYDOWN",
-    data: {
-      X: 710,
-      Y: 396,
-      key: "r",
-      HTMLElement:
-        '<input id="firstname-dbe69d22-e575-4548-a360-0bd07b9d9fa9" name="firstname" placeholder="First name" type="text" class="hs-input" inputmode="text" autocomplete="given-name" value="Va">',
-    },
-    _id: "6496ebbda9da3f3a624200d2",
-  },
-  {
-    timeStamp: 1687610750.161,
-    name: "USER_EVENT",
-    type: "KEYUP",
-    data: {
-      X: 710,
-      Y: 396,
-      key: "r",
-      HTMLElement:
-        '<input id="firstname-dbe69d22-e575-4548-a360-0bd07b9d9fa9" name="firstname" placeholder="First name" type="text" class="hs-input" inputmode="text" autocomplete="given-name" value="Var">',
-    },
-    _id: "6496ebbda9da3f3a624200d3",
-  },
-  {
-    timeStamp: 1687610750.303,
-    name: "USER_EVENT",
-    type: "KEYDOWN",
-    data: {
-      X: 710,
-      Y: 396,
-      key: "u",
-      HTMLElement:
-        '<input id="firstname-dbe69d22-e575-4548-a360-0bd07b9d9fa9" name="firstname" placeholder="First name" type="text" class="hs-input" inputmode="text" autocomplete="given-name" value="Var">',
-    },
-    _id: "6496ebbda9da3f3a624200d4",
-  },
-  {
-    timeStamp: 1687610750.411,
-    name: "USER_EVENT",
-    type: "KEYUP",
-    data: {
-      X: 710,
-      Y: 396,
-      key: "u",
-      HTMLElement:
-        '<input id="firstname-dbe69d22-e575-4548-a360-0bd07b9d9fa9" name="firstname" placeholder="First name" type="text" class="hs-input" inputmode="text" autocomplete="given-name" value="Varu">',
-    },
-    _id: "6496ebbda9da3f3a624200d5",
-  },
-  {
-    timeStamp: 1687610751.006,
-    name: "USER_EVENT",
-    type: "KEYDOWN",
-    data: {
-      X: 710,
-      Y: 396,
-      key: "n",
-      HTMLElement:
-        '<input id="firstname-dbe69d22-e575-4548-a360-0bd07b9d9fa9" name="firstname" placeholder="First name" type="text" class="hs-input" inputmode="text" autocomplete="given-name" value="Varu">',
-    },
-    _id: "6496ebbda9da3f3a624200d6",
-  },
-  {
-    timeStamp: 1687610751.162,
-    name: "USER_EVENT",
-    type: "KEYUP",
-    data: {
-      X: 710,
-      Y: 396,
-      key: "n",
-      HTMLElement:
-        '<input id="firstname-dbe69d22-e575-4548-a360-0bd07b9d9fa9" name="firstname" placeholder="First name" type="text" class="hs-input" inputmode="text" autocomplete="given-name" value="Varun">',
-    },
-    _id: "6496ebbda9da3f3a624200d7",
-  },
-  {
-    timeStamp: 1687610752.171,
+    timeStamp: 1687703991.435,
     name: "USER_EVENT",
     type: "IDLE",
     data: {
-      X: 710,
-      Y: 396,
+      X: 321,
+      Y: 410,
       scrollX: 0,
       scrollY: 0,
       HTMLElement:
-        '<input id="firstname-dbe69d22-e575-4548-a360-0bd07b9d9fa9" name="firstname" placeholder="First name" type="text" class="hs-input" inputmode="text" autocomplete="given-name" value="Varun">',
+        '<a class="elementor-button elementor-button-link elementor-size-lg" href="/store/free-trial">\n\t\t\t\t\t\t<span class="elementor-button-content-wrapper">\n\t\t\t\t\t\t<span class="elementor-button-text">Get a Free Trial</span>\n\t\t</span>\n\t\t\t\t\t</a>',
     },
-    _id: "6496ebbda9da3f3a624200d8",
+    _id: "649851e1a9da3f3a62432ad7",
   },
   {
-    timeStamp: 1687610753.057,
+    timeStamp: 1687703992.31,
+    name: "PAGE_EVENT",
+    type: "TAB_HIDDEN",
+    _id: "649851e1a9da3f3a62432ad8",
+  },
+  {
+    timeStamp: 1687703992.706,
+    name: "PAGE_EVENT",
+    type: "NAVIGATE",
+    data: { URL: "https://spaces.cisco.com/store/free-trial/", DOMLoadTime: 0 },
+    _id: "649851e1a9da3f3a62432ad9",
+  },
+  {
+    timeStamp: 1687703994.298,
     name: "USER_EVENT",
     type: "MOUSEDOWN",
     data: {
-      X: 713,
-      Y: 481,
+      X: 84,
+      Y: 468,
       scrollX: 0,
       scrollY: 0,
       HTMLElement:
-        '<input id="lastname-dbe69d22-e575-4548-a360-0bd07b9d9fa9" name="lastname" placeholder="Last name" type="text" class="hs-input" inputmode="text" autocomplete="family-name" value="">',
+        '<a href="javascript:;" class="msform-next-btn float-right">Next</a>',
     },
-    _id: "6496ebbda9da3f3a624200d9",
+    _id: "649851e1a9da3f3a62432ada",
   },
   {
-    timeStamp: 1687610753.141,
+    timeStamp: 1687703994.412,
     name: "USER_EVENT",
     type: "CLICK",
     data: {
-      X: 713,
-      Y: 481,
+      X: 84,
+      Y: 468,
       scrollX: 0,
       scrollY: 0,
       HTMLElement:
-        '<input id="lastname-dbe69d22-e575-4548-a360-0bd07b9d9fa9" name="lastname" placeholder="Last name" type="text" class="hs-input" inputmode="text" autocomplete="family-name" value="">',
+        '<label class="msforms-form-text-label" for="cname">Company name*</label>',
       button: 0,
     },
-    _id: "6496ebbda9da3f3a624200da",
+    _id: "649851e1a9da3f3a62432adb",
   },
   {
-    timeStamp: 1687610753.2,
+    timeStamp: 1687703995.416,
     name: "USER_EVENT",
     type: "MOUSEDOWN",
     data: {
-      X: 713,
-      Y: 481,
+      X: 78,
+      Y: 385,
       scrollX: 0,
       scrollY: 0,
       HTMLElement:
-        '<input id="lastname-dbe69d22-e575-4548-a360-0bd07b9d9fa9" name="lastname" placeholder="Last name" type="text" class="hs-input" inputmode="text" autocomplete="family-name" value="">',
+        '<label class="msforms-form-text-label" for="jtitle">Job title</label>',
     },
-    _id: "6496ebbda9da3f3a624200db",
+    _id: "649851e1a9da3f3a62432adc",
   },
   {
-    timeStamp: 1687610753.299,
+    timeStamp: 1687703995.498,
     name: "USER_EVENT",
     type: "CLICK",
     data: {
-      X: 713,
-      Y: 481,
+      X: 78,
+      Y: 385,
       scrollX: 0,
       scrollY: 0,
       HTMLElement:
-        '<input id="lastname-dbe69d22-e575-4548-a360-0bd07b9d9fa9" name="lastname" placeholder="Last name" type="text" class="hs-input" inputmode="text" autocomplete="family-name" value="">',
+        '<label class="msforms-form-text-label" for="jtitle">Job title</label>',
       button: 0,
     },
-    _id: "6496ebbda9da3f3a624200dc",
+    _id: "649851e1a9da3f3a62432add",
   },
   {
-    timeStamp: 1687610753.974,
+    timeStamp: 1687703995.501,
+    name: "USER_EVENT",
+    type: "CLICK",
+    data: {
+      X: 78,
+      Y: 385,
+      scrollX: 0,
+      scrollY: 0,
+      HTMLElement:
+        '<label class="msforms-form-text-label" for="jtitle">Job title</label>',
+      button: 0,
+    },
+    _id: "649851e1a9da3f3a62432ade",
+  },
+  {
+    timeStamp: 1687703995.84,
+    name: "USER_EVENT",
+    type: "MOUSEDOWN",
+    data: {
+      X: 94,
+      Y: 385,
+      scrollX: 0,
+      scrollY: 0,
+      HTMLElement:
+        '<input placeholder="" type="text" name="jobtitle" class="form-control" id="jtitle">',
+    },
+    _id: "649851e1a9da3f3a62432adf",
+  },
+  {
+    timeStamp: 1687703995.947,
+    name: "USER_EVENT",
+    type: "CLICK",
+    data: {
+      X: 94,
+      Y: 385,
+      scrollX: 0,
+      scrollY: 0,
+      HTMLElement:
+        '<input placeholder="" type="text" name="jobtitle" class="form-control" id="jtitle">',
+      button: 0,
+    },
+    _id: "649851e1a9da3f3a62432ae0",
+  },
+  {
+    timeStamp: 1687703996.711,
     name: "USER_EVENT",
     type: "KEYDOWN",
     data: {
-      X: 713,
-      Y: 481,
+      X: 94,
+      Y: 385,
       key: "Shift",
       HTMLElement:
-        '<input id="lastname-dbe69d22-e575-4548-a360-0bd07b9d9fa9" name="lastname" placeholder="Last name" type="text" class="hs-input" inputmode="text" autocomplete="family-name" value="">',
+        '<input placeholder="" type="text" name="jobtitle" class="form-control" id="jtitle">',
     },
-    _id: "6496ebbda9da3f3a624200dd",
+    _id: "649851e1a9da3f3a62432ae1",
   },
   {
-    timeStamp: 1687610754.481,
+    timeStamp: 1687703996.828,
     name: "USER_EVENT",
     type: "KEYDOWN",
     data: {
-      X: 713,
-      Y: 481,
+      X: 94,
+      Y: 385,
+      key: "I",
+      HTMLElement:
+        '<input placeholder="" type="text" name="jobtitle" class="form-control" id="jtitle">',
+    },
+    _id: "649851e1a9da3f3a62432ae2",
+  },
+  {
+    timeStamp: 1687703996.922,
+    name: "USER_EVENT",
+    type: "KEYUP",
+    data: {
+      X: 94,
+      Y: 385,
+      key: "I",
+      HTMLElement:
+        '<input placeholder="" type="text" name="jobtitle" class="form-control" id="jtitle">',
+    },
+    _id: "649851e1a9da3f3a62432ae3",
+  },
+  {
+    timeStamp: 1687703997.005,
+    name: "USER_EVENT",
+    type: "KEYUP",
+    data: {
+      X: 94,
+      Y: 385,
       key: "Shift",
       HTMLElement:
-        '<input id="lastname-dbe69d22-e575-4548-a360-0bd07b9d9fa9" name="lastname" placeholder="Last name" type="text" class="hs-input" inputmode="text" autocomplete="family-name" value="">',
+        '<input placeholder="" type="text" name="jobtitle" class="form-control" id="jtitle">',
     },
-    _id: "6496ebbda9da3f3a624200de",
+    _id: "649851e1a9da3f3a62432ae4",
   },
   {
-    timeStamp: 1687610754.517,
+    timeStamp: 1687703997.062,
     name: "USER_EVENT",
     type: "KEYDOWN",
     data: {
-      X: 713,
-      Y: 481,
+      X: 94,
+      Y: 385,
+      key: "n",
+      HTMLElement:
+        '<input placeholder="" type="text" name="jobtitle" class="form-control" id="jtitle">',
+    },
+    _id: "649851e1a9da3f3a62432ae5",
+  },
+  {
+    timeStamp: 1687703997.15,
+    name: "USER_EVENT",
+    type: "KEYDOWN",
+    data: {
+      X: 94,
+      Y: 385,
+      key: "t",
+      HTMLElement:
+        '<input placeholder="" type="text" name="jobtitle" class="form-control" id="jtitle">',
+    },
+    _id: "649851e1a9da3f3a62432ae6",
+  },
+  {
+    timeStamp: 1687703997.186,
+    name: "USER_EVENT",
+    type: "KEYUP",
+    data: {
+      X: 94,
+      Y: 385,
+      key: "n",
+      HTMLElement:
+        '<input placeholder="" type="text" name="jobtitle" class="form-control" id="jtitle">',
+    },
+    _id: "649851e1a9da3f3a62432ae7",
+  },
+  {
+    timeStamp: 1687703997.255,
+    name: "USER_EVENT",
+    type: "KEYDOWN",
+    data: {
+      X: 94,
+      Y: 385,
+      key: "e",
+      HTMLElement:
+        '<input placeholder="" type="text" name="jobtitle" class="form-control" id="jtitle">',
+    },
+    _id: "649851e1a9da3f3a62432ae8",
+  },
+  {
+    timeStamp: 1687703997.27,
+    name: "USER_EVENT",
+    type: "KEYUP",
+    data: {
+      X: 94,
+      Y: 385,
+      key: "t",
+      HTMLElement:
+        '<input placeholder="" type="text" name="jobtitle" class="form-control" id="jtitle">',
+    },
+    _id: "649851e1a9da3f3a62432ae9",
+  },
+  {
+    timeStamp: 1687703997.357,
+    name: "USER_EVENT",
+    type: "KEYDOWN",
+    data: {
+      X: 94,
+      Y: 385,
+      key: "r",
+      HTMLElement:
+        '<input placeholder="" type="text" name="jobtitle" class="form-control" id="jtitle">',
+    },
+    _id: "649851e1a9da3f3a62432aea",
+  },
+  {
+    timeStamp: 1687703997.41,
+    name: "USER_EVENT",
+    type: "KEYUP",
+    data: {
+      X: 94,
+      Y: 385,
+      key: "e",
+      HTMLElement:
+        '<input placeholder="" type="text" name="jobtitle" class="form-control" id="jtitle">',
+    },
+    _id: "649851e1a9da3f3a62432aeb",
+  },
+  {
+    timeStamp: 1687703997.425,
+    name: "USER_EVENT",
+    type: "KEYDOWN",
+    data: {
+      X: 94,
+      Y: 385,
+      key: "n",
+      HTMLElement:
+        '<input placeholder="" type="text" name="jobtitle" class="form-control" id="jtitle">',
+    },
+    _id: "649851e1a9da3f3a62432aec",
+  },
+  {
+    timeStamp: 1687703997.464,
+    name: "USER_EVENT",
+    type: "KEYUP",
+    data: {
+      X: 94,
+      Y: 385,
+      key: "r",
+      HTMLElement:
+        '<input placeholder="" type="text" name="jobtitle" class="form-control" id="jtitle">',
+    },
+    _id: "649851e1a9da3f3a62432aed",
+  },
+  {
+    timeStamp: 1687703997.534,
+    name: "USER_EVENT",
+    type: "KEYUP",
+    data: {
+      X: 94,
+      Y: 385,
+      key: "n",
+      HTMLElement:
+        '<input placeholder="" type="text" name="jobtitle" class="form-control" id="jtitle">',
+    },
+    _id: "649851e1a9da3f3a62432aee",
+  },
+  {
+    timeStamp: 1687703998.93,
+    name: "USER_EVENT",
+    type: "MOUSEDOWN",
+    data: {
+      X: 196,
+      Y: 467,
+      scrollX: 0,
+      scrollY: 0,
+      HTMLElement:
+        '<input placeholder="" name="company" type="text" class="form-control msforms-required" id="cname" required="">',
+    },
+    _id: "649851e1a9da3f3a62432aef",
+  },
+  {
+    timeStamp: 1687703999.008,
+    name: "USER_EVENT",
+    type: "CLICK",
+    data: {
+      X: 196,
+      Y: 467,
+      scrollX: 0,
+      scrollY: 0,
+      HTMLElement:
+        '<input placeholder="" name="company" type="text" class="form-control msforms-required" id="cname" required="">',
+      button: 0,
+    },
+    _id: "649851e1a9da3f3a62432af0",
+  },
+  {
+    timeStamp: 1687703999.352,
+    name: "USER_EVENT",
+    type: "KEYDOWN",
+    data: {
+      X: 196,
+      Y: 467,
       key: "Shift",
       HTMLElement:
-        '<input id="lastname-dbe69d22-e575-4548-a360-0bd07b9d9fa9" name="lastname" placeholder="Last name" type="text" class="hs-input" inputmode="text" autocomplete="family-name" value="">',
+        '<input placeholder="" name="company" type="text" class="form-control msforms-required" id="cname" required="">',
     },
-    _id: "6496ebbda9da3f3a624200df",
+    _id: "649851e1a9da3f3a62432af1",
   },
   {
-    timeStamp: 1687610754.549,
+    timeStamp: 1687703999.631,
     name: "USER_EVENT",
     type: "KEYDOWN",
     data: {
-      X: 713,
-      Y: 481,
+      X: 196,
+      Y: 467,
+      key: "C",
+      HTMLElement:
+        '<input placeholder="" name="company" type="text" class="form-control msforms-required" id="cname" required="">',
+    },
+    _id: "649851e1a9da3f3a62432af2",
+  },
+  {
+    timeStamp: 1687703999.767,
+    name: "USER_EVENT",
+    type: "KEYUP",
+    data: {
+      X: 196,
+      Y: 467,
       key: "Shift",
       HTMLElement:
-        '<input id="lastname-dbe69d22-e575-4548-a360-0bd07b9d9fa9" name="lastname" placeholder="Last name" type="text" class="hs-input" inputmode="text" autocomplete="family-name" value="">',
+        '<input placeholder="" name="company" type="text" class="form-control msforms-required" id="cname" required="">',
     },
-    _id: "6496ebbda9da3f3a624200e0",
+    _id: "649851e1a9da3f3a62432af3",
   },
   {
-    timeStamp: 1687610754.586,
+    timeStamp: 1687703999.79,
+    name: "USER_EVENT",
+    type: "KEYUP",
+    data: {
+      X: 196,
+      Y: 467,
+      key: "c",
+      HTMLElement:
+        '<input placeholder="" name="company" type="text" class="form-control msforms-required" id="cname" required="">',
+    },
+    _id: "649851e1a9da3f3a62432af4",
+  },
+  {
+    timeStamp: 1687703999.927,
     name: "USER_EVENT",
     type: "KEYDOWN",
     data: {
-      X: 713,
-      Y: 481,
+      X: 196,
+      Y: 467,
+      key: "c",
+      HTMLElement:
+        '<input placeholder="" name="company" type="text" class="form-control msforms-required" id="cname" required="">',
+    },
+    _id: "649851e1a9da3f3a62432af5",
+  },
+  {
+    timeStamp: 1687704000.028,
+    name: "USER_EVENT",
+    type: "KEYUP",
+    data: {
+      X: 196,
+      Y: 467,
+      key: "c",
+      HTMLElement:
+        '<input placeholder="" name="company" type="text" class="form-control msforms-required" id="cname" required="">',
+    },
+    _id: "649851e1a9da3f3a62432af6",
+  },
+  {
+    timeStamp: 1687704000.311,
+    name: "USER_EVENT",
+    type: "KEYDOWN",
+    data: {
+      X: 196,
+      Y: 467,
+      key: "Backspace",
+      HTMLElement:
+        '<input placeholder="" name="company" type="text" class="form-control msforms-required" id="cname" required="">',
+    },
+    _id: "649851e1a9da3f3a62432af7",
+  },
+  {
+    timeStamp: 1687704000.373,
+    name: "USER_EVENT",
+    type: "KEYUP",
+    data: {
+      X: 196,
+      Y: 467,
+      key: "Backspace",
+      HTMLElement:
+        '<input placeholder="" name="company" type="text" class="form-control msforms-required" id="cname" required="">',
+    },
+    _id: "649851e1a9da3f3a62432af8",
+  },
+  {
+    timeStamp: 1687704000.465,
+    name: "USER_EVENT",
+    type: "KEYDOWN",
+    data: {
+      X: 196,
+      Y: 467,
+      key: "Backspace",
+      HTMLElement:
+        '<input placeholder="" name="company" type="text" class="form-control msforms-required" id="cname" required="">',
+    },
+    _id: "649851e1a9da3f3a62432af9",
+  },
+  {
+    timeStamp: 1687704000.534,
+    name: "USER_EVENT",
+    type: "KEYUP",
+    data: {
+      X: 196,
+      Y: 467,
+      key: "Backspace",
+      HTMLElement:
+        '<input placeholder="" name="company" type="text" class="form-control msforms-required" id="cname" required="">',
+    },
+    _id: "649851e1a9da3f3a62432afa",
+  },
+  {
+    timeStamp: 1687704001.098,
+    name: "USER_EVENT",
+    type: "MOUSEDOWN",
+    data: {
+      X: 196,
+      Y: 467,
+      scrollX: 0,
+      scrollY: 0,
+      HTMLElement:
+        '<input placeholder="" name="company" type="text" class="form-control msforms-required" id="cname" required="">',
+    },
+    _id: "649851e1a9da3f3a62432afb",
+  },
+  {
+    timeStamp: 1687704001.196,
+    name: "USER_EVENT",
+    type: "CLICK",
+    data: {
+      X: 196,
+      Y: 467,
+      scrollX: 0,
+      scrollY: 0,
+      HTMLElement:
+        '<input placeholder="" name="company" type="text" class="form-control msforms-required" id="cname" required="">',
+      button: 0,
+    },
+    _id: "649851e1a9da3f3a62432afc",
+  },
+  {
+    timeStamp: 1687704001.351,
+    name: "USER_EVENT",
+    type: "KEYDOWN",
+    data: {
+      X: 196,
+      Y: 467,
       key: "Shift",
       HTMLElement:
-        '<input id="lastname-dbe69d22-e575-4548-a360-0bd07b9d9fa9" name="lastname" placeholder="Last name" type="text" class="hs-input" inputmode="text" autocomplete="family-name" value="">',
+        '<input placeholder="" name="company" type="text" class="form-control msforms-required" id="cname" required="">',
     },
-    _id: "6496ebbda9da3f3a624200e1",
+    _id: "649851e1a9da3f3a62432afd",
   },
   {
-    timeStamp: 1687610754.619,
+    timeStamp: 1687704001.478,
     name: "USER_EVENT",
     type: "KEYDOWN",
     data: {
-      X: 713,
-      Y: 481,
+      X: 196,
+      Y: 467,
+      key: "C",
+      HTMLElement:
+        '<input placeholder="" name="company" type="text" class="form-control msforms-required" id="cname" required="">',
+    },
+    _id: "649851e1a9da3f3a62432afe",
+  },
+  {
+    timeStamp: 1687704001.604,
+    name: "USER_EVENT",
+    type: "KEYUP",
+    data: {
+      X: 196,
+      Y: 467,
       key: "Shift",
       HTMLElement:
-        '<input id="lastname-dbe69d22-e575-4548-a360-0bd07b9d9fa9" name="lastname" placeholder="Last name" type="text" class="hs-input" inputmode="text" autocomplete="family-name" value="">',
+        '<input placeholder="" name="company" type="text" class="form-control msforms-required" id="cname" required="">',
     },
-    _id: "6496ebbda9da3f3a624200e2",
+    _id: "649851e1a9da3f3a62432aff",
   },
   {
-    timeStamp: 1687610754.652,
+    timeStamp: 1687704001.607,
+    name: "USER_EVENT",
+    type: "KEYUP",
+    data: {
+      X: 196,
+      Y: 467,
+      key: "c",
+      HTMLElement:
+        '<input placeholder="" name="company" type="text" class="form-control msforms-required" id="cname" required="">',
+    },
+    _id: "649851e1a9da3f3a62432b00",
+  },
+  {
+    timeStamp: 1687704001.775,
     name: "USER_EVENT",
     type: "KEYDOWN",
     data: {
-      X: 713,
-      Y: 481,
+      X: 196,
+      Y: 467,
+      key: "i",
+      HTMLElement:
+        '<input placeholder="" name="company" type="text" class="form-control msforms-required" id="cname" required="">',
+    },
+    _id: "649851e1a9da3f3a62432b01",
+  },
+  {
+    timeStamp: 1687704001.853,
+    name: "USER_EVENT",
+    type: "KEYUP",
+    data: {
+      X: 196,
+      Y: 467,
+      key: "i",
+      HTMLElement:
+        '<input placeholder="" name="company" type="text" class="form-control msforms-required" id="cname" required="">',
+    },
+    _id: "649851e1a9da3f3a62432b02",
+  },
+  {
+    timeStamp: 1687704001.88,
+    name: "USER_EVENT",
+    type: "KEYDOWN",
+    data: {
+      X: 196,
+      Y: 467,
+      key: "s",
+      HTMLElement:
+        '<input placeholder="" name="company" type="text" class="form-control msforms-required" id="cname" required="">',
+    },
+    _id: "649851e1a9da3f3a62432b03",
+  },
+  {
+    timeStamp: 1687704001.943,
+    name: "USER_EVENT",
+    type: "KEYDOWN",
+    data: {
+      X: 196,
+      Y: 467,
+      key: "c",
+      HTMLElement:
+        '<input placeholder="" name="company" type="text" class="form-control msforms-required" id="cname" required="">',
+    },
+    _id: "649851e1a9da3f3a62432b04",
+  },
+  {
+    timeStamp: 1687704001.965,
+    name: "USER_EVENT",
+    type: "KEYUP",
+    data: {
+      X: 196,
+      Y: 467,
+      key: "s",
+      HTMLElement:
+        '<input placeholder="" name="company" type="text" class="form-control msforms-required" id="cname" required="">',
+    },
+    _id: "649851e1a9da3f3a62432b05",
+  },
+  {
+    timeStamp: 1687704002.046,
+    name: "USER_EVENT",
+    type: "KEYDOWN",
+    data: {
+      X: 196,
+      Y: 467,
+      key: "o",
+      HTMLElement:
+        '<input placeholder="" name="company" type="text" class="form-control msforms-required" id="cname" required="">',
+    },
+    _id: "649851e1a9da3f3a62432b06",
+  },
+  {
+    timeStamp: 1687704002.066,
+    name: "USER_EVENT",
+    type: "KEYUP",
+    data: {
+      X: 196,
+      Y: 467,
+      key: "c",
+      HTMLElement:
+        '<input placeholder="" name="company" type="text" class="form-control msforms-required" id="cname" required="">',
+    },
+    _id: "649851e1a9da3f3a62432b07",
+  },
+  {
+    timeStamp: 1687704002.13,
+    name: "USER_EVENT",
+    type: "KEYUP",
+    data: {
+      X: 196,
+      Y: 467,
+      key: "o",
+      HTMLElement:
+        '<input placeholder="" name="company" type="text" class="form-control msforms-required" id="cname" required="">',
+    },
+    _id: "649851e1a9da3f3a62432b08",
+  },
+  {
+    timeStamp: 1687704002.938,
+    name: "USER_EVENT",
+    type: "MOUSEDOWN",
+    data: {
+      X: 89,
+      Y: 566,
+      scrollX: 0,
+      scrollY: 0,
+      HTMLElement:
+        '<input placeholder="" name="country" type="text" class="form-control" id="countryn">',
+    },
+    _id: "649851e1a9da3f3a62432b09",
+  },
+  {
+    timeStamp: 1687704003.018,
+    name: "USER_EVENT",
+    type: "CLICK",
+    data: {
+      X: 89,
+      Y: 566,
+      scrollX: 0,
+      scrollY: 0,
+      HTMLElement:
+        '<input placeholder="" name="country" type="text" class="form-control" id="countryn">',
+      button: 0,
+    },
+    _id: "649851e1a9da3f3a62432b0a",
+  },
+  {
+    timeStamp: 1687704003.245,
+    name: "USER_EVENT",
+    type: "MOUSEDOWN",
+    data: {
+      X: 89,
+      Y: 562,
+      scrollX: 0,
+      scrollY: 0,
+      HTMLElement:
+        '<input placeholder="" name="country" type="text" class="form-control" id="countryn">',
+    },
+    _id: "649851e1a9da3f3a62432b0b",
+  },
+  {
+    timeStamp: 1687704003.352,
+    name: "USER_EVENT",
+    type: "CLICK",
+    data: {
+      X: 89,
+      Y: 562,
+      scrollX: 0,
+      scrollY: 0,
+      HTMLElement:
+        '<input placeholder="" name="country" type="text" class="form-control" id="countryn">',
+      button: 0,
+    },
+    _id: "649851e1a9da3f3a62432b0c",
+  },
+  {
+    timeStamp: 1687704003.649,
+    name: "USER_EVENT",
+    type: "KEYDOWN",
+    data: {
+      X: 89,
+      Y: 562,
       key: "Shift",
       HTMLElement:
-        '<input id="lastname-dbe69d22-e575-4548-a360-0bd07b9d9fa9" name="lastname" placeholder="Last name" type="text" class="hs-input" inputmode="text" autocomplete="family-name" value="">',
+        '<input placeholder="" name="country" type="text" class="form-control" id="countryn">',
     },
-    _id: "6496ebbda9da3f3a624200e3",
+    _id: "649851e1a9da3f3a62432b0d",
   },
   {
-    timeStamp: 1687610754.683,
+    timeStamp: 1687704004.157,
     name: "USER_EVENT",
     type: "KEYDOWN",
     data: {
-      X: 713,
-      Y: 481,
+      X: 89,
+      Y: 562,
       key: "Shift",
       HTMLElement:
-        '<input id="lastname-dbe69d22-e575-4548-a360-0bd07b9d9fa9" name="lastname" placeholder="Last name" type="text" class="hs-input" inputmode="text" autocomplete="family-name" value="">',
+        '<input placeholder="" name="country" type="text" class="form-control" id="countryn">',
     },
-    _id: "6496ebbda9da3f3a624200e4",
+    _id: "649851e1a9da3f3a62432b0e",
   },
   {
-    timeStamp: 1687610754.721,
+    timeStamp: 1687704004.168,
     name: "USER_EVENT",
     type: "KEYDOWN",
     data: {
-      X: 713,
-      Y: 481,
+      X: 89,
+      Y: 562,
+      key: "I",
+      HTMLElement:
+        '<input placeholder="" name="country" type="text" class="form-control" id="countryn">',
+    },
+    _id: "649851e1a9da3f3a62432b0f",
+  },
+  {
+    timeStamp: 1687704004.278,
+    name: "USER_EVENT",
+    type: "KEYUP",
+    data: {
+      X: 89,
+      Y: 562,
+      key: "I",
+      HTMLElement:
+        '<input placeholder="" name="country" type="text" class="form-control" id="countryn">',
+    },
+    _id: "649851e1a9da3f3a62432b10",
+  },
+  {
+    timeStamp: 1687704004.297,
+    name: "USER_EVENT",
+    type: "KEYUP",
+    data: {
+      X: 89,
+      Y: 562,
       key: "Shift",
       HTMLElement:
-        '<input id="lastname-dbe69d22-e575-4548-a360-0bd07b9d9fa9" name="lastname" placeholder="Last name" type="text" class="hs-input" inputmode="text" autocomplete="family-name" value="">',
+        '<input placeholder="" name="country" type="text" class="form-control" id="countryn">',
     },
-    _id: "6496ebbda9da3f3a624200e5",
+    _id: "649851e1a9da3f3a62432b11",
   },
   {
-    timeStamp: 1687610754.753,
+    timeStamp: 1687704004.395,
     name: "USER_EVENT",
     type: "KEYDOWN",
     data: {
-      X: 713,
-      Y: 481,
+      X: 89,
+      Y: 562,
+      key: "n",
+      HTMLElement:
+        '<input placeholder="" name="country" type="text" class="form-control" id="countryn">',
+    },
+    _id: "649851e1a9da3f3a62432b12",
+  },
+  {
+    timeStamp: 1687704004.474,
+    name: "USER_EVENT",
+    type: "KEYUP",
+    data: {
+      X: 89,
+      Y: 562,
+      key: "n",
+      HTMLElement:
+        '<input placeholder="" name="country" type="text" class="form-control" id="countryn">',
+    },
+    _id: "649851e1a9da3f3a62432b13",
+  },
+  {
+    timeStamp: 1687704004.495,
+    name: "USER_EVENT",
+    type: "KEYDOWN",
+    data: {
+      X: 89,
+      Y: 562,
+      key: "d",
+      HTMLElement:
+        '<input placeholder="" name="country" type="text" class="form-control" id="countryn">',
+    },
+    _id: "649851e1a9da3f3a62432b14",
+  },
+  {
+    timeStamp: 1687704004.577,
+    name: "USER_EVENT",
+    type: "KEYDOWN",
+    data: {
+      X: 89,
+      Y: 562,
+      key: "i",
+      HTMLElement:
+        '<input placeholder="" name="country" type="text" class="form-control" id="countryn">',
+    },
+    _id: "649851e1a9da3f3a62432b15",
+  },
+  {
+    timeStamp: 1687704004.612,
+    name: "USER_EVENT",
+    type: "KEYUP",
+    data: {
+      X: 89,
+      Y: 562,
+      key: "d",
+      HTMLElement:
+        '<input placeholder="" name="country" type="text" class="form-control" id="countryn">',
+    },
+    _id: "649851e1a9da3f3a62432b16",
+  },
+  {
+    timeStamp: 1687704004.659,
+    name: "USER_EVENT",
+    type: "KEYUP",
+    data: {
+      X: 89,
+      Y: 562,
+      key: "i",
+      HTMLElement:
+        '<input placeholder="" name="country" type="text" class="form-control" id="countryn">',
+    },
+    _id: "649851e1a9da3f3a62432b17",
+  },
+  {
+    timeStamp: 1687704004.683,
+    name: "USER_EVENT",
+    type: "KEYDOWN",
+    data: {
+      X: 89,
+      Y: 562,
+      key: "a",
+      HTMLElement:
+        '<input placeholder="" name="country" type="text" class="form-control" id="countryn">',
+    },
+    _id: "649851e1a9da3f3a62432b18",
+  },
+  {
+    timeStamp: 1687704004.828,
+    name: "USER_EVENT",
+    type: "KEYUP",
+    data: {
+      X: 89,
+      Y: 562,
+      key: "a",
+      HTMLElement:
+        '<input placeholder="" name="country" type="text" class="form-control" id="countryn">',
+    },
+    _id: "649851e1a9da3f3a62432b19",
+  },
+  {
+    timeStamp: 1687704005.692,
+    name: "USER_EVENT",
+    type: "MOUSEDOWN",
+    data: {
+      X: 205,
+      Y: 608,
+      scrollX: 0,
+      scrollY: 0,
+      HTMLElement:
+        '<a href="javascript:;" class="msform-next-btn float-right">Next</a>',
+    },
+    _id: "649851e1a9da3f3a62432b1a",
+  },
+  {
+    timeStamp: 1687704005.804,
+    name: "USER_EVENT",
+    type: "CLICK",
+    data: {
+      X: 205,
+      Y: 608,
+      scrollX: 0,
+      scrollY: 0,
+      HTMLElement:
+        '<fieldset class="msforms-fieldset show">\n            <h6>How can we reach you?</h6>\n            <p style="padding-bottom:10px;">We will use this information to set up a Free Trial or Demo session and send information about DNA Spaces</p>\n            <div class="form-group">\n                \n              <input placeholder="" type="email" name="email" class="form-control msforms-required" id="bemail" required="">\n              <label class="msforms-form-text-label" for="bemail">Business Email* </label>\n              <div class="msforms-form-error">Please enter your business email id</div>\n            </div>\n            <div class="form-group">\n              <input placeholder="" type="text" name="phone" class="form-control msforms-required" id="phonenumber" required="">\n                <label class="msforms-form-text-label" for="phonenumber">Phone Number* </label>\n              <div class="msforms-form-error">Please enter your phone number</div>\n            </div>\n           <div class="form-group">\n              <input placeholder="" type="text" name="firstname" class="form-control msforms-required" id="fname" required="">\n                <label class="msforms-form-text-label" for="fname">First Name*</label>\n              <div class="msforms-form-error">Please enter your first name</div>\n            </div>\n            <div class="form-group">\n              <input placeholder="" type="text" name="lastname" class="form-control msforms-required" id="lname" required="">\n                <label class="msforms-form-text-label" for="lname">Last Name*</label>\n              <div class="msforms-form-error">Please enter your last name</div>\n            </div>\n            \n            <div class="form-group clearfix">\n                <a href="javascript:;" class="msform-previous-btn float-left">Previous</a>\n                <button id="freetrial">Submit</button>\n            </div>\n        </fieldset>',
+      button: 0,
+    },
+    _id: "649851e1a9da3f3a62432b1b",
+  },
+  {
+    timeStamp: 1687704006.418,
+    name: "USER_EVENT",
+    type: "MOUSEDOWN",
+    data: {
+      X: 142,
+      Y: 388,
+      scrollX: 0,
+      scrollY: 0,
+      HTMLElement:
+        '<input placeholder="" type="email" name="email" class="form-control msforms-required" id="bemail" required="">',
+    },
+    _id: "649851e1a9da3f3a62432b1c",
+  },
+  {
+    timeStamp: 1687704006.489,
+    name: "USER_EVENT",
+    type: "CLICK",
+    data: {
+      X: 142,
+      Y: 388,
+      scrollX: 0,
+      scrollY: 0,
+      HTMLElement:
+        '<label class="msforms-form-text-label" for="bemail">Business Email* </label>',
+      button: 0,
+    },
+    _id: "649851e1a9da3f3a62432b1d",
+  },
+  {
+    timeStamp: 1687704007.559,
+    name: "USER_EVENT",
+    type: "IDLE",
+    data: {
+      X: 132,
+      Y: 401,
+      scrollX: 0,
+      scrollY: 0,
+      HTMLElement:
+        '<input placeholder="" type="email" name="email" class="form-control msforms-required" id="bemail" required="">',
+    },
+    _id: "649851e1a9da3f3a62432b1e",
+  },
+  {
+    timeStamp: 1687704008.383,
+    name: "USER_EVENT",
+    type: "KEYDOWN",
+    data: {
+      X: 132,
+      Y: 401,
+      key: "v",
+      HTMLElement:
+        '<input placeholder="" type="email" name="email" class="form-control msforms-required" id="bemail" required="">',
+    },
+    _id: "649851e1a9da3f3a62432b1f",
+  },
+  {
+    timeStamp: 1687704008.455,
+    name: "USER_EVENT",
+    type: "KEYUP",
+    data: {
+      X: 132,
+      Y: 401,
+      key: "v",
+      HTMLElement:
+        '<input placeholder="" type="email" name="email" class="form-control msforms-required" id="bemail" required="">',
+    },
+    _id: "649851e1a9da3f3a62432b20",
+  },
+  {
+    timeStamp: 1687704009.218,
+    name: "USER_EVENT",
+    type: "KEYDOWN",
+    data: {
+      X: 132,
+      Y: 401,
+      key: "s",
+      HTMLElement:
+        '<input placeholder="" type="email" name="email" class="form-control msforms-required" id="bemail" required="">',
+    },
+    _id: "649851e1a9da3f3a62432b21",
+  },
+  {
+    timeStamp: 1687704009.316,
+    name: "USER_EVENT",
+    type: "KEYDOWN",
+    data: {
+      X: 132,
+      Y: 401,
+      key: "a",
+      HTMLElement:
+        '<input placeholder="" type="email" name="email" class="form-control msforms-required" id="bemail" required="">',
+    },
+    _id: "649851e1a9da3f3a62432b22",
+  },
+  {
+    timeStamp: 1687704009.346,
+    name: "USER_EVENT",
+    type: "KEYUP",
+    data: {
+      X: 132,
+      Y: 401,
+      key: "s",
+      HTMLElement:
+        '<input placeholder="" type="email" name="email" class="form-control msforms-required" id="bemail" required="">',
+    },
+    _id: "649851e1a9da3f3a62432b23",
+  },
+  {
+    timeStamp: 1687704009.402,
+    name: "USER_EVENT",
+    type: "KEYDOWN",
+    data: {
+      X: 132,
+      Y: 401,
+      key: "m",
+      HTMLElement:
+        '<input placeholder="" type="email" name="email" class="form-control msforms-required" id="bemail" required="">',
+    },
+    _id: "649851e1a9da3f3a62432b24",
+  },
+  {
+    timeStamp: 1687704009.447,
+    name: "USER_EVENT",
+    type: "KEYUP",
+    data: {
+      X: 132,
+      Y: 401,
+      key: "a",
+      HTMLElement:
+        '<input placeholder="" type="email" name="email" class="form-control msforms-required" id="bemail" required="">',
+    },
+    _id: "649851e1a9da3f3a62432b25",
+  },
+  {
+    timeStamp: 1687704009.495,
+    name: "USER_EVENT",
+    type: "KEYUP",
+    data: {
+      X: 132,
+      Y: 401,
+      key: "m",
+      HTMLElement:
+        '<input placeholder="" type="email" name="email" class="form-control msforms-required" id="bemail" required="">',
+    },
+    _id: "649851e1a9da3f3a62432b26",
+  },
+  {
+    timeStamp: 1687704009.594,
+    name: "USER_EVENT",
+    type: "KEYDOWN",
+    data: {
+      X: 132,
+      Y: 401,
+      key: "b",
+      HTMLElement:
+        '<input placeholder="" type="email" name="email" class="form-control msforms-required" id="bemail" required="">',
+    },
+    _id: "649851e1a9da3f3a62432b27",
+  },
+  {
+    timeStamp: 1687704009.689,
+    name: "USER_EVENT",
+    type: "KEYUP",
+    data: {
+      X: 132,
+      Y: 401,
+      key: "b",
+      HTMLElement:
+        '<input placeholder="" type="email" name="email" class="form-control msforms-required" id="bemail" required="">',
+    },
+    _id: "649851e1a9da3f3a62432b28",
+  },
+  {
+    timeStamp: 1687704009.713,
+    name: "USER_EVENT",
+    type: "KEYDOWN",
+    data: {
+      X: 132,
+      Y: 401,
+      key: "a",
+      HTMLElement:
+        '<input placeholder="" type="email" name="email" class="form-control msforms-required" id="bemail" required="">',
+    },
+    _id: "649851e1a9da3f3a62432b29",
+  },
+  {
+    timeStamp: 1687704009.767,
+    name: "USER_EVENT",
+    type: "KEYUP",
+    data: {
+      X: 132,
+      Y: 401,
+      key: "a",
+      HTMLElement:
+        '<input placeholder="" type="email" name="email" class="form-control msforms-required" id="bemail" required="">',
+    },
+    _id: "649851e1a9da3f3a62432b2a",
+  },
+  {
+    timeStamp: 1687704010.056,
+    name: "USER_EVENT",
+    type: "KEYDOWN",
+    data: {
+      X: 132,
+      Y: 401,
+      key: "n",
+      HTMLElement:
+        '<input placeholder="" type="email" name="email" class="form-control msforms-required" id="bemail" required="">',
+    },
+    _id: "649851e1a9da3f3a62432b2b",
+  },
+  {
+    timeStamp: 1687704010.134,
+    name: "USER_EVENT",
+    type: "KEYUP",
+    data: {
+      X: 132,
+      Y: 401,
+      key: "n",
+      HTMLElement:
+        '<input placeholder="" type="email" name="email" class="form-control msforms-required" id="bemail" required="">',
+    },
+    _id: "649851e1a9da3f3a62432b2c",
+  },
+  {
+    timeStamp: 1687704010.238,
+    name: "USER_EVENT",
+    type: "KEYDOWN",
+    data: {
+      X: 132,
+      Y: 401,
+      key: "n",
+      HTMLElement:
+        '<input placeholder="" type="email" name="email" class="form-control msforms-required" id="bemail" required="">',
+    },
+    _id: "649851e1a9da3f3a62432b2d",
+  },
+  {
+    timeStamp: 1687704010.3,
+    name: "USER_EVENT",
+    type: "KEYUP",
+    data: {
+      X: 132,
+      Y: 401,
+      key: "n",
+      HTMLElement:
+        '<input placeholder="" type="email" name="email" class="form-control msforms-required" id="bemail" required="">',
+    },
+    _id: "649851e1a9da3f3a62432b2e",
+  },
+  {
+    timeStamp: 1687704010.389,
+    name: "USER_EVENT",
+    type: "KEYDOWN",
+    data: {
+      X: 132,
+      Y: 401,
       key: "Shift",
       HTMLElement:
-        '<input id="lastname-dbe69d22-e575-4548-a360-0bd07b9d9fa9" name="lastname" placeholder="Last name" type="text" class="hs-input" inputmode="text" autocomplete="family-name" value="">',
+        '<input placeholder="" type="email" name="email" class="form-control msforms-required" id="bemail" required="">',
     },
-    _id: "6496ebbda9da3f3a624200e6",
+    _id: "649851e1a9da3f3a62432b2f",
   },
   {
-    timeStamp: 1687610754.786,
+    timeStamp: 1687704010.512,
     name: "USER_EVENT",
     type: "KEYDOWN",
     data: {
-      X: 713,
-      Y: 481,
+      X: 132,
+      Y: 401,
+      key: "@",
+      HTMLElement:
+        '<input placeholder="" type="email" name="email" class="form-control msforms-required" id="bemail" required="">',
+    },
+    _id: "649851e1a9da3f3a62432b30",
+  },
+  {
+    timeStamp: 1687704010.638,
+    name: "USER_EVENT",
+    type: "KEYUP",
+    data: {
+      X: 132,
+      Y: 401,
+      key: "@",
+      HTMLElement:
+        '<input placeholder="" type="email" name="email" class="form-control msforms-required" id="bemail" required="">',
+    },
+    _id: "649851e1a9da3f3a62432b31",
+  },
+  {
+    timeStamp: 1687704010.691,
+    name: "USER_EVENT",
+    type: "KEYUP",
+    data: {
+      X: 132,
+      Y: 401,
       key: "Shift",
       HTMLElement:
-        '<input id="lastname-dbe69d22-e575-4548-a360-0bd07b9d9fa9" name="lastname" placeholder="Last name" type="text" class="hs-input" inputmode="text" autocomplete="family-name" value="">',
+        '<input placeholder="" type="email" name="email" class="form-control msforms-required" id="bemail" required="">',
     },
-    _id: "6496ebbda9da3f3a624200e7",
+    _id: "649851e1a9da3f3a62432b32",
   },
   {
-    timeStamp: 1687610754.823,
+    timeStamp: 1687704010.819,
     name: "USER_EVENT",
     type: "KEYDOWN",
     data: {
-      X: 713,
-      Y: 481,
+      X: 132,
+      Y: 401,
+      key: "c",
+      HTMLElement:
+        '<input placeholder="" type="email" name="email" class="form-control msforms-required" id="bemail" required="">',
+    },
+    _id: "649851e1a9da3f3a62432b33",
+  },
+  {
+    timeStamp: 1687704010.922,
+    name: "USER_EVENT",
+    type: "KEYDOWN",
+    data: {
+      X: 132,
+      Y: 401,
+      key: "i",
+      HTMLElement:
+        '<input placeholder="" type="email" name="email" class="form-control msforms-required" id="bemail" required="">',
+    },
+    _id: "649851e1a9da3f3a62432b34",
+  },
+  {
+    timeStamp: 1687704010.958,
+    name: "USER_EVENT",
+    type: "KEYUP",
+    data: {
+      X: 132,
+      Y: 401,
+      key: "c",
+      HTMLElement:
+        '<input placeholder="" type="email" name="email" class="form-control msforms-required" id="bemail" required="">',
+    },
+    _id: "649851e1a9da3f3a62432b35",
+  },
+  {
+    timeStamp: 1687704011.014,
+    name: "USER_EVENT",
+    type: "KEYUP",
+    data: {
+      X: 132,
+      Y: 401,
+      key: "i",
+      HTMLElement:
+        '<input placeholder="" type="email" name="email" class="form-control msforms-required" id="bemail" required="">',
+    },
+    _id: "649851e1a9da3f3a62432b36",
+  },
+  {
+    timeStamp: 1687704011.053,
+    name: "USER_EVENT",
+    type: "KEYDOWN",
+    data: {
+      X: 132,
+      Y: 401,
+      key: "s",
+      HTMLElement:
+        '<input placeholder="" type="email" name="email" class="form-control msforms-required" id="bemail" required="">',
+    },
+    _id: "649851e1a9da3f3a62432b37",
+  },
+  {
+    timeStamp: 1687704011.108,
+    name: "USER_EVENT",
+    type: "KEYDOWN",
+    data: {
+      X: 132,
+      Y: 401,
+      key: "c",
+      HTMLElement:
+        '<input placeholder="" type="email" name="email" class="form-control msforms-required" id="bemail" required="">',
+    },
+    _id: "649851e1a9da3f3a62432b38",
+  },
+  {
+    timeStamp: 1687704011.139,
+    name: "USER_EVENT",
+    type: "KEYUP",
+    data: {
+      X: 132,
+      Y: 401,
+      key: "s",
+      HTMLElement:
+        '<input placeholder="" type="email" name="email" class="form-control msforms-required" id="bemail" required="">',
+    },
+    _id: "649851e1a9da3f3a62432b39",
+  },
+  {
+    timeStamp: 1687704011.203,
+    name: "USER_EVENT",
+    type: "KEYDOWN",
+    data: {
+      X: 132,
+      Y: 401,
+      key: "o",
+      HTMLElement:
+        '<input placeholder="" type="email" name="email" class="form-control msforms-required" id="bemail" required="">',
+    },
+    _id: "649851e1a9da3f3a62432b3a",
+  },
+  {
+    timeStamp: 1687704011.223,
+    name: "USER_EVENT",
+    type: "KEYUP",
+    data: {
+      X: 132,
+      Y: 401,
+      key: "c",
+      HTMLElement:
+        '<input placeholder="" type="email" name="email" class="form-control msforms-required" id="bemail" required="">',
+    },
+    _id: "649851e1a9da3f3a62432b3b",
+  },
+  {
+    timeStamp: 1687704011.263,
+    name: "USER_EVENT",
+    type: "KEYUP",
+    data: {
+      X: 132,
+      Y: 401,
+      key: "o",
+      HTMLElement:
+        '<input placeholder="" type="email" name="email" class="form-control msforms-required" id="bemail" required="">',
+    },
+    _id: "649851e1a9da3f3a62432b3c",
+  },
+  {
+    timeStamp: 1687704011.6,
+    name: "USER_EVENT",
+    type: "KEYDOWN",
+    data: {
+      X: 132,
+      Y: 401,
+      key: ".",
+      HTMLElement:
+        '<input placeholder="" type="email" name="email" class="form-control msforms-required" id="bemail" required="">',
+    },
+    _id: "649851e1a9da3f3a62432b3d",
+  },
+  {
+    timeStamp: 1687704011.731,
+    name: "USER_EVENT",
+    type: "KEYUP",
+    data: {
+      X: 132,
+      Y: 401,
+      key: ".",
+      HTMLElement:
+        '<input placeholder="" type="email" name="email" class="form-control msforms-required" id="bemail" required="">',
+    },
+    _id: "649851e1a9da3f3a62432b3e",
+  },
+  {
+    timeStamp: 1687704011.732,
+    name: "USER_EVENT",
+    type: "KEYDOWN",
+    data: {
+      X: 132,
+      Y: 401,
+      key: "c",
+      HTMLElement:
+        '<input placeholder="" type="email" name="email" class="form-control msforms-required" id="bemail" required="">',
+    },
+    _id: "649851e1a9da3f3a62432b3f",
+  },
+  {
+    timeStamp: 1687704011.841,
+    name: "USER_EVENT",
+    type: "KEYDOWN",
+    data: {
+      X: 132,
+      Y: 401,
+      key: "o",
+      HTMLElement:
+        '<input placeholder="" type="email" name="email" class="form-control msforms-required" id="bemail" required="">',
+    },
+    _id: "649851e1a9da3f3a62432b40",
+  },
+  {
+    timeStamp: 1687704011.844,
+    name: "USER_EVENT",
+    type: "KEYUP",
+    data: {
+      X: 132,
+      Y: 401,
+      key: "c",
+      HTMLElement:
+        '<input placeholder="" type="email" name="email" class="form-control msforms-required" id="bemail" required="">',
+    },
+    _id: "649851e1a9da3f3a62432b41",
+  },
+  {
+    timeStamp: 1687704011.893,
+    name: "USER_EVENT",
+    type: "KEYDOWN",
+    data: {
+      X: 132,
+      Y: 401,
+      key: "m",
+      HTMLElement:
+        '<input placeholder="" type="email" name="email" class="form-control msforms-required" id="bemail" required="">',
+    },
+    _id: "649851e1a9da3f3a62432b42",
+  },
+  {
+    timeStamp: 1687704011.909,
+    name: "USER_EVENT",
+    type: "KEYUP",
+    data: {
+      X: 132,
+      Y: 401,
+      key: "o",
+      HTMLElement:
+        '<input placeholder="" type="email" name="email" class="form-control msforms-required" id="bemail" required="">',
+    },
+    _id: "649851e1a9da3f3a62432b43",
+  },
+  {
+    timeStamp: 1687704011.97,
+    name: "USER_EVENT",
+    type: "KEYUP",
+    data: {
+      X: 132,
+      Y: 401,
+      key: "m",
+      HTMLElement:
+        '<input placeholder="" type="email" name="email" class="form-control msforms-required" id="bemail" required="">',
+    },
+    _id: "649851e1a9da3f3a62432b44",
+  },
+  {
+    timeStamp: 1687704012.974,
+    name: "USER_EVENT",
+    type: "MOUSEDOWN",
+    data: {
+      X: 116,
+      Y: 482,
+      scrollX: 0,
+      scrollY: 0,
+      HTMLElement:
+        '<label class="msforms-form-text-label" for="phonenumber">Phone Number* </label>',
+    },
+    _id: "649851e1a9da3f3a62432b45",
+  },
+  {
+    timeStamp: 1687704013.061,
+    name: "USER_EVENT",
+    type: "CLICK",
+    data: {
+      X: 116,
+      Y: 482,
+      scrollX: 0,
+      scrollY: 0,
+      HTMLElement:
+        '<label class="msforms-form-text-label" for="phonenumber">Phone Number* </label>',
+      button: 0,
+    },
+    _id: "649851e1a9da3f3a62432b46",
+  },
+  {
+    timeStamp: 1687704013.065,
+    name: "USER_EVENT",
+    type: "CLICK",
+    data: {
+      X: 116,
+      Y: 482,
+      scrollX: 0,
+      scrollY: 0,
+      HTMLElement:
+        '<label class="msforms-form-text-label" for="phonenumber">Phone Number* </label>',
+      button: 0,
+    },
+    _id: "649851e1a9da3f3a62432b47",
+  },
+  {
+    timeStamp: 1687704013.31,
+    name: "USER_EVENT",
+    type: "MOUSEDOWN",
+    data: {
+      X: 92,
+      Y: 483,
+      scrollX: 0,
+      scrollY: 0,
+      HTMLElement:
+        '<input placeholder="" type="text" name="phone" class="form-control msforms-required" id="phonenumber" required="">',
+    },
+    _id: "649851e1a9da3f3a62432b48",
+  },
+  {
+    timeStamp: 1687704013.453,
+    name: "USER_EVENT",
+    type: "CLICK",
+    data: {
+      X: 92,
+      Y: 483,
+      scrollX: 0,
+      scrollY: 0,
+      HTMLElement:
+        '<input placeholder="" type="text" name="phone" class="form-control msforms-required" id="phonenumber" required="">',
+      button: 0,
+    },
+    _id: "649851e1a9da3f3a62432b49",
+  },
+  {
+    timeStamp: 1687704013.921,
+    name: "USER_EVENT",
+    type: "KEYDOWN",
+    data: {
+      X: 92,
+      Y: 483,
+      key: "1",
+      HTMLElement:
+        '<input placeholder="" type="text" name="phone" class="form-control msforms-required" id="phonenumber" required="">',
+    },
+    _id: "649851e1a9da3f3a62432b4a",
+  },
+  {
+    timeStamp: 1687704014.023,
+    name: "USER_EVENT",
+    type: "KEYDOWN",
+    data: {
+      X: 92,
+      Y: 483,
+      key: "2",
+      HTMLElement:
+        '<input placeholder="" type="text" name="phone" class="form-control msforms-required" id="phonenumber" required="">',
+    },
+    _id: "649851e1a9da3f3a62432b4b",
+  },
+  {
+    timeStamp: 1687704014.135,
+    name: "USER_EVENT",
+    type: "KEYDOWN",
+    data: {
+      X: 92,
+      Y: 483,
+      key: "3",
+      HTMLElement:
+        '<input placeholder="" type="text" name="phone" class="form-control msforms-required" id="phonenumber" required="">',
+    },
+    _id: "649851e1a9da3f3a62432b4c",
+  },
+  {
+    timeStamp: 1687704014.161,
+    name: "USER_EVENT",
+    type: "KEYUP",
+    data: {
+      X: 92,
+      Y: 483,
+      key: "1",
+      HTMLElement:
+        '<input placeholder="" type="text" name="phone" class="form-control msforms-required" id="phonenumber" required="">',
+    },
+    _id: "649851e1a9da3f3a62432b4d",
+  },
+  {
+    timeStamp: 1687704014.216,
+    name: "USER_EVENT",
+    type: "KEYUP",
+    data: {
+      X: 92,
+      Y: 483,
+      key: "2",
+      HTMLElement:
+        '<input placeholder="" type="text" name="phone" class="form-control msforms-required" id="phonenumber" required="">',
+    },
+    _id: "649851e1a9da3f3a62432b4e",
+  },
+  {
+    timeStamp: 1687704014.251,
+    name: "USER_EVENT",
+    type: "KEYUP",
+    data: {
+      X: 92,
+      Y: 483,
+      key: "3",
+      HTMLElement:
+        '<input placeholder="" type="text" name="phone" class="form-control msforms-required" id="phonenumber" required="">',
+    },
+    _id: "649851e1a9da3f3a62432b4f",
+  },
+  {
+    timeStamp: 1687704014.319,
+    name: "USER_EVENT",
+    type: "KEYDOWN",
+    data: {
+      X: 92,
+      Y: 483,
+      key: "4",
+      HTMLElement:
+        '<input placeholder="" type="text" name="phone" class="form-control msforms-required" id="phonenumber" required="">',
+    },
+    _id: "649851e1a9da3f3a62432b50",
+  },
+  {
+    timeStamp: 1687704014.437,
+    name: "USER_EVENT",
+    type: "KEYUP",
+    data: {
+      X: 92,
+      Y: 483,
+      key: "4",
+      HTMLElement:
+        '<input placeholder="" type="text" name="phone" class="form-control msforms-required" id="phonenumber" required="">',
+    },
+    _id: "649851e1a9da3f3a62432b51",
+  },
+  {
+    timeStamp: 1687704014.537,
+    name: "USER_EVENT",
+    type: "KEYDOWN",
+    data: {
+      X: 92,
+      Y: 483,
+      key: "5",
+      HTMLElement:
+        '<input placeholder="" type="text" name="phone" class="form-control msforms-required" id="phonenumber" required="">',
+    },
+    _id: "649851e1a9da3f3a62432b52",
+  },
+  {
+    timeStamp: 1687704014.599,
+    name: "USER_EVENT",
+    type: "KEYUP",
+    data: {
+      X: 92,
+      Y: 483,
+      key: "5",
+      HTMLElement:
+        '<input placeholder="" type="text" name="phone" class="form-control msforms-required" id="phonenumber" required="">',
+    },
+    _id: "649851e1a9da3f3a62432b53",
+  },
+  {
+    timeStamp: 1687704014.689,
+    name: "USER_EVENT",
+    type: "KEYDOWN",
+    data: {
+      X: 92,
+      Y: 483,
+      key: "6",
+      HTMLElement:
+        '<input placeholder="" type="text" name="phone" class="form-control msforms-required" id="phonenumber" required="">',
+    },
+    _id: "649851e1a9da3f3a62432b54",
+  },
+  {
+    timeStamp: 1687704014.775,
+    name: "USER_EVENT",
+    type: "KEYUP",
+    data: {
+      X: 92,
+      Y: 483,
+      key: "6",
+      HTMLElement:
+        '<input placeholder="" type="text" name="phone" class="form-control msforms-required" id="phonenumber" required="">',
+    },
+    _id: "649851e1a9da3f3a62432b55",
+  },
+  {
+    timeStamp: 1687704014.898,
+    name: "USER_EVENT",
+    type: "KEYDOWN",
+    data: {
+      X: 92,
+      Y: 483,
+      key: "7",
+      HTMLElement:
+        '<input placeholder="" type="text" name="phone" class="form-control msforms-required" id="phonenumber" required="">',
+    },
+    _id: "649851e1a9da3f3a62432b56",
+  },
+  {
+    timeStamp: 1687704014.968,
+    name: "USER_EVENT",
+    type: "KEYUP",
+    data: {
+      X: 92,
+      Y: 483,
+      key: "7",
+      HTMLElement:
+        '<input placeholder="" type="text" name="phone" class="form-control msforms-required" id="phonenumber" required="">',
+    },
+    _id: "649851e1a9da3f3a62432b57",
+  },
+  {
+    timeStamp: 1687704015.123,
+    name: "USER_EVENT",
+    type: "KEYDOWN",
+    data: {
+      X: 92,
+      Y: 483,
+      key: "8",
+      HTMLElement:
+        '<input placeholder="" type="text" name="phone" class="form-control msforms-required" id="phonenumber" required="">',
+    },
+    _id: "649851e1a9da3f3a62432b58",
+  },
+  {
+    timeStamp: 1687704015.198,
+    name: "USER_EVENT",
+    type: "KEYUP",
+    data: {
+      X: 92,
+      Y: 483,
+      key: "8",
+      HTMLElement:
+        '<input placeholder="" type="text" name="phone" class="form-control msforms-required" id="phonenumber" required="">',
+    },
+    _id: "649851e1a9da3f3a62432b59",
+  },
+  {
+    timeStamp: 1687704015.324,
+    name: "USER_EVENT",
+    type: "KEYDOWN",
+    data: {
+      X: 92,
+      Y: 483,
+      key: "9",
+      HTMLElement:
+        '<input placeholder="" type="text" name="phone" class="form-control msforms-required" id="phonenumber" required="">',
+    },
+    _id: "649851e1a9da3f3a62432b5a",
+  },
+  {
+    timeStamp: 1687704015.403,
+    name: "USER_EVENT",
+    type: "KEYUP",
+    data: {
+      X: 92,
+      Y: 483,
+      key: "9",
+      HTMLElement:
+        '<input placeholder="" type="text" name="phone" class="form-control msforms-required" id="phonenumber" required="">',
+    },
+    _id: "649851e1a9da3f3a62432b5b",
+  },
+  {
+    timeStamp: 1687704015.475,
+    name: "USER_EVENT",
+    type: "KEYDOWN",
+    data: {
+      X: 92,
+      Y: 483,
+      key: "1",
+      HTMLElement:
+        '<input placeholder="" type="text" name="phone" class="form-control msforms-required" id="phonenumber" required="">',
+    },
+    _id: "649851e1a9da3f3a62432b5c",
+  },
+  {
+    timeStamp: 1687704015.57,
+    name: "USER_EVENT",
+    type: "KEYUP",
+    data: {
+      X: 92,
+      Y: 483,
+      key: "1",
+      HTMLElement:
+        '<input placeholder="" type="text" name="phone" class="form-control msforms-required" id="phonenumber" required="">',
+    },
+    _id: "649851e1a9da3f3a62432b5d",
+  },
+  {
+    timeStamp: 1687704015.586,
+    name: "USER_EVENT",
+    type: "KEYDOWN",
+    data: {
+      X: 92,
+      Y: 483,
+      key: "0",
+      HTMLElement:
+        '<input placeholder="" type="text" name="phone" class="form-control msforms-required" id="phonenumber" required="">',
+    },
+    _id: "649851e1a9da3f3a62432b5e",
+  },
+  {
+    timeStamp: 1687704015.643,
+    name: "USER_EVENT",
+    type: "KEYUP",
+    data: {
+      X: 92,
+      Y: 483,
+      key: "0",
+      HTMLElement:
+        '<input placeholder="" type="text" name="phone" class="form-control msforms-required" id="phonenumber" required="">',
+    },
+    _id: "649851e1a9da3f3a62432b5f",
+  },
+  {
+    timeStamp: 1687704016.554,
+    name: "USER_EVENT",
+    type: "MOUSEDOWN",
+    data: {
+      X: 77,
+      Y: 569,
+      scrollX: 0,
+      scrollY: 0,
+      HTMLElement:
+        '<label class="msforms-form-text-label" for="fname">First Name*</label>',
+    },
+    _id: "649851e1a9da3f3a62432b60",
+  },
+  {
+    timeStamp: 1687704016.638,
+    name: "USER_EVENT",
+    type: "MOUSEUP",
+    data: {
+      X: 88,
+      Y: 570,
+      scrollX: 0,
+      scrollY: 0,
+      HTMLElement:
+        '<label class="msforms-form-text-label" for="fname">First Name*</label>',
+    },
+    _id: "649851e1a9da3f3a62432b61",
+  },
+  {
+    timeStamp: 1687704016.971,
+    name: "USER_EVENT",
+    type: "MOUSEDOWN",
+    data: {
+      X: 103,
+      Y: 553,
+      scrollX: 0,
+      scrollY: 0,
+      HTMLElement:
+        '<label class="msforms-form-text-label" for="fname">First Name*</label>',
+    },
+    _id: "649851e1a9da3f3a62432b62",
+  },
+  {
+    timeStamp: 1687704017.064,
+    name: "USER_EVENT",
+    type: "CLICK",
+    data: {
+      X: 103,
+      Y: 553,
+      scrollX: 0,
+      scrollY: 0,
+      HTMLElement:
+        '<label class="msforms-form-text-label" for="fname">First Name*</label>',
+      button: 0,
+    },
+    _id: "649851e1a9da3f3a62432b63",
+  },
+  {
+    timeStamp: 1687704017.072,
+    name: "USER_EVENT",
+    type: "CLICK",
+    data: {
+      X: 103,
+      Y: 553,
+      scrollX: 0,
+      scrollY: 0,
+      HTMLElement:
+        '<label class="msforms-form-text-label" for="fname">First Name*</label>',
+      button: 0,
+    },
+    _id: "649851e1a9da3f3a62432b64",
+  },
+  {
+    timeStamp: 1687704017.504,
+    name: "USER_EVENT",
+    type: "MOUSEDOWN",
+    data: {
+      X: 107,
+      Y: 575,
+      scrollX: 0,
+      scrollY: 0,
+      HTMLElement:
+        '<input placeholder="" type="text" name="firstname" class="form-control msforms-required" id="fname" required="">',
+    },
+    _id: "649851e1a9da3f3a62432b65",
+  },
+  {
+    timeStamp: 1687704017.608,
+    name: "USER_EVENT",
+    type: "CLICK",
+    data: {
+      X: 107,
+      Y: 575,
+      scrollX: 0,
+      scrollY: 0,
+      HTMLElement:
+        '<input placeholder="" type="text" name="firstname" class="form-control msforms-required" id="fname" required="">',
+      button: 0,
+    },
+    _id: "649851e1a9da3f3a62432b66",
+  },
+  {
+    timeStamp: 1687704017.821,
+    name: "USER_EVENT",
+    type: "KEYDOWN",
+    data: {
+      X: 107,
+      Y: 575,
       key: "Shift",
       HTMLElement:
-        '<input id="lastname-dbe69d22-e575-4548-a360-0bd07b9d9fa9" name="lastname" placeholder="Last name" type="text" class="hs-input" inputmode="text" autocomplete="family-name" value="">',
+        '<input placeholder="" type="text" name="firstname" class="form-control msforms-required" id="fname" required="">',
     },
-    _id: "6496ebbda9da3f3a624200e8",
+    _id: "649851e1a9da3f3a62432b67",
   },
   {
-    timeStamp: 1687610754.855,
+    timeStamp: 1687704018.016,
     name: "USER_EVENT",
     type: "KEYDOWN",
     data: {
-      X: 713,
-      Y: 481,
+      X: 107,
+      Y: 575,
+      key: "V",
+      HTMLElement:
+        '<input placeholder="" type="text" name="firstname" class="form-control msforms-required" id="fname" required="">',
+    },
+    _id: "649851e1a9da3f3a62432b68",
+  },
+  {
+    timeStamp: 1687704018.123,
+    name: "USER_EVENT",
+    type: "KEYUP",
+    data: {
+      X: 107,
+      Y: 575,
       key: "Shift",
       HTMLElement:
-        '<input id="lastname-dbe69d22-e575-4548-a360-0bd07b9d9fa9" name="lastname" placeholder="Last name" type="text" class="hs-input" inputmode="text" autocomplete="family-name" value="">',
+        '<input placeholder="" type="text" name="firstname" class="form-control msforms-required" id="fname" required="">',
     },
-    _id: "6496ebbda9da3f3a624200e9",
+    _id: "649851e1a9da3f3a62432b69",
   },
   {
-    timeStamp: 1687610754.889,
+    timeStamp: 1687704018.139,
+    name: "USER_EVENT",
+    type: "KEYUP",
+    data: {
+      X: 107,
+      Y: 575,
+      key: "v",
+      HTMLElement:
+        '<input placeholder="" type="text" name="firstname" class="form-control msforms-required" id="fname" required="">',
+    },
+    _id: "649851e1a9da3f3a62432b6a",
+  },
+  {
+    timeStamp: 1687704018.294,
     name: "USER_EVENT",
     type: "KEYDOWN",
     data: {
-      X: 713,
-      Y: 481,
+      X: 107,
+      Y: 575,
+      key: "a",
+      HTMLElement:
+        '<input placeholder="" type="text" name="firstname" class="form-control msforms-required" id="fname" required="">',
+    },
+    _id: "649851e1a9da3f3a62432b6b",
+  },
+  {
+    timeStamp: 1687704018.357,
+    name: "USER_EVENT",
+    type: "KEYDOWN",
+    data: {
+      X: 107,
+      Y: 575,
+      key: "r",
+      HTMLElement:
+        '<input placeholder="" type="text" name="firstname" class="form-control msforms-required" id="fname" required="">',
+    },
+    _id: "649851e1a9da3f3a62432b6c",
+  },
+  {
+    timeStamp: 1687704018.41,
+    name: "USER_EVENT",
+    type: "KEYUP",
+    data: {
+      X: 107,
+      Y: 575,
+      key: "a",
+      HTMLElement:
+        '<input placeholder="" type="text" name="firstname" class="form-control msforms-required" id="fname" required="">',
+    },
+    _id: "649851e1a9da3f3a62432b6d",
+  },
+  {
+    timeStamp: 1687704018.489,
+    name: "USER_EVENT",
+    type: "KEYUP",
+    data: {
+      X: 107,
+      Y: 575,
+      key: "r",
+      HTMLElement:
+        '<input placeholder="" type="text" name="firstname" class="form-control msforms-required" id="fname" required="">',
+    },
+    _id: "649851e1a9da3f3a62432b6e",
+  },
+  {
+    timeStamp: 1687704018.525,
+    name: "USER_EVENT",
+    type: "KEYDOWN",
+    data: {
+      X: 107,
+      Y: 575,
+      key: "u",
+      HTMLElement:
+        '<input placeholder="" type="text" name="firstname" class="form-control msforms-required" id="fname" required="">',
+    },
+    _id: "649851e1a9da3f3a62432b6f",
+  },
+  {
+    timeStamp: 1687704018.603,
+    name: "USER_EVENT",
+    type: "KEYDOWN",
+    data: {
+      X: 107,
+      Y: 575,
+      key: "n",
+      HTMLElement:
+        '<input placeholder="" type="text" name="firstname" class="form-control msforms-required" id="fname" required="">',
+    },
+    _id: "649851e1a9da3f3a62432b70",
+  },
+  {
+    timeStamp: 1687704018.604,
+    name: "USER_EVENT",
+    type: "KEYUP",
+    data: {
+      X: 107,
+      Y: 575,
+      key: "u",
+      HTMLElement:
+        '<input placeholder="" type="text" name="firstname" class="form-control msforms-required" id="fname" required="">',
+    },
+    _id: "649851e1a9da3f3a62432b71",
+  },
+  {
+    timeStamp: 1687704018.673,
+    name: "USER_EVENT",
+    type: "KEYUP",
+    data: {
+      X: 107,
+      Y: 575,
+      key: "n",
+      HTMLElement:
+        '<input placeholder="" type="text" name="firstname" class="form-control msforms-required" id="fname" required="">',
+    },
+    _id: "649851e1a9da3f3a62432b72",
+  },
+  {
+    timeStamp: 1687704019.621,
+    name: "USER_EVENT",
+    type: "MOUSEDOWN",
+    data: {
+      X: 104,
+      Y: 652,
+      scrollX: 0,
+      scrollY: 86,
+      HTMLElement:
+        '<label class="msforms-form-text-label" for="lname">Last Name*</label>',
+    },
+    _id: "649851e1a9da3f3a62432b73",
+  },
+  {
+    timeStamp: 1687704019.721,
+    name: "USER_EVENT",
+    type: "CLICK",
+    data: {
+      X: 104,
+      Y: 652,
+      scrollX: 0,
+      scrollY: 86,
+      HTMLElement:
+        '<label class="msforms-form-text-label" for="lname">Last Name*</label>',
+      button: 0,
+    },
+    _id: "649851e1a9da3f3a62432b74",
+  },
+  {
+    timeStamp: 1687704019.724,
+    name: "USER_EVENT",
+    type: "CLICK",
+    data: {
+      X: 104,
+      Y: 652,
+      scrollX: 0,
+      scrollY: 86,
+      HTMLElement:
+        '<label class="msforms-form-text-label" for="lname">Last Name*</label>',
+      button: 0,
+    },
+    _id: "649851e1a9da3f3a62432b75",
+  },
+  {
+    timeStamp: 1687704020.004,
+    name: "USER_EVENT",
+    type: "MOUSEDOWN",
+    data: {
+      X: 86,
+      Y: 633,
+      scrollX: 0,
+      scrollY: 86,
+      HTMLElement:
+        '<input placeholder="" type="text" name="lastname" class="form-control msforms-required" id="lname" required="">',
+    },
+    _id: "649851e1a9da3f3a62432b76",
+  },
+  {
+    timeStamp: 1687704020.1,
+    name: "USER_EVENT",
+    type: "CLICK",
+    data: {
+      X: 86,
+      Y: 633,
+      scrollX: 0,
+      scrollY: 86,
+      HTMLElement:
+        '<input placeholder="" type="text" name="lastname" class="form-control msforms-required" id="lname" required="">',
+      button: 0,
+    },
+    _id: "649851e1a9da3f3a62432b77",
+  },
+  {
+    timeStamp: 1687704020.404,
+    name: "USER_EVENT",
+    type: "KEYDOWN",
+    data: {
+      X: 86,
+      Y: 633,
       key: "Shift",
       HTMLElement:
-        '<input id="lastname-dbe69d22-e575-4548-a360-0bd07b9d9fa9" name="lastname" placeholder="Last name" type="text" class="hs-input" inputmode="text" autocomplete="family-name" value="">',
+        '<input placeholder="" type="text" name="lastname" class="form-control msforms-required" id="lname" required="">',
     },
-    _id: "6496ebbda9da3f3a624200ea",
+    _id: "649851e1a9da3f3a62432b78",
   },
   {
-    timeStamp: 1687610754.923,
+    timeStamp: 1687704020.741,
     name: "USER_EVENT",
     type: "KEYDOWN",
     data: {
-      X: 713,
-      Y: 481,
-      key: "Shift",
-      HTMLElement:
-        '<input id="lastname-dbe69d22-e575-4548-a360-0bd07b9d9fa9" name="lastname" placeholder="Last name" type="text" class="hs-input" inputmode="text" autocomplete="family-name" value="">',
-    },
-    _id: "6496ebbda9da3f3a624200eb",
-  },
-  {
-    timeStamp: 1687610754.956,
-    name: "USER_EVENT",
-    type: "KEYDOWN",
-    data: {
-      X: 713,
-      Y: 481,
-      key: "Shift",
-      HTMLElement:
-        '<input id="lastname-dbe69d22-e575-4548-a360-0bd07b9d9fa9" name="lastname" placeholder="Last name" type="text" class="hs-input" inputmode="text" autocomplete="family-name" value="">',
-    },
-    _id: "6496ebbda9da3f3a624200ec",
-  },
-  {
-    timeStamp: 1687610754.987,
-    name: "USER_EVENT",
-    type: "KEYDOWN",
-    data: {
-      X: 713,
-      Y: 481,
-      key: "Shift",
-      HTMLElement:
-        '<input id="lastname-dbe69d22-e575-4548-a360-0bd07b9d9fa9" name="lastname" placeholder="Last name" type="text" class="hs-input" inputmode="text" autocomplete="family-name" value="">',
-    },
-    _id: "6496ebbda9da3f3a624200ed",
-  },
-  {
-    timeStamp: 1687610755.012,
-    name: "USER_EVENT",
-    type: "KEYDOWN",
-    data: {
-      X: 713,
-      Y: 481,
+      X: 86,
+      Y: 633,
       key: "S",
       HTMLElement:
-        '<input id="lastname-dbe69d22-e575-4548-a360-0bd07b9d9fa9" name="lastname" placeholder="Last name" type="text" class="hs-input" inputmode="text" autocomplete="family-name" value="">',
+        '<input placeholder="" type="text" name="lastname" class="form-control msforms-required" id="lname" required="">',
     },
-    _id: "6496ebbda9da3f3a624200ee",
+    _id: "649851e1a9da3f3a62432b79",
   },
   {
-    timeStamp: 1687610755.16,
+    timeStamp: 1687704020.804,
     name: "USER_EVENT",
     type: "KEYUP",
     data: {
-      X: 713,
-      Y: 481,
+      X: 86,
+      Y: 633,
       key: "Shift",
       HTMLElement:
-        '<input id="lastname-dbe69d22-e575-4548-a360-0bd07b9d9fa9" name="lastname" placeholder="Last name" type="text" class="hs-input" inputmode="text" autocomplete="family-name" value="S">',
+        '<input placeholder="" type="text" name="lastname" class="form-control msforms-required" id="lname" required="">',
     },
-    _id: "6496ebbda9da3f3a624200ef",
+    _id: "649851e1a9da3f3a62432b7a",
   },
   {
-    timeStamp: 1687610755.176,
+    timeStamp: 1687704020.825,
     name: "USER_EVENT",
     type: "KEYUP",
     data: {
-      X: 713,
-      Y: 481,
+      X: 86,
+      Y: 633,
       key: "s",
       HTMLElement:
-        '<input id="lastname-dbe69d22-e575-4548-a360-0bd07b9d9fa9" name="lastname" placeholder="Last name" type="text" class="hs-input" inputmode="text" autocomplete="family-name" value="S">',
+        '<input placeholder="" type="text" name="lastname" class="form-control msforms-required" id="lname" required="">',
     },
-    _id: "6496ebbda9da3f3a624200f0",
+    _id: "649851e1a9da3f3a62432b7b",
   },
   {
-    timeStamp: 1687610755.307,
+    timeStamp: 1687704020.936,
     name: "USER_EVENT",
     type: "KEYDOWN",
     data: {
-      X: 713,
-      Y: 481,
+      X: 86,
+      Y: 633,
       key: "a",
       HTMLElement:
-        '<input id="lastname-dbe69d22-e575-4548-a360-0bd07b9d9fa9" name="lastname" placeholder="Last name" type="text" class="hs-input" inputmode="text" autocomplete="family-name" value="S">',
+        '<input placeholder="" type="text" name="lastname" class="form-control msforms-required" id="lname" required="">',
     },
-    _id: "6496ebbda9da3f3a624200f1",
+    _id: "649851e1a9da3f3a62432b7c",
   },
   {
-    timeStamp: 1687610755.409,
-    name: "USER_EVENT",
-    type: "KEYUP",
-    data: {
-      X: 713,
-      Y: 481,
-      key: "a",
-      HTMLElement:
-        '<input id="lastname-dbe69d22-e575-4548-a360-0bd07b9d9fa9" name="lastname" placeholder="Last name" type="text" class="hs-input" inputmode="text" autocomplete="family-name" value="Sa">',
-    },
-    _id: "6496ebbda9da3f3a624200f2",
-  },
-  {
-    timeStamp: 1687610755.424,
+    timeStamp: 1687704021.016,
     name: "USER_EVENT",
     type: "KEYDOWN",
     data: {
-      X: 713,
-      Y: 481,
+      X: 86,
+      Y: 633,
       key: "m",
       HTMLElement:
-        '<input id="lastname-dbe69d22-e575-4548-a360-0bd07b9d9fa9" name="lastname" placeholder="Last name" type="text" class="hs-input" inputmode="text" autocomplete="family-name" value="Sa">',
+        '<input placeholder="" type="text" name="lastname" class="form-control msforms-required" id="lname" required="">',
     },
-    _id: "6496ebbda9da3f3a624200f3",
+    _id: "649851e1a9da3f3a62432b7d",
   },
   {
-    timeStamp: 1687610755.534,
+    timeStamp: 1687704021.035,
     name: "USER_EVENT",
     type: "KEYUP",
     data: {
-      X: 713,
-      Y: 481,
+      X: 86,
+      Y: 633,
+      key: "a",
+      HTMLElement:
+        '<input placeholder="" type="text" name="lastname" class="form-control msforms-required" id="lname" required="">',
+    },
+    _id: "649851e1a9da3f3a62432b7e",
+  },
+  {
+    timeStamp: 1687704021.092,
+    name: "USER_EVENT",
+    type: "KEYUP",
+    data: {
+      X: 86,
+      Y: 633,
       key: "m",
       HTMLElement:
-        '<input id="lastname-dbe69d22-e575-4548-a360-0bd07b9d9fa9" name="lastname" placeholder="Last name" type="text" class="hs-input" inputmode="text" autocomplete="family-name" value="Sam">',
+        '<input placeholder="" type="text" name="lastname" class="form-control msforms-required" id="lname" required="">',
     },
-    _id: "6496ebbda9da3f3a624200f4",
+    _id: "649851e1a9da3f3a62432b7f",
   },
   {
-    timeStamp: 1687610755.722,
+    timeStamp: 1687704021.203,
     name: "USER_EVENT",
     type: "KEYDOWN",
     data: {
-      X: 713,
-      Y: 481,
+      X: 86,
+      Y: 633,
       key: "b",
       HTMLElement:
-        '<input id="lastname-dbe69d22-e575-4548-a360-0bd07b9d9fa9" name="lastname" placeholder="Last name" type="text" class="hs-input" inputmode="text" autocomplete="family-name" value="Sam">',
+        '<input placeholder="" type="text" name="lastname" class="form-control msforms-required" id="lname" required="">',
     },
-    _id: "6496ebbda9da3f3a624200f5",
+    _id: "649851e1a9da3f3a62432b80",
   },
   {
-    timeStamp: 1687610755.816,
+    timeStamp: 1687704021.273,
     name: "USER_EVENT",
     type: "KEYUP",
     data: {
-      X: 713,
-      Y: 481,
+      X: 86,
+      Y: 633,
       key: "b",
       HTMLElement:
-        '<input id="lastname-dbe69d22-e575-4548-a360-0bd07b9d9fa9" name="lastname" placeholder="Last name" type="text" class="hs-input" inputmode="text" autocomplete="family-name" value="Samb">',
+        '<input placeholder="" type="text" name="lastname" class="form-control msforms-required" id="lname" required="">',
     },
-    _id: "6496ebbda9da3f3a624200f6",
+    _id: "649851e1a9da3f3a62432b81",
   },
   {
-    timeStamp: 1687610755.879,
+    timeStamp: 1687704021.307,
     name: "USER_EVENT",
     type: "KEYDOWN",
     data: {
-      X: 713,
-      Y: 481,
+      X: 86,
+      Y: 633,
       key: "a",
       HTMLElement:
-        '<input id="lastname-dbe69d22-e575-4548-a360-0bd07b9d9fa9" name="lastname" placeholder="Last name" type="text" class="hs-input" inputmode="text" autocomplete="family-name" value="Samb">',
+        '<input placeholder="" type="text" name="lastname" class="form-control msforms-required" id="lname" required="">',
     },
-    _id: "6496ebbda9da3f3a624200f7",
+    _id: "649851e1a9da3f3a62432b82",
   },
   {
-    timeStamp: 1687610755.965,
+    timeStamp: 1687704021.4,
     name: "USER_EVENT",
     type: "KEYDOWN",
     data: {
-      X: 713,
-      Y: 481,
+      X: 86,
+      Y: 633,
       key: "n",
       HTMLElement:
-        '<input id="lastname-dbe69d22-e575-4548-a360-0bd07b9d9fa9" name="lastname" placeholder="Last name" type="text" class="hs-input" inputmode="text" autocomplete="family-name" value="Samba">',
+        '<input placeholder="" type="text" name="lastname" class="form-control msforms-required" id="lname" required="">',
     },
-    _id: "6496ebbda9da3f3a624200f8",
+    _id: "649851e1a9da3f3a62432b83",
   },
   {
-    timeStamp: 1687610755.97,
+    timeStamp: 1687704021.403,
     name: "USER_EVENT",
     type: "KEYUP",
     data: {
-      X: 713,
-      Y: 481,
+      X: 86,
+      Y: 633,
       key: "a",
       HTMLElement:
-        '<input id="lastname-dbe69d22-e575-4548-a360-0bd07b9d9fa9" name="lastname" placeholder="Last name" type="text" class="hs-input" inputmode="text" autocomplete="family-name" value="Samban">',
+        '<input placeholder="" type="text" name="lastname" class="form-control msforms-required" id="lname" required="">',
     },
-    _id: "6496ebbda9da3f3a624200f9",
+    _id: "649851e1a9da3f3a62432b84",
   },
   {
-    timeStamp: 1687610756.029,
+    timeStamp: 1687704021.439,
     name: "USER_EVENT",
     type: "KEYUP",
     data: {
-      X: 713,
-      Y: 481,
+      X: 86,
+      Y: 633,
       key: "n",
       HTMLElement:
-        '<input id="lastname-dbe69d22-e575-4548-a360-0bd07b9d9fa9" name="lastname" placeholder="Last name" type="text" class="hs-input" inputmode="text" autocomplete="family-name" value="Samban">',
+        '<input placeholder="" type="text" name="lastname" class="form-control msforms-required" id="lname" required="">',
     },
-    _id: "6496ebbda9da3f3a624200fa",
+    _id: "649851e1a9da3f3a62432b85",
   },
   {
-    timeStamp: 1687610756.106,
+    timeStamp: 1687704021.531,
     name: "USER_EVENT",
     type: "KEYDOWN",
     data: {
-      X: 713,
-      Y: 481,
+      X: 86,
+      Y: 633,
       key: "n",
       HTMLElement:
-        '<input id="lastname-dbe69d22-e575-4548-a360-0bd07b9d9fa9" name="lastname" placeholder="Last name" type="text" class="hs-input" inputmode="text" autocomplete="family-name" value="Samban">',
+        '<input placeholder="" type="text" name="lastname" class="form-control msforms-required" id="lname" required="">',
     },
-    _id: "6496ebbda9da3f3a624200fb",
+    _id: "649851e1a9da3f3a62432b86",
   },
   {
-    timeStamp: 1687610756.199,
-    name: "USER_EVENT",
-    type: "KEYUP",
-    data: {
-      X: 713,
-      Y: 481,
-      key: "n",
-      HTMLElement:
-        '<input id="lastname-dbe69d22-e575-4548-a360-0bd07b9d9fa9" name="lastname" placeholder="Last name" type="text" class="hs-input" inputmode="text" autocomplete="family-name" value="Sambann">',
-    },
-    _id: "6496ebbda9da3f3a624200fc",
-  },
-  {
-    timeStamp: 1687610756.452,
+    timeStamp: 1687704021.642,
     name: "USER_EVENT",
     type: "KEYDOWN",
     data: {
-      X: 713,
-      Y: 481,
+      X: 86,
+      Y: 633,
       key: "i",
       HTMLElement:
-        '<input id="lastname-dbe69d22-e575-4548-a360-0bd07b9d9fa9" name="lastname" placeholder="Last name" type="text" class="hs-input" inputmode="text" autocomplete="family-name" value="Sambann">',
+        '<input placeholder="" type="text" name="lastname" class="form-control msforms-required" id="lname" required="">',
     },
-    _id: "6496ebbda9da3f3a624200fd",
+    _id: "649851e1a9da3f3a62432b87",
   },
   {
-    timeStamp: 1687610756.539,
+    timeStamp: 1687704021.664,
     name: "USER_EVENT",
     type: "KEYUP",
     data: {
-      X: 713,
-      Y: 481,
-      key: "i",
+      X: 86,
+      Y: 633,
+      key: "n",
       HTMLElement:
-        '<input id="lastname-dbe69d22-e575-4548-a360-0bd07b9d9fa9" name="lastname" placeholder="Last name" type="text" class="hs-input" inputmode="text" autocomplete="family-name" value="Sambanni">',
+        '<input placeholder="" type="text" name="lastname" class="form-control msforms-required" id="lname" required="">',
     },
-    _id: "6496ebbda9da3f3a624200fe",
+    _id: "649851e1a9da3f3a62432b88",
   },
   {
-    timeStamp: 1687610757.837,
+    timeStamp: 1687704021.734,
+    name: "USER_EVENT",
+    type: "KEYUP",
+    data: {
+      X: 86,
+      Y: 633,
+      key: "i",
+      HTMLElement:
+        '<input placeholder="" type="text" name="lastname" class="form-control msforms-required" id="lname" required="">',
+    },
+    _id: "649851e1a9da3f3a62432b89",
+  },
+  {
+    timeStamp: 1687704022.933,
     name: "USER_EVENT",
     type: "MOUSEDOWN",
     data: {
-      X: 717,
-      Y: 549,
+      X: 407,
+      Y: 343,
       scrollX: 0,
-      scrollY: 0,
+      scrollY: 86,
       HTMLElement:
-        '<input id="email-dbe69d22-e575-4548-a360-0bd07b9d9fa9" name="email" required="" placeholder="Business Email *" type="email" class="hs-input" inputmode="email" autocomplete="email" value="">',
+        '<p style="padding-bottom:10px;">We will use this information to set up a Free Trial or Demo session and send information about DNA Spaces</p>',
     },
-    _id: "6496ebbda9da3f3a624200ff",
+    _id: "649851e1a9da3f3a62432b8a",
   },
   {
-    timeStamp: 1687610757.964,
+    timeStamp: 1687704023.036,
     name: "USER_EVENT",
     type: "CLICK",
     data: {
-      X: 717,
-      Y: 549,
+      X: 407,
+      Y: 343,
       scrollX: 0,
-      scrollY: 0,
+      scrollY: 86,
       HTMLElement:
-        '<input id="email-dbe69d22-e575-4548-a360-0bd07b9d9fa9" name="email" required="" placeholder="Business Email *" type="email" class="hs-input" inputmode="email" autocomplete="email" value="">',
+        '<p style="padding-bottom:10px;">We will use this information to set up a Free Trial or Demo session and send information about DNA Spaces</p>',
       button: 0,
     },
-    _id: "6496ebbda9da3f3a62420100",
+    _id: "649851e1a9da3f3a62432b8b",
   },
   {
-    timeStamp: 1687610758.932,
-    name: "USER_EVENT",
-    type: "IDLE",
-    data: {
-      X: 717,
-      Y: 549,
-      scrollX: 0,
-      scrollY: 0,
-      HTMLElement:
-        '<input id="email-dbe69d22-e575-4548-a360-0bd07b9d9fa9" name="email" required="" placeholder="Business Email *" type="email" class="hs-input" inputmode="email" autocomplete="email" value="">',
-    },
-    _id: "6496ebbda9da3f3a62420101",
-  },
-  {
-    timeStamp: 1687610759.452,
-    name: "USER_EVENT",
-    type: "KEYDOWN",
-    data: {
-      X: 717,
-      Y: 549,
-      key: "v",
-      HTMLElement:
-        '<input id="email-dbe69d22-e575-4548-a360-0bd07b9d9fa9" name="email" required="" placeholder="Business Email *" type="email" class="hs-input" inputmode="email" autocomplete="email" value="">',
-    },
-    _id: "6496ebbda9da3f3a62420102",
-  },
-  {
-    timeStamp: 1687610759.547,
-    name: "USER_EVENT",
-    type: "KEYUP",
-    data: {
-      X: 717,
-      Y: 549,
-      key: "v",
-      HTMLElement:
-        '<input id="email-dbe69d22-e575-4548-a360-0bd07b9d9fa9" name="email" required="" placeholder="Business Email *" type="email" class="hs-input" inputmode="email" autocomplete="email" value="v">',
-    },
-    _id: "6496ebbda9da3f3a62420103",
-  },
-  {
-    timeStamp: 1687610759.631,
-    name: "USER_EVENT",
-    type: "KEYDOWN",
-    data: {
-      X: 717,
-      Y: 549,
-      key: "s",
-      HTMLElement:
-        '<input id="email-dbe69d22-e575-4548-a360-0bd07b9d9fa9" name="email" required="" placeholder="Business Email *" type="email" class="hs-input" inputmode="email" autocomplete="email" value="v">',
-    },
-    _id: "6496ebbda9da3f3a62420104",
-  },
-  {
-    timeStamp: 1687610759.724,
-    name: "USER_EVENT",
-    type: "KEYDOWN",
-    data: {
-      X: 717,
-      Y: 549,
-      key: "a",
-      HTMLElement:
-        '<input id="email-dbe69d22-e575-4548-a360-0bd07b9d9fa9" name="email" required="" placeholder="Business Email *" type="email" class="hs-input" inputmode="email" autocomplete="email" value="vs">',
-    },
-    _id: "6496ebbda9da3f3a62420105",
-  },
-  {
-    timeStamp: 1687610759.763,
-    name: "USER_EVENT",
-    type: "KEYUP",
-    data: {
-      X: 717,
-      Y: 549,
-      key: "s",
-      HTMLElement:
-        '<input id="email-dbe69d22-e575-4548-a360-0bd07b9d9fa9" name="email" required="" placeholder="Business Email *" type="email" class="hs-input" inputmode="email" autocomplete="email" value="vsa">',
-    },
-    _id: "6496ebbda9da3f3a62420106",
-  },
-  {
-    timeStamp: 1687610759.857,
-    name: "USER_EVENT",
-    type: "KEYUP",
-    data: {
-      X: 717,
-      Y: 549,
-      key: "a",
-      HTMLElement:
-        '<input id="email-dbe69d22-e575-4548-a360-0bd07b9d9fa9" name="email" required="" placeholder="Business Email *" type="email" class="hs-input" inputmode="email" autocomplete="email" value="vsa">',
-    },
-    _id: "6496ebbda9da3f3a62420107",
-  },
-  {
-    timeStamp: 1687610759.887,
-    name: "USER_EVENT",
-    type: "KEYDOWN",
-    data: {
-      X: 717,
-      Y: 549,
-      key: "m",
-      HTMLElement:
-        '<input id="email-dbe69d22-e575-4548-a360-0bd07b9d9fa9" name="email" required="" placeholder="Business Email *" type="email" class="hs-input" inputmode="email" autocomplete="email" value="vsa">',
-    },
-    _id: "6496ebbda9da3f3a62420108",
-  },
-  {
-    timeStamp: 1687610759.996,
-    name: "USER_EVENT",
-    type: "KEYUP",
-    data: {
-      X: 717,
-      Y: 549,
-      key: "m",
-      HTMLElement:
-        '<input id="email-dbe69d22-e575-4548-a360-0bd07b9d9fa9" name="email" required="" placeholder="Business Email *" type="email" class="hs-input" inputmode="email" autocomplete="email" value="vsam">',
-    },
-    _id: "6496ebbda9da3f3a62420109",
-  },
-  {
-    timeStamp: 1687610760.143,
-    name: "USER_EVENT",
-    type: "KEYDOWN",
-    data: {
-      X: 717,
-      Y: 549,
-      key: "b",
-      HTMLElement:
-        '<input id="email-dbe69d22-e575-4548-a360-0bd07b9d9fa9" name="email" required="" placeholder="Business Email *" type="email" class="hs-input" inputmode="email" autocomplete="email" value="vsam">',
-    },
-    _id: "6496ebbda9da3f3a6242010a",
-  },
-  {
-    timeStamp: 1687610760.25,
-    name: "USER_EVENT",
-    type: "KEYUP",
-    data: {
-      X: 717,
-      Y: 549,
-      key: "b",
-      HTMLElement:
-        '<input id="email-dbe69d22-e575-4548-a360-0bd07b9d9fa9" name="email" required="" placeholder="Business Email *" type="email" class="hs-input" inputmode="email" autocomplete="email" value="vsamb">',
-    },
-    _id: "6496ebbda9da3f3a6242010b",
-  },
-  {
-    timeStamp: 1687610760.25,
-    name: "USER_EVENT",
-    type: "KEYDOWN",
-    data: {
-      X: 717,
-      Y: 549,
-      key: "a",
-      HTMLElement:
-        '<input id="email-dbe69d22-e575-4548-a360-0bd07b9d9fa9" name="email" required="" placeholder="Business Email *" type="email" class="hs-input" inputmode="email" autocomplete="email" value="vsamb">',
-    },
-    _id: "6496ebbda9da3f3a6242010c",
-  },
-  {
-    timeStamp: 1687610760.335,
-    name: "USER_EVENT",
-    type: "KEYUP",
-    data: {
-      X: 717,
-      Y: 549,
-      key: "a",
-      HTMLElement:
-        '<input id="email-dbe69d22-e575-4548-a360-0bd07b9d9fa9" name="email" required="" placeholder="Business Email *" type="email" class="hs-input" inputmode="email" autocomplete="email" value="vsamba">',
-    },
-    _id: "6496ebbda9da3f3a6242010d",
-  },
-  {
-    timeStamp: 1687610760.363,
-    name: "USER_EVENT",
-    type: "KEYDOWN",
-    data: {
-      X: 717,
-      Y: 549,
-      key: "n",
-      HTMLElement:
-        '<input id="email-dbe69d22-e575-4548-a360-0bd07b9d9fa9" name="email" required="" placeholder="Business Email *" type="email" class="hs-input" inputmode="email" autocomplete="email" value="vsamba">',
-    },
-    _id: "6496ebbda9da3f3a6242010e",
-  },
-  {
-    timeStamp: 1687610760.448,
-    name: "USER_EVENT",
-    type: "KEYUP",
-    data: {
-      X: 717,
-      Y: 549,
-      key: "n",
-      HTMLElement:
-        '<input id="email-dbe69d22-e575-4548-a360-0bd07b9d9fa9" name="email" required="" placeholder="Business Email *" type="email" class="hs-input" inputmode="email" autocomplete="email" value="vsamban">',
-    },
-    _id: "6496ebbda9da3f3a6242010f",
-  },
-  {
-    timeStamp: 1687610760.571,
-    name: "USER_EVENT",
-    type: "KEYDOWN",
-    data: {
-      X: 717,
-      Y: 549,
-      key: "Shift",
-      HTMLElement:
-        '<input id="email-dbe69d22-e575-4548-a360-0bd07b9d9fa9" name="email" required="" placeholder="Business Email *" type="email" class="hs-input" inputmode="email" autocomplete="email" value="vsamban">',
-    },
-    _id: "6496ebbda9da3f3a62420110",
-  },
-  {
-    timeStamp: 1687610760.731,
-    name: "USER_EVENT",
-    type: "KEYDOWN",
-    data: {
-      X: 717,
-      Y: 549,
-      key: "@",
-      HTMLElement:
-        '<input id="email-dbe69d22-e575-4548-a360-0bd07b9d9fa9" name="email" required="" placeholder="Business Email *" type="email" class="hs-input" inputmode="email" autocomplete="email" value="vsamban">',
-    },
-    _id: "6496ebbda9da3f3a62420111",
-  },
-  {
-    timeStamp: 1687610760.768,
-    name: "USER_EVENT",
-    type: "KEYUP",
-    data: {
-      X: 717,
-      Y: 549,
-      key: "@",
-      HTMLElement:
-        '<input id="email-dbe69d22-e575-4548-a360-0bd07b9d9fa9" name="email" required="" placeholder="Business Email *" type="email" class="hs-input" inputmode="email" autocomplete="email" value="vsamban@">',
-    },
-    _id: "6496ebbda9da3f3a62420112",
-  },
-  {
-    timeStamp: 1687610760.829,
-    name: "USER_EVENT",
-    type: "KEYUP",
-    data: {
-      X: 717,
-      Y: 549,
-      key: "Shift",
-      HTMLElement:
-        '<input id="email-dbe69d22-e575-4548-a360-0bd07b9d9fa9" name="email" required="" placeholder="Business Email *" type="email" class="hs-input" inputmode="email" autocomplete="email" value="vsamban@">',
-    },
-    _id: "6496ebbda9da3f3a62420113",
-  },
-  {
-    timeStamp: 1687610761.044,
-    name: "USER_EVENT",
-    type: "KEYDOWN",
-    data: {
-      X: 717,
-      Y: 549,
-      key: "c",
-      HTMLElement:
-        '<input id="email-dbe69d22-e575-4548-a360-0bd07b9d9fa9" name="email" required="" placeholder="Business Email *" type="email" class="hs-input" inputmode="email" autocomplete="email" value="vsamban@">',
-    },
-    _id: "6496ebbda9da3f3a62420114",
-  },
-  {
-    timeStamp: 1687610761.169,
-    name: "USER_EVENT",
-    type: "KEYDOWN",
-    data: {
-      X: 717,
-      Y: 549,
-      key: "i",
-      HTMLElement:
-        '<input id="email-dbe69d22-e575-4548-a360-0bd07b9d9fa9" name="email" required="" placeholder="Business Email *" type="email" class="hs-input" inputmode="email" autocomplete="email" value="vsamban@c">',
-    },
-    _id: "6496ebbda9da3f3a62420115",
-  },
-  {
-    timeStamp: 1687610761.172,
-    name: "USER_EVENT",
-    type: "KEYUP",
-    data: {
-      X: 717,
-      Y: 549,
-      key: "c",
-      HTMLElement:
-        '<input id="email-dbe69d22-e575-4548-a360-0bd07b9d9fa9" name="email" required="" placeholder="Business Email *" type="email" class="hs-input" inputmode="email" autocomplete="email" value="vsamban@ci">',
-    },
-    _id: "6496ebbda9da3f3a62420116",
-  },
-  {
-    timeStamp: 1687610761.259,
-    name: "USER_EVENT",
-    type: "KEYUP",
-    data: {
-      X: 717,
-      Y: 549,
-      key: "i",
-      HTMLElement:
-        '<input id="email-dbe69d22-e575-4548-a360-0bd07b9d9fa9" name="email" required="" placeholder="Business Email *" type="email" class="hs-input" inputmode="email" autocomplete="email" value="vsamban@ci">',
-    },
-    _id: "6496ebbda9da3f3a62420117",
-  },
-  {
-    timeStamp: 1687610761.26,
-    name: "USER_EVENT",
-    type: "KEYDOWN",
-    data: {
-      X: 717,
-      Y: 549,
-      key: "s",
-      HTMLElement:
-        '<input id="email-dbe69d22-e575-4548-a360-0bd07b9d9fa9" name="email" required="" placeholder="Business Email *" type="email" class="hs-input" inputmode="email" autocomplete="email" value="vsamban@ci">',
-    },
-    _id: "6496ebbda9da3f3a62420118",
-  },
-  {
-    timeStamp: 1687610761.314,
-    name: "USER_EVENT",
-    type: "KEYDOWN",
-    data: {
-      X: 717,
-      Y: 549,
-      key: "c",
-      HTMLElement:
-        '<input id="email-dbe69d22-e575-4548-a360-0bd07b9d9fa9" name="email" required="" placeholder="Business Email *" type="email" class="hs-input" inputmode="email" autocomplete="email" value="vsamban@cis">',
-    },
-    _id: "6496ebbda9da3f3a62420119",
-  },
-  {
-    timeStamp: 1687610761.344,
-    name: "USER_EVENT",
-    type: "KEYUP",
-    data: {
-      X: 717,
-      Y: 549,
-      key: "s",
-      HTMLElement:
-        '<input id="email-dbe69d22-e575-4548-a360-0bd07b9d9fa9" name="email" required="" placeholder="Business Email *" type="email" class="hs-input" inputmode="email" autocomplete="email" value="vsamban@cisc">',
-    },
-    _id: "6496ebbda9da3f3a6242011a",
-  },
-  {
-    timeStamp: 1687610761.431,
-    name: "USER_EVENT",
-    type: "KEYDOWN",
-    data: {
-      X: 717,
-      Y: 549,
-      key: "o",
-      HTMLElement:
-        '<input id="email-dbe69d22-e575-4548-a360-0bd07b9d9fa9" name="email" required="" placeholder="Business Email *" type="email" class="hs-input" inputmode="email" autocomplete="email" value="vsamban@cisc">',
-    },
-    _id: "6496ebbda9da3f3a6242011b",
-  },
-  {
-    timeStamp: 1687610761.436,
-    name: "USER_EVENT",
-    type: "KEYUP",
-    data: {
-      X: 717,
-      Y: 549,
-      key: "c",
-      HTMLElement:
-        '<input id="email-dbe69d22-e575-4548-a360-0bd07b9d9fa9" name="email" required="" placeholder="Business Email *" type="email" class="hs-input" inputmode="email" autocomplete="email" value="vsamban@cisco">',
-    },
-    _id: "6496ebbda9da3f3a6242011c",
-  },
-  {
-    timeStamp: 1687610761.495,
-    name: "USER_EVENT",
-    type: "KEYUP",
-    data: {
-      X: 717,
-      Y: 549,
-      key: "o",
-      HTMLElement:
-        '<input id="email-dbe69d22-e575-4548-a360-0bd07b9d9fa9" name="email" required="" placeholder="Business Email *" type="email" class="hs-input" inputmode="email" autocomplete="email" value="vsamban@cisco">',
-    },
-    _id: "6496ebbda9da3f3a6242011d",
-  },
-  {
-    timeStamp: 1687610761.656,
-    name: "USER_EVENT",
-    type: "KEYDOWN",
-    data: {
-      X: 717,
-      Y: 549,
-      key: ".",
-      HTMLElement:
-        '<input id="email-dbe69d22-e575-4548-a360-0bd07b9d9fa9" name="email" required="" placeholder="Business Email *" type="email" class="hs-input" inputmode="email" autocomplete="email" value="vsamban@cisco">',
-    },
-    _id: "6496ebbda9da3f3a6242011e",
-  },
-  {
-    timeStamp: 1687610761.762,
-    name: "USER_EVENT",
-    type: "KEYUP",
-    data: {
-      X: 717,
-      Y: 549,
-      key: ".",
-      HTMLElement:
-        '<input id="email-dbe69d22-e575-4548-a360-0bd07b9d9fa9" name="email" required="" placeholder="Business Email *" type="email" class="hs-input" inputmode="email" autocomplete="email" value="vsamban@cisco.">',
-    },
-    _id: "6496ebbda9da3f3a6242011f",
-  },
-  {
-    timeStamp: 1687610761.764,
-    name: "USER_EVENT",
-    type: "KEYDOWN",
-    data: {
-      X: 717,
-      Y: 549,
-      key: "c",
-      HTMLElement:
-        '<input id="email-dbe69d22-e575-4548-a360-0bd07b9d9fa9" name="email" required="" placeholder="Business Email *" type="email" class="hs-input" inputmode="email" autocomplete="email" value="vsamban@cisco.">',
-    },
-    _id: "6496ebbda9da3f3a62420120",
-  },
-  {
-    timeStamp: 1687610761.873,
-    name: "USER_EVENT",
-    type: "KEYDOWN",
-    data: {
-      X: 717,
-      Y: 549,
-      key: "o",
-      HTMLElement:
-        '<input id="email-dbe69d22-e575-4548-a360-0bd07b9d9fa9" name="email" required="" placeholder="Business Email *" type="email" class="hs-input" inputmode="email" autocomplete="email" value="vsamban@cisco.c">',
-    },
-    _id: "6496ebbda9da3f3a62420121",
-  },
-  {
-    timeStamp: 1687610761.88,
-    name: "USER_EVENT",
-    type: "KEYUP",
-    data: {
-      X: 717,
-      Y: 549,
-      key: "c",
-      HTMLElement:
-        '<input id="email-dbe69d22-e575-4548-a360-0bd07b9d9fa9" name="email" required="" placeholder="Business Email *" type="email" class="hs-input" inputmode="email" autocomplete="email" value="vsamban@cisco.co">',
-    },
-    _id: "6496ebbda9da3f3a62420122",
-  },
-  {
-    timeStamp: 1687610761.933,
-    name: "USER_EVENT",
-    type: "KEYDOWN",
-    data: {
-      X: 717,
-      Y: 549,
-      key: "m",
-      HTMLElement:
-        '<input id="email-dbe69d22-e575-4548-a360-0bd07b9d9fa9" name="email" required="" placeholder="Business Email *" type="email" class="hs-input" inputmode="email" autocomplete="email" value="vsamban@cisco.co">',
-    },
-    _id: "6496ebbda9da3f3a62420123",
-  },
-  {
-    timeStamp: 1687610761.957,
-    name: "USER_EVENT",
-    type: "KEYUP",
-    data: {
-      X: 717,
-      Y: 549,
-      key: "o",
-      HTMLElement:
-        '<input id="email-dbe69d22-e575-4548-a360-0bd07b9d9fa9" name="email" required="" placeholder="Business Email *" type="email" class="hs-input" inputmode="email" autocomplete="email" value="vsamban@cisco.com">',
-    },
-    _id: "6496ebbda9da3f3a62420124",
-  },
-  {
-    timeStamp: 1687610762.026,
-    name: "USER_EVENT",
-    type: "KEYUP",
-    data: {
-      X: 717,
-      Y: 549,
-      key: "m",
-      HTMLElement:
-        '<input id="email-dbe69d22-e575-4548-a360-0bd07b9d9fa9" name="email" required="" placeholder="Business Email *" type="email" class="hs-input" inputmode="email" autocomplete="email" value="vsamban@cisco.com">',
-    },
-    _id: "6496ebbda9da3f3a62420125",
-  },
-  {
-    timeStamp: 1687610762.785,
+    timeStamp: 1687704023.872,
     name: "USER_EVENT",
     type: "MOUSEDOWN",
-    data: {
-      X: 717,
-      Y: 549,
-      scrollX: 0,
-      scrollY: 0,
-      HTMLElement:
-        '<input id="email-dbe69d22-e575-4548-a360-0bd07b9d9fa9" name="email" required="" placeholder="Business Email *" type="email" class="hs-input" inputmode="email" autocomplete="email" value="vsamban@cisco.com">',
-    },
-    _id: "6496ebbda9da3f3a62420126",
+    data: { X: 734, Y: 250, scrollX: 0, scrollY: 86, HTMLElement: null },
+    _id: "649851e1a9da3f3a62432b8c",
   },
   {
-    timeStamp: 1687610762.862,
-    name: "USER_EVENT",
-    type: "CLICK",
-    data: {
-      X: 717,
-      Y: 549,
-      scrollX: 0,
-      scrollY: 0,
-      HTMLElement:
-        '<input id="email-dbe69d22-e575-4548-a360-0bd07b9d9fa9" name="email" required="" placeholder="Business Email *" type="email" class="hs-input" inputmode="email" autocomplete="email" value="vsamban@cisco.com">',
-      button: 0,
-    },
-    _id: "6496ebbda9da3f3a62420127",
-  },
-  {
-    timeStamp: 1687610764.05,
-    name: "USER_EVENT",
-    type: "MOUSEDOWN",
-    data: {
-      X: 761,
-      Y: 635,
-      scrollX: 0,
-      scrollY: 142,
-      HTMLElement:
-        '<input id="phone-dbe69d22-e575-4548-a360-0bd07b9d9fa9" name="phone" placeholder="Phone/Mobile number" type="tel" class="hs-input" inputmode="tel" autocomplete="tel" value="">',
-    },
-    _id: "6496ebbda9da3f3a62420128",
-  },
-  {
-    timeStamp: 1687610764.126,
-    name: "USER_EVENT",
-    type: "CLICK",
-    data: {
-      X: 761,
-      Y: 635,
-      scrollX: 0,
-      scrollY: 142,
-      HTMLElement:
-        '<input id="phone-dbe69d22-e575-4548-a360-0bd07b9d9fa9" name="phone" placeholder="Phone/Mobile number" type="tel" class="hs-input" inputmode="tel" autocomplete="tel" value="">',
-      button: 0,
-    },
-    _id: "6496ebbda9da3f3a62420129",
-  },
-  {
-    timeStamp: 1687610764.588,
-    name: "USER_EVENT",
-    type: "KEYDOWN",
-    data: {
-      X: 761,
-      Y: 635,
-      key: "1",
-      HTMLElement:
-        '<input id="phone-dbe69d22-e575-4548-a360-0bd07b9d9fa9" name="phone" placeholder="Phone/Mobile number" type="tel" class="hs-input" inputmode="tel" autocomplete="tel" value="">',
-    },
-    _id: "6496ebbda9da3f3a6242012a",
-  },
-  {
-    timeStamp: 1687610764.634,
-    name: "USER_EVENT",
-    type: "KEYDOWN",
-    data: {
-      X: 761,
-      Y: 635,
-      key: "2",
-      HTMLElement:
-        '<input id="phone-dbe69d22-e575-4548-a360-0bd07b9d9fa9" name="phone" placeholder="Phone/Mobile number" type="tel" class="hs-input" inputmode="tel" autocomplete="tel" value="1">',
-    },
-    _id: "6496ebbda9da3f3a6242012b",
-  },
-  {
-    timeStamp: 1687610764.725,
-    name: "USER_EVENT",
-    type: "KEYDOWN",
-    data: {
-      X: 761,
-      Y: 635,
-      key: "3",
-      HTMLElement:
-        '<input id="phone-dbe69d22-e575-4548-a360-0bd07b9d9fa9" name="phone" placeholder="Phone/Mobile number" type="tel" class="hs-input" inputmode="tel" autocomplete="tel" value="12">',
-    },
-    _id: "6496ebbda9da3f3a6242012c",
-  },
-  {
-    timeStamp: 1687610764.781,
-    name: "USER_EVENT",
-    type: "KEYUP",
-    data: {
-      X: 761,
-      Y: 635,
-      key: "1",
-      HTMLElement:
-        '<input id="phone-dbe69d22-e575-4548-a360-0bd07b9d9fa9" name="phone" placeholder="Phone/Mobile number" type="tel" class="hs-input" inputmode="tel" autocomplete="tel" value="123">',
-    },
-    _id: "6496ebbda9da3f3a6242012d",
-  },
-  {
-    timeStamp: 1687610764.804,
-    name: "USER_EVENT",
-    type: "KEYUP",
-    data: {
-      X: 761,
-      Y: 635,
-      key: "2",
-      HTMLElement:
-        '<input id="phone-dbe69d22-e575-4548-a360-0bd07b9d9fa9" name="phone" placeholder="Phone/Mobile number" type="tel" class="hs-input" inputmode="tel" autocomplete="tel" value="123">',
-    },
-    _id: "6496ebbda9da3f3a6242012e",
-  },
-  {
-    timeStamp: 1687610764.835,
-    name: "USER_EVENT",
-    type: "KEYUP",
-    data: {
-      X: 761,
-      Y: 635,
-      key: "3",
-      HTMLElement:
-        '<input id="phone-dbe69d22-e575-4548-a360-0bd07b9d9fa9" name="phone" placeholder="Phone/Mobile number" type="tel" class="hs-input" inputmode="tel" autocomplete="tel" value="123">',
-    },
-    _id: "6496ebbda9da3f3a6242012f",
-  },
-  {
-    timeStamp: 1687610764.924,
-    name: "USER_EVENT",
-    type: "KEYDOWN",
-    data: {
-      X: 761,
-      Y: 635,
-      key: "4",
-      HTMLElement:
-        '<input id="phone-dbe69d22-e575-4548-a360-0bd07b9d9fa9" name="phone" placeholder="Phone/Mobile number" type="tel" class="hs-input" inputmode="tel" autocomplete="tel" value="123">',
-    },
-    _id: "6496ebbda9da3f3a62420130",
-  },
-  {
-    timeStamp: 1687610765.049,
-    name: "USER_EVENT",
-    type: "KEYUP",
-    data: {
-      X: 761,
-      Y: 635,
-      key: "4",
-      HTMLElement:
-        '<input id="phone-dbe69d22-e575-4548-a360-0bd07b9d9fa9" name="phone" placeholder="Phone/Mobile number" type="tel" class="hs-input" inputmode="tel" autocomplete="tel" value="1234">',
-    },
-    _id: "6496ebbda9da3f3a62420131",
-  },
-  {
-    timeStamp: 1687610765.144,
-    name: "USER_EVENT",
-    type: "KEYDOWN",
-    data: {
-      X: 761,
-      Y: 635,
-      key: "5",
-      HTMLElement:
-        '<input id="phone-dbe69d22-e575-4548-a360-0bd07b9d9fa9" name="phone" placeholder="Phone/Mobile number" type="tel" class="hs-input" inputmode="tel" autocomplete="tel" value="1234">',
-    },
-    _id: "6496ebbda9da3f3a62420132",
-  },
-  {
-    timeStamp: 1687610765.206,
-    name: "USER_EVENT",
-    type: "KEYUP",
-    data: {
-      X: 761,
-      Y: 635,
-      key: "5",
-      HTMLElement:
-        '<input id="phone-dbe69d22-e575-4548-a360-0bd07b9d9fa9" name="phone" placeholder="Phone/Mobile number" type="tel" class="hs-input" inputmode="tel" autocomplete="tel" value="12345">',
-    },
-    _id: "6496ebbda9da3f3a62420133",
-  },
-  {
-    timeStamp: 1687610765.311,
-    name: "USER_EVENT",
-    type: "KEYDOWN",
-    data: {
-      X: 761,
-      Y: 635,
-      key: "6",
-      HTMLElement:
-        '<input id="phone-dbe69d22-e575-4548-a360-0bd07b9d9fa9" name="phone" placeholder="Phone/Mobile number" type="tel" class="hs-input" inputmode="tel" autocomplete="tel" value="12345">',
-    },
-    _id: "6496ebbda9da3f3a62420134",
-  },
-  {
-    timeStamp: 1687610765.389,
-    name: "USER_EVENT",
-    type: "KEYUP",
-    data: {
-      X: 761,
-      Y: 635,
-      key: "6",
-      HTMLElement:
-        '<input id="phone-dbe69d22-e575-4548-a360-0bd07b9d9fa9" name="phone" placeholder="Phone/Mobile number" type="tel" class="hs-input" inputmode="tel" autocomplete="tel" value="123456">',
-    },
-    _id: "6496ebbda9da3f3a62420135",
-  },
-  {
-    timeStamp: 1687610765.511,
-    name: "USER_EVENT",
-    type: "KEYDOWN",
-    data: {
-      X: 761,
-      Y: 635,
-      key: "7",
-      HTMLElement:
-        '<input id="phone-dbe69d22-e575-4548-a360-0bd07b9d9fa9" name="phone" placeholder="Phone/Mobile number" type="tel" class="hs-input" inputmode="tel" autocomplete="tel" value="123456">',
-    },
-    _id: "6496ebbda9da3f3a62420136",
-  },
-  {
-    timeStamp: 1687610765.573,
-    name: "USER_EVENT",
-    type: "KEYUP",
-    data: {
-      X: 761,
-      Y: 635,
-      key: "7",
-      HTMLElement:
-        '<input id="phone-dbe69d22-e575-4548-a360-0bd07b9d9fa9" name="phone" placeholder="Phone/Mobile number" type="tel" class="hs-input" inputmode="tel" autocomplete="tel" value="1234567">',
-    },
-    _id: "6496ebbda9da3f3a62420137",
-  },
-  {
-    timeStamp: 1687610765.715,
-    name: "USER_EVENT",
-    type: "KEYDOWN",
-    data: {
-      X: 761,
-      Y: 635,
-      key: "8",
-      HTMLElement:
-        '<input id="phone-dbe69d22-e575-4548-a360-0bd07b9d9fa9" name="phone" placeholder="Phone/Mobile number" type="tel" class="hs-input" inputmode="tel" autocomplete="tel" value="1234567">',
-    },
-    _id: "6496ebbda9da3f3a62420138",
-  },
-  {
-    timeStamp: 1687610765.73,
-    name: "USER_EVENT",
-    type: "KEYUP",
-    data: {
-      X: 761,
-      Y: 635,
-      key: "8",
-      HTMLElement:
-        '<input id="phone-dbe69d22-e575-4548-a360-0bd07b9d9fa9" name="phone" placeholder="Phone/Mobile number" type="tel" class="hs-input" inputmode="tel" autocomplete="tel" value="12345678">',
-    },
-    _id: "6496ebbda9da3f3a62420139",
-  },
-  {
-    timeStamp: 1687610766.295,
-    name: "USER_EVENT",
-    type: "KEYDOWN",
-    data: {
-      X: 761,
-      Y: 635,
-      key: "9",
-      HTMLElement:
-        '<input id="phone-dbe69d22-e575-4548-a360-0bd07b9d9fa9" name="phone" placeholder="Phone/Mobile number" type="tel" class="hs-input" inputmode="tel" autocomplete="tel" value="12345678">',
-    },
-    _id: "6496ebbda9da3f3a6242013a",
-  },
-  {
-    timeStamp: 1687610766.414,
-    name: "USER_EVENT",
-    type: "KEYUP",
-    data: {
-      X: 761,
-      Y: 635,
-      key: "9",
-      HTMLElement:
-        '<input id="phone-dbe69d22-e575-4548-a360-0bd07b9d9fa9" name="phone" placeholder="Phone/Mobile number" type="tel" class="hs-input" inputmode="tel" autocomplete="tel" value="123456789">',
-    },
-    _id: "6496ebbda9da3f3a6242013b",
-  },
-  {
-    timeStamp: 1687610767.168,
-    name: "USER_EVENT",
-    type: "KEYDOWN",
-    data: {
-      X: 761,
-      Y: 635,
-      key: "Control",
-      HTMLElement:
-        '<input id="phone-dbe69d22-e575-4548-a360-0bd07b9d9fa9" name="phone" placeholder="Phone/Mobile number" type="tel" class="hs-input" inputmode="tel" autocomplete="tel" value="123456789">',
-    },
-    _id: "6496ebbda9da3f3a6242013c",
-  },
-  {
-    timeStamp: 1687610767.399,
-    name: "USER_EVENT",
-    type: "KEYDOWN",
-    data: {
-      X: 761,
-      Y: 635,
-      key: "a",
-      HTMLElement:
-        '<input id="phone-dbe69d22-e575-4548-a360-0bd07b9d9fa9" name="phone" placeholder="Phone/Mobile number" type="tel" class="hs-input" inputmode="tel" autocomplete="tel" value="123456789">',
-    },
-    _id: "6496ebbda9da3f3a6242013d",
-  },
-  {
-    timeStamp: 1687610767.56,
-    name: "USER_EVENT",
-    type: "KEYUP",
-    data: {
-      X: 761,
-      Y: 635,
-      key: "Control",
-      HTMLElement:
-        '<input id="phone-dbe69d22-e575-4548-a360-0bd07b9d9fa9" name="phone" placeholder="Phone/Mobile number" type="tel" class="hs-input" inputmode="tel" autocomplete="tel" value="123456789">',
-    },
-    _id: "6496ebbda9da3f3a6242013e",
-  },
-  {
-    timeStamp: 1687610767.561,
-    name: "USER_EVENT",
-    type: "KEYUP",
-    data: {
-      X: 761,
-      Y: 635,
-      key: "a",
-      HTMLElement:
-        '<input id="phone-dbe69d22-e575-4548-a360-0bd07b9d9fa9" name="phone" placeholder="Phone/Mobile number" type="tel" class="hs-input" inputmode="tel" autocomplete="tel" value="123456789">',
-    },
-    _id: "6496ebbda9da3f3a6242013f",
-  },
-  {
-    timeStamp: 1687610767.689,
-    name: "USER_EVENT",
-    type: "KEYDOWN",
-    data: {
-      X: 761,
-      Y: 635,
-      key: "Delete",
-      HTMLElement:
-        '<input id="phone-dbe69d22-e575-4548-a360-0bd07b9d9fa9" name="phone" placeholder="Phone/Mobile number" type="tel" class="hs-input" inputmode="tel" autocomplete="tel" value="123456789">',
-    },
-    _id: "6496ebbda9da3f3a62420140",
-  },
-  {
-    timeStamp: 1687610767.744,
-    name: "USER_EVENT",
-    type: "KEYUP",
-    data: {
-      X: 761,
-      Y: 635,
-      key: "Delete",
-      HTMLElement:
-        '<input id="phone-dbe69d22-e575-4548-a360-0bd07b9d9fa9" name="phone" placeholder="Phone/Mobile number" type="tel" class="hs-input" inputmode="tel" autocomplete="tel" value="">',
-    },
-    _id: "6496ebbda9da3f3a62420141",
-  },
-  {
-    timeStamp: 1687610768.744,
-    name: "USER_EVENT",
-    type: "IDLE",
-    data: {
-      X: 761,
-      Y: 635,
-      scrollX: 0,
-      scrollY: 142,
-      HTMLElement:
-        '<input id="phone-dbe69d22-e575-4548-a360-0bd07b9d9fa9" name="phone" placeholder="Phone/Mobile number" type="tel" class="hs-input" inputmode="tel" autocomplete="tel" value="">',
-    },
-    _id: "6496ebbda9da3f3a62420142",
-  },
-  {
-    timeStamp: 1687610768.95,
-    name: "USER_EVENT",
-    type: "KEYDOWN",
-    data: {
-      X: 761,
-      Y: 635,
-      key: "Control",
-      HTMLElement:
-        '<input id="phone-dbe69d22-e575-4548-a360-0bd07b9d9fa9" name="phone" placeholder="Phone/Mobile number" type="tel" class="hs-input" inputmode="tel" autocomplete="tel" value="">',
-    },
-    _id: "6496ebbda9da3f3a62420143",
-  },
-  {
-    timeStamp: 1687610769.042,
-    name: "USER_EVENT",
-    type: "KEYDOWN",
-    data: {
-      X: 761,
-      Y: 635,
-      key: "z",
-      HTMLElement:
-        '<input id="phone-dbe69d22-e575-4548-a360-0bd07b9d9fa9" name="phone" placeholder="Phone/Mobile number" type="tel" class="hs-input" inputmode="tel" autocomplete="tel" value="">',
-    },
-    _id: "6496ebbda9da3f3a62420144",
-  },
-  {
-    timeStamp: 1687610769.173,
-    name: "USER_EVENT",
-    type: "KEYUP",
-    data: {
-      X: 740,
-      Y: 680,
-      key: "Control",
-      HTMLElement:
-        '<form id="hsForm_dbe69d22-e575-4548-a360-0bd07b9d9fa9" method="POST" accept-charset="UTF-8" enctype="multipart/form-data" novalidate="" action="https://forms.hsforms.com/submissions/v3/public/submit/formsnext/multipart/5010372/dbe69d22-e575-4548-a360-0bd07b9d9fa9" class="hs-form-private hsForm_dbe69d22-e575-4548-a360-0bd07b9d9fa9 hs-form-dbe69d22-e575-4548-a360-0bd07b9d9fa9 hs-form-dbe69d22-e575-4548-a360-0bd07b9d9fa9_7f62dd5e-462e-4e51-8a07-c363f4339ff1 hs-form stacked" target="target_iframe_dbe69d22-e575-4548-a360-0bd07b9d9fa9" data-instance-id="7f62dd5e-462e-4e51-8a07-c363f4339ff1" data-form-id="dbe69d22-e575-4548-a360-0bd07b9d9fa9" data-portal-id="5010372" data-gtm-form-interact-id="0"><div class="hs_firstname hs-firstname hs-fieldtype-text field hs-form-field"><label id="label-firstname-dbe69d22-e575-4548-a360-0bd07b9d9fa9" class="" placeholder="Enter your First name" for="firstname-dbe69d22-e575-4548-a360-0bd07b9d9fa9"><span>First name</span></label><legend class="hs-field-desc" style="display: none;"></legend><div class="input"><input id="firstname-dbe69d22-e575-4548-a360-0bd07b9d9fa9" name="firstname" placeholder="First name" type="text" class="hs-input" inputmode="text" autocomplete="given-name" value="Varun" data-gtm-form-interact-field-id="0"></div></div><div class="hs_lastname hs-lastname hs-fieldtype-text field hs-form-field"><label id="label-lastname-dbe69d22-e575-4548-a360-0bd07b9d9fa9" class="" placeholder="Enter your Last name" for="lastname-dbe69d22-e575-4548-a360-0bd07b9d9fa9"><span>Last name</span></label><legend class="hs-field-desc" style="display: none;"></legend><div class="input"><input id="lastname-dbe69d22-e575-4548-a360-0bd07b9d9fa9" name="lastname" placeholder="Last name" type="text" class="hs-input" inputmode="text" autocomplete="family-name" value="Sambanni" data-gtm-form-interact-field-id="1"></div></div><div class="hs_email hs-email hs-fieldtype-text field hs-form-field"><label id="label-email-dbe69d22-e575-4548-a360-0bd07b9d9fa9" class="" placeholder="Enter your Email" for="email-dbe69d22-e575-4548-a360-0bd07b9d9fa9"><span>Email</span><span class="hs-form-required">*</span></label><legend class="hs-field-desc" style="display: none;"></legend><div class="input"><input id="email-dbe69d22-e575-4548-a360-0bd07b9d9fa9" name="email" required="" placeholder="Business Email *" type="email" class="hs-input" inputmode="email" autocomplete="email" value="vsamban@cisco.com" data-gtm-form-interact-field-id="2"></div></div><div class="hs_phone hs-phone hs-fieldtype-phonenumber field hs-form-field"><label id="label-phone-dbe69d22-e575-4548-a360-0bd07b9d9fa9" class="" placeholder="Enter your Phone number" for="phone-dbe69d22-e575-4548-a360-0bd07b9d9fa9"><span>Phone number</span></label><legend class="hs-field-desc" style="display: none;"></legend><div class="input"><input id="phone-dbe69d22-e575-4548-a360-0bd07b9d9fa9" name="phone" placeholder="Phone/Mobile number" type="tel" class="hs-input" inputmode="tel" autocomplete="tel" value="123456789"></div></div><div class="hs_accessed_setup_guide hs-accessed_setup_guide hs-fieldtype-text field hs-form-field" style="display: none;"><label id="label-accessed_setup_guide-dbe69d22-e575-4548-a360-0bd07b9d9fa9" class="" placeholder="Enter your Accessed Setup Guide" for="accessed_setup_guide-dbe69d22-e575-4548-a360-0bd07b9d9fa9"><span>Accessed Setup Guide</span></label><legend class="hs-field-desc" style="display: none;"></legend><div class="input"><input name="accessed_setup_guide" class="hs-input" type="hidden" value="Yes"></div></div><div class="hs_submit hs-submit"><div class="hs-field-desc" style="display: none;"></div><div class="actions"><input type="submit" class="hs-button primary large" value="Submit"></div></div><input name="hs_context" type="hidden" value="{&quot;embedAtTimestamp&quot;:&quot;1687610737076&quot;,&quot;formDefinitionUpdatedAt&quot;:&quot;1686139740605&quot;,&quot;lang&quot;:&quot;en&quot;,&quot;disableCookieSubmission&quot;:&quot;true&quot;,&quot;renderRawHtml&quot;:&quot;true&quot;,&quot;userAgent&quot;:&quot;Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/114.0.0.0 Safari/537.36&quot;,&quot;pageTitle&quot;:&quot;Setupguide – Cisco Spaces&quot;,&quot;pageUrl&quot;:&quot;https://spaces.cisco.com/setupguide/&quot;,&quot;referrer&quot;:&quot;https://spaces.cisco.com/&quot;,&quot;isHubSpotCmsGeneratedPage&quot;:false,&quot;hutk&quot;:&quot;d3ddbc8c9e4a92a245f89c1b2cbb675a&quot;,&quot;__hsfp&quot;:524412920,&quot;__hssc&quot;:&quot;105720540.8.1687610659036&quot;,&quot;__hstc&quot;:&quot;105720540.d3ddbc8c9e4a92a245f89c1b2cbb675a.1687584670916.1687601952274.1687610659036.3&quot;,&quot;formTarget&quot;:&quot;#hbspt-form-7f62dd5e-462e-4e51-8a07-c363f4339ff1&quot;,&quot;locale&quot;:&quot;en&quot;,&quot;timestamp&quot;:1687610769043,&quot;originalEmbedContext&quot;:{&quot;portalId&quot;:&quot;5010372&quot;,&quot;formId&quot;:&quot;dbe69d22-e575-4548-a360-0bd07b9d9fa9&quot;,&quot;region&quot;:&quot;na1&quot;,&quot;target&quot;:&quot;#hbspt-form-7f62dd5e-462e-4e51-8a07-c363f4339ff1&quot;,&quot;isBuilder&quot;:false,&quot;isTestPage&quot;:false,&quot;isPreview&quot;:false,&quot;isMobileResponsive&quot;:true},&quot;correlationId&quot;:&quot;7f62dd5e-462e-4e51-8a07-c363f4339ff1&quot;,&quot;renderedFieldsIds&quot;:[&quot;firstname&quot;,&quot;lastname&quot;,&quot;email&quot;,&quot;phone&quot;,&quot;accessed_setup_guide&quot;],&quot;captchaStatus&quot;:&quot;NOT_APPLICABLE&quot;,&quot;emailResubscribeStatus&quot;:&quot;NOT_APPLICABLE&quot;,&quot;isInsideCrossOriginFrame&quot;:false,&quot;source&quot;:&quot;forms-embed-1.3339&quot;,&quot;sourceName&quot;:&quot;forms-embed&quot;,&quot;sourceVersion&quot;:&quot;1.3339&quot;,&quot;sourceVersionMajor&quot;:&quot;1&quot;,&quot;sourceVersionMinor&quot;:&quot;3339&quot;,&quot;_debug_allPageIds&quot;:{},&quot;_debug_embedLogLines&quot;:[{&quot;clientTimestamp&quot;:1687610740051,&quot;level&quot;:&quot;INFO&quot;,&quot;message&quot;:&quot;Retrieved customer callbacks used on embed context: [\\&quot;onFormSubmit\\&quot;]&quot;},{&quot;clientTimestamp&quot;:1687610740051,&quot;level&quot;:&quot;INFO&quot;,&quot;message&quot;:&quot;Retrieved pageContext values which may be overriden by the embed context: {\\&quot;pageTitle\\&quot;:\\&quot;Setupguide – Cisco Spaces\\&quot;,\\&quot;pageUrl\\&quot;:\\&quot;https://spaces.cisco.com/setupguide/\\&quot;,\\&quot;referrer\\&quot;:\\&quot;https://spaces.cisco.com/\\&quot;,\\&quot;userAgent\\&quot;:\\&quot;Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/114.0.0.0 Safari/537.36\\&quot;,\\&quot;isHubSpotCmsGeneratedPage\\&quot;:false}&quot;},{&quot;clientTimestamp&quot;:1687610740054,&quot;level&quot;:&quot;INFO&quot;,&quot;message&quot;:&quot;Retrieved countryCode property from normalized embed definition response: \\&quot;IN\\&quot;&quot;},{&quot;clientTimestamp&quot;:1687610740770,&quot;level&quot;:&quot;INFO&quot;,&quot;message&quot;:&quot;Retrieved analytics values from API response which may be overriden by the embed context: {\\&quot;hutk\\&quot;:\\&quot;d3ddbc8c9e4a92a245f89c1b2cbb675a\\&quot;}&quot;}]}"><iframe name="target_iframe_dbe69d22-e575-4548-a360-0bd07b9d9fa9" style="display: none;"></iframe></form>',
-    },
-    _id: "6496ebbda9da3f3a62420145",
-  },
-  {
-    timeStamp: 1687610769.173,
-    name: "USER_EVENT",
-    type: "KEYUP",
-    data: {
-      X: 740,
-      Y: 680,
-      key: "z",
-      HTMLElement:
-        '<form id="hsForm_dbe69d22-e575-4548-a360-0bd07b9d9fa9" method="POST" accept-charset="UTF-8" enctype="multipart/form-data" novalidate="" action="https://forms.hsforms.com/submissions/v3/public/submit/formsnext/multipart/5010372/dbe69d22-e575-4548-a360-0bd07b9d9fa9" class="hs-form-private hsForm_dbe69d22-e575-4548-a360-0bd07b9d9fa9 hs-form-dbe69d22-e575-4548-a360-0bd07b9d9fa9 hs-form-dbe69d22-e575-4548-a360-0bd07b9d9fa9_7f62dd5e-462e-4e51-8a07-c363f4339ff1 hs-form stacked" target="target_iframe_dbe69d22-e575-4548-a360-0bd07b9d9fa9" data-instance-id="7f62dd5e-462e-4e51-8a07-c363f4339ff1" data-form-id="dbe69d22-e575-4548-a360-0bd07b9d9fa9" data-portal-id="5010372" data-gtm-form-interact-id="0"><div class="hs_firstname hs-firstname hs-fieldtype-text field hs-form-field"><label id="label-firstname-dbe69d22-e575-4548-a360-0bd07b9d9fa9" class="" placeholder="Enter your First name" for="firstname-dbe69d22-e575-4548-a360-0bd07b9d9fa9"><span>First name</span></label><legend class="hs-field-desc" style="display: none;"></legend><div class="input"><input id="firstname-dbe69d22-e575-4548-a360-0bd07b9d9fa9" name="firstname" placeholder="First name" type="text" class="hs-input" inputmode="text" autocomplete="given-name" value="Varun" data-gtm-form-interact-field-id="0"></div></div><div class="hs_lastname hs-lastname hs-fieldtype-text field hs-form-field"><label id="label-lastname-dbe69d22-e575-4548-a360-0bd07b9d9fa9" class="" placeholder="Enter your Last name" for="lastname-dbe69d22-e575-4548-a360-0bd07b9d9fa9"><span>Last name</span></label><legend class="hs-field-desc" style="display: none;"></legend><div class="input"><input id="lastname-dbe69d22-e575-4548-a360-0bd07b9d9fa9" name="lastname" placeholder="Last name" type="text" class="hs-input" inputmode="text" autocomplete="family-name" value="Sambanni" data-gtm-form-interact-field-id="1"></div></div><div class="hs_email hs-email hs-fieldtype-text field hs-form-field"><label id="label-email-dbe69d22-e575-4548-a360-0bd07b9d9fa9" class="" placeholder="Enter your Email" for="email-dbe69d22-e575-4548-a360-0bd07b9d9fa9"><span>Email</span><span class="hs-form-required">*</span></label><legend class="hs-field-desc" style="display: none;"></legend><div class="input"><input id="email-dbe69d22-e575-4548-a360-0bd07b9d9fa9" name="email" required="" placeholder="Business Email *" type="email" class="hs-input" inputmode="email" autocomplete="email" value="vsamban@cisco.com" data-gtm-form-interact-field-id="2"></div></div><div class="hs_phone hs-phone hs-fieldtype-phonenumber field hs-form-field"><label id="label-phone-dbe69d22-e575-4548-a360-0bd07b9d9fa9" class="" placeholder="Enter your Phone number" for="phone-dbe69d22-e575-4548-a360-0bd07b9d9fa9"><span>Phone number</span></label><legend class="hs-field-desc" style="display: none;"></legend><div class="input"><input id="phone-dbe69d22-e575-4548-a360-0bd07b9d9fa9" name="phone" placeholder="Phone/Mobile number" type="tel" class="hs-input" inputmode="tel" autocomplete="tel" value="123456789"></div></div><div class="hs_accessed_setup_guide hs-accessed_setup_guide hs-fieldtype-text field hs-form-field" style="display: none;"><label id="label-accessed_setup_guide-dbe69d22-e575-4548-a360-0bd07b9d9fa9" class="" placeholder="Enter your Accessed Setup Guide" for="accessed_setup_guide-dbe69d22-e575-4548-a360-0bd07b9d9fa9"><span>Accessed Setup Guide</span></label><legend class="hs-field-desc" style="display: none;"></legend><div class="input"><input name="accessed_setup_guide" class="hs-input" type="hidden" value="Yes"></div></div><div class="hs_submit hs-submit"><div class="hs-field-desc" style="display: none;"></div><div class="actions"><input type="submit" class="hs-button primary large" value="Submit"></div></div><input name="hs_context" type="hidden" value="{&quot;embedAtTimestamp&quot;:&quot;1687610737076&quot;,&quot;formDefinitionUpdatedAt&quot;:&quot;1686139740605&quot;,&quot;lang&quot;:&quot;en&quot;,&quot;disableCookieSubmission&quot;:&quot;true&quot;,&quot;renderRawHtml&quot;:&quot;true&quot;,&quot;userAgent&quot;:&quot;Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/114.0.0.0 Safari/537.36&quot;,&quot;pageTitle&quot;:&quot;Setupguide – Cisco Spaces&quot;,&quot;pageUrl&quot;:&quot;https://spaces.cisco.com/setupguide/&quot;,&quot;referrer&quot;:&quot;https://spaces.cisco.com/&quot;,&quot;isHubSpotCmsGeneratedPage&quot;:false,&quot;hutk&quot;:&quot;d3ddbc8c9e4a92a245f89c1b2cbb675a&quot;,&quot;__hsfp&quot;:524412920,&quot;__hssc&quot;:&quot;105720540.8.1687610659036&quot;,&quot;__hstc&quot;:&quot;105720540.d3ddbc8c9e4a92a245f89c1b2cbb675a.1687584670916.1687601952274.1687610659036.3&quot;,&quot;formTarget&quot;:&quot;#hbspt-form-7f62dd5e-462e-4e51-8a07-c363f4339ff1&quot;,&quot;locale&quot;:&quot;en&quot;,&quot;timestamp&quot;:1687610769043,&quot;originalEmbedContext&quot;:{&quot;portalId&quot;:&quot;5010372&quot;,&quot;formId&quot;:&quot;dbe69d22-e575-4548-a360-0bd07b9d9fa9&quot;,&quot;region&quot;:&quot;na1&quot;,&quot;target&quot;:&quot;#hbspt-form-7f62dd5e-462e-4e51-8a07-c363f4339ff1&quot;,&quot;isBuilder&quot;:false,&quot;isTestPage&quot;:false,&quot;isPreview&quot;:false,&quot;isMobileResponsive&quot;:true},&quot;correlationId&quot;:&quot;7f62dd5e-462e-4e51-8a07-c363f4339ff1&quot;,&quot;renderedFieldsIds&quot;:[&quot;firstname&quot;,&quot;lastname&quot;,&quot;email&quot;,&quot;phone&quot;,&quot;accessed_setup_guide&quot;],&quot;captchaStatus&quot;:&quot;NOT_APPLICABLE&quot;,&quot;emailResubscribeStatus&quot;:&quot;NOT_APPLICABLE&quot;,&quot;isInsideCrossOriginFrame&quot;:false,&quot;source&quot;:&quot;forms-embed-1.3339&quot;,&quot;sourceName&quot;:&quot;forms-embed&quot;,&quot;sourceVersion&quot;:&quot;1.3339&quot;,&quot;sourceVersionMajor&quot;:&quot;1&quot;,&quot;sourceVersionMinor&quot;:&quot;3339&quot;,&quot;_debug_allPageIds&quot;:{},&quot;_debug_embedLogLines&quot;:[{&quot;clientTimestamp&quot;:1687610740051,&quot;level&quot;:&quot;INFO&quot;,&quot;message&quot;:&quot;Retrieved customer callbacks used on embed context: [\\&quot;onFormSubmit\\&quot;]&quot;},{&quot;clientTimestamp&quot;:1687610740051,&quot;level&quot;:&quot;INFO&quot;,&quot;message&quot;:&quot;Retrieved pageContext values which may be overriden by the embed context: {\\&quot;pageTitle\\&quot;:\\&quot;Setupguide – Cisco Spaces\\&quot;,\\&quot;pageUrl\\&quot;:\\&quot;https://spaces.cisco.com/setupguide/\\&quot;,\\&quot;referrer\\&quot;:\\&quot;https://spaces.cisco.com/\\&quot;,\\&quot;userAgent\\&quot;:\\&quot;Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/114.0.0.0 Safari/537.36\\&quot;,\\&quot;isHubSpotCmsGeneratedPage\\&quot;:false}&quot;},{&quot;clientTimestamp&quot;:1687610740054,&quot;level&quot;:&quot;INFO&quot;,&quot;message&quot;:&quot;Retrieved countryCode property from normalized embed definition response: \\&quot;IN\\&quot;&quot;},{&quot;clientTimestamp&quot;:1687610740770,&quot;level&quot;:&quot;INFO&quot;,&quot;message&quot;:&quot;Retrieved analytics values from API response which may be overriden by the embed context: {\\&quot;hutk\\&quot;:\\&quot;d3ddbc8c9e4a92a245f89c1b2cbb675a\\&quot;}&quot;}]}"><iframe name="target_iframe_dbe69d22-e575-4548-a360-0bd07b9d9fa9" style="display: none;"></iframe></form>',
-    },
-    _id: "6496ebbda9da3f3a62420146",
-  },
-  {
-    timeStamp: 1687610769.521,
-    name: "USER_EVENT",
-    type: "MOUSEDOWN",
-    data: {
-      X: 728,
-      Y: 699,
-      scrollX: 0,
-      scrollY: 161.3333282470703,
-      HTMLElement:
-        '<div class="actions"><input type="submit" class="hs-button primary large" value="Submit"></div>',
-    },
-    _id: "6496ebbda9da3f3a62420147",
-  },
-  {
-    timeStamp: 1687610769.607,
-    name: "USER_EVENT",
-    type: "CLICK",
-    data: {
-      X: 728,
-      Y: 699,
-      scrollX: 0,
-      scrollY: 161.3333282470703,
-      HTMLElement:
-        '<div class="actions"><input type="submit" class="hs-button primary large" value="Submit"></div>',
-      button: 0,
-    },
-    _id: "6496ebbda9da3f3a62420148",
-  },
-  {
-    timeStamp: 1687610770.942,
-    name: "USER_EVENT",
-    type: "MOUSEDOWN",
-    data: {
-      X: 1279,
-      Y: 531,
-      scrollX: 0,
-      scrollY: 161.3333282470703,
-      HTMLElement: null,
-    },
-    _id: "6496ebbda9da3f3a62420149",
-  },
-  {
-    timeStamp: 1687610771.279,
+    timeStamp: 1687704024.403,
     name: "USER_EVENT",
     type: "MOUSEUP",
-    data: { X: 1279, Y: 131, scrollX: 0, scrollY: 0, HTMLElement: null },
-    _id: "6496ebbda9da3f3a6242014a",
+    data: { X: 724, Y: 103, scrollX: 0, scrollY: 0, HTMLElement: null },
+    _id: "649851e1a9da3f3a62432b8d",
   },
   {
-    timeStamp: 1687610771.71,
+    timeStamp: 1687704024.635,
     name: "USER_EVENT",
     type: "MOUSEDOWN",
     data: {
-      X: 755,
-      Y: 133,
+      X: 489,
+      Y: 182,
       scrollX: 0,
       scrollY: 0,
       HTMLElement:
-        '<div class="row h-100">\n<div class="col-lg-8 black_bg opacity-7 h-100 pt-50 slide_width">\n<div class="container" style="display: none;">\n<div class="row">\n<div class="col-lg-10 pt-4 text-center index_ciscologo"><img decoding="async" src="https://ddm2gd3hh6a8o.cloudfront.net/wp-content/uploads/2022/09/cisco-spaces-whte.svg" style="width:47%" class="mt-2 mr-4"></div>\n</div>\n</div>\n</div>\n<div class="col-lg-3 h-100 black_bg2 opacity-7 pt-50 index_linkdiv welcometext cursor_pointer display-5 text-white cisco-extralight text-center signinform_hide"><span class="pt-14 d-block">Setup Guide</span></div>\n<div class="col-lg-1 h-100 blue_bg pt-50 index_linkdiv welcometext cursor_pointer signinform_hide"><a href="#" class="d-block text-light hv_zindex"><span class="display-5 text-light cisco-extralight d-block mt-5 text-center no-gutter"> <i class="home_right_arrow" style="display: none;"><img decoding="async" src="/utilities/setupguide/images/signin_arrow_white.png"></i></span> </a><a href="#" class="welcome d-block blue_bg" id="guide_link_arrow"></a></div>\n<p><!--\n\n\n<div class="col-lg-1 h-10 green_bg pt-50 text-center"><a href="#" class="welcome d-block mt-5 pt-2"><img decoding="async" src="utilities/images/right_arrow.png"></a></div>\n\n\n--></p>\n</div>',
+        '<div class="elementor-widget-wrap elementor-element-populated">\n\t\t\t\t\t\t\t\t<div class="elementor-element elementor-element-37d8512d elementor-widget elementor-widget-spacer" data-id="37d8512d" data-element_type="widget" data-widget_type="spacer.default">\n\t\t\t\t<div class="elementor-widget-container">\n\t\t\t<style>/*! elementor - v3.14.0 - 18-06-2023 */\n.elementor-column .elementor-spacer-inner{height:var(--spacer-size)}.e-con{--container-widget-width:100%}.e-con-inner>.elementor-widget-spacer,.e-con>.elementor-widget-spacer{width:var(--container-widget-width,var(--spacer-size));--align-self:var(--container-widget-align-self,initial);--flex-shrink:0}.e-con-inner>.elementor-widget-spacer>.elementor-widget-container,.e-con-inner>.elementor-widget-spacer>.elementor-widget-container>.elementor-spacer,.e-con>.elementor-widget-spacer>.elementor-widget-container,.e-con>.elementor-widget-spacer>.elementor-widget-container>.elementor-spacer{height:100%}.e-con-inner>.elementor-widget-spacer>.elementor-widget-container>.elementor-spacer>.elementor-spacer-inner,.e-con>.elementor-widget-spacer>.elementor-widget-container>.elementor-spacer>.elementor-spacer-inner{height:var(--container-widget-height,var(--spacer-size))}</style>\t\t<div class="elementor-spacer">\n\t\t\t<div class="elementor-spacer-inner"></div>\n\t\t</div>\n\t\t\t\t</div>\n\t\t\t\t</div>\n\t\t\t\t<div class="elementor-element elementor-element-4f6c9470 elementor-widget elementor-widget-heading" data-id="4f6c9470" data-element_type="widget" data-widget_type="heading.default">\n\t\t\t\t<div class="elementor-widget-container">\n\t\t\t<style>/*! elementor - v3.14.0 - 18-06-2023 */\n.elementor-heading-title{padding:0;margin:0;line-height:1}.elementor-widget-heading .elementor-heading-title[class*=elementor-size-]>a{color:inherit;font-size:inherit;line-height:inherit}.elementor-widget-heading .elementor-heading-title.elementor-size-small{font-size:15px}.elementor-widget-heading .elementor-heading-title.elementor-size-medium{font-size:19px}.elementor-widget-heading .elementor-heading-title.elementor-size-large{font-size:29px}.elementor-widget-heading .elementor-heading-title.elementor-size-xl{font-size:39px}.elementor-widget-heading .elementor-heading-title.elementor-size-xxl{font-size:59px}</style><h4 class="elementor-heading-title elementor-size-default">Re-imagine your buildings with Cisco DNA Spaces​</h4>\t\t</div>\n\t\t\t\t</div>\n\t\t\t\t<div class="elementor-element elementor-element-3308a6d3 elementor-widget__width-initial elementor-widget-mobile__width-inherit elementor-widget elementor-widget-html" data-id="3308a6d3" data-element_type="widget" data-widget_type="html.default">\n\t\t\t\t<div class="elementor-widget-container">\n\t\t\t<section class="msforms-section">\n<div class="msform">\n     <form id="contact" action="https://api.hsforms.com/submissions/v2/post/upload/5010372/90d127dd-3f03-49d6-a23a-b92453cad4b2" method="post" data-gtm-form-interact-id="0">\n        <fieldset class="msforms-fieldset">\n            <h6>How can we help you today?</h6>\n            <div class="form-group">\n              <input type="checkbox" name="how_can_we_help_you_today_" id="freetrial" value="Get a 30-day Free Trial" checked=""> \n              <label for="freetrial" class="">Get a 30-day Free Trial</label>\n            </div>\n            <div class="form-group">\n              <input type="checkbox" name="how_can_we_help_you_today_" id="consultation" value="Book a Demo session with a Spaces Expert"> \n              <label for="consultation" class="">Book a Demo session with a Spaces Expert</label>\n            </div>\n            <div class="form-group">\n              <input type="checkbox" name="how_can_we_help_you_today_" id="smartbuildings" value="Receive our E-books &amp; Guides"> \n              <label for="smartbuildings" class="">Receive our E-books &amp; Guides\n</label>\n            </div>\n            <div class="form-group">\n        <input type="text" value="FreeTrial" name="outcome_store_trialdemo_source" hidden="">\n                            </div>\n            <div class="form-group clearfix">\n                <a href="javascript:;" class="msform-next-btn float-right">Next</a>\n            </div>\n        </fieldset> \n        <fieldset class="msforms-fieldset">\n            <h6>Tell us more about yourself:</h6>\n            <p style="padding-bottom:10px;">We will use this information to check if your company has existing DNA Spaces licenses</p>\n            <div class="form-group focus-input">\n                \n              <input placeholder="" type="text" name="jobtitle" class="form-control" id="jtitle" data-gtm-form-interact-field-id="0">\n              <label class="msforms-form-text-label" for="jtitle">Job title</label>\n            </div>\n            <div class="form-group focus-input">\n                \n              <input placeholder="" name="company" type="text" class="form-control msforms-required" id="cname" required="" data-gtm-form-interact-field-id="1">\n              <label class="msforms-form-text-label" for="cname">Company name*</label>\n              <div class="msforms-form-error">Please enter company name</div>\n            </div>\n            <div class="form-group focus-input">\n               \n              <input placeholder="" name="country" type="text" class="form-control" id="countryn" data-gtm-form-interact-field-id="2">\n               <label class="msforms-form-text-label" for="countryn">Country</label>\n            </div>\n            <div class="form-group clearfix">\n                <a href="javascript:;" class="msform-previous-btn float-left">Previous</a>\n                <a href="javascript:;" class="msform-next-btn float-right">Next</a>\n            </div>\n        </fieldset> \n        <fieldset class="msforms-fieldset show">\n            <h6>How can we reach you?</h6>\n            <p style="padding-bottom:10px;">We will use this information to set up a Free Trial or Demo session and send information about DNA Spaces</p>\n            <div class="form-group focus-input">\n                \n              <input placeholder="" type="email" name="email" class="form-control msforms-required" id="bemail" required="" data-gtm-form-interact-field-id="3">\n              <label class="msforms-form-text-label" for="bemail">Business Email* </label>\n              <div class="msforms-form-error">Please enter your business email id</div>\n            </div>\n            <div class="form-group focus-input">\n              <input placeholder="" type="text" name="phone" class="form-control msforms-required" id="phonenumber" required="" data-gtm-form-interact-field-id="4">\n                <label class="msforms-form-text-label" for="phonenumber">Phone Number* </label>\n              <div class="msforms-form-error">Please enter your phone number</div>\n            </div>\n           <div class="form-group focus-input">\n              <input placeholder="" type="text" name="firstname" class="form-control msforms-required" id="fname" required="" data-gtm-form-interact-field-id="5">\n                <label class="msforms-form-text-label" for="fname">First Name*</label>\n              <div class="msforms-form-error">Please enter your first name</div>\n            </div>\n            <div class="form-group focus-input">\n              <input placeholder="" type="text" name="lastname" class="form-control msforms-required" id="lname" required="" data-gtm-form-interact-field-id="6">\n                <label class="msforms-form-text-label" for="lname">Last Name*</label>\n              <div class="msforms-form-error">Please enter your last name</div>\n            </div>\n            \n            <div class="form-group clearfix">\n                <a href="javascript:;" class="msform-previous-btn float-left">Previous</a>\n                <button id="freetrial">Submit</button>\n            </div>\n        </fieldset> \n    </form>\n    \n</div>\n</section>\t\t</div>\n\t\t\t\t</div>\n\t\t\t\t<div class="elementor-element elementor-element-2730934c elementor-widget elementor-widget-html" data-id="2730934c" data-element_type="widget" data-widget_type="html.default">\n\t\t\t\t<div class="elementor-widget-container">\n\t\t\t<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.15.0/jquery.validate.min.js"></script>\n<script type="text/javascript">\njQuery(document).ready(function() {\n    \n    // click on next button\n    jQuery(\'.msform-next-btn\').click(function() {\n        var parentFieldset = jQuery(this).parents(\'.msforms-fieldset\');\n        var currentActiveStep = jQuery(this).parents(\'.msform\').find(\'.msform-steps .active\');\n        var next = jQuery(this);\n        var nextmsformsStep = true;\n        parentFieldset.find(\'.msforms-required\').each(function(){\n            var thisValue = jQuery(this).val();\n\n            if( thisValue == "") {\n                jQuery(this).siblings(".msforms-form-error").slideDown();\n                nextmsformsStep = false;\n            }\n            else {\n                jQuery(this).siblings(".msforms-form-error").slideUp();\n            }\n        });\n        if( nextmsformsStep) {\n            next.parents(\'.msforms-fieldset\').removeClass("show","400");\n            currentActiveStep.removeClass(\'active\').addClass(\'activated\').next().addClass(\'active\',"400");\n            next.parents(\'.msforms-fieldset\').next(\'.msforms-fieldset\').addClass("show","400");\n            jQuery(document).find(\'.msforms-fieldset\').each(function(){\n                if(jQuery(this).hasClass(\'show\')){\n                    var formAtrr = jQuery(this).attr(\'data-tab-content\');\n                    jQuery(document).find(\'.msform-steps .msform-step-item\').each(function(){\n                        if(jQuery(this).attr(\'data-attr\') == formAtrr){\n                            jQuery(this).addClass(\'active\');\n                            var innerWidth = jQuery(this).innerWidth();\n                            var position = jQuery(this).position();\n                            jQuery(document).find(\'.msform-step-move\').css({"left": position.left, "width": innerWidth});\n                        }else{\n                            jQuery(this).removeClass(\'active\');\n                        }\n                    });\n                }\n            });\n        }\n    });\n    //click on previous button\n    jQuery(\'.msform-previous-btn\').click(function() {\n        var counter = parseInt(jQuery(".msforms-counter").text());;\n        var prev =jQuery(this);\n        var currentActiveStep = jQuery(this).parents(\'.msform\').find(\'.msform-steps .active\');\n        prev.parents(\'.msforms-fieldset\').removeClass("show","400");\n        prev.parents(\'.msforms-fieldset\').prev(\'.msforms-fieldset\').addClass("show","400");\n        currentActiveStep.removeClass(\'active\').prev().removeClass(\'activated\').addClass(\'active\',"400");\n        jQuery(document).find(\'.msforms-fieldset\').each(function(){\n            if(jQuery(this).hasClass(\'show\')){\n                var formAtrr = jQuery(this).attr(\'data-tab-content\');\n                jQuery(document).find(\'.msform-steps .msform-step-item\').each(function(){\n                    if(jQuery(this).attr(\'data-attr\') == formAtrr){\n                        jQuery(this).addClass(\'active\');\n                        var innerWidth = jQuery(this).innerWidth();\n                        var position = jQuery(this).position();\n                        jQuery(document).find(\'.msform-step-move\').css({"left": position.left, "width": innerWidth});\n                    }else{\n                        jQuery(this).removeClass(\'active\');\n                    }\n                });\n            }\n        });\n    });\n    //click on form submit button\n    jQuery(document).on("click",".msform .msform-submit" , function(){\n        window.location = \'/store/thank-you/\';\n        var parentFieldset = jQuery(this).parents(\'.msforms-fieldset\');\n        var currentActiveStep = jQuery(this).parents(\'.msform\').find(\'.msform-steps .active\');\n        parentFieldset.find(\'.msforms-required\').each(function() {\n            var thisValue = jQuery(this).val();\n            if( thisValue == "" ) {\n                jQuery(this).siblings(".msforms-form-error").slideDown();\n            }\n            else {\n                jQuery(this).siblings(".msforms-form-error").slideUp();\n            }\n        });\n                window.location.replace("http://stackoverflow.com");\n\n    });\n    // focus on input field check empty or not\n    jQuery(".form-control").on(\'focus\', function(){\n        var tmpThis = jQuery(this).val();\n        if(tmpThis == \'\' ) {\n            jQuery(this).parent().addClass("focus-input");\n        }\n        else if(tmpThis !=\'\' ){\n            jQuery(this).parent().addClass("focus-input");\n        }\n    }).on(\'blur\', function(){\n        var tmpThis = jQuery(this).val();\n        if(tmpThis == \'\' ) {\n            jQuery(this).parent().removeClass("focus-input");\n            jQuery(this).siblings(\'.msforms-form-error\').slideDown("3000");\n        }\n        else if(tmpThis !=\'\' ){\n            jQuery(this).parent().addClass("focus-input");\n            jQuery(this).siblings(\'.msforms-form-error\').slideUp("3000");\n        }\n    });\n   \n  \n \njQuery(\'#contact\').submit(function() {\n    var form = jQuery("#contact");\n    var actionURL = form.attr("action");\n    jQuery.ajax({\n        type: \'POST\',\n        url: actionURL,\n        data: form.serialize(),\n        dataType: \'json\',\n        success: function(json) {\n           window.location.href = "/store/thank-you/";\n        }\n    })\n    return false;\n});\n    \n});\n\n\n\n</script>\t\t</div>\n\t\t\t\t</div>\n\t\t\t\t<div class="elementor-element elementor-element-2ee5c52d elementor-widget elementor-widget-spacer" data-id="2ee5c52d" data-element_type="widget" data-widget_type="spacer.default">\n\t\t\t\t<div class="elementor-widget-container">\n\t\t\t\t\t<div class="elementor-spacer">\n\t\t\t<div class="elementor-spacer-inner"></div>\n\t\t</div>\n\t\t\t\t</div>\n\t\t\t\t</div>\n\t\t\t\t\t</div>',
     },
-    _id: "6496ebbda9da3f3a6242014b",
+    _id: "649851e1a9da3f3a62432b8e",
   },
   {
-    timeStamp: 1687610772.72,
-    name: "USER_EVENT",
-    type: "IDLE",
-    data: {
-      X: 755,
-      Y: 133,
-      scrollX: 0,
-      scrollY: 0,
-      HTMLElement:
-        '<div class="row h-100">\n<div class="col-lg-8 black_bg opacity-7 h-100 pt-50 slide_width">\n<div class="container" style="display: none;">\n<div class="row">\n<div class="col-lg-10 pt-4 text-center index_ciscologo"><img decoding="async" src="https://ddm2gd3hh6a8o.cloudfront.net/wp-content/uploads/2022/09/cisco-spaces-whte.svg" style="width:47%" class="mt-2 mr-4"></div>\n</div>\n</div>\n</div>\n<div class="col-lg-3 h-100 black_bg2 opacity-7 pt-50 index_linkdiv welcometext cursor_pointer display-5 text-white cisco-extralight text-center signinform_hide"><span class="pt-14 d-block">Setup Guide</span></div>\n<div class="col-lg-1 h-100 blue_bg pt-50 index_linkdiv welcometext cursor_pointer signinform_hide"><a href="#" class="d-block text-light hv_zindex"><span class="display-5 text-light cisco-extralight d-block mt-5 text-center no-gutter"> <i class="home_right_arrow" style="display: none;"><img decoding="async" src="/utilities/setupguide/images/signin_arrow_white.png"></i></span> </a><a href="#" class="welcome d-block blue_bg" id="guide_link_arrow"></a></div>\n<p><!--\n\n\n<div class="col-lg-1 h-10 green_bg pt-50 text-center"><a href="#" class="welcome d-block mt-5 pt-2"><img decoding="async" src="utilities/images/right_arrow.png"></a></div>\n\n\n--></p>\n</div>',
-    },
-    _id: "6496ebbda9da3f3a6242014c",
-  },
-  {
-    timeStamp: 1687610781.481,
-    name: "PAGE_EVENT",
-    type: "PAGE_CLOSE",
-    data: { sessionTime: 40.702 },
-    _id: "6496ebbda9da3f3a6242014d",
-  },
-  {
-    timeStamp: 1687610781.492,
-    name: "PAGE_EVENT",
-    type: "TAB_HIDDEN",
-    _id: "6496ebbda9da3f3a6242014e",
-  },
-  {
-    timeStamp: 1687611443.069,
-    name: "PAGE_EVENT",
-    type: "NAVIGATE",
-    data: { URL: "https://spaces.cisco.com/", DOMLoadTime: 3.762300000011921 },
-    _id: "6496ebbda9da3f3a6242014f",
-  },
-  {
-    timeStamp: 1687611445.655,
-    name: "PAGE_EVENT",
-    type: "PAGE_CLOSE",
-    data: { sessionTime: 2.596 },
-    _id: "6496ebbda9da3f3a62420150",
-  },
-  {
-    timeStamp: 1687611445.664,
-    name: "PAGE_EVENT",
-    type: "TAB_HIDDEN",
-    _id: "6496ebbda9da3f3a62420151",
-  },
-  {
-    timeStamp: 1687612341.396,
-    name: "PAGE_EVENT",
-    type: "NAVIGATE",
-    data: { URL: "https://spaces.cisco.com/", DOMLoadTime: 1.8784000000357628 },
-    _id: "6496ebbda9da3f3a62420152",
-  },
-  {
-    timeStamp: 1687612346.139,
+    timeStamp: 1687704025.914,
     name: "USER_EVENT",
     type: "MOUSEDOWN",
     data: {
-      X: 963,
-      Y: 177,
+      X: 278,
+      Y: 118,
       scrollX: 0,
       scrollY: 0,
       HTMLElement:
-        '<h1 class="elementor-heading-title elementor-size-default">Cisco Spaces</h1>',
+        '<input placeholder="Search..." class="elementor-search-form__input" type="search" name="s" title="Search" value="">',
     },
-    _id: "6496ebbda9da3f3a62420153",
+    _id: "649851e1a9da3f3a62432b8f",
   },
   {
-    timeStamp: 1687612346.277,
+    timeStamp: 1687704025.99,
     name: "USER_EVENT",
-    type: "CONTEXTMENU",
+    type: "CLICK",
     data: {
-      X: 963,
-      Y: 177,
+      X: 278,
+      Y: 118,
       scrollX: 0,
       scrollY: 0,
       HTMLElement:
-        '<h1 class="elementor-heading-title elementor-size-default">Cisco Spaces</h1>',
+        '<input placeholder="Search..." class="elementor-search-form__input" type="search" name="s" title="Search" value="">',
+      button: 0,
     },
-    _id: "6496ebbda9da3f3a62420154",
+    _id: "649851e1a9da3f3a62432b90",
   },
   {
-    timeStamp: 1687612347.14,
+    timeStamp: 1687704026.962,
     name: "USER_EVENT",
     type: "IDLE",
     data: {
-      X: 963,
-      Y: 177,
+      X: 278,
+      Y: 118,
       scrollX: 0,
       scrollY: 0,
       HTMLElement:
-        '<h1 class="elementor-heading-title elementor-size-default">Cisco Spaces</h1>',
+        '<input placeholder="Search..." class="elementor-search-form__input" type="search" name="s" title="Search" value="">',
     },
-    _id: "6496ebbda9da3f3a62420155",
+    _id: "649851e1a9da3f3a62432b91",
   },
   {
-    timeStamp: 1687612349.25,
+    timeStamp: 1687704027.852,
+    name: "USER_EVENT",
+    type: "MOUSEDOWN",
+    data: {
+      X: 331,
+      Y: 217,
+      scrollX: 0,
+      scrollY: 0,
+      HTMLElement:
+        '<h4 class="elementor-heading-title elementor-size-default">Re-imagine your buildings with Cisco DNA Spaces​</h4>',
+    },
+    _id: "649851e1a9da3f3a62432b92",
+  },
+  {
+    timeStamp: 1687704027.937,
+    name: "USER_EVENT",
+    type: "CLICK",
+    data: {
+      X: 331,
+      Y: 217,
+      scrollX: 0,
+      scrollY: 0,
+      HTMLElement:
+        '<h4 class="elementor-heading-title elementor-size-default">Re-imagine your buildings with Cisco DNA Spaces​</h4>',
+      button: 0,
+    },
+    _id: "649851e1a9da3f3a62432b93",
+  },
+  {
+    timeStamp: 1687704029.543,
     name: "USER_EVENT",
     type: "IDLE",
-    data: { X: 902, Y: 31, scrollX: 0, scrollY: 0, HTMLElement: null },
-    _id: "6496ebbda9da3f3a62420156",
+    data: {
+      X: 717,
+      Y: 98,
+      scrollX: 0,
+      scrollY: 0,
+      HTMLElement:
+        '<div class="elementor-widget-wrap elementor-element-populated">\n\t\t\t\t\t\t\t\t<div class="elementor-element elementor-element-3da8a611 elementor-search-form--skin-minimal elementor-widget__width-inherit elementor-widget elementor-widget-search-form" data-id="3da8a611" data-element_type="widget" data-settings="{&quot;skin&quot;:&quot;minimal&quot;}" data-widget_type="search-form.default">\n\t\t\t\t<div class="elementor-widget-container">\n\t\t\t<link rel="stylesheet" href="https://spaces.cisco.com/store/wp-content/plugins/elementor-pro/assets/css/widget-theme-elements.min.css">\t\t<form class="elementor-search-form" role="search" action="https://spaces.cisco.com/store" method="get">\n\t\t\t\t\t\t\t\t\t<div class="elementor-search-form__container">\n\t\t\t\t\t\t\t\t\t<div class="elementor-search-form__icon">\n\t\t\t\t\t\t<i aria-hidden="true" class="fas fa-search"></i>\t\t\t\t\t\t<span class="elementor-screen-only">Search</span>\n\t\t\t\t\t</div>\n\t\t\t\t\t\t\t\t<input placeholder="Search..." class="elementor-search-form__input" type="search" name="s" title="Search" value="">\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t</div>\n\t\t</form>\n\t\t\t\t</div>\n\t\t\t\t</div>\n\t\t\t\t\t</div>',
+    },
+    _id: "649851e1a9da3f3a62432b94",
+  },
+  {
+    timeStamp: 1687704030.848,
+    name: "USER_EVENT",
+    type: "IDLE",
+    data: {
+      X: 651,
+      Y: 167,
+      scrollX: 0,
+      scrollY: 0,
+      HTMLElement: '<div class="elementor-spacer-inner"></div>',
+    },
+    _id: "649851e1a9da3f3a62432b95",
   },
 ];
 
@@ -2194,19 +3010,19 @@ async function start() {
   await page.setDefaultNavigationTimeout(0);
   const context = browser.defaultBrowserContext();
   await context.overridePermissions(
-    "https://spaces.cisco.com/?session-replay=true",
+    events[0].data.URL + "?session-replay=true",
     ["geolocation"]
   );
 
   await installMouseHelper(page);
 
   await page.setViewport({
-    width: 1280,
+    width: 742,
     height: 681,
     hasTouch: true, // Enable touch events if needed
   });
 
-  await page.goto("https://spaces.cisco.com/?session-replay=true", {
+  await page.goto(events[0].data.URL + "?session-replay=true", {
     waitUntil: "networkidle0",
   });
 
@@ -2252,12 +3068,12 @@ async function start() {
   //         pre.style.opacity = "0.5";
   //         document.body.appendChild(pre);
   //         pre.textContent =
-  //             "Session : abc_user/test-dna-spaces \n"  +
+  //             "Session : abc_user/test-dna-spaces-1 \n"  +
   //             "Elapsed : " +
   //             time;
   //         } else {
   //         pre.textContent =
-  //             "Session : abc_user/test-dna-spaces \n"  +
+  //             "Session : abc_user/test-dna-spaces-1 \n"  +
   //             "Elapsed : " +
   //             time;
   //         }

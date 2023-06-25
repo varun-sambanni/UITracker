@@ -167,7 +167,10 @@ const Puppeteer_Template = (
     await page.setDefaultNavigationTimeout(0);
     const context = browser.defaultBrowserContext();
     await context.overridePermissions("${URL}?session-replay=true", ["geolocation"]);
-
+    await context.overridePermissions(
+    events[0].data.URL + "?session-replay=true",
+        ["geolocation"]
+    );
     await installMouseHelper(page);
 
     await page.setViewport({
@@ -176,7 +179,9 @@ const Puppeteer_Template = (
         hasTouch: true, // Enable touch events if needed
     });
 
-    await page.goto("${URL}?session-replay=true", { waitUntil: "networkidle0" });
+    await page.goto(events[0].data.URL + "?session-replay=true", {
+        waitUntil: "networkidle0",
+    });
 
     // await page.evaluate(() => {
     //     const pre = document.createElement("pre");

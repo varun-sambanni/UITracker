@@ -31,7 +31,7 @@ class UITracker {
     this.dragStartX = -1;
     this.dragStartY = -1;
     this.location = null;
-    this.URL = window.location.href;
+    this.URL = window.location.host;
     this.eventsList = [];
     this.sessionStartTime = 0;
     this.tabHiddenStart = 0; // Stores the timeStamp of when the most recent 'TAB_HIDDEN' event is recorded
@@ -97,7 +97,7 @@ class UITracker {
    *  Called from App.js
    */
   start() {
-    const url = new URL(this.URL);
+    const url = new URL(window.location.href);
     const isSessionReplay = url.searchParams.get("session-replay");
     console.log("isSessionReplay ", isSessionReplay);
     if (isSessionReplay === "true") return; // No recording of events is this is currently a session replay
