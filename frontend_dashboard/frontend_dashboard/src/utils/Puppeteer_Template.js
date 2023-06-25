@@ -166,7 +166,7 @@ const Puppeteer_Template = (
     const page = await browser.newPage();
     await page.setDefaultNavigationTimeout(0);
     const context = browser.defaultBrowserContext();
-    await context.overridePermissions("${URL}?session-replay=true", ["geolocation"]);
+
     await context.overridePermissions(
     events[0].data.URL + "?session-replay=true",
         ["geolocation"]
