@@ -100,7 +100,12 @@ class UITracker {
     const url = new URL(window.location.href);
     const isSessionReplay = url.searchParams.get("session-replay");
     console.log("isSessionReplay ", isSessionReplay);
-    if (isSessionReplay === "true") return; // No recording of events is this is currently a session replay
+    if (
+      isSessionReplay === "true" ||
+      (localStorage.getItem("session-replay") !== null &&
+        localStorage.getItem("session-replay") === "Yes")
+    )
+      return; // No recording of events is this is currently a session replay
 
     UITracker.getLocation(); // Starts obtaining user location and eventually stores in this.location var
     if (this.dataTransmissionInterval !== -1) {

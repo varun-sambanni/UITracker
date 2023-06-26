@@ -120,7 +120,7 @@ function Dashboard() {
             <div className="loadingContainer">
               {isLoading && "Fetching Logs..."}
             </div>
-            <div>Number of Logs : {eventLogs.length}</div>
+
             <div className="filtersContainer ">
               <AutoSearch
                 value={URL}

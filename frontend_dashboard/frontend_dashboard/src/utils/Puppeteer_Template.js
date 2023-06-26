@@ -183,6 +183,10 @@ const Puppeteer_Template = (
         waitUntil: "networkidle0",
     });
 
+    await page.evaluate(() => {
+        localStorage.setItem("session-replay", "Yes");
+    });
+
     // await page.evaluate(() => {
     //     const pre = document.createElement("pre");
     //     pre.id = "id-abc_user/ygp6sb8o-lh3o-l4l3-1upg-e5vwxx4ca4eo";
