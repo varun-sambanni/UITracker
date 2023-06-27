@@ -29,7 +29,7 @@ function Dashboard() {
   const [errMsg, setErrMsg] = useState("");
 
   useEffect(() => {
-    fetch("https://trax-server.dev-dnaspaces.io/getEventLogs")
+    fetch("http://localhost:5000/getEventLogs")
       .then((res) => res.json())
       .then((data) => {
         if (data.success === false) {
@@ -171,7 +171,7 @@ function Dashboard() {
                 </div>
                 <div className="eventLogDetailRow">
                   <div className="eventLogModalDetailsTitle">
-                    TimeStamp(User's LT):{" "}
+                    Last Alive (User's LT):{" "}
                   </div>
                   <div className="eventLogModalDetailsValue">
                     {eventLogs[0].localTime}

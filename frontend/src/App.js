@@ -99,7 +99,7 @@ function App() {
     // Call these functions only when the page DOM has loaded
     const uiTracker = new UITracker();
     uiTracker.config({
-      dataTransmissionInterval: 10000,
+      dataTransmissionInterval: 30000,
       reportOnError: false,
       sessionId: `abc_user/12345`,
     });

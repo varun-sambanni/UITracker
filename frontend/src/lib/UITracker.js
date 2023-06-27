@@ -39,7 +39,7 @@ class UITracker {
     this.dataTransmissionInterval = 15000;
     this.reportOnError = false;
     this.scrollBarWidth = getScrollbarWidth();
-    this.postDataEndPoint = "https://trax-server.dev-dnaspaces.io/postData";
+    this.postDataEndPoint = "http://localhost:5000/postData";
     this.ignoreNextClick = false;
   }
 
@@ -111,6 +111,7 @@ class UITracker {
     if (this.dataTransmissionInterval !== -1) {
       this.startDataTransmissionHTTP();
     }
+    this.startLastAliveTransmission();
     this.sendLastLog();
     this.startSession();
     this.recordPageEvents();
@@ -122,6 +123,38 @@ class UITracker {
     this.recordConsoleErrors();
     this.recordOnChangeEvents();
     this.endSession();
+  }
+
+  /**
+   *  Sent every 5s determine when the application was last alive
+   */
+  startLastAliveTransmission() {
+    setInterval(() => {
+      console.log("updating last alive");
+      fetch("http://localhost:5000/postLastAlive", {
+        method: "POST",
+        headers: {
+          Accept: "application/json",
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(
+          {
+            sessionId: self.sessionId,
+            localTime: new Date().toLocaleString(),
+          },
+          self.replacerFunc()
+        ),
+      })
+        .then((res) => {
+          return res.json();
+        })
+        .then((data) => {
+          console.log("Response from last alive ->", data);
+        })
+        .catch((err) => {
+          console.log("Error updating last alive ", err);
+        });
+    }, 5000);
   }
 
   /**
@@ -137,7 +170,7 @@ class UITracker {
    *  Util function to post data to backend API endpoint
    */
   static postData() {
-    fetch("https://trax-server.dev-dnaspaces.io/postData", {
+    fetch("http://localhost:5000/postData", {
       method: "POST",
       headers: {
         Accept: "application/json",

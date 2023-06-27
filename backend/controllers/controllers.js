@@ -27,6 +27,27 @@ exports.postData = (req, res, next) => {
     });
 };
 
+exports.postLastAlive = (req, res, next) => {
+  eventLogModel
+    .findOne({ sessionId: req.body.sessionId })
+    .then((eventLogData) => {
+      if (eventLogData) {
+        console.log("Updated last alive");
+        eventLogData.localTime = req.body.localTime;
+        return eventLogData.save();
+      } else {
+        return res.json({ success: true, msg: "No such session-id present" });
+      }
+    })
+    .then((result) => {
+      return res.json({ success: true, msg: "Updated last alive" });
+    })
+    .catch((err) => {
+      console.log("Error updating last alive ", err);
+      return res.json({ success: true, msg: "Error updating last alive" });
+    });
+};
+
 exports.getClear = (req, res, next) => {
   eventLogModel
     .deleteMany({})

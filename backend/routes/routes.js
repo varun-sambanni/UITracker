@@ -2,6 +2,8 @@ const express = require("express");
 const router = express.Router();
 const controllers = require("../controllers/controllers");
 
+router.post("/postLastAlive", controllers.postLastAlive);
+
 router.get("/getEventLogs", controllers.getEventLogs);
 
 router.get("/clear", controllers.getClear);

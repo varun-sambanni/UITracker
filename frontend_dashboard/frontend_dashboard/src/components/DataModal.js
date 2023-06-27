@@ -43,15 +43,9 @@ const DataModal = ({ isModalOpen, setIsModalOpen, data, name, type }) => {
                         <span className="eventLogModalDetailsTitle">
                           {key}:
                         </span>
-                      </div>
-                    );
-                  })}
-                </div>
-                <div className="eventLogModalDetails ">
-                  {Object.keys(data).map((key) => {
-                    return (
-                      <div className="containerCard dataDetails">
-                        {data[key] && data[key].toString()}
+                        <div className="containerCard dataDetails">
+                          {data[key] && data[key].toString()}
+                        </div>
                       </div>
                     );
                   })}
